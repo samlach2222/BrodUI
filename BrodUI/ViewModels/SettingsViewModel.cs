@@ -48,7 +48,7 @@ namespace BrodUI.ViewModels
                     if (CurrentTheme == Wpf.Ui.Appearance.ThemeType.Light)
                         break;
 
-                    Wpf.Ui.Appearance.Theme.Apply(Wpf.Ui.Appearance.ThemeType.Light);
+                    Wpf.Ui.Appearance.Theme.Apply(Wpf.Ui.Appearance.ThemeType.Light, Wpf.Ui.Appearance.BackgroundType.None);
                     CurrentTheme = Wpf.Ui.Appearance.ThemeType.Light;
 
                     break;
@@ -57,7 +57,7 @@ namespace BrodUI.ViewModels
                     if (CurrentTheme == Wpf.Ui.Appearance.ThemeType.Dark)
                         break;
 
-                    Wpf.Ui.Appearance.Theme.Apply(Wpf.Ui.Appearance.ThemeType.Dark);
+                    Wpf.Ui.Appearance.Theme.Apply(Wpf.Ui.Appearance.ThemeType.Dark, Wpf.Ui.Appearance.BackgroundType.None);
                     CurrentTheme = Wpf.Ui.Appearance.ThemeType.Dark;
 
                     break;
