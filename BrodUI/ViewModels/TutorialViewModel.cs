@@ -1,21 +1,9 @@
-﻿using System;
-using System.Diagnostics;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
-using BrodUI.Services;
-using BrodUI.Views.Pages;
-using BrodUI.Views.Windows;
+﻿using BrodUI.Views.Pages;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Wpf.Ui.Common.Interfaces;
-using Wpf.Ui.Controls;
-using Wpf.Ui.Controls.Interfaces;
 using Wpf.Ui.Mvvm.Contracts;
-using Wpf.Ui.Mvvm.Services;
-using static System.Net.Mime.MediaTypeNames;
 using Application = System.Windows.Application;
-using MessageBox = System.Windows.MessageBox;
 
 namespace BrodUI.ViewModels
 {

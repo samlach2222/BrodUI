@@ -20,26 +20,56 @@
     </ui:UiPage.Resources>
 
     <StackPanel Margin="56,0">
-        <TextBlock
-            FontSize="20"
-            FontWeight="Medium"
-            Text="Personalization" />
-        <TextBlock Margin="0,12,0,0" Text="Theme" />
-        <RadioButton
-            Margin="0,12,0,0"
-            Command="{Binding ViewModel.ChangeThemeCommand, Mode=OneWay}"
-            CommandParameter="theme_light"
-            Content="Light"
-            GroupName="themeSelect"
-            IsChecked="{Binding ViewModel.CurrentTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Light, Mode=OneWay}" />
-        <RadioButton
-            Margin="0,8,0,0"
-            Command="{Binding ViewModel.ChangeThemeCommand, Mode=OneWay}"
-            CommandParameter="theme_dark"
-            Content="Dark"
-            GroupName="themeSelect"
-            IsChecked="{Binding ViewModel.CurrentTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Dark, Mode=OneWay}" />
+        <!-- THEME MANAGEMENT -->
+        <ui:CardControl x:Name="ThemeCardControl" Margin="0,0,0,8" Icon="DarkTheme24">
+            <ui:CardControl.Header>
+                <TextBlock Text="Theme" />
+            </ui:CardControl.Header>
+            <ComboBox
+                x:Name="ThemeComboBox"
+                MinWidth="160"
+                Margin="0,0,0,8"
+                MaxDropDownHeight="Auto"
+                ItemsSource="{Binding ViewModel.Themes}"
+                SelectedItem="{Binding ViewModel.CurTheme}"
+            />
 
+                <!-- TODO : Theme Management like this
+                <RadioButton
+                    Margin="0,12,0,0"
+                    Command="{Binding ViewModel.ChangeThemeCommand, Mode=OneWay}"
+                    CommandParameter="theme_light"
+                    Content="Light"
+                    GroupName="themeSelect"
+                    IsChecked="{Binding ViewModel.CurrentTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Light, Mode=OneWay}" />
+                <RadioButton
+                    Margin="0,8,0,0"
+                    Command="{Binding ViewModel.ChangeThemeCommand, Mode=OneWay}"
+                    CommandParameter="theme_dark"
+                    Content="Dark"
+                    GroupName="themeSelect"
+                    IsChecked="{Binding ViewModel.CurrentTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Dark, Mode=OneWay}" />
+            -->
+        </ui:CardControl>
+        
+        <!-- LANGUAGE MANAGEMENT -->
+        <ui:CardControl x:Name="LangCardControl" Margin="0,0,0,8" Icon="LocalLanguage24">
+            <ui:CardControl.Header>
+                <TextBlock Text="Language" />
+            </ui:CardControl.Header>
+            <ComboBox
+                x:Name="LangComboBox"
+                MinWidth="160"
+                Margin="0,0,0,8"
+                MaxDropDownHeight="Auto"
+                ItemsSource="{Binding ViewModel.Languages}"
+                SelectedItem="{Binding ViewModel.CurLanguage}"
+                
+            />
+            <!-- TODO : See https://github.com/BartoszCichecki/LenovoLegionToolkit/blob/master/LenovoLegionToolkit.WPF/Pages/SettingsPage.xaml -->
+        </ui:CardControl>
+
+        
         <TextBlock
             Margin="0,24,0,0"
             FontSize="20"

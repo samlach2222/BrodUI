@@ -1,5 +1,5 @@
-using Xunit;
 using BrodUI.Models;
+using Xunit;
 
 namespace BrodUITests
 {
