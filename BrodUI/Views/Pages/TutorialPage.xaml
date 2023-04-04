@@ -1,12 +1,12 @@
-﻿<ui:UiPage x:Class="BrodUI.Views.Pages.DashboardPage"
+﻿<ui:UiPage x:Class="BrodUI.Views.Pages.TutorialPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:BrodUI.Views.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
-    Title="DashboardPage"
-    d:DataContext="{d:DesignInstance local:DashboardPage, IsDesignTimeCreatable=False}"
+    Title="TutorialPage"
+    d:DataContext="{d:DesignInstance local:TutorialPage, IsDesignTimeCreatable=False}"
     d:DesignHeight="450"
     d:DesignWidth="800"
     d:Background="{DynamicResource ApplicationBackgroundBrush}"
@@ -15,11 +15,13 @@
 
     <Grid Margin="56,0" VerticalAlignment="Top">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-
-        <ui:Button Grid.Column="0" Command="{Binding ViewModel.CounterIncrementCommand, Mode=OneWay}" Content="Click me!" Icon="Fluent24" />
-        <TextBlock Grid.Column="1" Margin="12,0,0,0" VerticalAlignment="Center" Text="{Binding ViewModel.Counter, Mode=OneWay}" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" Text="{Binding ViewModel.TutorialText, Mode=OneWay}" />
+        <ui:Button Grid.Column="0" Grid.Row="1" Command="{Binding ViewModel.GoConvertPageCommand, Mode=OneWay}" Content="Okay !" HorizontalAlignment="Center" />
     </Grid>
 </ui:UiPage>

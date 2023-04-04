@@ -41,7 +41,7 @@ namespace BrodUI.ViewModels
                     Content = "Tutorial",
                     PageTag = "tutorial",
                     Icon = SymbolRegular.QuestionCircle24, // QuestionCircle is the icon, 24 is the size
-                    PageType = typeof(Views.Pages.DashboardPage)
+                    PageType = typeof(Views.Pages.TutorialPage)
                 },
                 new NavigationItem()
                 {

@@ -47,8 +47,8 @@ namespace BrodUI
                 services.AddScoped<ViewModels.MainWindowViewModel>();
 
                 // Views and ViewModels
-                services.AddScoped<Views.Pages.DashboardPage>();
-                services.AddScoped<ViewModels.DashboardViewModel>();
+                services.AddScoped<Views.Pages.TutorialPage>();
+                services.AddScoped<ViewModels.TutorialViewModel>();
                 services.AddScoped<Views.Pages.ConvertPage>();
                 services.AddScoped<ViewModels.ConvertViewModel>();
                 services.AddScoped<Views.Pages.ExportPage>();

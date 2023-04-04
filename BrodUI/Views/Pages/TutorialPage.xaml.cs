@@ -3,16 +3,16 @@
 namespace BrodUI.Views.Pages
 {
     /// <summary>
-    /// Interaction logic for DashboardPage.xaml
+    /// Interaction logic for TutorialPage.xaml
     /// </summary>
-    public partial class DashboardPage : INavigableView<ViewModels.DashboardViewModel>
+    public partial class TutorialPage : INavigableView<ViewModels.TutorialViewModel>
     {
-        public ViewModels.DashboardViewModel ViewModel
+        public ViewModels.TutorialViewModel ViewModel
         {
             get;
         }
 
-        public DashboardPage(ViewModels.DashboardViewModel viewModel)
+        public TutorialPage(ViewModels.TutorialViewModel viewModel)
         {
             ViewModel = viewModel;
 
