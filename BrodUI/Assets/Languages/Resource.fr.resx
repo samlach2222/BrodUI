@@ -98,6 +98,39 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Settings_LabelAbout" xml:space="preserve">
-    <value>A propos de BrodUI</value>
+    <value>À propos de BrodUI</value>
+  </data>
+  <data name="Settings_LabelTheme" xml:space="preserve">
+    <value>Thème</value>
+  </data>
+  <data name="Settings_LabelLanguage" xml:space="preserve">
+    <value>Langage</value>
+  </data>
+  <data name="Settings_VersionNumber" xml:space="preserve">
+    <value>Version 0.1</value>
+  </data>
+  <data name="Settings_LabelGitHubLinks" xml:space="preserve">
+    <value>Liens</value>
+  </data>
+  <data name="Settings_LinkProjectWebsiteOnGitHub" xml:space="preserve">
+    <value>Le site web du projet sur GitHub</value>
+  </data>
+  <data name="Settings_LinkLatestReleaseOnGithub" xml:space="preserve">
+    <value>La dernière version sur GitHub</value>
+  </data>
+  <data name="Settings_LabelThirdPartyLibraries" xml:space="preserve">
+    <value>Bibliothèques tierces</value>
+  </data>
+  <data name="PageName_Tutorial" xml:space="preserve">
+    <value>Tutoriel</value>
+  </data>
+  <data name="PageName_Convert" xml:space="preserve">
+    <value>Convertir</value>
+  </data>
+  <data name="PageName_Export" xml:space="preserve">
+    <value>Exporter</value>
+  </data>
+  <data name="PageName_Settings" xml:space="preserve">
+    <value>Paramètres</value>
   </data>
 </root>

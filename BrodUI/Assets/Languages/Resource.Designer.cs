@@ -61,11 +61,110 @@ namespace BrodUI.Assets.Languages {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Convert.
+        /// </summary>
+        public static string PageName_Convert {
+            get {
+                return ResourceManager.GetString("PageName_Convert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Export.
+        /// </summary>
+        public static string PageName_Export {
+            get {
+                return ResourceManager.GetString("PageName_Export", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Settings.
+        /// </summary>
+        public static string PageName_Settings {
+            get {
+                return ResourceManager.GetString("PageName_Settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Tutorial.
+        /// </summary>
+        public static string PageName_Tutorial {
+            get {
+                return ResourceManager.GetString("PageName_Tutorial", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à About BrodUI.
         /// </summary>
         public static string Settings_LabelAbout {
             get {
                 return ResourceManager.GetString("Settings_LabelAbout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Links.
+        /// </summary>
+        public static string Settings_LabelGitHubLinks {
+            get {
+                return ResourceManager.GetString("Settings_LabelGitHubLinks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Language.
+        /// </summary>
+        public static string Settings_LabelLanguage {
+            get {
+                return ResourceManager.GetString("Settings_LabelLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Theme.
+        /// </summary>
+        public static string Settings_LabelTheme {
+            get {
+                return ResourceManager.GetString("Settings_LabelTheme", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Third party libraries.
+        /// </summary>
+        public static string Settings_LabelThirdPartyLibraries {
+            get {
+                return ResourceManager.GetString("Settings_LabelThirdPartyLibraries", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Latest release on GitHub.
+        /// </summary>
+        public static string Settings_LinkLatestReleaseOnGithub {
+            get {
+                return ResourceManager.GetString("Settings_LinkLatestReleaseOnGithub", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Project website on GitHub.
+        /// </summary>
+        public static string Settings_LinkProjectWebsiteOnGitHub {
+            get {
+                return ResourceManager.GetString("Settings_LinkProjectWebsiteOnGitHub", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Version 0.1.
+        /// </summary>
+        public static string Settings_VersionNumber {
+            get {
+                return ResourceManager.GetString("Settings_VersionNumber", resourceCulture);
             }
         }
     }

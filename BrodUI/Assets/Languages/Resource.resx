@@ -99,5 +99,50 @@
   </resheader>
   <data name="Settings_LabelAbout" xml:space="preserve">
     <value>About BrodUI</value>
+    <comment>About BrodUI section label</comment>
+  </data>
+  <data name="Settings_LabelTheme" xml:space="preserve">
+    <value>Theme</value>
+    <comment>Theme parameter label</comment>
+  </data>
+  <data name="Settings_LabelLanguage" xml:space="preserve">
+    <value>Language</value>
+    <comment>Language parameter label</comment>
+  </data>
+  <data name="Settings_VersionNumber" xml:space="preserve">
+    <value>Version 0.1</value>
+    <comment>Version number of BrodUI</comment>
+  </data>
+  <data name="Settings_LabelGitHubLinks" xml:space="preserve">
+    <value>Links</value>
+    <comment>GitHub links label</comment>
+  </data>
+  <data name="Settings_LinkProjectWebsiteOnGitHub" xml:space="preserve">
+    <value>Project website on GitHub</value>
+    <comment>Label link to the GitHub page</comment>
+  </data>
+  <data name="Settings_LinkLatestReleaseOnGithub" xml:space="preserve">
+    <value>Latest release on GitHub</value>
+    <comment>Label link to release page on GitHub</comment>
+  </data>
+  <data name="Settings_LabelThirdPartyLibraries" xml:space="preserve">
+    <value>Third party libraries</value>
+    <comment>Third party libraries label</comment>
+  </data>
+  <data name="PageName_Tutorial" xml:space="preserve">
+    <value>Tutorial</value>
+    <comment>Name in the nav bar for Tutorial page</comment>
+  </data>
+  <data name="PageName_Convert" xml:space="preserve">
+    <value>Convert</value>
+    <comment>Name in the nav bar for Convert page</comment>
+  </data>
+  <data name="PageName_Export" xml:space="preserve">
+    <value>Export</value>
+    <comment>Name in the nav bar for Export page</comment>
+  </data>
+  <data name="PageName_Settings" xml:space="preserve">
+    <value>Settings</value>
+    <comment>Name in the nav bar for Settings page</comment>
   </data>
 </root>
