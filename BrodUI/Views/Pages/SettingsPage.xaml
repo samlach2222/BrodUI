@@ -7,6 +7,7 @@
     xmlns:local="clr-namespace:BrodUI.Views.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+    xmlns:p="clr-namespace:BrodUI.Assets.Languages"
     Title="SettingsPage"
     d:DataContext="{d:DesignInstance local:SettingsPage,
                                      IsDesignTimeCreatable=False}"
@@ -69,12 +70,11 @@
             <!-- TODO : See https://github.com/BartoszCichecki/LenovoLegionToolkit/blob/master/LenovoLegionToolkit.WPF/Pages/SettingsPage.xaml -->
         </ui:CardControl>
 
-        
         <TextBlock
             Margin="0,24,0,0"
             FontSize="20"
             FontWeight="Medium"
-            Text="About BrodUI" />
+            Text="{x:Static p:Resource.Settings_LabelAbout}" />
         <TextBlock Margin="0,12,0,0" Text="{Binding ViewModel.AppVersion, Mode=OneWay}" />
     </StackPanel>
 </ui:UiPage>

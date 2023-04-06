@@ -1,4 +1,5 @@
-﻿using Wpf.Ui.Common.Interfaces;
+﻿using BrodUI.Models;
+using Wpf.Ui.Common.Interfaces;
 
 namespace BrodUI.Views.Pages
 {
@@ -14,6 +15,8 @@ namespace BrodUI.Views.Pages
 
         public ExportPage(ViewModels.ExportViewModel viewModel)
         {
+            ConfigManagement.SetLanguage();
+
             ViewModel = viewModel;
 
             InitializeComponent();

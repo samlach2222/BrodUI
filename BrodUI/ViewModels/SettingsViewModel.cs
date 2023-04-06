@@ -1,5 +1,8 @@
+using BrodUI.Models;
 using CommunityToolkit.Mvvm.ComponentModel;
 using System;
+using System.Diagnostics;
+using System.Windows;
 using Wpf.Ui.Common.Interfaces;
 
 namespace BrodUI.ViewModels
@@ -10,68 +13,55 @@ namespace BrodUI.ViewModels
 
         // THEME STUFF
         [ObservableProperty]
-        private string[] _themes = new string[] {"System", "Light", "Dark" };
+        private string[] _themes = new string[] { "System", "Light", "Dark" };
         private string _curTheme;
         public string CurTheme
         {
             get => _curTheme;
             set
             {
-                ChangeTheme(value);
                 SetProperty(ref _curTheme, value);
+                if (_curTheme != null)
+                {
+                    ChangeTheme(value);
+                }
             }
         }
-        private void ChangeTheme(string localTheme)
+        private void ChangeTheme(string theme)
         {
-            switch (localTheme)
-            {
-                case "Light":
-                    if (CurTheme != "Light")
-                    {
-                        Wpf.Ui.Appearance.Theme.Apply(Wpf.Ui.Appearance.ThemeType.Light, Wpf.Ui.Appearance.BackgroundType.None);
-                    }
-                    break;
-                case "Dark":
-                    if (CurTheme != "Dark")
-                    {
-                        Wpf.Ui.Appearance.Theme.Apply(Wpf.Ui.Appearance.ThemeType.Dark, Wpf.Ui.Appearance.BackgroundType.None);
-                    }
-                    break;
-                default:
-                    if (CurTheme != "System")
-                    {
-                        // Get current theme from Windows 11
-                        var theme = Wpf.Ui.Appearance.Theme.GetSystemTheme();
-                        // Apply it
-                        if (theme == Wpf.Ui.Appearance.SystemThemeType.Light)
-                        {
-                            Wpf.Ui.Appearance.Theme.Apply(Wpf.Ui.Appearance.ThemeType.Light, Wpf.Ui.Appearance.BackgroundType.None);
-                        }
-                        else
-                        {
-                            Wpf.Ui.Appearance.Theme.Apply(Wpf.Ui.Appearance.ThemeType.Dark, Wpf.Ui.Appearance.BackgroundType.None);
-                        }
-                    }
-                    break;
-            }
+            ConfigManagement.SetThemeFromSettings(theme);
+
+            // save the language in the file "settings.cfg" in the first row
+            ConfigManagement.SetThemeToConfigFile(theme);
         }
 
         // LANGUAGE STUFF
         [ObservableProperty]
-        private string[] _languages = new string[] {"English", "Français"};
+        private string[] _languages = new string[] { "English", "Français" };
         private string _curLanguage;
         public string CurLanguage
         {
             get => _curLanguage;
             set
             {
+                if (_curLanguage != null && value != _curLanguage)
+                {
+                    ChangeLanguage(value);
+                }
                 SetProperty(ref _curLanguage, value);
-                ChangeLanguage(_curLanguage);
             }
         }
         private void ChangeLanguage(string curLanguage)
         {
-            // TODO : Manage language change
+            // save the language in the file "settings.cfg" in the second row
+            ConfigManagement.SetLanguageToConfigFile(curLanguage);
+
+            // restart the BrodUI application
+            var process = Process.GetCurrentProcess();
+            var startInfo = new ProcessStartInfo(process.MainModule.FileName);
+            startInfo.Arguments = process.Id.ToString();
+            Process.Start(startInfo);
+            Application.Current.Shutdown();
         }
 
         [ObservableProperty]
@@ -89,13 +79,12 @@ namespace BrodUI.ViewModels
 
         private void InitializeViewModel()
         {
-            // TODO : Load data from a file or something
-            CurTheme = "System";
-            CurLanguage = "English";
+            // Load settings from file
+            CurTheme = ConfigManagement.GetThemeFromConfigFile();
+            CurLanguage = ConfigManagement.GetLanguageFromConfigFile();
             AppVersion = $"BrodUI - {GetAssemblyVersion()}";
 
             _isInitialized = true;
-            
         }
 
         private string GetAssemblyVersion()

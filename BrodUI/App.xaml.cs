@@ -76,7 +76,15 @@ namespace BrodUI
         /// </summary>
         private async void OnStartup(object sender, StartupEventArgs e)
         {
+
             await _host.StartAsync();
+
+            // Create settings.cfg file if it doesn't exist with lines for each setting
+            ConfigManagement.CreateConfigFileIfNotExists();
+            // Load settings.cfg file
+            ConfigManagement.SetTheme();
+            // Set language
+            ConfigManagement.SetLanguage();
         }
 
         /// <summary>
