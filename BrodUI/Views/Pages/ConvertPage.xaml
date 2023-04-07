@@ -89,7 +89,8 @@
 
         <ui:Button Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" 
                    Name="ConvertButton" 
-                   Content="{x:Static p:Resource.Convert_LabelButtonConvert}" 
+                   Content="{x:Static p:Resource.Convert_LabelButtonConvert}"
+                   Command="{Binding ViewModel.ConvertImageCommand}"
                    IsEnabled="{Binding Path=ViewModel.IsImageLoaded}"
                    Icon="ConvertRange24"
         />

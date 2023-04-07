@@ -1,8 +1,11 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using System;
 using System.Windows;
+using BrodUI.Models;
 using CommunityToolkit.Mvvm.Input;
 using Wpf.Ui.Common.Interfaces;
+using BrodUI.Views.Pages;
+using Wpf.Ui.Mvvm.Contracts;
 
 namespace BrodUI.ViewModels
 {
@@ -13,9 +16,12 @@ namespace BrodUI.ViewModels
         // Load Image Buttons Management PART
         private string _isChooseImageButtonEnabled = "Visible";
         private bool _isImageLoaded = false;
-        private int _imageWidth = 0;
-        private int _imageHeight = 0;
+        private int _imageWidth = -1;
+        private int _imageHeight = -1;
+        private bool _ratioNotOk = true;
         private Uri? _loadedImage = null;
+
+        private ImageManagement Im { get; set; }
         
         public Uri? LoadedImage
         {
@@ -34,6 +40,8 @@ namespace BrodUI.ViewModels
                     IsChooseImageButtonEnabled = "Visible";
                     IsImageLoaded = false;
                 }
+
+                Im.ImageLink = value;
                 OnPropertyChanged();
             }
         }
@@ -56,23 +64,36 @@ namespace BrodUI.ViewModels
             }
         }
 
-        private bool ratioNotOK = true;
-
+        // TODO : FIND A WAY TO UPDATE THIS VALUE EACH TIME THERE IS A MODIFICATION ON NUMBER DISPLAY
         public int ImageWidth
         {
             get { return _imageWidth; }
             set
             {
-                _imageWidth = value;
-                // Set Height according to the ratio
-                if (ratioNotOK && value != 0)
+                if (value > 10 || Im.ImageWidth == -1)
                 {
-                    ratioNotOK = false;
-                    ImageHeight = (int)(value / ratio);
-                    ratioNotOK = true;
+                    if ((int)(value / ratio) > 10 || Im.ImageWidth == -1)
+                    {
+                        _imageWidth = value;
+                        // Set Height according to the ratio
+                        if (_ratioNotOk)
+                        {
+                            _ratioNotOk = false;
+                            ImageHeight = (int)(value / ratio);
+                            _ratioNotOk = true;
+                        }
+                        Im.ImageWidth = value;
+                        OnPropertyChanged();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Width will be " + (int)(value / ratio) + ", but Width must be greater than 10");
+                    }
                 }
-                MessageBox.Show("ImageWidth : " + value);
-                OnPropertyChanged();
+                else
+                {
+                    MessageBox.Show("Width must be greater than 10");
+                }
             }
         }
 
@@ -81,16 +102,31 @@ namespace BrodUI.ViewModels
             get { return _imageHeight; }
             set
             {
-                _imageHeight = value;
-                // Set Width according to the ratio
-                if (ratioNotOK && value != 0)
+                if (value > 10 || Im.ImageHeight == -1)
                 {
-                    ratioNotOK = false;
-                    ImageWidth = (int)(value * ratio);
-                    ratioNotOK = true;
+                    if ((int)(value * ratio) > 10 || Im.ImageHeight == -1)
+                    {
+                        _imageHeight = value;
+                        // Set Width according to the ratio
+                        if (_ratioNotOk)
+                        {
+                            _ratioNotOk = false;
+                            ImageWidth = (int)(value * ratio);
+                            _ratioNotOk = true;
+                        }
+                        Im.ImageHeight = value;
+                        OnPropertyChanged();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Width will be " + (int)(value * ratio) + ", but Width must be greater than 10");
+                    }
+                    
                 }
-                MessageBox.Show("ImageHeight : " + value);
-                OnPropertyChanged();
+                else
+                {
+                    MessageBox.Show("Height must be greater than 10");
+                }
             }
         }
         // Load Image Buttons Management PART END
@@ -109,43 +145,42 @@ namespace BrodUI.ViewModels
 
         private void InitializeViewModel()
         {
-            
+            // if not already initialized
+            if (Im == null)
+            {
+                Im = new ImageManagement();
+            }
         }
 
         [RelayCommand]
         private void LoadImage()
         {
             // Open file dialog
-            var dialog = new Microsoft.Win32.OpenFileDialog
-            {
-                Filter = "Image files (*.png;*.jpeg;*.jpg;*.bmp;*.gif)|*.png;*.jpeg;*.jpg;*.bmp;*.gif|All files (*.*)|*.*"
-            };
-            bool ok = (bool)dialog.ShowDialog()!;
-            if (ok)
-            {
-                LoadedImage = new Uri(dialog.FileName);
-                // Get image size
-                var image = new System.Windows.Media.Imaging.BitmapImage();
-                image.BeginInit();
-                image.UriSource = LoadedImage;
-                image.EndInit();
-                ratio = (double)image.PixelWidth / (double)image.PixelHeight; // TODO : Create an Image management class
-                ImageWidth = image.PixelWidth;
-                ImageHeight = image.PixelHeight;
-            }
-            else
-            {
-                MessageBox.Show("Invalid image file");
-            }
+            Im.LoadImage();
+            LoadedImage = Im.ImageLink;
+            ratio = Im.Ratio;
+            ImageWidth = Im.ImageWidth;
+            ImageHeight = Im.ImageHeight;
         }
 
         [RelayCommand]
         private void RemoveImage()
         {
-            LoadedImage = null;
+            Im.UnloadImage();
             // Reset image size
-            ImageWidth = 0;
-            ImageHeight = 0;
+            ImageWidth = Im.ImageWidth;
+            ImageHeight = Im.ImageHeight;
+        }
+
+        [RelayCommand]
+        private void ConvertImage()
+        {
+            Im.ResizeImage();
+            var navigationService = (Application.Current.MainWindow as INavigationWindow)?.GetNavigation(); // Get the navigation service from the window.
+            if (navigationService != null)
+            {
+                _ = navigationService.Navigate(typeof(ExportPage)); // Navigate to the Convert page.
+            }
         }
     }
 }
