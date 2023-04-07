@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using System;
+using System.Windows;
 using CommunityToolkit.Mvvm.Input;
 using Wpf.Ui.Common.Interfaces;
 
@@ -7,20 +8,18 @@ namespace BrodUI.ViewModels
 {
     public partial class ConvertViewModel : ObservableObject, INavigationAware
     {
-        private bool _isInitialized = false;
+        private double ratio = 1;
 
-        // Load Image Buttons Management PART START
+        // Load Image Buttons Management PART
         private string _isChooseImageButtonEnabled = "Visible";
         private bool _isImageLoaded = false;
-
-        private Uri _loadedImage;
-
-        public Uri LoadedImage
+        private int _imageWidth = 0;
+        private int _imageHeight = 0;
+        private Uri? _loadedImage = null;
+        
+        public Uri? LoadedImage
         {
-            get
-            {
-                return _loadedImage;
-            }
+            get { return _loadedImage; }
             set
             {
                 _loadedImage = value;
@@ -38,29 +37,59 @@ namespace BrodUI.ViewModels
                 OnPropertyChanged();
             }
         }
-
         public string IsChooseImageButtonEnabled
         {
-            get
-            {
-                return _isChooseImageButtonEnabled;
-            }
+            get { return _isChooseImageButtonEnabled; }
             set
             {
                 _isChooseImageButtonEnabled = value;
                 OnPropertyChanged();
             }
         }
-
         public bool IsImageLoaded
         {
-            get
-            {
-                return _isImageLoaded;
-            }
+            get { return _isImageLoaded; }
             set
             {
                 _isImageLoaded = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private bool ratioNotOK = true;
+
+        public int ImageWidth
+        {
+            get { return _imageWidth; }
+            set
+            {
+                _imageWidth = value;
+                // Set Height according to the ratio
+                if (ratioNotOK && value != 0)
+                {
+                    ratioNotOK = false;
+                    ImageHeight = (int)(value / ratio);
+                    ratioNotOK = true;
+                }
+                MessageBox.Show("ImageWidth : " + value);
+                OnPropertyChanged();
+            }
+        }
+
+        public int ImageHeight
+        {
+            get { return _imageHeight; }
+            set
+            {
+                _imageHeight = value;
+                // Set Width according to the ratio
+                if (ratioNotOK && value != 0)
+                {
+                    ratioNotOK = false;
+                    ImageWidth = (int)(value * ratio);
+                    ratioNotOK = true;
+                }
+                MessageBox.Show("ImageHeight : " + value);
                 OnPropertyChanged();
             }
         }
@@ -70,8 +99,7 @@ namespace BrodUI.ViewModels
 
         public void OnNavigatedTo()
         {
-            if (!_isInitialized)
-                InitializeViewModel();
+            InitializeViewModel();
         }
 
         public void OnNavigatedFrom()
@@ -92,14 +120,22 @@ namespace BrodUI.ViewModels
             {
                 Filter = "Image files (*.png;*.jpeg;*.jpg;*.bmp;*.gif)|*.png;*.jpeg;*.jpg;*.bmp;*.gif|All files (*.*)|*.*"
             };
-            bool ok = (bool)dialog.ShowDialog();
+            bool ok = (bool)dialog.ShowDialog()!;
             if (ok)
             {
                 LoadedImage = new Uri(dialog.FileName);
+                // Get image size
+                var image = new System.Windows.Media.Imaging.BitmapImage();
+                image.BeginInit();
+                image.UriSource = LoadedImage;
+                image.EndInit();
+                ratio = (double)image.PixelWidth / (double)image.PixelHeight; // TODO : Create an Image management class
+                ImageWidth = image.PixelWidth;
+                ImageHeight = image.PixelHeight;
             }
             else
             {
-                System.Windows.MessageBox.Show("Invalid image file");
+                MessageBox.Show("Invalid image file");
             }
         }
 
@@ -107,6 +143,9 @@ namespace BrodUI.ViewModels
         private void RemoveImage()
         {
             LoadedImage = null;
+            // Reset image size
+            ImageWidth = 0;
+            ImageHeight = 0;
         }
     }
 }

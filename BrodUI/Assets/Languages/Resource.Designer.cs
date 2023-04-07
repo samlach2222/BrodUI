@@ -61,6 +61,51 @@ namespace BrodUI.Assets.Languages {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Convert Image.
+        /// </summary>
+        public static string Convert_LabelButtonConvert {
+            get {
+                return ResourceManager.GetString("Convert_LabelButtonConvert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Delete Image.
+        /// </summary>
+        public static string Convert_LabelButtonDeleteImage {
+            get {
+                return ResourceManager.GetString("Convert_LabelButtonDeleteImage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Load Image file.
+        /// </summary>
+        public static string Convert_LabelButtonLoadImage {
+            get {
+                return ResourceManager.GetString("Convert_LabelButtonLoadImage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Height.
+        /// </summary>
+        public static string Convert_LabelImageHeight {
+            get {
+                return ResourceManager.GetString("Convert_LabelImageHeight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Width.
+        /// </summary>
+        public static string Convert_LabelImageWidth {
+            get {
+                return ResourceManager.GetString("Convert_LabelImageWidth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Convert.
         /// </summary>
         public static string PageName_Convert {

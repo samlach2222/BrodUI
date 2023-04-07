@@ -133,4 +133,19 @@
   <data name="PageName_Settings" xml:space="preserve">
     <value>Paramètres</value>
   </data>
+  <data name="Convert_LabelButtonLoadImage" xml:space="preserve">
+    <value>Charger une image</value>
+  </data>
+  <data name="Convert_LabelButtonDeleteImage" xml:space="preserve">
+    <value>Supprimer l'image</value>
+  </data>
+  <data name="Convert_LabelImageWidth" xml:space="preserve">
+    <value>Largeur</value>
+  </data>
+  <data name="Convert_LabelImageHeight" xml:space="preserve">
+    <value>Hauteur</value>
+  </data>
+  <data name="Convert_LabelButtonConvert" xml:space="preserve">
+    <value>Convertir l'image</value>
+  </data>
 </root>

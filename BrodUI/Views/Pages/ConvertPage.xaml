@@ -6,6 +6,7 @@
     xmlns:local="clr-namespace:BrodUI.Views.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+    xmlns:p="clr-namespace:BrodUI.Assets.Languages"
 
     Title="ConvertPage"
     d:DataContext="{d:DesignInstance local:ConvertPage,
@@ -35,7 +36,7 @@
         <ui:Button Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" 
                    Name="LoadImageButton" 
                    Command="{Binding Path=ViewModel.LoadImageCommand, Mode=OneWay}"  
-                   Content="Load Image file" 
+                   Content="{x:Static p:Resource.Convert_LabelButtonLoadImage}" 
                    Visibility="{Binding Path=ViewModel.IsChooseImageButtonEnabled}"
                    Icon="ArrowDownload24"
                    />
@@ -54,24 +55,41 @@
 
                 <ui:Button Grid.Column="0" Grid.Row="1" VerticalAlignment="Center"
                            Name="RemoveImageButton" 
-                           Content="Delete Image"
+                           Content="{x:Static p:Resource.Convert_LabelButtonDeleteImage}"
                            Command="{Binding Path=ViewModel.RemoveImageCommand, Mode=OneWay}"  
                            IsEnabled="{Binding Path=ViewModel.IsImageLoaded}"
                            Icon="Delete24"
                            Margin="20,0,20,0"
                 />
 
-                <Label Grid.Column="1" Grid.Row="0" Content="X resolution" Margin="20,0,20,0" HorizontalAlignment="Center"/>
-                <ui:NumberBox Grid.Column="1" Grid.Row="1" Name="XRes"  IntegersOnly="True" Text="0" DecimalPlaces="0" ClearButtonEnabled="False"  VerticalAlignment="Center" PlaceholderEnabled="False" Min="0" Margin="20,0,20,0" />
+                <Label Grid.Column="1" Grid.Row="0" Content="{x:Static p:Resource.Convert_LabelImageWidth}" Margin="20,0,20,0" HorizontalAlignment="Center"/>
+                <ui:NumberBox Grid.Column="1" Grid.Row="1" 
+                              Name="XRes"  
+                              IntegersOnly="True" 
+                              Text="{Binding ViewModel.ImageWidth}" 
+                              DecimalPlaces="0" ClearButtonEnabled="False"  
+                              VerticalAlignment="Center" 
+                              PlaceholderEnabled="False" 
+                              Min="0" 
+                              Margin="20,0,20,0" />
 
-                <Label Grid.Column="2" Grid.Row="0" Content="Y resolution" Margin="20,0,20,0" HorizontalAlignment="Center"/>
-                <ui:NumberBox Grid.Column="2" Grid.Row="1" Name="YRes" IntegersOnly="True" Text="0" DecimalPlaces="0" ClearButtonEnabled="False"  VerticalAlignment="Center" PlaceholderEnabled="False" Min="0" Margin="20,0,20,0" />
+                <Label Grid.Column="2" Grid.Row="0" Content="{x:Static p:Resource.Convert_LabelImageHeight}" Margin="20,0,20,0" HorizontalAlignment="Center"/>
+                <ui:NumberBox Grid.Column="2" Grid.Row="1" 
+                              Name="YRes" 
+                              IntegersOnly="True" 
+                              Text="{Binding ViewModel.ImageHeight}" 
+                              DecimalPlaces="0" 
+                              ClearButtonEnabled="False"  
+                              VerticalAlignment="Center" 
+                              PlaceholderEnabled="False" 
+                              Min="0" 
+                              Margin="20,0,20,0" />
             </Grid>
         </ui:Card>
 
         <ui:Button Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" 
                    Name="ConvertButton" 
-                   Content="Convert Image" 
+                   Content="{x:Static p:Resource.Convert_LabelButtonConvert}" 
                    IsEnabled="{Binding Path=ViewModel.IsImageLoaded}"
                    Icon="ConvertRange24"
         />

@@ -145,4 +145,24 @@
     <value>Settings</value>
     <comment>Name in the nav bar for Settings page</comment>
   </data>
+  <data name="Convert_LabelButtonLoadImage" xml:space="preserve">
+    <value>Load Image file</value>
+    <comment>Text in the button to load image file</comment>
+  </data>
+  <data name="Convert_LabelButtonDeleteImage" xml:space="preserve">
+    <value>Delete Image</value>
+    <comment>Text in the button to delete current displayed image</comment>
+  </data>
+  <data name="Convert_LabelImageWidth" xml:space="preserve">
+    <value>Width</value>
+    <comment>Label for the width number of the current image</comment>
+  </data>
+  <data name="Convert_LabelImageHeight" xml:space="preserve">
+    <value>Height</value>
+    <comment>Label for the height number of the current image</comment>
+  </data>
+  <data name="Convert_LabelButtonConvert" xml:space="preserve">
+    <value>Convert Image</value>
+    <comment>Text in the button to convert image</comment>
+  </data>
 </root>
