@@ -169,6 +169,15 @@ namespace BrodUI.Assets.Languages {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Terminal.
+        /// </summary>
+        public static string Settings_LabelTerminal {
+            get {
+                return ResourceManager.GetString("Settings_LabelTerminal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Theme.
         /// </summary>
         public static string Settings_LabelTheme {

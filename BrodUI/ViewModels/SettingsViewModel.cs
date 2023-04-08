@@ -64,6 +64,38 @@ namespace BrodUI.ViewModels
             Application.Current.Shutdown();
         }
 
+        // TERMINAL STUFF
+        private bool _curTerminal;
+        public bool CurTerminal
+        {
+            get => _curTerminal;
+            set
+            {
+                if (_curTerminal != null && value != _curTerminal) // TODO : RELOAD HERE BUT DON'T WANT IT XD
+                {
+                    ChangeTerminal(value);
+                }
+                SetProperty(ref _curTerminal, value);
+            }
+        }
+        private void ChangeTerminal(bool curTerminal)
+        {
+            // save the language in the file "settings.cfg" in the second row
+            ConfigManagement.SetTerminalToConfigFile(curTerminal);
+
+            //restart the BrodUI application
+            if (_initTerminalDone)
+            {
+                var process = Process.GetCurrentProcess();
+                var startInfo = new ProcessStartInfo(process.MainModule.FileName);
+                startInfo.Arguments = process.Id.ToString();
+                Process.Start(startInfo);
+                Application.Current.Shutdown();
+            }
+        }
+
+        // SETTINGS PAGE STUFF
+
         [ObservableProperty]
         private string _appVersion = String.Empty;
 
@@ -77,11 +109,14 @@ namespace BrodUI.ViewModels
         {
         }
 
+        private bool _initTerminalDone = false;
         private void InitializeViewModel()
         {
             // Load settings from file
             CurTheme = ConfigManagement.GetThemeFromConfigFile();
             CurLanguage = ConfigManagement.GetLanguageFromConfigFile();
+            CurTerminal = ConfigManagement.GetTerminalFromConfigFile();
+            _initTerminalDone = true;
             AppVersion = $"BrodUI - {GetAssemblyVersion()}";
 
             _isInitialized = true;

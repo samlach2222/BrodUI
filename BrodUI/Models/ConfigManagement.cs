@@ -24,7 +24,7 @@ namespace BrodUI.Models
             path = Path.Combine(appData + "\\BrodUI", "settings.cfg");
             if (!File.Exists(path))
             {
-                File.WriteAllText(path, "Theme=System\nLanguage=English\nTerminal=True");
+                File.WriteAllText(path, "Theme=System\nLanguage=English\nTerminal=false");
             }
         }
 
@@ -84,11 +84,6 @@ namespace BrodUI.Models
             }
         }
 
-        public static void SetTerminal()
-        {
-
-        }
-
         public static string GetThemeFromConfigFile()
         {
             var settings = File.ReadAllLines(path);
@@ -119,6 +114,13 @@ namespace BrodUI.Models
         {
             var settings = File.ReadAllLines(path);
             settings[1] = $"Language={language}";
+            File.WriteAllLines(path, settings);
+        }
+
+        public static void SetTerminalToConfigFile(bool terminal)
+        {
+            var settings = File.ReadAllLines(path);
+            settings[2] = $"Terminal={terminal}";
             File.WriteAllLines(path, settings);
         }
 

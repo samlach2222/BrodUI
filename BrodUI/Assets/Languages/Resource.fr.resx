@@ -121,31 +121,34 @@
   <data name="Settings_LabelThirdPartyLibraries" xml:space="preserve">
     <value>Bibliothèques tierces</value>
   </data>
-  <data name="PageName_Tutorial" xml:space="preserve">
-    <value>Tutoriel</value>
+  <data name="Settings_LabelTerminal" xml:space="preserve">
+    <value>Terminal</value>
   </data>
-  <data name="PageName_Convert" xml:space="preserve">
-    <value>Convertir</value>
-  </data>
-  <data name="PageName_Export" xml:space="preserve">
-    <value>Exporter</value>
-  </data>
-  <data name="PageName_Settings" xml:space="preserve">
-    <value>Paramètres</value>
-  </data>
-  <data name="Convert_LabelButtonLoadImage" xml:space="preserve">
-    <value>Charger une image</value>
-  </data>
-  <data name="Convert_LabelButtonDeleteImage" xml:space="preserve">
-    <value>Supprimer l'image</value>
-  </data>
-  <data name="Convert_LabelImageWidth" xml:space="preserve">
-    <value>Largeur</value>
+  <data name="Convert_LabelButtonConvert" xml:space="preserve">
+    <value>Convertir l'image</value>
   </data>
   <data name="Convert_LabelImageHeight" xml:space="preserve">
     <value>Hauteur</value>
   </data>
-  <data name="Convert_LabelButtonConvert" xml:space="preserve">
-    <value>Convertir l'image</value>
+  <data name="Convert_LabelImageWidth" xml:space="preserve">
+    <value>Largeur</value>
+  </data>
+  <data name="Convert_LabelButtonDeleteImage" xml:space="preserve">
+    <value>Supprimer l'image</value>
+  </data>
+  <data name="Convert_LabelButtonLoadImage" xml:space="preserve">
+    <value>Charger une image</value>
+  </data>
+  <data name="PageName_Settings" xml:space="preserve">
+    <value>Paramètres</value>
+  </data>
+  <data name="PageName_Export" xml:space="preserve">
+    <value>Exporter</value>
+  </data>
+  <data name="PageName_Convert" xml:space="preserve">
+    <value>Convertir</value>
+  </data>
+  <data name="PageName_Tutorial" xml:space="preserve">
+    <value>Tutoriel</value>
   </data>
 </root>
