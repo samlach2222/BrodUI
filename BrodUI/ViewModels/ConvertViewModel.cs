@@ -5,7 +5,9 @@ using BrodUI.Models;
 using CommunityToolkit.Mvvm.Input;
 using Wpf.Ui.Common.Interfaces;
 using BrodUI.Views.Pages;
+using Wpf.Ui.Controls;
 using Wpf.Ui.Mvvm.Contracts;
+using MessageBox = System.Windows.MessageBox;
 
 namespace BrodUI.ViewModels
 {
@@ -87,12 +89,13 @@ namespace BrodUI.ViewModels
                     }
                     else
                     {
-                        MessageBox.Show("Width will be " + (int)(value / ratio) + ", but Width must be greater than 10");
+                       MessageBox.Show("Width will be " + (int)(value / ratio) + ", but Width must be greater than 10");
                     }
                 }
                 else
                 {
                     MessageBox.Show("Width must be greater than 10");
+                    
                 }
             }
         }
@@ -166,10 +169,8 @@ namespace BrodUI.ViewModels
         [RelayCommand]
         private void RemoveImage()
         {
+            LoadedImage = null;
             Im.UnloadImage();
-            // Reset image size
-            ImageWidth = Im.ImageWidth;
-            ImageHeight = Im.ImageHeight;
         }
 
         [RelayCommand]
