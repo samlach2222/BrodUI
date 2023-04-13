@@ -61,11 +61,7 @@ namespace BrodUI.ViewModels
             ConfigManagement.SetLanguageToConfigFile(curLanguage);
 
             // restart the BrodUI application
-            var process = Process.GetCurrentProcess();
-            var startInfo = new ProcessStartInfo(process.MainModule.FileName);
-            startInfo.Arguments = process.Id.ToString();
-            Process.Start(startInfo);
-            Application.Current.Shutdown();
+            RestartApp();
         }
 
         // TERMINAL STUFF
@@ -91,12 +87,19 @@ namespace BrodUI.ViewModels
             //restart the BrodUI application
             if (_initTerminalDone)
             {
-                var process = Process.GetCurrentProcess();
-                var startInfo = new ProcessStartInfo(process.MainModule.FileName);
-                startInfo.Arguments = process.Id.ToString();
-                Process.Start(startInfo);
-                Application.Current.Shutdown();
+                RestartApp();
             }
+        }
+
+        private static void RestartApp()
+        {
+            // Start BrodUI as a new process
+            ProcessStartInfo startInfo = new ProcessStartInfo(Environment.ProcessPath!);
+            startInfo.UseShellExecute = true;
+            Process.Start(startInfo);
+
+            // Close the current BrodUI process
+            Application.Current.Shutdown();
         }
 
         // SETTINGS PAGE STUFF
@@ -137,22 +140,14 @@ namespace BrodUI.ViewModels
         private void ResetParameters()
         {
             ConfigManagement.DeleteConfigFile();
-            var process = Process.GetCurrentProcess();
-            var startInfo = new ProcessStartInfo(process.MainModule.FileName);
-            startInfo.Arguments = process.Id.ToString();
-            Process.Start(startInfo);
-            Application.Current.Shutdown();
+            RestartApp();
         }
 
         [RelayCommand]
         private void DeleteLogs()
         {
             LogManagement.ClearLog();
-            var process = Process.GetCurrentProcess();
-            var startInfo = new ProcessStartInfo(process.MainModule.FileName);
-            startInfo.Arguments = process.Id.ToString();
-            Process.Start(startInfo);
-            Application.Current.Shutdown();
+            RestartApp();
         }
     }
 }

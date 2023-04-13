@@ -1,13 +1,12 @@
-﻿using System;
-using BrodUI.Models;
+﻿using BrodUI.Models;
 using BrodUI.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
 using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
-using System.Text;
 using System.Windows;
 using System.Windows.Threading;
 using Wpf.Ui.Mvvm.Contracts;
@@ -21,12 +20,21 @@ namespace BrodUI
     public partial class App
     {
         // CONSOLE DISPLAY VARIABLES
-        [DllImport("kernel32.dll", EntryPoint = "GetStdHandle", SetLastError = true, CharSet = CharSet.Auto, CallingConvention = CallingConvention.StdCall)]
-        public static extern IntPtr GetStdHandle(int nStdHandle);
-        [DllImport("kernel32.dll", EntryPoint = "AllocConsole", SetLastError = true, CharSet = CharSet.Auto, CallingConvention = CallingConvention.StdCall)]
-        public static extern int AllocConsole();
-        private const int STD_OUTPUT_HANDLE = -11;
+        [DllImport("kernel32.dll")]
+        static extern IntPtr GetConsoleWindow();
+        [DllImport("user32.dll")]
+        static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
+        [DllImport("user32.dll")]
+        static extern bool SetForegroundWindow(IntPtr hWnd);
+        [DllImport("user32.dll")]
+        private static extern IntPtr GetForegroundWindow();
+        [DllImport("user32.dll")]
+        private static extern IntPtr SendMessage(IntPtr hWnd, UInt32 Msg, IntPtr wParam, IntPtr lParam);
+        const uint WM_CLOSE = 0x10;
+        const int SW_HIDE = 0;
+        const int SW_SHOW = 5;
         private static bool showConsole = false;
+        private static IntPtr consoleWindow;
 
         // The.NET Generic Host provides dependency injection, configuration, logging, and other services.
         // https://docs.microsoft.com/dotnet/core/extensions/generic-host
@@ -112,16 +120,14 @@ namespace BrodUI
             ConfigManagement.CreateConfigFileIfNotExists();
             showConsole = ConfigManagement.GetTerminalFromConfigFile();
 
-            if (showConsole)
+            // Because "Windows Terminal" have tabs, hiding the console directly doesn't work
+            // Instead we set the console to the foreground, get the foreground window and hide it
+            SetForegroundWindow(GetConsoleWindow());
+            consoleWindow = GetForegroundWindow(); // consoleWindow is needed when exiting the app
+            if (!showConsole)
             {
-                AllocConsole();
-                IntPtr stdHandle = GetStdHandle(STD_OUTPUT_HANDLE);
-                Microsoft.Win32.SafeHandles.SafeFileHandle safeFileHandle = new Microsoft.Win32.SafeHandles.SafeFileHandle(stdHandle, true);
-                FileStream fileStream = new FileStream(safeFileHandle, FileAccess.Write);
-                Encoding encoding = Encoding.ASCII;
-                StreamWriter standardOutput = new StreamWriter(fileStream, encoding);
-                standardOutput.AutoFlush = true;
-                Console.SetOut(standardOutput);
+                // Hide the console window, but don't close it (closing it would close the app)
+                ShowWindow(consoleWindow, SW_HIDE);
             }
         }
 
@@ -130,6 +136,9 @@ namespace BrodUI
         /// </summary>
         private async void OnExit(object sender, ExitEventArgs e)
         {
+            // Close the console window
+            SendMessage(consoleWindow, WM_CLOSE, IntPtr.Zero, IntPtr.Zero);
+
             await _host.StopAsync();
 
             _host.Dispose();
