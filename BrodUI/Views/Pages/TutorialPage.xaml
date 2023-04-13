@@ -13,7 +13,7 @@
     Foreground="{DynamicResource TextFillColorPrimaryBrush}"
     mc:Ignorable="d">
 
-    <Grid Margin="56,0" VerticalAlignment="Top">
+    <Grid Margin="56,0,56,30" VerticalAlignment="Top">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>

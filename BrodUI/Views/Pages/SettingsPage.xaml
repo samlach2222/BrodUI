@@ -17,7 +17,7 @@
     mc:Ignorable="d">
 
     <ScrollViewer>
-    <StackPanel Margin="56,0">
+    <StackPanel Margin="56,0,56,30">
         <!-- THEME MANAGEMENT -->
         <ui:CardControl x:Name="ThemeCardControl" Margin="0,0,0,8" Icon="DarkTheme24">
             <ui:CardControl.Header>
