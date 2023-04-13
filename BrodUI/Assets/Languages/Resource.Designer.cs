@@ -221,5 +221,50 @@ namespace BrodUI.Assets.Languages {
                 return ResourceManager.GetString("Settings_VersionNumber", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Settings -&gt; The language has been changed from .
+        /// </summary>
+        public static string Terminal_LanguageChanged {
+            get {
+                return ResourceManager.GetString("Terminal_LanguageChanged", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à SETTINGS PAGE.
+        /// </summary>
+        public static string Terminal_SettingsPage {
+            get {
+                return ResourceManager.GetString("Terminal_SettingsPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Settings -&gt; The terminal has been changed from .
+        /// </summary>
+        public static string Terminal_TerminalChanged {
+            get {
+                return ResourceManager.GetString("Terminal_TerminalChanged", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Settings -&gt; The theme has been changed from .
+        /// </summary>
+        public static string Terminal_ThemeChanged {
+            get {
+                return ResourceManager.GetString("Terminal_ThemeChanged", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à  to .
+        /// </summary>
+        public static string Terminal_To {
+            get {
+                return ResourceManager.GetString("Terminal_To", resourceCulture);
+            }
+        }
     }
 }

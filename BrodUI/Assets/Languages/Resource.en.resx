@@ -151,4 +151,19 @@
   <data name="PageName_Tutorial" xml:space="preserve">
     <value>Tutorial</value>
   </data>
+  <data name="Terminal_To" xml:space="preserve">
+    <value> to </value>
+  </data>
+  <data name="Terminal_ThemeChanged" xml:space="preserve">
+    <value>Settings -&gt; The theme has been changed from </value>
+  </data>
+  <data name="Terminal_LanguageChanged" xml:space="preserve">
+    <value>Settings -&gt; The language has been changed from </value>
+  </data>
+  <data name="Terminal_TerminalChanged" xml:space="preserve">
+    <value>Settings -&gt; The terminal has been changed from </value>
+  </data>
+  <data name="Terminal_SettingsPage" xml:space="preserve">
+    <value>SETTINGS PAGE</value>
+  </data>
 </root>

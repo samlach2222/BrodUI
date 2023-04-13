@@ -169,4 +169,24 @@
     <value>Tutorial</value>
     <comment>Name in the nav bar for Tutorial page</comment>
   </data>
+  <data name="Terminal_To" xml:space="preserve">
+    <value> to </value>
+    <comment>"To" word displayed in the terminal</comment>
+  </data>
+  <data name="Terminal_ThemeChanged" xml:space="preserve">
+    <value>Settings -&gt; The theme has been changed from </value>
+    <comment>words displayed in the terminal when theme change</comment>
+  </data>
+  <data name="Terminal_LanguageChanged" xml:space="preserve">
+    <value>Settings -&gt; The language has been changed from </value>
+    <comment>words displayed in the terminal where the language change</comment>
+  </data>
+  <data name="Terminal_TerminalChanged" xml:space="preserve">
+    <value>Settings -&gt; The terminal has been changed from </value>
+    <comment>words displayed in the terminal where the terminal boolean change</comment>
+  </data>
+  <data name="Terminal_SettingsPage" xml:space="preserve">
+    <value>SETTINGS PAGE</value>
+    <comment>words displayed in the terminal where you open settings page</comment>
+  </data>
 </root>
