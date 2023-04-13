@@ -50,6 +50,28 @@ namespace BrodUI.Models
             }
         }
 
+        public void LoadImageFromTemp()
+        {
+            var tempPath = Path.GetTempPath();
+            var tempFile = Path.Combine(tempPath, "BrodUI_CurentImage.png");
+            if (File.Exists(tempFile))
+            {
+                ImageLink = new Uri(tempFile);
+                // Get image size
+                Image = new BitmapImage();
+                Image.BeginInit();
+                Image.UriSource = ImageLink;
+                Image.EndInit();
+                Ratio = (double)Image.PixelWidth / (double)Image.PixelHeight;
+                ImageWidth = Image.PixelWidth;
+                ImageHeight = Image.PixelHeight;
+            }
+            else
+            {
+                MessageBox.Show("No image in the temporary folder");
+            }
+        }
+
         public void UnloadImage()
         {
             ImageLink = null;

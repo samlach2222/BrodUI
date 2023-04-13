@@ -16,10 +16,41 @@
     Foreground="{DynamicResource TextFillColorPrimaryBrush}"
     mc:Ignorable="d">
 
-    <Grid Margin="56,0" VerticalAlignment="Top">
+    <Grid Margin="0,0">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="2*" />
         </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- SOURCE IMAGE -->
+        <Border BorderThickness="3" BorderBrush="#3d3d3d" VerticalAlignment="Stretch" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch" Margin="20,0,20,10">
+            <Image Name="ImagePanel" Stretch="Uniform" HorizontalAlignment="Stretch" Source="{Binding Path=ViewModel.LoadedImage}" VerticalAlignment="Stretch"></Image>
+        </Border>
+
+        <!-- COLOR LIST -->
+        <ListView Grid.Row="1" Grid.Column="0" Margin="20,10,20,10">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <!-- SCHEMATIC TEMP : TODO : CHANGE TO AN ARRAY-->
+        <Border BorderThickness="3" BorderBrush="#3d3d3d" VerticalAlignment="Stretch" Grid.Row="0" Grid.Column="1" Grid.RowSpan="3" HorizontalAlignment="Stretch" Margin="20,0,20,20">
+            <Image Name="SchematicPanel" Stretch="Uniform" HorizontalAlignment="Stretch" 
+                   VerticalAlignment="Stretch"></Image>
+        </Border>
+
+        <ui:Button Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" 
+                   Name="ConvertButton" 
+                   Content="Export to PDF"
+                   Icon="ArrowExportLtr24"
+        />
     </Grid>
 </ui:UiPage>

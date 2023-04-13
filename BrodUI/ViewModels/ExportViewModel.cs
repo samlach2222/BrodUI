@@ -1,23 +1,37 @@
 ﻿using BrodUI.Models;
 using CommunityToolkit.Mvvm.ComponentModel;
 using System;
-using System.Collections.Generic;
-using System.Windows.Media;
+using System.Windows;
 using Wpf.Ui.Common.Interfaces;
 
 namespace BrodUI.ViewModels
 {
     public partial class ExportViewModel : ObservableObject, INavigationAware
     {
-        private bool _isInitialized = false;
+        private Uri? _loadedImage = null;
 
-        [ObservableProperty]
-        private IEnumerable<DataColor> _colors;
+        private ImageManagement Im { get; set; }
+
+        public Uri? LoadedImage
+        {
+            get { MessageBox.Show(_loadedImage.ToString()); return _loadedImage; }
+            set
+            {
+                
+                _loadedImage = value;
+                Im.ImageLink = value;
+                OnPropertyChanged();
+            }
+        }
 
         public void OnNavigatedTo()
         {
-            if (!_isInitialized)
-                InitializeViewModel();
+            if (Im == null) // if not already initialized
+            {
+                Im = new ImageManagement();
+            }
+            Im.LoadImageFromTemp();
+            LoadedImage = Im.ImageLink;
         }
 
         public void OnNavigatedFrom()
@@ -26,22 +40,6 @@ namespace BrodUI.ViewModels
 
         private void InitializeViewModel()
         {
-            var random = new Random();
-            var colorCollection = new List<DataColor>();
-
-            for (int i = 0; i < 8192; i++)
-                colorCollection.Add(new DataColor
-                {
-                    Color = new SolidColorBrush(Color.FromArgb(
-                        (byte)200,
-                        (byte)random.Next(0, 250),
-                        (byte)random.Next(0, 250),
-                        (byte)random.Next(0, 250)))
-                });
-
-            Colors = colorCollection;
-
-            _isInitialized = true;
         }
     }
 }
