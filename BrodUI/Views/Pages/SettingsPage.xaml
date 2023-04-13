@@ -55,7 +55,18 @@
                 IsChecked="{Binding ViewModel.CurTerminal}"
             />
         </ui:CardControl>
+        <ui:Card Margin="0,0,0,8">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
 
+                <ui:Button Grid.Column="0" Content="Delete logs" Icon="Delete24" HorizontalAlignment="Center" Command="{Binding Path=ViewModel.DeleteLogsCommand, Mode=OneWay}" />
+                <ui:Button Grid.Column="1" Content="Reset parameters" Icon="ArrowReset24" HorizontalAlignment="Center" Command="{Binding Path=ViewModel.ResetParametersCommand, Mode=OneWay}" />
+            </Grid>
+            
+        </ui:Card>
 
         <!-- ABOUT BRODUI SECTION -->
         <TextBlock

@@ -1,5 +1,6 @@
 using BrodUI.Models;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Diagnostics;
 using System.Windows;
@@ -130,6 +131,28 @@ namespace BrodUI.ViewModels
         private string GetAssemblyVersion()
         {
             return System.Reflection.Assembly.GetExecutingAssembly().GetName().Version?.ToString() ?? String.Empty;
+        }
+
+        [RelayCommand]
+        private void ResetParameters()
+        {
+            ConfigManagement.DeleteConfigFile();
+            var process = Process.GetCurrentProcess();
+            var startInfo = new ProcessStartInfo(process.MainModule.FileName);
+            startInfo.Arguments = process.Id.ToString();
+            Process.Start(startInfo);
+            Application.Current.Shutdown();
+        }
+
+        [RelayCommand]
+        private void DeleteLogs()
+        {
+            LogManagement.ClearLog();
+            var process = Process.GetCurrentProcess();
+            var startInfo = new ProcessStartInfo(process.MainModule.FileName);
+            startInfo.Arguments = process.Id.ToString();
+            Process.Start(startInfo);
+            Application.Current.Shutdown();
         }
     }
 }

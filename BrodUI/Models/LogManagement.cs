@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Shapes;
 
 namespace BrodUI.Models
 {
@@ -29,11 +30,12 @@ namespace BrodUI.Models
                 Directory.CreateDirectory(appData + "\\BrodUI");
             }
             // path combine with the file name
-            LogPath = Path.Combine(appData + "\\BrodUI", "terminal.log");
+            LogPath = System.IO.Path.Combine(appData + "\\BrodUI", "terminal.log");
             if (!File.Exists(LogPath))
             {
                 // Create the file
-                File.Create(LogPath);
+                FileStream newFile = File.Create(LogPath);
+                newFile.Close();
             }
         }
 
@@ -48,7 +50,8 @@ namespace BrodUI.Models
 
         public static void ClearLog()
         {
-            File.WriteAllText(LogPath, string.Empty);
+            // Delete the file
+            File.Delete(LogPath);
         }
 
         public static string WriteAllLogsInTerminal()

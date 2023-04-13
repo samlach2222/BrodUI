@@ -26,6 +26,11 @@ namespace BrodUI.Models
             }
         }
 
+        public static void DeleteConfigFile()
+        {
+            File.Delete(path);
+        }
+
         public static void SetTheme()
         {
             var settings = File.ReadAllLines(path);
