@@ -97,13 +97,12 @@ namespace BrodUI.Models
             Image.DecodePixelHeight = ImageHeight;
             Image.EndInit();
 
-            // TODO : PROBABLY SAVE THIS IMAGE IN A TEMPORARY FOLDER AND RELOAD IT IN THE EXPORT PAGE
             // Save image in a temporary folder
             var encoder = new PngBitmapEncoder();
             encoder.Frames.Add(BitmapFrame.Create(Image));
             var tempPath = Path.GetTempPath();
             var tempFile = Path.Combine(tempPath, "BrodUI_CurentImage.png");
-            if (File.Exists(tempFile)) // TODO : CRASH WHEN SAVE A FILE SECOND TIME WITHOUT RESTARTING THE APP
+            if (File.Exists(tempFile))
             {
                 File.Delete(tempFile);
             }
@@ -111,6 +110,7 @@ namespace BrodUI.Models
             {
                 encoder.Save(fileStream);
             }
+            Console.WriteLine("[" + DateTime.Now.ToString() + "] " + Assets.Languages.Resource.Terminal_ImageWidthAndHeight + " (" + ImageWidth + ImageHeight + ") " + Assets.Languages.Resource.Terminal_ImageSaveIn + tempFile);
         }
     }
 }

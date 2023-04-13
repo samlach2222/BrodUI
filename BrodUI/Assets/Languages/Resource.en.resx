@@ -166,4 +166,37 @@
   <data name="Terminal_SettingsPage" xml:space="preserve">
     <value>SETTINGS PAGE</value>
   </data>
+  <data name="Terminal_ImageLinkChanged" xml:space="preserve">
+    <value>Convert -&gt; The image link has been changed from </value>
+  </data>
+  <data name="Terminal_WidthChanged" xml:space="preserve">
+    <value>Convert -&gt; The width of the image changed from </value>
+  </data>
+  <data name="Terminal_HeightChanged" xml:space="preserve">
+    <value>Convert -&gt; The height of the image changed from </value>
+  </data>
+  <data name="Terminal_ImageSaveIn" xml:space="preserve">
+    <value>has been saved in </value>
+  </data>
+  <data name="Terminal_ImageWidthAndHeight" xml:space="preserve">
+    <value>The image with the following Width and Height</value>
+  </data>
+  <data name="Terminal_ImageConvertedOk" xml:space="preserve">
+    <value>The image has been converted</value>
+  </data>
+  <data name="Terminal_ConvertPage" xml:space="preserve">
+    <value>CONVERT PAGE</value>
+  </data>
+  <data name="Terminal_TutorialPage" xml:space="preserve">
+    <value>TUTORIAL PAGE</value>
+  </data>
+  <data name="Terminal_ExportPage" xml:space="preserve">
+    <value>EXPORT PAGE</value>
+  </data>
+  <data name="Terminal_ImportLog" xml:space="preserve">
+    <value>START IMPORTING OLD LOGS...</value>
+  </data>
+  <data name="Terminal_ImportLogOk" xml:space="preserve">
+    <value>OLD LOGS IMPORT DONE !</value>
+  </data>
 </root>

@@ -223,6 +223,87 @@ namespace BrodUI.Assets.Languages {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à CONVERT PAGE.
+        /// </summary>
+        public static string Terminal_ConvertPage {
+            get {
+                return ResourceManager.GetString("Terminal_ConvertPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à EXPORT PAGE.
+        /// </summary>
+        public static string Terminal_ExportPage {
+            get {
+                return ResourceManager.GetString("Terminal_ExportPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Convert -&gt; The height of the image changed from .
+        /// </summary>
+        public static string Terminal_HeightChanged {
+            get {
+                return ResourceManager.GetString("Terminal_HeightChanged", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à The image has been converted.
+        /// </summary>
+        public static string Terminal_ImageConvertedOk {
+            get {
+                return ResourceManager.GetString("Terminal_ImageConvertedOk", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Convert -&gt; The image link has been changed from .
+        /// </summary>
+        public static string Terminal_ImageLinkChanged {
+            get {
+                return ResourceManager.GetString("Terminal_ImageLinkChanged", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à has been saved in .
+        /// </summary>
+        public static string Terminal_ImageSaveIn {
+            get {
+                return ResourceManager.GetString("Terminal_ImageSaveIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à The image with the following Width and Height.
+        /// </summary>
+        public static string Terminal_ImageWidthAndHeight {
+            get {
+                return ResourceManager.GetString("Terminal_ImageWidthAndHeight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à START IMPORTING OLD LOGS....
+        /// </summary>
+        public static string Terminal_ImportLog {
+            get {
+                return ResourceManager.GetString("Terminal_ImportLog", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à OLD LOGS IMPORT DONE !.
+        /// </summary>
+        public static string Terminal_ImportLogOk {
+            get {
+                return ResourceManager.GetString("Terminal_ImportLogOk", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Settings -&gt; The language has been changed from .
         /// </summary>
         public static string Terminal_LanguageChanged {
@@ -264,6 +345,24 @@ namespace BrodUI.Assets.Languages {
         public static string Terminal_To {
             get {
                 return ResourceManager.GetString("Terminal_To", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à TUTORIAL PAGE.
+        /// </summary>
+        public static string Terminal_TutorialPage {
+            get {
+                return ResourceManager.GetString("Terminal_TutorialPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Convert -&gt; The width of the image changed from .
+        /// </summary>
+        public static string Terminal_WidthChanged {
+            get {
+                return ResourceManager.GetString("Terminal_WidthChanged", resourceCulture);
             }
         }
     }

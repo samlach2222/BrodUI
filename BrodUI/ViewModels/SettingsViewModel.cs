@@ -21,7 +21,7 @@ namespace BrodUI.ViewModels
             set
             {
                 // Get current time and date
-                Console.WriteLine("[" + DateTime.Now.ToString() + "] " + Assets.Languages.Resource.Terminal_ThemeChanged + _curTheme + Assets.Languages.Resource.Terminal_To + value);
+                LogManagement.WriteToLog("[" + DateTime.Now.ToString() + "] " + Assets.Languages.Resource.Terminal_ThemeChanged + _curTheme + Assets.Languages.Resource.Terminal_To + value);
                 SetProperty(ref _curTheme, value);
                 if (_curTheme != null)
                 {
@@ -46,7 +46,7 @@ namespace BrodUI.ViewModels
             get => _curLanguage;
             set
             {
-                Console.WriteLine("[" + DateTime.Now.ToString() + "] " + Assets.Languages.Resource.Terminal_LanguageChanged + _curLanguage + Assets.Languages.Resource.Terminal_To + value);
+                LogManagement.WriteToLog("[" + DateTime.Now.ToString() + "] " + Assets.Languages.Resource.Terminal_LanguageChanged + _curLanguage + Assets.Languages.Resource.Terminal_To + value);
                 if (_curLanguage != null && value != _curLanguage)
                 {
                     ChangeLanguage(value);
@@ -74,7 +74,7 @@ namespace BrodUI.ViewModels
             get => _curTerminal;
             set
             {
-                Console.WriteLine("[" + DateTime.Now.ToString() + "] " + Assets.Languages.Resource.Terminal_TerminalChanged + _curTerminal + Assets.Languages.Resource.Terminal_To + value);
+                LogManagement.WriteToLog("[" + DateTime.Now.ToString() + "] " + Assets.Languages.Resource.Terminal_TerminalChanged + _curTerminal + Assets.Languages.Resource.Terminal_To + value);
                 if (_curTerminal != null && value != _curTerminal)
                 {
                     ChangeTerminal(value);
@@ -105,7 +105,7 @@ namespace BrodUI.ViewModels
 
         public void OnNavigatedTo()
         {
-            Console.WriteLine("[" + DateTime.Now.ToString() + "] " + Assets.Languages.Resource.Terminal_SettingsPage);
+            LogManagement.WriteToLog("[" + DateTime.Now.ToString() + "] " + Assets.Languages.Resource.Terminal_SettingsPage);
             if (!_isInitialized)
                 InitializeViewModel();
         }

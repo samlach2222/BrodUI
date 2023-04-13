@@ -14,7 +14,7 @@ namespace BrodUI.ViewModels
 
         public Uri? LoadedImage
         {
-            get { MessageBox.Show(_loadedImage.ToString()); return _loadedImage; }
+            get { return _loadedImage; }
             set
             {
                 
@@ -26,6 +26,7 @@ namespace BrodUI.ViewModels
 
         public void OnNavigatedTo()
         {
+            LogManagement.WriteToLog("[" + DateTime.Now.ToString() + "] " + Assets.Languages.Resource.Terminal_ExportPage);
             if (Im == null) // if not already initialized
             {
                 Im = new ImageManagement();

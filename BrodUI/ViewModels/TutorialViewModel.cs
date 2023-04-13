@@ -1,6 +1,8 @@
-﻿using BrodUI.Views.Pages;
+﻿using BrodUI.Models;
+using BrodUI.Views.Pages;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using System;
 using Wpf.Ui.Common.Interfaces;
 using Wpf.Ui.Mvvm.Contracts;
 using Application = System.Windows.Application;
@@ -14,6 +16,7 @@ namespace BrodUI.ViewModels
 
         public void OnNavigatedTo()
         {
+            LogManagement.WriteToLog("[" + DateTime.Now.ToString() + "] " + Assets.Languages.Resource.Terminal_TutorialPage);
         }
 
         public void OnNavigatedFrom()

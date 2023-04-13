@@ -87,7 +87,12 @@ namespace BrodUI
         /// </summary>
         private async void OnStartup(object sender, StartupEventArgs e)
         {
-            ShowConsole();
+            ShowConsole(); // Show console if needed
+            LogManagement.CreateLogFileIfNotExists(); // Create log file if it doesn't exist
+            Console.WriteLine(Assets.Languages.Resource.Terminal_ImportLog);
+            Console.WriteLine(LogManagement.WriteAllLogsInTerminal()); // Write all logs in console
+            Console.WriteLine(Assets.Languages.Resource.Terminal_ImportLogOk);
+            Console.WriteLine("-------------------------------------------------------");
 
             await _host.StartAsync();
 

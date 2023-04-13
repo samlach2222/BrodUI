@@ -161,9 +161,42 @@
     <value>Paramètres -&gt; Le langage a été changé de </value>
   </data>
   <data name="Terminal_TerminalChanged" xml:space="preserve">
-    <value>Paramètres -&gt; La présence du terminal a été changé de </value>
+    <value>Paramètres -&gt; La présence du terminal a été changée de </value>
   </data>
   <data name="Terminal_SettingsPage" xml:space="preserve">
     <value>PAGE DES PARAMETRES</value>
+  </data>
+  <data name="Terminal_ImageLinkChanged" xml:space="preserve">
+    <value>Convertir -&gt; Le lien de l'image a été changé de </value>
+  </data>
+  <data name="Terminal_WidthChanged" xml:space="preserve">
+    <value>Convertir -&gt; La largeur de l'image a été changée de </value>
+  </data>
+  <data name="Terminal_HeightChanged" xml:space="preserve">
+    <value>Convertir -&gt; La hauteur de l'image a été changée de </value>
+  </data>
+  <data name="Terminal_ImageSaveIn" xml:space="preserve">
+    <value>a été sauvegardée dans </value>
+  </data>
+  <data name="Terminal_ImageWidthAndHeight" xml:space="preserve">
+    <value>L'image qui a la largeur et la hauteur suivante</value>
+  </data>
+  <data name="Terminal_ImageConvertedOk" xml:space="preserve">
+    <value>L'image a été convertie</value>
+  </data>
+  <data name="Terminal_ConvertPage" xml:space="preserve">
+    <value>PAGE DE CONVERTION</value>
+  </data>
+  <data name="Terminal_TutorialPage" xml:space="preserve">
+    <value>PAGE DE TUTORIEL</value>
+  </data>
+  <data name="Terminal_ExportPage" xml:space="preserve">
+    <value>PAGE D'EXPORT</value>
+  </data>
+  <data name="Terminal_ImportLog" xml:space="preserve">
+    <value>DEBUT DE L'IMPORTATION DES ANCIENS LOGS...</value>
+  </data>
+  <data name="Terminal_ImportLogOk" xml:space="preserve">
+    <value>L'IMPORTATION DES ANCIENS LOGS EST FINIE !</value>
   </data>
 </root>

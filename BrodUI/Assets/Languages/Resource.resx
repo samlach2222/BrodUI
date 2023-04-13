@@ -189,4 +189,48 @@
     <value>SETTINGS PAGE</value>
     <comment>words displayed in the terminal where you open settings page</comment>
   </data>
+  <data name="Terminal_ImageLinkChanged" xml:space="preserve">
+    <value>Convert -&gt; The image link has been changed from </value>
+    <comment>words displayed in the terminal when imageLink change</comment>
+  </data>
+  <data name="Terminal_WidthChanged" xml:space="preserve">
+    <value>Convert -&gt; The width of the image changed from </value>
+    <comment>words displayed in the terminal when the Width of the image change</comment>
+  </data>
+  <data name="Terminal_HeightChanged" xml:space="preserve">
+    <value>Convert -&gt; The height of the image changed from </value>
+    <comment>words displayed in the terminal when height change</comment>
+  </data>
+  <data name="Terminal_ImageSaveIn" xml:space="preserve">
+    <value>has been saved in </value>
+    <comment>words displayed before the location of the saved image file in the terminal</comment>
+  </data>
+  <data name="Terminal_ImageWidthAndHeight" xml:space="preserve">
+    <value>The image with the following Width and Height</value>
+    <comment>words displayed in the terminal when the image has been saved</comment>
+  </data>
+  <data name="Terminal_ImageConvertedOk" xml:space="preserve">
+    <value>The image has been converted</value>
+    <comment>words displayed in the terminal when user convert an image</comment>
+  </data>
+  <data name="Terminal_ConvertPage" xml:space="preserve">
+    <value>CONVERT PAGE</value>
+    <comment>words displayed in the terminal when you navigate to this page</comment>
+  </data>
+  <data name="Terminal_TutorialPage" xml:space="preserve">
+    <value>TUTORIAL PAGE</value>
+    <comment>words displayed in the terminal when you navigate to this page</comment>
+  </data>
+  <data name="Terminal_ExportPage" xml:space="preserve">
+    <value>EXPORT PAGE</value>
+    <comment>words displayed in the terminal when you go to this page</comment>
+  </data>
+  <data name="Terminal_ImportLog" xml:space="preserve">
+    <value>START IMPORTING OLD LOGS...</value>
+    <comment>words displayed in the terminal when you load old logs</comment>
+  </data>
+  <data name="Terminal_ImportLogOk" xml:space="preserve">
+    <value>OLD LOGS IMPORT DONE !</value>
+    <comment>words displayed in the terminal when logs import is done</comment>
+  </data>
 </root>

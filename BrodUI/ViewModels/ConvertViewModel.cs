@@ -30,6 +30,7 @@ namespace BrodUI.ViewModels
             get { return _loadedImage; }
             set
             {
+                LogManagement.WriteToLog("[" + DateTime.Now.ToString() + "] " + Assets.Languages.Resource.Terminal_ImageLinkChanged + _loadedImage + Assets.Languages.Resource.Terminal_To + value);
                 _loadedImage = value;
                 // Disable the button
                 if (_loadedImage != null)
@@ -76,6 +77,7 @@ namespace BrodUI.ViewModels
                 {
                     if ((int)(value / ratio) > 10 || Im.ImageWidth == -1)
                     {
+                        LogManagement.WriteToLog("[" + DateTime.Now.ToString() + "] " + Assets.Languages.Resource.Terminal_WidthChanged + _imageWidth + Assets.Languages.Resource.Terminal_To + value);
                         _imageWidth = value;
                         // Set Height according to the ratio
                         if (_ratioNotOk)
@@ -109,6 +111,7 @@ namespace BrodUI.ViewModels
                 {
                     if ((int)(value * ratio) > 10 || Im.ImageHeight == -1)
                     {
+                        LogManagement.WriteToLog("[" + DateTime.Now.ToString() + "] " + Assets.Languages.Resource.Terminal_HeightChanged + _imageWidth + Assets.Languages.Resource.Terminal_To + value);
                         _imageHeight = value;
                         // Set Width according to the ratio
                         if (_ratioNotOk)
@@ -138,6 +141,7 @@ namespace BrodUI.ViewModels
 
         public void OnNavigatedTo()
         {
+            LogManagement.WriteToLog("[" + DateTime.Now.ToString() + "] " + Assets.Languages.Resource.Terminal_ConvertPage);
             InitializeViewModel();
         }
 
@@ -182,6 +186,7 @@ namespace BrodUI.ViewModels
             {
                 _ = navigationService.Navigate(typeof(ExportPage)); // Navigate to the Convert page.
             }
+            LogManagement.WriteToLog("[" + DateTime.Now.ToString() + "] " + Assets.Languages.Resource.Terminal_ImageConvertedOk);
         }
     }
 }
