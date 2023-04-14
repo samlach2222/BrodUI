@@ -69,7 +69,10 @@ namespace BrodUI.Models
             }
             else
             {
-                MessageBox.Show("No image in the temporary folder");
+                ImageLink = null;
+                Image = new BitmapImage(); ;
+                ImageWidth = 0;
+                ImageHeight = 0;
             }
         }
 
