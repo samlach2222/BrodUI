@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using MessageBox = System.Windows.MessageBox;
 
@@ -96,6 +97,19 @@ namespace BrodUI.Models
             Image.DecodePixelWidth = ImageWidth;
             Image.DecodePixelHeight = ImageHeight;
             Image.EndInit();
+
+            // If image use a palette (indexed colors), convert it to BGRA
+            if (Image.Palette != null)
+            {
+                FormatConvertedBitmap ImageBGRA = new FormatConvertedBitmap(Image, PixelFormats.Bgra32, null, 0);
+                Image = new BitmapImage();
+                Image.BeginInit();
+                Image.StreamSource = new MemoryStream();
+                PngBitmapEncoder encoderRGBA = new PngBitmapEncoder();
+                encoderRGBA.Frames.Add(BitmapFrame.Create(ImageBGRA));
+                encoderRGBA.Save(Image.StreamSource);
+                Image.EndInit();
+            }
 
             // Save image in a temporary folder
             var encoder = new PngBitmapEncoder();
