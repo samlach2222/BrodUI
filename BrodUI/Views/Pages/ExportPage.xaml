@@ -5,7 +5,6 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:BrodUI.Views.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:models="clr-namespace:BrodUI.Models"
     xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
     Title="ExportPage"
     d:DataContext="{d:DesignInstance local:ExportPage,
@@ -22,8 +21,8 @@
             <ColumnDefinition Width="2*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="3*" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
@@ -87,11 +86,14 @@
             </ListView.View>
         </ListView>
 
-        <!-- SCHEMATIC TEMP : TODO : CHANGE TO AN ARRAY-->
-        <Border BorderThickness="3" BorderBrush="#3d3d3d" VerticalAlignment="Stretch" Grid.Row="0" Grid.Column="1" Grid.RowSpan="3" HorizontalAlignment="Stretch" Margin="20,0,20,20">
-            <Image Name="SchematicPanel" Stretch="Uniform" HorizontalAlignment="Stretch" 
-                   VerticalAlignment="Stretch"></Image>
-        </Border>
+        <!-- SCHEMATIC TEMP : TODO : INSTEAD OF DISPLAY COLORBRUSH, APPLY IT -->
+        <DataGrid Grid.Row="0" Grid.Column="1" Grid.RowSpan="3" Margin="20,10,20,10" ItemsSource="{Binding ViewModel.BrushArray.DefaultView}"  >
+            <!--<DataGrid.CellStyle>
+                <Style TargetType="{x:Type DataGridCell}" >
+                    <Setter Property="Background" Value="White"/>
+                </Style>
+            </DataGrid.CellStyle>-->
+        </DataGrid>
 
         <ui:Button Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" 
                    Name="ConvertButton" 

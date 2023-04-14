@@ -2,7 +2,10 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Windows.Media;
+using System.Windows.Shapes;
+using BrodUI.Helpers;
 using Wpf.Ui.Common.Interfaces;
 
 namespace BrodUI.ViewModels
@@ -11,6 +14,7 @@ namespace BrodUI.ViewModels
     {
         private Uri? _loadedImage = null;
         private List<Wire> _wireArray = new List<Wire>();
+        private DataTable _brushArray;
 
         private ImageManagement Im { get; set; }
 
@@ -36,6 +40,16 @@ namespace BrodUI.ViewModels
             }
         }
 
+        public DataTable BrushArray
+        {
+            get { return _brushArray; }
+            set
+            {
+                _brushArray = value;
+                OnPropertyChanged();
+            }
+        }
+
         public void OnNavigatedTo()
         {
             // HERE IS TEMPLATE VALUES
@@ -51,6 +65,12 @@ namespace BrodUI.ViewModels
             }
             Im.LoadImageFromTemp();
             LoadedImage = Im.ImageLink;
+            int width = Im.ImageWidth;
+            int height = Im.ImageHeight;
+            var img = Im.Image;
+            Brush[,] wireTable= ImageToDataTable.ConvertTo2dArray(img);
+            DataTable dt = ImageToDataTable.Convert2dArrayToDataTable(wireTable);
+            BrushArray = dt;
         }
 
         public void OnNavigatedFrom()
