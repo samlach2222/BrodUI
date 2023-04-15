@@ -78,13 +78,9 @@
         </DataGrid>
 
         <!-- SCHEMATIC TEMP : TODO : INSTEAD OF DISPLAY COLORBRUSH, APPLY IT -->
-        <DataGrid Grid.Row="0" Grid.Column="1" Grid.RowSpan="3" Margin="20,10,20,10" ItemsSource="{Binding ViewModel.BrushArray.DefaultView}"  >
-            <!--<DataGrid.CellStyle>
-                <Style TargetType="{x:Type DataGridCell}" >
-                    <Setter Property="Background" Value="White"/>
-                </Style>
-            </DataGrid.CellStyle>-->
-        </DataGrid>
+        <ui:DataGrid Name="DgImage" Grid.Row="0" Grid.Column="1" Grid.RowSpan="3" Margin="20,10,20,10">
+
+        </ui:DataGrid>
 
         <ui:Button Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" 
                    Name="ConvertButton" 

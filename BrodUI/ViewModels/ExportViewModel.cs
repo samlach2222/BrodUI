@@ -8,7 +8,9 @@ using System.Data;
 using System.Windows;
 using System.Windows.Media;
 using Wpf.Ui.Common.Interfaces;
+using Wpf.Ui.Controls;
 using Wpf.Ui.Mvvm.Contracts;
+using MessageBox = System.Windows.MessageBox;
 
 namespace BrodUI.ViewModels
 {
@@ -54,7 +56,6 @@ namespace BrodUI.ViewModels
 
         public void OnNavigatedTo()
         {
-            // END OF TEMPLATE VALUES
             LogManagement.WriteToLog("[" + DateTime.Now.ToString() + "] " + Assets.Languages.Resource.Terminal_ExportPage);
             if (Im == null) // if not already initialized
             {
@@ -85,8 +86,7 @@ namespace BrodUI.ViewModels
                 int height = Im.ImageHeight;
                 var img = Im.Image;
                 Brush[,] wireTable = ImageToDataTable.ConvertTo2dArray(img);
-                DataTable dt = ImageToDataTable.Convert2dArrayToDataTable(wireTable);
-                BrushArray = dt;
+
             }
         }
 
