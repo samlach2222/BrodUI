@@ -21,6 +21,7 @@ namespace BrodUI.ViewModels
         private List<Wire> _wireArray = new List<Wire>();
         private DataTable _brushArray;
         private Grid _gridImage;
+        static sbyte lastPercentage = -1;
 
         public Grid GridImage
         {
@@ -97,7 +98,9 @@ namespace BrodUI.ViewModels
 
                 // LOADING COUNT
                 int count = 0;
+                int imageSize = width * height;
 
+                LogManagement.WriteToLog("[" + DateTime.Now.ToString() + "] " + Assets.Languages.Resource.Export_ConvertToCrossStitchEmbroidery);
                 for (int i = 0; i < width; i++)
                 {
                     for (int j = 0; j < height; j++)
@@ -105,8 +108,7 @@ namespace BrodUI.ViewModels
                         if (wireTable[i, j] != null)
                         {
                             count++;
-                            // TEMP LOADING OF WIRE ARRAY TODO : CHANGE TO PROGRESS BAR OR PROGRESS WHEEL
-                            Console.WriteLine(count + "/" + width * height);
+                            ShowProgression(count, imageSize);
 
                             bool found = false;
                             foreach (Wire wire in WireArray)
@@ -130,6 +132,8 @@ namespace BrodUI.ViewModels
                         }
                     }
                 }
+                Console.WriteLine(); // Line break
+                LogManagement.WriteToLog("[" + DateTime.Now.ToString() + "] " + Assets.Languages.Resource.Export_ConvertToCrossStitchEmbroideryDone);
 
                 // GridImage creation part
                 // reset GridImage
@@ -167,6 +171,37 @@ namespace BrodUI.ViewModels
                         GridImage.Children.Add(rect);
                     }
                 }
+            }
+        }
+
+        /// <summary>
+        /// Show the progression using a bar progressively filled with asterisks
+        /// </summary>
+        /// <param name="value">Value to calculate a percentage of progression</param>
+        /// <param name="max">Maximum value of value to calculate a percentage of progression</param>
+        public static void ShowProgression(int value, int max)
+        {
+            int pourcentage = value * 100 / max;
+            if (pourcentage < lastPercentage)  // A new progression is happening
+            {
+                lastPercentage = -1;
+            }
+            if (pourcentage > lastPercentage)
+            {
+                lastPercentage = (sbyte)pourcentage;
+                string barre = "";
+                for (int i = 0; i < 10; i++)
+                {
+                    if (pourcentage / 10 > i)
+                    {
+                        barre += '*';
+                    }
+                    else
+                    {
+                        barre += ' ';
+                    }
+                }
+                Console.Write("\r[" + barre + "] " + pourcentage + '%');
             }
         }
 

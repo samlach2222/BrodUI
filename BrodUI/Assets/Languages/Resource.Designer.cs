@@ -115,6 +115,24 @@ namespace BrodUI.Assets.Languages {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Converting the image to cross-stitch embroidery....
+        /// </summary>
+        public static string Export_ConvertToCrossStitchEmbroidery {
+            get {
+                return ResourceManager.GetString("Export_ConvertToCrossStitchEmbroidery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Conversion done.
+        /// </summary>
+        public static string Export_ConvertToCrossStitchEmbroideryDone {
+            get {
+                return ResourceManager.GetString("Export_ConvertToCrossStitchEmbroideryDone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Export to PDF.
         /// </summary>
         public static string Export_ExportToPdfButton {
