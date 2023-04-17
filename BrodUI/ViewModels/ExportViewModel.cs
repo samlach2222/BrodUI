@@ -99,7 +99,7 @@ namespace BrodUI.ViewModels
         {
             LogManagement.WriteToLog("[" + DateTime.Now + "] " + Assets.Languages.Resource.Terminal_ExportPage);
             Im ??= new ImageManagement();
-            Im.LoadImageFromTemp();
+            Im.LoadCurrentImage();
             LoadedImage = Im.Image;
 
             // If no converted image found, redirect to the convert page

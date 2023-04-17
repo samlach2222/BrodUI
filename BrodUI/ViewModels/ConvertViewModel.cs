@@ -211,7 +211,7 @@ namespace BrodUI.ViewModels
             // if not already initialized
             Im ??= new ImageManagement();
 
-            Im.LoadImageFromTemp();
+            Im.LoadCurrentImage();
             if (Im.Image == null) return;
             LoadedImage = Im.Image;
             _ratio = Im.Ratio;
@@ -226,7 +226,7 @@ namespace BrodUI.ViewModels
         private void LoadImage()
         {
             // Open file dialog
-            Im?.LoadImage();
+            Im?.LoadImageDialog();
             LoadedImage = Im.Image;
             _ratio = Im.Ratio;
             ImageWidth = Im.ImageWidth;

@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.IO;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using Microsoft.Win32;
 using MessageBox = System.Windows.MessageBox;
 
 namespace BrodUI.Models
@@ -32,6 +32,11 @@ namespace BrodUI.Models
         /// </summary>
         public double Ratio { get; set; }
 
+        public static String ImagePath
+        {
+            get => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "BrodUI", "current image.png");
+        }
+
         /// <summary>
         /// Constructor that set the default values
         /// </summary>
@@ -46,7 +51,7 @@ namespace BrodUI.Models
         /// <summary>
         /// Load an image from a file with a dialog and set Image, ImageWidth, ImageHeight and Ratio
         /// </summary>
-        public void LoadImage()
+        public void LoadImageDialog()
         {
             OpenFileDialog dialog = new()
             {
@@ -75,19 +80,16 @@ namespace BrodUI.Models
         }
 
         /// <summary>
-        /// Load an image from a file in temp folder of the system and set Image, ImageWidth, ImageHeight and Ratio
+        /// Load the current image and set Image, ImageWidth, ImageHeight and Ratio
         /// </summary>
-        public void LoadImageFromTemp()
+        public void LoadCurrentImage()
         {
-            string tempPath = Path.GetTempPath();
-            string tempFile = Path.Combine(tempPath, "BrodUI_CurentImage.png");
             // Use FileStream to check if the file exists
             try
             {
-                using FileStream fs = new (tempFile, FileMode.Open, FileAccess.Read);
+                using FileStream stream = File.OpenRead(ImagePath);
                 // Get image size
                 Image = new BitmapImage();
-                FileStream stream = File.OpenRead(tempFile);
 
                 Image.BeginInit();
                 Image.CacheOption = BitmapCacheOption.OnLoad;
@@ -111,7 +113,7 @@ namespace BrodUI.Models
         }
 
         /// <summary>
-        /// Unload the image and delete the file in temp folder
+        /// Unload the image and delete the file
         /// </summary>
         public void UnloadImage()
         {
@@ -119,19 +121,17 @@ namespace BrodUI.Models
             ImageHeight = 0;
             Ratio = 1;
             Image = null;
-            // if "BrodUI_CurentImage.png" exists in the temp folder, delete it
-            string tempPath = Path.GetTempPath();
-            string tempFile = Path.Combine(tempPath, "BrodUI_CurentImage.png");
+            // if a current image exists, delete it
             GC.Collect();
             GC.WaitForPendingFinalizers();
-            if (File.Exists(tempFile))
+            if (File.Exists(ImagePath))
             {
-                File.Delete(tempFile);
+                File.Delete(ImagePath);
             }
         }
 
         /// <summary>
-        /// Resize the image to ImageWidth and ImageHeight and save it in temp folder
+        /// Resize the image to ImageWidth and ImageHeight and save it
         /// </summary>
         public void ResizeImage()
         {
@@ -163,22 +163,17 @@ namespace BrodUI.Models
                 Image.EndInit();
             }
 
-            // Save image in temp folder
-            string tempPath = Path.GetTempPath();
-            string tempFile = Path.Combine(tempPath, "BrodUI_CurentImage.png");
+            // Save resized image
             GC.Collect();
             GC.WaitForPendingFinalizers();
-            if (File.Exists(tempFile))
-            {
-                File.Delete(tempFile);
-            }
-            using (FileStream fs = new(tempFile, FileMode.Create, FileAccess.Write))
+            // We don't need to check if the file exists, it will be overwritten if needed
+            using (FileStream fs = new(ImagePath, FileMode.Create, FileAccess.Write))
             {
                 PngBitmapEncoder encoder = new();
                 encoder.Frames.Add(BitmapFrame.Create(Image));
                 encoder.Save(fs);
             }
-            Console.WriteLine("[" + DateTime.Now + "] " + Assets.Languages.Resource.Terminal_ImageWidthAndHeight + " (" + ImageWidth + "x" + ImageHeight + ") " + Assets.Languages.Resource.Terminal_ImageSaveIn + tempFile);
+            Console.WriteLine("[" + DateTime.Now + "] " + Assets.Languages.Resource.Terminal_ImageWidthAndHeight + " (" + ImageWidth + "x" + ImageHeight + ") " + Assets.Languages.Resource.Terminal_ImageSaveIn + ImagePath);
         }
     }
 }

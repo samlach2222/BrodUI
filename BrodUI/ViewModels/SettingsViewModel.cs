@@ -198,6 +198,8 @@ namespace BrodUI.ViewModels
         private static void ResetParameters()
         {
             ConfigManagement.DeleteConfigFile();
+            ImageManagement IM = new ImageManagement();
+            IM.UnloadImage();
             RestartApp();
         }
 
