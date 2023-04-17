@@ -9,28 +9,53 @@ using Wpf.Ui.Mvvm.Contracts;
 
 namespace BrodUI.ViewModels
 {
+    /// <summary>
+    /// Class MainWindowViewModel.
+    /// </summary>
     public partial class MainWindowViewModel : ObservableObject
     {
+        /// <summary>
+        /// bool to check if the viewmodel is initialized
+        /// </summary>
         private bool _isInitialized = false;
 
+        /// <summary>
+        /// Gets or sets the application title.
+        /// </summary>
         [ObservableProperty]
-        private string _applicationTitle = String.Empty;
+        private string _applicationTitle = string.Empty;
 
+        /// <summary>
+        /// Gets or sets the navigation items.
+        /// </summary>
         [ObservableProperty]
         private ObservableCollection<INavigationControl> _navigationItems = new();
 
+        /// <summary>
+        /// Gets or sets the navigation footer.
+        /// </summary>
         [ObservableProperty]
         private ObservableCollection<INavigationControl> _navigationFooter = new();
 
+        /// <summary>
+        /// Gets or sets the tray menu items.
+        /// </summary>
         [ObservableProperty]
         private ObservableCollection<MenuItem> _trayMenuItems = new();
 
+        /// <summary>
+        /// Gets or sets the selected navigation item.
+        /// </summary>
+        /// <param name="navigationService"></param>
         public MainWindowViewModel(INavigationService navigationService)
         {
             if (!_isInitialized)
                 InitializeViewModel();
         }
 
+        /// <summary>
+        /// Initializes the view model.
+        /// </summary>
         private void InitializeViewModel()
         {
             ApplicationTitle = "BrodUI";

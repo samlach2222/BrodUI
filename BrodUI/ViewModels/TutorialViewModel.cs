@@ -9,22 +9,41 @@ using Application = System.Windows.Application;
 
 namespace BrodUI.ViewModels
 {
+    /// <summary>
+    /// Class TutorialViewModel
+    /// </summary>
     public partial class TutorialViewModel : ObservableObject, INavigationAware
     {
-        [ObservableProperty]
-        private string tutorialText = "Coucou";
+        // TODO : Add a tutorial page to explain how to use the application.
 
+        /// <summary>
+        /// Tutorial text of the app.
+        /// </summary>
+        [ObservableProperty]
+        private string _tutorialText = "Coucou";
+
+        /// <summary>
+        /// Function called when the page is navigated to.
+        /// </summary>
         public void OnNavigatedTo()
         {
-            LogManagement.WriteToLog("[" + DateTime.Now.ToString() + "] " + Assets.Languages.Resource.Terminal_TutorialPage);
+            LogManagement.WriteToLog("[" + DateTime.Now + "] " + Assets.Languages.Resource.Terminal_TutorialPage);
         }
 
+        /// <summary>
+        /// Function called when the page is navigated from.
+        /// </summary>
+        /// <exception cref="NotImplementedException"></exception>
         public void OnNavigatedFrom()
         {
+            throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Go to the Convert page.
+        /// </summary>
         [RelayCommand]
-        public void GoConvertPage()
+        public static void GoConvertPage()
         {
             var navigationService = (Application.Current.MainWindow as INavigationWindow)?.GetNavigation(); // Get the navigation service from the window.
             if (navigationService != null)

@@ -8,21 +8,37 @@ using Wpf.Ui.Common.Interfaces;
 
 namespace BrodUI.ViewModels
 {
+    /// <summary>
+    /// Class SettingsViewModel
+    /// </summary>
     public partial class SettingsViewModel : ObservableObject, INavigationAware
     {
+        /// <summary>
+        /// bool to check if the viewmodel is initialized
+        /// </summary>
         private bool _isInitialized = false;
 
-        // THEME STUFF
+        /// <summary>
+        /// Possible themes of the application
+        /// </summary>
         [ObservableProperty]
         private string[] _themes = new string[] { "System", "Light", "Dark" };
-        private string _curTheme;
-        public string CurTheme
+
+        /// <summary>
+        /// Current theme of the application
+        /// </summary>
+        private string? _curTheme;
+
+        /// <summary>
+        /// Gets or sets the current theme
+        /// </summary>
+        public string? CurTheme
         {
             get => _curTheme;
             set
             {
                 // Get current time and date
-                LogManagement.WriteToLog("[" + DateTime.Now.ToString() + "] " + Assets.Languages.Resource.Terminal_ThemeChanged + _curTheme + Assets.Languages.Resource.Terminal_To + value);
+                LogManagement.WriteToLog("[" + DateTime.Now + "] " + Assets.Languages.Resource.Terminal_ThemeChanged + _curTheme + Assets.Languages.Resource.Terminal_To + value);
                 SetProperty(ref _curTheme, value);
                 if (_curTheme != null)
                 {
@@ -30,7 +46,12 @@ namespace BrodUI.ViewModels
                 }
             }
         }
-        private void ChangeTheme(string theme)
+
+        /// <summary>
+        /// Change the theme of the application
+        /// </summary>
+        /// <param name="theme">new theme of the application</param>
+        private static void ChangeTheme(string? theme)
         {
             ConfigManagement.SetThemeFromSettings(theme);
 
@@ -38,16 +59,26 @@ namespace BrodUI.ViewModels
             ConfigManagement.SetThemeToConfigFile(theme);
         }
 
-        // LANGUAGE STUFF
+        /// <summary>
+        /// Possible languages of the application
+        /// </summary>
         [ObservableProperty]
         private string[] _languages = new string[] { "English", "Français" };
-        private string _curLanguage;
-        public string CurLanguage
+
+        /// <summary>
+        /// Current language of the application
+        /// </summary>
+        private string? _curLanguage;
+
+        /// <summary>
+        /// Get or set the current language
+        /// </summary>
+        public string? CurLanguage
         {
             get => _curLanguage;
             set
             {
-                LogManagement.WriteToLog("[" + DateTime.Now.ToString() + "] " + Assets.Languages.Resource.Terminal_LanguageChanged + _curLanguage + Assets.Languages.Resource.Terminal_To + value);
+                LogManagement.WriteToLog("[" + DateTime.Now + "] " + Assets.Languages.Resource.Terminal_LanguageChanged + _curLanguage + Assets.Languages.Resource.Terminal_To + value);
                 if (_curLanguage != null && value != _curLanguage)
                 {
                     ChangeLanguage(value);
@@ -55,7 +86,12 @@ namespace BrodUI.ViewModels
                 SetProperty(ref _curLanguage, value);
             }
         }
-        private void ChangeLanguage(string curLanguage)
+
+        /// <summary>
+        /// Change the language of the application
+        /// </summary>
+        /// <param name="curLanguage">new language of the application</param>
+        private static void ChangeLanguage(string? curLanguage)
         {
             // save the language in the file "settings.cfg" in the second row
             ConfigManagement.SetLanguageToConfigFile(curLanguage);
@@ -64,21 +100,32 @@ namespace BrodUI.ViewModels
             RestartApp();
         }
 
-        // TERMINAL STUFF
-        private bool _curTerminal;
-        public bool CurTerminal
+        /// <summary>
+        /// Is the terminal mode enabled
+        /// </summary>
+        private bool? _curTerminal;
+
+        /// <summary>
+        /// Get or set the terminal mode
+        /// </summary>
+        public bool? CurTerminal
         {
             get => _curTerminal;
             set
             {
-                LogManagement.WriteToLog("[" + DateTime.Now.ToString() + "] " + Assets.Languages.Resource.Terminal_TerminalChanged + _curTerminal + Assets.Languages.Resource.Terminal_To + value);
+                LogManagement.WriteToLog("[" + DateTime.Now + "] " + Assets.Languages.Resource.Terminal_TerminalChanged + _curTerminal + Assets.Languages.Resource.Terminal_To + value);
                 if (_curTerminal != null && value != _curTerminal)
                 {
-                    ChangeTerminal(value);
+                    ChangeTerminal(value != null && ((bool)value));
                 }
                 SetProperty(ref _curTerminal, value);
             }
         }
+
+        /// <summary>
+        /// Change the terminal mode
+        /// </summary>
+        /// <param name="curTerminal">new terminal mode</param>
         private void ChangeTerminal(bool curTerminal)
         {
             // save the language in the file "settings.cfg" in the second row
@@ -91,34 +138,49 @@ namespace BrodUI.ViewModels
             }
         }
 
+        /// <summary>
+        /// Function to restart the application
+        /// </summary>
         private static void RestartApp()
         {
             // Start BrodUI as a new process
-            ProcessStartInfo startInfo = new ProcessStartInfo(Environment.ProcessPath!);
-            startInfo.UseShellExecute = true;
+            ProcessStartInfo startInfo = new(Environment.ProcessPath!)
+            {
+                UseShellExecute = true
+            };
             Process.Start(startInfo);
 
             // Close the current BrodUI process
             Application.Current.Shutdown();
         }
 
-        // SETTINGS PAGE STUFF
-
-        [ObservableProperty]
-        private string _appVersion = String.Empty;
-
+        /// <summary>
+        /// Function called when the user navigates to the page
+        /// </summary>
         public void OnNavigatedTo()
         {
-            LogManagement.WriteToLog("[" + DateTime.Now.ToString() + "] " + Assets.Languages.Resource.Terminal_SettingsPage);
+            LogManagement.WriteToLog("[" + DateTime.Now + "] " + Assets.Languages.Resource.Terminal_SettingsPage);
             if (!_isInitialized)
                 InitializeViewModel();
         }
 
+        /// <summary>
+        /// Function called when the user navigates away from the page
+        /// </summary>
+        /// <exception cref="NotImplementedException">Not implemented because don't needed</exception>
         public void OnNavigatedFrom()
         {
+            throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// bool to check if the terminal mode is initialized
+        /// </summary>
         private bool _initTerminalDone = false;
+
+        /// <summary>
+        /// Initialize the viewmodel
+        /// </summary>
         private void InitializeViewModel()
         {
             // Load settings from file
@@ -126,25 +188,25 @@ namespace BrodUI.ViewModels
             CurLanguage = ConfigManagement.GetLanguageFromConfigFile();
             CurTerminal = ConfigManagement.GetTerminalFromConfigFile();
             _initTerminalDone = true;
-            AppVersion = $"BrodUI - {GetAssemblyVersion()}";
 
             _isInitialized = true;
         }
 
-        private string GetAssemblyVersion()
-        {
-            return System.Reflection.Assembly.GetExecutingAssembly().GetName().Version?.ToString() ?? String.Empty;
-        }
-
+        /// <summary>
+        /// Reset the parameters of the application
+        /// </summary>
         [RelayCommand]
-        private void ResetParameters()
+        private static void ResetParameters()
         {
             ConfigManagement.DeleteConfigFile();
             RestartApp();
         }
 
+        /// <summary>
+        /// Delete the logs of the application
+        /// </summary>
         [RelayCommand]
-        private void DeleteLogs()
+        private static void DeleteLogs()
         {
             LogManagement.ClearLog();
             RestartApp();
