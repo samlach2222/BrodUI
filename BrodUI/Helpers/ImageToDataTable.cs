@@ -4,9 +4,16 @@ using System.Windows.Media.Imaging;
 
 namespace BrodUI.Helpers
 {
+    /// <summary>
+    /// Class to convert an image to a 2D array of brushes
+    /// </summary>
     internal class ImageToDataTable
     {
-        // Create 2D Array of Brush
+        /// <summary>
+        /// Convert an image to a 2D array of brushes
+        /// </summary>
+        /// <param name="bitmapSource">Source image</param>
+        /// <returns>2D array of Brushes where the size is the same as the image and also colors</returns>
         public static Brush[,] ConvertTo2dArray(BitmapSource bitmapSource)
         {
             int width = bitmapSource.PixelWidth;
@@ -28,29 +35,7 @@ namespace BrodUI.Helpers
                     array[x, y] = new SolidColorBrush(Color.FromRgb(r, g, b));
                 }
             }
-
             return array;
-        }
-
-        public static DataTable Convert2dArrayToDataTable(Brush[,] table)
-        {
-            DataTable dt = new DataTable();
-            for (int i = 0; i < table.GetLength(0); i++)
-            {
-                dt.Columns.Add();
-            }
-
-            for (int i = 0; i < table.GetLength(1); i++)
-            {
-                DataRow dr = dt.NewRow();
-                for (int j = 0; j < table.GetLength(0); j++)
-                {
-                    dr[j] = table[j, i];
-                }
-                dt.Rows.Add(dr);
-            }
-
-            return dt;
         }
     }
 }

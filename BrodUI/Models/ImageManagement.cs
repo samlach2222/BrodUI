@@ -6,16 +6,34 @@ using MessageBox = System.Windows.MessageBox;
 
 namespace BrodUI.Models
 {
+    /// <summary>
+    /// Class to manage loaded image and its properties
+    /// </summary>
     public class ImageManagement
     {
+        /// <summary>
+        /// Image used in the app
+        /// </summary>
         public BitmapImage Image { get; set; }
 
+        /// <summary>
+        /// Width of the image
+        /// </summary>
         public int ImageWidth { get; set; }
 
+        /// <summary>
+        /// Height of the image
+        /// </summary>
         public int ImageHeight { get; set; }
 
+        /// <summary>
+        /// Ratio of the image (width / height)
+        /// </summary>
         public double Ratio { get; set; }
 
+        /// <summary>
+        /// Constructor that set the default values
+        /// </summary>
         public ImageManagement()
         {
             Image = null;
@@ -24,6 +42,9 @@ namespace BrodUI.Models
             Ratio = 1;
         }
 
+        /// <summary>
+        /// Load an image from a file with a dialog and set Image, ImageWidth, ImageHeight and Ratio
+        /// </summary>
         public void LoadImage()
         {
             var dialog = new Microsoft.Win32.OpenFileDialog
@@ -52,6 +73,9 @@ namespace BrodUI.Models
             }
         }
 
+        /// <summary>
+        /// Load an image from a file in temp folder of the system and set Image, ImageWidth, ImageHeight and Ratio
+        /// </summary>
         public void LoadImageFromTemp()
         {
             var tempPath = Path.GetTempPath();
@@ -87,6 +111,9 @@ namespace BrodUI.Models
             }
         }
 
+        /// <summary>
+        /// Unload the image and delete the file in temp folder
+        /// </summary>
         public void UnloadImage()
         {
             ImageWidth = 0;
@@ -104,6 +131,9 @@ namespace BrodUI.Models
             }
         }
 
+        /// <summary>
+        /// Resize the image to ImageWidth and ImageHeight and save it in temp folder
+        /// </summary>
         public void ResizeImage()
         {
             BitmapImage old = Image;

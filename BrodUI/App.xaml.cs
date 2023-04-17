@@ -98,7 +98,7 @@ namespace BrodUI
             ShowConsole(); // Show console if needed
             LogManagement.CreateLogFileIfNotExists(); // Create log file if it doesn't exist
             Console.WriteLine(Assets.Languages.Resource.Terminal_ImportLog);
-            Console.WriteLine(LogManagement.WriteAllLogsInTerminal()); // Write all logs in console
+            LogManagement.WriteAllLogsInTerminal(); // Write all logs in console
             Console.WriteLine(Assets.Languages.Resource.Terminal_ImportLogOk);
             Console.WriteLine("-------------------------------------------------------");
 

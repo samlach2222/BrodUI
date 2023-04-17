@@ -3,10 +3,19 @@ using System.IO;
 
 namespace BrodUI.Models
 {
+    /// <summary>
+    /// Class to manage the log file
+    /// </summary>
     public static class LogManagement
     {
+        /// <summary>
+        /// Path of the log file
+        /// </summary>
         private static string _logPath;
 
+        /// <summary>
+        /// Getter and setter of the log file path
+        /// </summary>
         public static string LogPath
         {
             get { return _logPath; }
@@ -16,6 +25,9 @@ namespace BrodUI.Models
             }
         }
 
+        /// <summary>
+        /// Create the log file if it doesn't exist
+        /// </summary>
         public static void CreateLogFileIfNotExists()
         {
             var appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
@@ -34,6 +46,10 @@ namespace BrodUI.Models
             }
         }
 
+        /// <summary>
+        /// Write a text line in the log file and in the terminal
+        /// </summary>
+        /// <param name="text">text to write in the log file and the terminal</param>
         public static void WriteToLog(string text)
         {
             Console.WriteLine(text);
@@ -43,13 +59,19 @@ namespace BrodUI.Models
             }
         }
 
+        /// <summary>
+        /// Clear the log file
+        /// </summary>
         public static void ClearLog()
         {
             // Delete the file
             File.Delete(LogPath);
         }
 
-        public static string WriteAllLogsInTerminal()
+        /// <summary>
+        /// Write all the logs in the terminal
+        /// </summary>
+        public static void WriteAllLogsInTerminal()
         {
             string[] lines = File.ReadAllLines(LogPath);
             string text = "";
@@ -57,7 +79,7 @@ namespace BrodUI.Models
             {
                 text += line + Environment.NewLine;
             }
-            return text;
+            Console.WriteLine(text);
         }
     }
 }
