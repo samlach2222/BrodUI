@@ -67,7 +67,7 @@ namespace BrodUI.ViewModels
             // If no converted image found, redirect to the convert page
             if (LoadedImage == null)
             {
-                MessageBox.Show("No converted image found, please convert an image first");
+                MessageBox.Show(Assets.Languages.Resource.Export_NoImageMessage);
                 var navigationService = (Application.Current.MainWindow as INavigationWindow)?.GetNavigation(); // Get the navigation service from the window.
                 if (navigationService != null)
                 {

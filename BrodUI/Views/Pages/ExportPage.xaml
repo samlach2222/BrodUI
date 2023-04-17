@@ -6,6 +6,7 @@
     xmlns:local="clr-namespace:BrodUI.Views.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+    xmlns:p="clr-namespace:BrodUI.Assets.Languages"
     Title="ExportPage"
     d:DataContext="{d:DesignInstance local:ExportPage,
                                      IsDesignTimeCreatable=False}"
@@ -34,7 +35,7 @@
         <!-- COLOR LIST -->
         <DataGrid Grid.Row="1" Grid.Column="0" Margin="20,10,20,10" AutoGenerateColumns="False" IsReadOnly="True" CanUserSortColumns="True" HorizontalAlignment="Center" VerticalAlignment="Center" VirtualizingPanel.ScrollUnit="Pixel" ItemsSource="{Binding ViewModel.WireArray}">
             <DataGrid.Columns>
-                <DataGridTemplateColumn Header="Color">
+                <DataGridTemplateColumn Header="{x:Static p:Resource.Export_NumberLabel}">
                     <!-- Create a rectangle with color -->
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -42,7 +43,7 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTextColumn Header="Number" Binding="{Binding Number}">
+                <DataGridTextColumn Header="{x:Static p:Resource.Export_NumberLabel}" Binding="{Binding Number}">
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
                             <Setter Property="HorizontalAlignment" Value="Center" />
@@ -50,7 +51,7 @@
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Type" Binding="{Binding Type}">
+                <DataGridTextColumn Header="{x:Static p:Resource.Export_TypeLabel}" Binding="{Binding Type}">
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
                             <Setter Property="HorizontalAlignment" Value="Center" />
@@ -58,7 +59,7 @@
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Name" Binding="{Binding Name}" >
+                <DataGridTextColumn Header="{x:Static p:Resource.Export_NameLabel}" Binding="{Binding Name}" >
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
                             <Setter Property="HorizontalAlignment" Value="Center" />
@@ -66,7 +67,7 @@
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}" >
+                <DataGridTextColumn Header="{x:Static p:Resource.Export_QuantityLabel}" Binding="{Binding Quantity}" >
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
                             <Setter Property="HorizontalAlignment" Value="Center" />
@@ -84,7 +85,7 @@
 
         <ui:Button Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" 
                    Name="ConvertButton" 
-                   Content="Export to PDF"
+                   Content="{x:Static p:Resource.Export_ExportToPdfButton}"
                    Icon="ArrowExportLtr24"
         />
     </Grid>

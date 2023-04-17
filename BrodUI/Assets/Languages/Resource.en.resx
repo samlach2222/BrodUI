@@ -199,4 +199,25 @@
   <data name="Terminal_ImportLogOk" xml:space="preserve">
     <value>OLD LOGS IMPORT DONE !</value>
   </data>
+  <data name="Export_NoImageMessage" xml:space="preserve">
+    <value>No converted image found, please convert an image first</value>
+  </data>
+  <data name="Export_ColorLabel" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="Export_NumberLabel" xml:space="preserve">
+    <value>Number</value>
+  </data>
+  <data name="Export_TypeLabel" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="Export_NameLabel" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Export_QuantityLabel" xml:space="preserve">
+    <value>Quantity</value>
+  </data>
+  <data name="Export_ExportToPdfButton" xml:space="preserve">
+    <value>Export to PDF</value>
+  </data>
 </root>

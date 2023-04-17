@@ -106,6 +106,69 @@ namespace BrodUI.Assets.Languages {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Color.
+        /// </summary>
+        public static string Export_ColorLabel {
+            get {
+                return ResourceManager.GetString("Export_ColorLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Export to PDF.
+        /// </summary>
+        public static string Export_ExportToPdfButton {
+            get {
+                return ResourceManager.GetString("Export_ExportToPdfButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Name.
+        /// </summary>
+        public static string Export_NameLabel {
+            get {
+                return ResourceManager.GetString("Export_NameLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à No converted image found, please convert an image first.
+        /// </summary>
+        public static string Export_NoImageMessage {
+            get {
+                return ResourceManager.GetString("Export_NoImageMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Number.
+        /// </summary>
+        public static string Export_NumberLabel {
+            get {
+                return ResourceManager.GetString("Export_NumberLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Quantity.
+        /// </summary>
+        public static string Export_QuantityLabel {
+            get {
+                return ResourceManager.GetString("Export_QuantityLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Type.
+        /// </summary>
+        public static string Export_TypeLabel {
+            get {
+                return ResourceManager.GetString("Export_TypeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Convert.
         /// </summary>
         public static string PageName_Convert {

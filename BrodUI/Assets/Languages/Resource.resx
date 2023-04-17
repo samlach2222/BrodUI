@@ -233,4 +233,32 @@
     <value>OLD LOGS IMPORT DONE !</value>
     <comment>words displayed in the terminal when logs import is done</comment>
   </data>
+  <data name="Export_NoImageMessage" xml:space="preserve">
+    <value>No converted image found, please convert an image first</value>
+    <comment>Label of the messagebox displayed when there is no image loaded</comment>
+  </data>
+  <data name="Export_ColorLabel" xml:space="preserve">
+    <value>Color</value>
+    <comment>Label in the list of color (color column)</comment>
+  </data>
+  <data name="Export_NumberLabel" xml:space="preserve">
+    <value>Number</value>
+    <comment>Label in the list of color (number column)</comment>
+  </data>
+  <data name="Export_TypeLabel" xml:space="preserve">
+    <value>Type</value>
+    <comment>Label in the list of color (type column)</comment>
+  </data>
+  <data name="Export_NameLabel" xml:space="preserve">
+    <value>Name</value>
+    <comment>Label in the list of color (name column)</comment>
+  </data>
+  <data name="Export_QuantityLabel" xml:space="preserve">
+    <value>Quantity</value>
+    <comment>Label in the list of color (quantity column)</comment>
+  </data>
+  <data name="Export_ExportToPdfButton" xml:space="preserve">
+    <value>Export to PDF</value>
+    <comment>Text in the button to export to PDF</comment>
+  </data>
 </root>
