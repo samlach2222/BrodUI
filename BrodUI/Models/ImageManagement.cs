@@ -70,7 +70,7 @@ namespace BrodUI.Models
             }
             else
             {
-                MessageBox.Show("Invalid image file");
+                MessageBox.Show(Assets.Languages.Resource.ImageManagement_InvalidImageFile);
             }
         }
 

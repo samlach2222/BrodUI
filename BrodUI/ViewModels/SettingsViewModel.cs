@@ -167,10 +167,9 @@ namespace BrodUI.ViewModels
         /// <summary>
         /// Function called when the user navigates away from the page
         /// </summary>
-        /// <exception cref="NotImplementedException">Not implemented because don't needed</exception>
         public void OnNavigatedFrom()
         {
-            throw new NotImplementedException();
+
         }
 
         /// <summary>

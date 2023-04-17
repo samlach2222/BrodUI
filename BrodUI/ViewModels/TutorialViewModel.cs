@@ -34,10 +34,9 @@ namespace BrodUI.ViewModels
         /// <summary>
         /// Function called when the page is navigated from.
         /// </summary>
-        /// <exception cref="NotImplementedException"></exception>
         public void OnNavigatedFrom()
         {
-            throw new NotImplementedException();
+
         }
 
         /// <summary>

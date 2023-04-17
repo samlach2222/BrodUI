@@ -106,6 +106,42 @@ namespace BrodUI.Assets.Languages {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Height must be greater than .
+        /// </summary>
+        public static string Convert_MinimumHeight {
+            get {
+                return ResourceManager.GetString("Convert_MinimumHeight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Height will be {0}, but height must be greater than .
+        /// </summary>
+        public static string Convert_MinimumHeight_WithValue {
+            get {
+                return ResourceManager.GetString("Convert_MinimumHeight_WithValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Width must be greater than .
+        /// </summary>
+        public static string Convert_MinimumWidth {
+            get {
+                return ResourceManager.GetString("Convert_MinimumWidth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Width will be {0}, but width must be greater than .
+        /// </summary>
+        public static string Convert_MinimumWidth_WithValue {
+            get {
+                return ResourceManager.GetString("Convert_MinimumWidth_WithValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Color.
         /// </summary>
         public static string Export_ColorLabel {
@@ -187,6 +223,15 @@ namespace BrodUI.Assets.Languages {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Invalid image file.
+        /// </summary>
+        public static string ImageManagement_InvalidImageFile {
+            get {
+                return ResourceManager.GetString("ImageManagement_InvalidImageFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Convert.
         /// </summary>
         public static string PageName_Convert {
@@ -232,6 +277,15 @@ namespace BrodUI.Assets.Languages {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Delete logs.
+        /// </summary>
+        public static string Settings_LabelDeleteLogs {
+            get {
+                return ResourceManager.GetString("Settings_LabelDeleteLogs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Links.
         /// </summary>
         public static string Settings_LabelGitHubLinks {
@@ -246,6 +300,15 @@ namespace BrodUI.Assets.Languages {
         public static string Settings_LabelLanguage {
             get {
                 return ResourceManager.GetString("Settings_LabelLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Reset settings.
+        /// </summary>
+        public static string Settings_LabelResetSettings {
+            get {
+                return ResourceManager.GetString("Settings_LabelResetSettings", resourceCulture);
             }
         }
         

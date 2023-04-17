@@ -246,4 +246,25 @@
   <data name="Export_ConvertToCrossStitchEmbroideryDone" xml:space="preserve">
     <value>Conversion terminé</value>
   </data>
+  <data name="Settings_LabelDeleteLogs" xml:space="preserve">
+    <value>Supprimer les logs</value>
+  </data>
+  <data name="Settings_LabelResetSettings" xml:space="preserve">
+    <value>Réinitialiser les paramètres</value>
+  </data>
+  <data name="Convert_MinimumHeight" xml:space="preserve">
+    <value>La hauteur doit être supérieur à </value>
+  </data>
+  <data name="Convert_MinimumHeight_WithValue" xml:space="preserve">
+    <value>La hauteur sera {0}, mais la hauteur doit être supérieur à </value>
+  </data>
+  <data name="Convert_MinimumWidth" xml:space="preserve">
+    <value>La largeur doit être supérieur à </value>
+  </data>
+  <data name="Convert_MinimumWidth_WithValue" xml:space="preserve">
+    <value>La largeur sera {0}, mais la largeur doit être supérieur à </value>
+  </data>
+  <data name="ImageManagement_InvalidImageFile" xml:space="preserve">
+    <value>Fichier image non valide</value>
+  </data>
 </root>

@@ -35,7 +35,7 @@
         <!-- COLOR LIST -->
         <DataGrid Grid.Row="1" Grid.Column="0" Margin="20,10,20,10" AutoGenerateColumns="False" IsReadOnly="True" CanUserSortColumns="True" HorizontalAlignment="Center" VerticalAlignment="Center" VirtualizingPanel.ScrollUnit="Pixel" ItemsSource="{Binding ViewModel.WireArray}">
             <DataGrid.Columns>
-                <DataGridTemplateColumn Header="{x:Static p:Resource.Export_NumberLabel}">
+                <DataGridTemplateColumn Header="{x:Static p:Resource.Export_ColorLabel}">
                     <!-- Create a rectangle with color -->
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

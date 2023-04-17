@@ -63,8 +63,8 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
-                <ui:Button Grid.Column="0" Content="Delete logs" Icon="Delete24" HorizontalAlignment="Center" Command="{Binding Path=ViewModel.DeleteLogsCommand, Mode=OneWay}" />
-                <ui:Button Grid.Column="1" Content="Reset parameters" Icon="ArrowReset24" HorizontalAlignment="Center" Command="{Binding Path=ViewModel.ResetParametersCommand, Mode=OneWay}" />
+                    <ui:Button Grid.Column="0" Content="{x:Static p:Resource.Settings_LabelDeleteLogs}" Icon="Delete24" HorizontalAlignment="Center" Command="{Binding Path=ViewModel.DeleteLogsCommand, Mode=OneWay}" />
+                    <ui:Button Grid.Column="1" Content="{x:Static p:Resource.Settings_LabelResetSettings}" Icon="ArrowReset24" HorizontalAlignment="Center" Command="{Binding Path=ViewModel.ResetParametersCommand, Mode=OneWay}" />
             </Grid>
             
         </ui:Card>

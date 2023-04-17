@@ -58,6 +58,11 @@ namespace BrodUI.ViewModels
         private ImageManagement? Im { get; set; }
 
         /// <summary>
+        /// Minimum value for width and height
+        /// </summary>
+        private const int minimumWidthHeight = 10;
+
+        /// <summary>
         /// Getter and setter for the loaded image that manage also the button visibility 
         /// </summary>
         public BitmapImage? LoadedImage
@@ -121,9 +126,9 @@ namespace BrodUI.ViewModels
             get => _imageWidth;
             set
             {
-                if (value > 10 || Im?.ImageWidth == -1)
+                if (value > minimumWidthHeight || Im?.ImageWidth == -1)
                 {
-                    if (Im != null && ((int)(value / _ratio) > 10 || Im.ImageWidth == -1))
+                    if (Im != null && ((int)(value / _ratio) > minimumWidthHeight || Im.ImageWidth == -1))
                     {
                         LogManagement.WriteToLog("[" + DateTime.Now + "] " + Assets.Languages.Resource.Terminal_WidthChanged + _imageWidth + Assets.Languages.Resource.Terminal_To + value);
                         _imageWidth = value;
@@ -139,12 +144,13 @@ namespace BrodUI.ViewModels
                     }
                     else
                     {
-                        MessageBox.Show("Width will be " + (int)(value / _ratio) + ", but Width must be greater than 10");
+                        String badValue = ((int)(value / _ratio)).ToString();
+                        MessageBox.Show(String.Format(Assets.Languages.Resource.Convert_MinimumWidth_WithValue, badValue) + minimumWidthHeight);
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Width must be greater than 10");
+                    MessageBox.Show(Assets.Languages.Resource.Convert_MinimumWidth + minimumWidthHeight);
 
                 }
             }
@@ -158,9 +164,9 @@ namespace BrodUI.ViewModels
             get => _imageHeight;
             set
             {
-                if (Im != null && (value > 10 || Im.ImageHeight == -1))
+                if (Im != null && (value > minimumWidthHeight || Im.ImageHeight == -1))
                 {
-                    if ((int)(value * _ratio) > 10 || Im.ImageHeight == -1)
+                    if ((int)(value * _ratio) > minimumWidthHeight || Im.ImageHeight == -1)
                     {
                         LogManagement.WriteToLog("[" + DateTime.Now + "] " + Assets.Languages.Resource.Terminal_HeightChanged + _imageWidth + Assets.Languages.Resource.Terminal_To + value);
                         _imageHeight = value;
@@ -176,13 +182,14 @@ namespace BrodUI.ViewModels
                     }
                     else
                     {
-                        MessageBox.Show("Width will be " + (int)(value * _ratio) + ", but Width must be greater than 10");
+                        String badValue = ((int)(value * _ratio)).ToString();
+                        MessageBox.Show(String.Format(Assets.Languages.Resource.Convert_MinimumHeight_WithValue, badValue) + minimumWidthHeight);
                     }
 
                 }
                 else
                 {
-                    MessageBox.Show("Height must be greater than 10");
+                    MessageBox.Show(Assets.Languages.Resource.Convert_MinimumHeight + minimumWidthHeight);
                 }
             }
         }
@@ -257,10 +264,9 @@ namespace BrodUI.ViewModels
         /// <summary>
         /// Function called when user click on the button to go back to the main page
         /// </summary>
-        /// <exception cref="NotImplementedException">This method is not implemented because useless for the moment</exception>
         public void OnNavigatedFrom()
         {
-            throw new NotImplementedException();
+
         }
     }
 }

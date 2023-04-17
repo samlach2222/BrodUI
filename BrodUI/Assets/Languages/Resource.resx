@@ -289,4 +289,32 @@
     <value>Conversion done</value>
     <comment>Shown after converting to embroidery</comment>
   </data>
+  <data name="Settings_LabelDeleteLogs" xml:space="preserve">
+    <value>Delete logs</value>
+    <comment>Label for deleting the logs</comment>
+  </data>
+  <data name="Settings_LabelResetSettings" xml:space="preserve">
+    <value>Reset settings</value>
+    <comment>Label for resetting the settings</comment>
+  </data>
+  <data name="Convert_MinimumHeight" xml:space="preserve">
+    <value>Height must be greater than </value>
+    <comment>Minimum height when resizing an image</comment>
+  </data>
+  <data name="Convert_MinimumHeight_WithValue" xml:space="preserve">
+    <value>Height will be {0}, but height must be greater than </value>
+    <comment>Minimum height when resizing an image, with the bad value</comment>
+  </data>
+  <data name="Convert_MinimumWidth" xml:space="preserve">
+    <value>Width must be greater than </value>
+    <comment>Minimum width when resizing an image</comment>
+  </data>
+  <data name="Convert_MinimumWidth_WithValue" xml:space="preserve">
+    <value>Width will be {0}, but width must be greater than </value>
+    <comment>Minimum width when resizing an image, with the bad value</comment>
+  </data>
+  <data name="ImageManagement_InvalidImageFile" xml:space="preserve">
+    <value>Invalid image file</value>
+    <comment>Shown when cancelling the load image dialog</comment>
+  </data>
 </root>
