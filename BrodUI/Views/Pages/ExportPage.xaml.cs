@@ -25,7 +25,6 @@ namespace BrodUI.Views.Pages
             InitializeComponent();
 
             ViewModel.GridImage = GridImage;
-            ViewModel.GridTop = GridTop;
         }
     }
 }

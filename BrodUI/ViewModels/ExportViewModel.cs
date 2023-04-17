@@ -21,7 +21,6 @@ namespace BrodUI.ViewModels
         private List<Wire> _wireArray = new List<Wire>();
         private DataTable _brushArray;
         private Grid _gridImage;
-        private Grid _gridTop;
 
         public Grid GridImage
         {
@@ -29,16 +28,6 @@ namespace BrodUI.ViewModels
             set
             {
                 _gridImage = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public Grid GridTop
-        {
-            get { return _gridTop; }
-            set
-            {
-                _gridTop = value;
                 OnPropertyChanged();
             }
         }
