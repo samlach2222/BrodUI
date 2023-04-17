@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using Wpf.Ui.Common.Interfaces;
@@ -19,6 +20,28 @@ namespace BrodUI.ViewModels
         private BitmapImage? _loadedImage = null;
         private List<Wire> _wireArray = new List<Wire>();
         private DataTable _brushArray;
+        private Grid _gridImage;
+        private Grid _gridTop;
+
+        public Grid GridImage
+        {
+            get { return _gridImage; }
+            set
+            {
+                _gridImage = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public Grid GridTop
+        {
+            get { return _gridTop; }
+            set
+            {
+                _gridTop = value;
+                OnPropertyChanged();
+            }
+        }
 
         private ImageManagement Im { get; set; }
 
@@ -93,7 +116,7 @@ namespace BrodUI.ViewModels
                         if (wireTable[i, j] != null)
                         {
                             count++;
-                            // TEMP LOADING OF WIRE ARRAY
+                            // TEMP LOADING OF WIRE ARRAY TODO : CHANGE TO PROGRESS BAR OR PROGRESS WHEEL
                             Console.WriteLine(count + "/" + width * height);
 
                             bool found = false;
@@ -116,6 +139,43 @@ namespace BrodUI.ViewModels
                                 WireArray.Add(new Wire(wireTable[i, j], 404, "DMC", "White", 1));
                             }
                         }
+                    }
+                }
+
+                // GridImage creation part
+                // reset GridImage
+                GridImage.Children.Clear();
+                GridImage.RowDefinitions.Clear();
+                GridImage.ColumnDefinitions.Clear();
+                // Set GridImage size to keep the aspect ratio
+
+                // create rows and columns for GridImage
+                for (int i = 0; i < height; i++)
+                {
+                    RowDefinition row = new RowDefinition();
+                    row.Height = new GridLength(15, GridUnitType.Pixel);
+                    GridImage.RowDefinitions.Add(row);
+                }
+
+                for (int i = 0; i < width; i++)
+                {
+                    ColumnDefinition col = new ColumnDefinition();
+                    col.Width = new GridLength(15, GridUnitType.Pixel);
+                    GridImage.ColumnDefinitions.Add(col);
+                }
+
+                // add rectangle for each row/column
+                for (int j = 0; j < width; j++)
+                {
+                    for (int i = 0; i < height; i++)
+                    {
+                        var rect = new System.Windows.Shapes.Rectangle();
+                        rect.Fill = wireTable[j, i];
+                        rect.Stroke = new SolidColorBrush(Colors.Black);
+                        rect.StrokeThickness = 1;
+                        Grid.SetRow(rect, i);
+                        Grid.SetColumn(rect, j);
+                        GridImage.Children.Add(rect);
                     }
                 }
             }

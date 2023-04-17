@@ -16,7 +16,7 @@
     Foreground="{DynamicResource TextFillColorPrimaryBrush}"
     mc:Ignorable="d">
 
-    <Grid Margin="0,0">
+    <Grid Margin="0,0" Name="GridTop">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="2*" />
@@ -78,15 +78,15 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <!-- SCHEMATIC TEMP : TODO : INSTEAD OF DISPLAY COLORBRUSH, APPLY IT -->
-        <ui:DataGrid Name="DgImage" Grid.Row="0" Grid.Column="1" Grid.RowSpan="3" Margin="20,10,20,10">
-
-        </ui:DataGrid>
+        <ScrollViewer Grid.Row="0" Grid.Column="1" Grid.RowSpan="3" Margin="20,10,20,10" HorizontalScrollBarVisibility="Auto">
+            <Grid Name="GridImage" >
+            </Grid>
+        </ScrollViewer>
 
         <ui:Button Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" 
-                   Name="ConvertButton" 
-                   Content="{x:Static p:Resource.Export_ExportToPdfButton}"
-                   Icon="ArrowExportLtr24"
-        />
+                       Name="ConvertButton" 
+                       Content="{x:Static p:Resource.Export_ExportToPdfButton}"
+                       Icon="ArrowExportLtr24"
+                       />
     </Grid>
 </ui:UiPage>
