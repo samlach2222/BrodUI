@@ -6,6 +6,7 @@ using System;
 using System.Windows;
 using System.Windows.Media.Imaging;
 using Wpf.Ui.Common.Interfaces;
+using Wpf.Ui.Controls.Interfaces;
 using Wpf.Ui.Mvvm.Contracts;
 using MessageBox = System.Windows.MessageBox;
 
@@ -244,8 +245,8 @@ namespace BrodUI.ViewModels
         [RelayCommand]
         private void ConvertImage()
         {
-            Im.ResizeImage();
-            var navigationService = (Application.Current.MainWindow as INavigationWindow)?.GetNavigation(); // Get the navigation service from the window.
+            Im?.ResizeImage();
+            INavigation? navigationService = (Application.Current.MainWindow as INavigationWindow)?.GetNavigation(); // Get the navigation service from the window.
             if (navigationService != null)
             {
                 _ = navigationService.Navigate(typeof(ExportPage)); // Navigate to the Convert page.

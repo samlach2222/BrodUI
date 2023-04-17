@@ -135,7 +135,7 @@ namespace BrodUI.ViewModels
                         Console.WriteLine(count + "/" + width * height);
 
                         bool found = false;
-                        foreach (var wire in from wire in WireArray let color1 = ((SolidColorBrush)wireTable[i, j]).Color let color2 = ((SolidColorBrush)wire.Color).Color where color1 == color2 select wire)
+                        foreach (Wire? wire in from wire in WireArray let color1 = ((SolidColorBrush)wireTable[i, j]).Color let color2 = ((SolidColorBrush)wire.Color).Color where color1 == color2 select wire)
                         {
                             count++;
                             found = true;

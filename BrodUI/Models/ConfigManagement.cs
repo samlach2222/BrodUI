@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.IO;
 using System.Threading;
+using Wpf.Ui.Appearance;
 
 namespace BrodUI.Models
 {
@@ -24,7 +25,7 @@ namespace BrodUI.Models
         public static void CreateConfigFileIfNotExists()
         {
             // get Appdata Roaming folder in a string
-            var appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            string? appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             // create the folder "BrodUI" in AppData if it doesn't exist
             if (!Directory.Exists(appData + "\\BrodUI"))
             {
@@ -54,27 +55,20 @@ namespace BrodUI.Models
         /// </summary>
         public static void SetTheme()
         {
-            var settings = File.ReadAllLines(path);
+            string[] settings = File.ReadAllLines(path);
             // Set theme
             switch (settings[0].Split('=')[1])
             {
                 case "System":
-                    var theme = Wpf.Ui.Appearance.Theme.GetSystemTheme();
+                    SystemThemeType theme = Theme.GetSystemTheme();
                     // Apply it
-                    if (theme == Wpf.Ui.Appearance.SystemThemeType.Light)
-                    {
-                        Wpf.Ui.Appearance.Theme.Apply(Wpf.Ui.Appearance.ThemeType.Light);
-                    }
-                    else
-                    {
-                        Wpf.Ui.Appearance.Theme.Apply(Wpf.Ui.Appearance.ThemeType.Dark);
-                    }
+                    Theme.Apply(theme == SystemThemeType.Light ? ThemeType.Light : ThemeType.Dark);
                     break;
                 case "Light":
-                    Wpf.Ui.Appearance.Theme.Apply(Wpf.Ui.Appearance.ThemeType.Light);
+                    Theme.Apply(ThemeType.Light);
                     break;
                 case "Dark":
-                    Wpf.Ui.Appearance.Theme.Apply(Wpf.Ui.Appearance.ThemeType.Dark);
+                    Theme.Apply(ThemeType.Dark);
                     break;
             }
         }
@@ -86,13 +80,13 @@ namespace BrodUI.Models
         /// </summary>
         public static void SetLanguage()
         {
-            var settings = File.ReadAllLines(path);
+            string[] settings = File.ReadAllLines(path);
             // Set language
             switch (settings[1].Split('=')[1])
             {
                 case "System":
                     // Get system language
-                    var language = CultureInfo.CurrentCulture.Name;
+                    string? language = CultureInfo.CurrentCulture.Name;
                     // Set it
                     switch (language)
                     {
@@ -119,7 +113,7 @@ namespace BrodUI.Models
         /// <returns>string with the name of the theme in the config file</returns>
         public static string? GetThemeFromConfigFile()
         {
-            var settings = File.ReadAllLines(path);
+            string[] settings = File.ReadAllLines(path);
             return settings[0].Split('=')[1];
         }
 
@@ -129,7 +123,7 @@ namespace BrodUI.Models
         /// <returns>string with the name of the language in the config file</returns>
         public static string? GetLanguageFromConfigFile()
         {
-            var settings = File.ReadAllLines(path);
+            string[] settings = File.ReadAllLines(path);
             return settings[1].Split('=')[1];
         }
 
@@ -139,7 +133,7 @@ namespace BrodUI.Models
         /// <returns>bool which is true if the terminal is active, or false if not active in the config file</returns>
         public static bool GetTerminalFromConfigFile()
         {
-            var settings = File.ReadAllLines(path);
+            string[] settings = File.ReadAllLines(path);
             return Convert.ToBoolean(settings[2].Split('=')[1]);
         }
 
@@ -150,7 +144,7 @@ namespace BrodUI.Models
         public static void SetThemeToConfigFile(string? theme)
         {
             // save the language in the file "settings.cfg" in the first row
-            var settings = File.ReadAllLines(path);
+            string[] settings = File.ReadAllLines(path);
             settings[0] = $"Theme={theme}";
             File.WriteAllLines(path, settings);
         }
@@ -161,7 +155,7 @@ namespace BrodUI.Models
         /// <param name="language">language you want to put in the config file</param>
         public static void SetLanguageToConfigFile(string? language)
         {
-            var settings = File.ReadAllLines(path);
+            string[] settings = File.ReadAllLines(path);
             settings[1] = $"Language={language}";
             File.WriteAllLines(path, settings);
         }
@@ -172,7 +166,7 @@ namespace BrodUI.Models
         /// <param name="terminal">bool you want to put in the config file (true if terminal is activated)</param>
         public static void SetTerminalToConfigFile(bool terminal)
         {
-            var settings = File.ReadAllLines(path);
+            string[] settings = File.ReadAllLines(path);
             settings[2] = $"Terminal={terminal}";
             File.WriteAllLines(path, settings);
         }
@@ -186,19 +180,19 @@ namespace BrodUI.Models
             switch (theme)
             {
                 case "Light":
-                    Wpf.Ui.Appearance.Theme.Apply(Wpf.Ui.Appearance.ThemeType.Light, Wpf.Ui.Appearance.BackgroundType.None);
+                    Theme.Apply(ThemeType.Light, BackgroundType.None);
                     break;
                 case "Dark":
-                    Wpf.Ui.Appearance.Theme.Apply(Wpf.Ui.Appearance.ThemeType.Dark, Wpf.Ui.Appearance.BackgroundType.None);
+                    Theme.Apply(ThemeType.Dark, BackgroundType.None);
                     break;
                 default:
                     // Get current theme from Windows 11
-                    var sysTheme = Wpf.Ui.Appearance.Theme.GetSystemTheme();
+                    SystemThemeType sysTheme = Theme.GetSystemTheme();
                     // Apply it
                     Wpf.Ui.Appearance.Theme.Apply(
-                        sysTheme == Wpf.Ui.Appearance.SystemThemeType.Light
-                            ? Wpf.Ui.Appearance.ThemeType.Light
-                            : Wpf.Ui.Appearance.ThemeType.Dark, Wpf.Ui.Appearance.BackgroundType.None);
+                        sysTheme == SystemThemeType.Light
+                            ? ThemeType.Light
+                            : ThemeType.Dark, BackgroundType.None);
                     break;
             }
         }

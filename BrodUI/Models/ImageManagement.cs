@@ -2,6 +2,7 @@
 using System.IO;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using Microsoft.Win32;
 using MessageBox = System.Windows.MessageBox;
 
 namespace BrodUI.Models
@@ -47,7 +48,7 @@ namespace BrodUI.Models
         /// </summary>
         public void LoadImage()
         {
-            var dialog = new Microsoft.Win32.OpenFileDialog
+            OpenFileDialog dialog = new()
             {
                 Filter = "Image files (*.png;*.jpeg;*.jpg;*.bmp;*.gif)|*.png;*.jpeg;*.jpg;*.bmp;*.gif|All files (*.*)|*.*"
             };
@@ -56,7 +57,7 @@ namespace BrodUI.Models
             {
                 // Get image size
                 Image = new BitmapImage();
-                var stream = File.OpenRead(dialog.FileName);
+                FileStream stream = File.OpenRead(dialog.FileName);
                 Image.BeginInit();
                 Image.CacheOption = BitmapCacheOption.OnLoad;
                 Image.StreamSource = stream;
@@ -78,15 +79,15 @@ namespace BrodUI.Models
         /// </summary>
         public void LoadImageFromTemp()
         {
-            var tempPath = Path.GetTempPath();
-            var tempFile = Path.Combine(tempPath, "BrodUI_CurentImage.png");
+            string tempPath = Path.GetTempPath();
+            string tempFile = Path.Combine(tempPath, "BrodUI_CurentImage.png");
             // Use FileStream to check if the file exists
             try
             {
-                using FileStream fs = new FileStream(tempFile, FileMode.Open, FileAccess.Read);
+                using FileStream fs = new (tempFile, FileMode.Open, FileAccess.Read);
                 // Get image size
                 Image = new BitmapImage();
-                var stream = File.OpenRead(tempFile);
+                FileStream stream = File.OpenRead(tempFile);
 
                 Image.BeginInit();
                 Image.CacheOption = BitmapCacheOption.OnLoad;
@@ -119,8 +120,8 @@ namespace BrodUI.Models
             Ratio = 1;
             Image = null;
             // if "BrodUI_CurentImage.png" exists in the temp folder, delete it
-            var tempPath = Path.GetTempPath();
-            var tempFile = Path.Combine(tempPath, "BrodUI_CurentImage.png");
+            string tempPath = Path.GetTempPath();
+            string tempFile = Path.Combine(tempPath, "BrodUI_CurentImage.png");
             GC.Collect();
             GC.WaitForPendingFinalizers();
             if (File.Exists(tempFile))
@@ -163,8 +164,8 @@ namespace BrodUI.Models
             }
 
             // Save image in temp folder
-            var tempPath = Path.GetTempPath();
-            var tempFile = Path.Combine(tempPath, "BrodUI_CurentImage.png");
+            string tempPath = Path.GetTempPath();
+            string tempFile = Path.Combine(tempPath, "BrodUI_CurentImage.png");
             GC.Collect();
             GC.WaitForPendingFinalizers();
             if (File.Exists(tempFile))

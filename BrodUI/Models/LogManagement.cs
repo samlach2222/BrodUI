@@ -28,7 +28,7 @@ namespace BrodUI.Models
         /// </summary>
         public static void CreateLogFileIfNotExists()
         {
-            var appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            string appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             // create the folder "BrodUI" in AppData if it doesn't exist
             if (!Directory.Exists(appData + "\\BrodUI"))
             {

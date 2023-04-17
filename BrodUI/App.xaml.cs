@@ -21,27 +21,27 @@ namespace BrodUI
     {
         // CONSOLE DISPLAY VARIABLES
         [DllImport("kernel32.dll")]
-        static extern IntPtr GetConsoleWindow();
+        private static extern IntPtr GetConsoleWindow();
         [DllImport("user32.dll")]
-        static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
+        private static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
         [DllImport("user32.dll")]
-        static extern bool SetForegroundWindow(IntPtr hWnd);
+        private static extern bool SetForegroundWindow(IntPtr hWnd);
         [DllImport("user32.dll")]
         private static extern IntPtr GetForegroundWindow();
         [DllImport("user32.dll")]
-        private static extern IntPtr SendMessage(IntPtr hWnd, UInt32 Msg, IntPtr wParam, IntPtr lParam);
-        const uint WM_CLOSE = 0x10;
-        const int SW_HIDE = 0;
-        const int SW_SHOW = 5;
-        private static bool showConsole = false;
-        private static IntPtr consoleWindow;
+        private static extern IntPtr SendMessage(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam);
+
+        private const uint WmClose = 0x10;
+        private const int SwHide = 0;
+        private static bool _showConsole = false;
+        private static IntPtr _consoleWindow;
 
         // The.NET Generic Host provides dependency injection, configuration, logging, and other services.
         // https://docs.microsoft.com/dotnet/core/extensions/generic-host
         // https://docs.microsoft.com/dotnet/core/extensions/dependency-injection
         // https://docs.microsoft.com/dotnet/core/extensions/configuration
         // https://docs.microsoft.com/dotnet/core/extensions/logging
-        private static readonly IHost _host = Host
+        private static readonly IHost Host = Microsoft.Extensions.Hosting.Host
             .CreateDefaultBuilder()
             .ConfigureAppConfiguration(c => { c.SetBasePath(Path.GetDirectoryName(Assembly.GetEntryAssembly()!.Location)); })
             .ConfigureServices((context, services) =>
@@ -84,10 +84,10 @@ namespace BrodUI
         /// </summary>
         /// <typeparam name="T">Type of the service to get.</typeparam>
         /// <returns>Instance of the service or <see langword="null"/>.</returns>
-        public static T GetService<T>()
+        public static T? GetService<T>()
             where T : class
         {
-            return _host.Services.GetService(typeof(T)) as T;
+            return Host.Services.GetService(typeof(T)) as T;
         }
 
         /// <summary>
@@ -102,7 +102,7 @@ namespace BrodUI
             Console.WriteLine(Assets.Languages.Resource.Terminal_ImportLogOk);
             Console.WriteLine("-------------------------------------------------------");
 
-            await _host.StartAsync();
+            await Host.StartAsync();
 
             // Create settings.cfg file if it doesn't exist with lines for each setting
             ConfigManagement.CreateConfigFileIfNotExists();
@@ -118,16 +118,16 @@ namespace BrodUI
         public static void ShowConsole()
         {
             ConfigManagement.CreateConfigFileIfNotExists();
-            showConsole = ConfigManagement.GetTerminalFromConfigFile();
+            _showConsole = ConfigManagement.GetTerminalFromConfigFile();
 
             // Because "Windows Terminal" have tabs, hiding the console directly doesn't work
             // Instead we set the console to the foreground, get the foreground window and hide it
             SetForegroundWindow(GetConsoleWindow());
-            consoleWindow = GetForegroundWindow(); // consoleWindow is needed when exiting the app
-            if (!showConsole)
+            _consoleWindow = GetForegroundWindow(); // consoleWindow is needed when exiting the app
+            if (!_showConsole)
             {
                 // Hide the console window, but don't close it (closing it would close the app)
-                ShowWindow(consoleWindow, SW_HIDE);
+                ShowWindow(_consoleWindow, SwHide);
             }
         }
 
@@ -137,11 +137,11 @@ namespace BrodUI
         private async void OnExit(object sender, ExitEventArgs e)
         {
             // Close the console window
-            SendMessage(consoleWindow, WM_CLOSE, IntPtr.Zero, IntPtr.Zero);
+            SendMessage(_consoleWindow, WmClose, IntPtr.Zero, IntPtr.Zero);
 
-            await _host.StopAsync();
+            await Host.StopAsync();
 
-            _host.Dispose();
+            Host.Dispose();
         }
 
         /// <summary>

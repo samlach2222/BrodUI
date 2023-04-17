@@ -4,6 +4,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System;
 using Wpf.Ui.Common.Interfaces;
+using Wpf.Ui.Controls.Interfaces;
 using Wpf.Ui.Mvvm.Contracts;
 using Application = System.Windows.Application;
 
@@ -45,7 +46,7 @@ namespace BrodUI.ViewModels
         [RelayCommand]
         public static void GoConvertPage()
         {
-            var navigationService = (Application.Current.MainWindow as INavigationWindow)?.GetNavigation(); // Get the navigation service from the window.
+            INavigation? navigationService = (Application.Current.MainWindow as INavigationWindow)?.GetNavigation(); // Get the navigation service from the window.
             if (navigationService != null)
             {
                 _ = navigationService.Navigate(typeof(ConvertPage)); // Navigate to the Convert page.
