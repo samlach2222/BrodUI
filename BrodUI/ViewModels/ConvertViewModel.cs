@@ -1,11 +1,11 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using BrodUI.Models;
+using BrodUI.Views.Pages;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Windows;
-using BrodUI.Models;
-using CommunityToolkit.Mvvm.Input;
+using System.Windows.Media.Imaging;
 using Wpf.Ui.Common.Interfaces;
-using BrodUI.Views.Pages;
-using Wpf.Ui.Controls;
 using Wpf.Ui.Mvvm.Contracts;
 using MessageBox = System.Windows.MessageBox;
 
@@ -21,16 +21,15 @@ namespace BrodUI.ViewModels
         private int _imageWidth = -1;
         private int _imageHeight = -1;
         private bool _ratioNotOk = true;
-        private Uri? _loadedImage = null;
+        private BitmapImage? _loadedImage = null;
 
         private ImageManagement Im { get; set; }
-        
-        public Uri? LoadedImage
+
+        public BitmapImage? LoadedImage
         {
             get { return _loadedImage; }
             set
             {
-                LogManagement.WriteToLog("[" + DateTime.Now.ToString() + "] " + Assets.Languages.Resource.Terminal_ImageLinkChanged + _loadedImage + Assets.Languages.Resource.Terminal_To + value);
                 _loadedImage = value;
                 // Disable the button
                 if (_loadedImage != null)
@@ -44,7 +43,7 @@ namespace BrodUI.ViewModels
                     IsImageLoaded = false;
                 }
 
-                Im.ImageLink = value;
+                Im.Image = value;
                 OnPropertyChanged();
             }
         }
@@ -91,13 +90,13 @@ namespace BrodUI.ViewModels
                     }
                     else
                     {
-                       MessageBox.Show("Width will be " + (int)(value / ratio) + ", but Width must be greater than 10");
+                        MessageBox.Show("Width will be " + (int)(value / ratio) + ", but Width must be greater than 10");
                     }
                 }
                 else
                 {
                     MessageBox.Show("Width must be greater than 10");
-                    
+
                 }
             }
         }
@@ -127,7 +126,7 @@ namespace BrodUI.ViewModels
                     {
                         MessageBox.Show("Width will be " + (int)(value * ratio) + ", but Width must be greater than 10");
                     }
-                    
+
                 }
                 else
                 {
@@ -157,6 +156,15 @@ namespace BrodUI.ViewModels
             {
                 Im = new ImageManagement();
             }
+
+            Im.LoadImageFromTemp();
+            if (Im.Image != null)
+            {
+                LoadedImage = Im.Image;
+                ratio = Im.Ratio;
+                ImageWidth = Im.ImageWidth;
+                ImageHeight = Im.ImageHeight;
+            }
         }
 
         [RelayCommand]
@@ -164,7 +172,7 @@ namespace BrodUI.ViewModels
         {
             // Open file dialog
             Im.LoadImage();
-            LoadedImage = Im.ImageLink;
+            LoadedImage = Im.Image;
             ratio = Im.Ratio;
             ImageWidth = Im.ImageWidth;
             ImageHeight = Im.ImageHeight;
@@ -174,7 +182,10 @@ namespace BrodUI.ViewModels
         private void RemoveImage()
         {
             LoadedImage = null;
+            _imageWidth = 0;
+            _imageHeight = 0;
             Im.UnloadImage();
+
         }
 
         [RelayCommand]

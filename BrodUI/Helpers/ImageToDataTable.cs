@@ -1,8 +1,6 @@
 ﻿using System.Data;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using BrodUI.Models;
 
 namespace BrodUI.Helpers
 {
@@ -27,8 +25,7 @@ namespace BrodUI.Helpers
                     byte b = pixels[index];
                     byte g = pixels[index + 1];
                     byte r = pixels[index + 2];
-                    byte a = pixels[index + 3];
-                    array[x, y] = new SolidColorBrush(Color.FromArgb(r, g, b, a));
+                    array[x, y] = new SolidColorBrush(Color.FromRgb(r, g, b));
                 }
             }
 

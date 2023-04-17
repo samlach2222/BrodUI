@@ -1,23 +1,8 @@
-﻿using System;
-using System.Data;
-using System.Data.Common;
-using System.Drawing;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
-using System.Windows.Data;
-using System.Windows.Media;
-using System.Windows.Threading;
-using BrodUI.Helpers;
+﻿using BrodUI.Helpers;
 using BrodUI.Models;
+using System.Data;
+using System.Windows.Controls;
 using Wpf.Ui.Common.Interfaces;
-using Wpf.Ui.Controls;
-using Brushes = System.Windows.Media.Brushes;
-using Color = System.Windows.Media.Color;
-using DataGrid = Wpf.Ui.Controls.DataGrid;
-using MessageBox = System.Windows.MessageBox;
-using System.Windows.Threading;
-using System.Threading.Tasks;
 
 namespace BrodUI.Views.Pages
 {
@@ -84,6 +69,7 @@ namespace BrodUI.Views.Pages
                 {
                     for (int i = 0; i < DgImage.Items.Count - 1; i++)
                     {
+                        // TODO : CRASH HERE, NO COLOR. 14 HOURS TO GET A CELL AND NOT BE ABLE TO CHANGE ITS COLOR...
                         var dataGridCellInfo = new DataGridCellInfo(
                             DgImage.Items[i], DgImage.Columns[j]);
                         var cell = DgImage

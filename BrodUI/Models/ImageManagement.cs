@@ -8,8 +8,6 @@ namespace BrodUI.Models
 {
     public class ImageManagement
     {
-        public Uri? ImageLink { get; set; }
-
         public BitmapImage Image { get; set; }
 
         public int ImageWidth { get; set; }
@@ -20,7 +18,7 @@ namespace BrodUI.Models
 
         public ImageManagement()
         {
-            ImageLink = null;
+            Image = null;
             ImageWidth = -1;
             ImageHeight = -1;
             Ratio = 1;
@@ -35,12 +33,15 @@ namespace BrodUI.Models
             bool ok = (bool)dialog.ShowDialog()!;
             if (ok)
             {
-                ImageLink = new Uri(dialog.FileName);
                 // Get image size
                 Image = new BitmapImage();
+                var stream = File.OpenRead(dialog.FileName);
                 Image.BeginInit();
-                Image.UriSource = ImageLink;
+                Image.CacheOption = BitmapCacheOption.OnLoad;
+                Image.StreamSource = stream;
                 Image.EndInit();
+                stream.Close();
+                stream.Dispose();
                 Ratio = (double)Image.PixelWidth / (double)Image.PixelHeight;
                 ImageWidth = Image.PixelWidth;
                 ImageHeight = Image.PixelHeight;
@@ -55,22 +56,32 @@ namespace BrodUI.Models
         {
             var tempPath = Path.GetTempPath();
             var tempFile = Path.Combine(tempPath, "BrodUI_CurentImage.png");
-            if (File.Exists(tempFile))
+            // Use filestream to check if the file exists
+            try
             {
-                ImageLink = new Uri(tempFile);
-                // Get image size
-                Image = new BitmapImage();
-                Image.BeginInit();
-                Image.UriSource = ImageLink;
-                Image.EndInit();
-                Ratio = (double)Image.PixelWidth / (double)Image.PixelHeight;
-                ImageWidth = Image.PixelWidth;
-                ImageHeight = Image.PixelHeight;
+                using (FileStream fs = new FileStream(tempFile, FileMode.Open, FileAccess.Read))
+                {
+                    // Get image size
+                    Image = new BitmapImage();
+                    var stream = File.OpenRead(tempFile);
+
+                    Image.BeginInit();
+                    Image.CacheOption = BitmapCacheOption.OnLoad;
+                    Image.StreamSource = stream;
+
+                    Image.EndInit();
+                    Image.Freeze();
+                    stream.Close();
+                    stream.Dispose();
+
+                    Ratio = (double)Image.PixelWidth / (double)Image.PixelHeight;
+                    ImageWidth = Image.PixelWidth;
+                    ImageHeight = Image.PixelHeight;
+                }
             }
-            else
+            catch (FileNotFoundException)
             {
-                ImageLink = null;
-                Image = new BitmapImage(); ;
+                Image = null;
                 ImageWidth = 0;
                 ImageHeight = 0;
             }
@@ -78,13 +89,15 @@ namespace BrodUI.Models
 
         public void UnloadImage()
         {
-            ImageLink = null;
             ImageWidth = 0;
             ImageHeight = 0;
             Ratio = 1;
+            Image = null;
             // if "BrodUI_CurentImage.png" exists in the temp folder, delete it
             var tempPath = Path.GetTempPath();
             var tempFile = Path.Combine(tempPath, "BrodUI_CurentImage.png");
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
             if (File.Exists(tempFile))
             {
                 File.Delete(tempFile);
@@ -93,10 +106,14 @@ namespace BrodUI.Models
 
         public void ResizeImage()
         {
-            // Change width and height of the image
+            BitmapImage old = Image;
+
             Image = new BitmapImage();
             Image.BeginInit();
-            Image.UriSource = ImageLink;
+            Image.StreamSource = new MemoryStream();
+            PngBitmapEncoder resizedImage = new PngBitmapEncoder();
+            resizedImage.Frames.Add(BitmapFrame.Create(old));
+            resizedImage.Save(Image.StreamSource);
             Image.DecodePixelWidth = ImageWidth;
             Image.DecodePixelHeight = ImageHeight;
             Image.EndInit();
@@ -114,20 +131,22 @@ namespace BrodUI.Models
                 Image.EndInit();
             }
 
-            // Save image in a temporary folder
-            var encoder = new PngBitmapEncoder();
-            encoder.Frames.Add(BitmapFrame.Create(Image));
+            // Save image in temp folder
             var tempPath = Path.GetTempPath();
             var tempFile = Path.Combine(tempPath, "BrodUI_CurentImage.png");
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
             if (File.Exists(tempFile))
             {
                 File.Delete(tempFile);
             }
-            using (var fileStream = File.Create(tempFile))
+            using (FileStream fs = new FileStream(tempFile, FileMode.Create, FileAccess.Write))
             {
-                encoder.Save(fileStream);
+                PngBitmapEncoder encoder = new PngBitmapEncoder();
+                encoder.Frames.Add(BitmapFrame.Create(Image));
+                encoder.Save(fs);
             }
-            Console.WriteLine("[" + DateTime.Now.ToString() + "] " + Assets.Languages.Resource.Terminal_ImageWidthAndHeight + " (" + ImageWidth + ImageHeight + ") " + Assets.Languages.Resource.Terminal_ImageSaveIn + tempFile);
+            Console.WriteLine("[" + DateTime.Now.ToString() + "] " + Assets.Languages.Resource.Terminal_ImageWidthAndHeight + " (" + ImageWidth + "x" + ImageHeight + ") " + Assets.Languages.Resource.Terminal_ImageSaveIn + tempFile);
         }
     }
 }

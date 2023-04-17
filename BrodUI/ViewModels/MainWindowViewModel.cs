@@ -1,14 +1,11 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using BrodUI.Models;
+using CommunityToolkit.Mvvm.ComponentModel;
 using System;
 using System.Collections.ObjectModel;
-using BrodUI.Models;
 using Wpf.Ui.Common;
 using Wpf.Ui.Controls;
 using Wpf.Ui.Controls.Interfaces;
 using Wpf.Ui.Mvvm.Contracts;
-using System.Globalization;
-using System.IO;
-using System.Threading;
 
 namespace BrodUI.ViewModels
 {
