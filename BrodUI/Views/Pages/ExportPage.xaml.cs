@@ -1,7 +1,4 @@
-﻿using BrodUI.Helpers;
-using BrodUI.Models;
-using System.Windows.Controls;
-using System.Windows.Media;
+﻿using BrodUI.Models;
 using Wpf.Ui.Common.Interfaces;
 
 namespace BrodUI.Views.Pages

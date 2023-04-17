@@ -11,23 +11,57 @@ using MessageBox = System.Windows.MessageBox;
 
 namespace BrodUI.ViewModels
 {
+    /// <summary>
+    /// ViewModel for the ConvertPage
+    /// </summary>
     public partial class ConvertViewModel : ObservableObject, INavigationAware
     {
-        private double ratio = 1;
+        /// <summary>
+        /// Ratio of the image
+        /// </summary>
+        private double _ratio = 1;
 
-        // Load Image Buttons Management PART
+        /// <summary>
+        /// Visibility of the button to choose an image
+        /// </summary>
         private string _isChooseImageButtonEnabled = "Visible";
+
+        /// <summary>
+        /// bool to know if an image is loaded
+        /// </summary>
         private bool _isImageLoaded = false;
+
+        /// <summary>
+        /// Width of the image
+        /// </summary>
         private int _imageWidth = -1;
+
+        /// <summary>
+        /// Height of the image
+        /// </summary>
         private int _imageHeight = -1;
+
+        /// <summary>
+        /// bool to know if the ratio is ok
+        /// </summary>
         private bool _ratioNotOk = true;
+
+        /// <summary>
+        /// Loaded image
+        /// </summary>
         private BitmapImage? _loadedImage = null;
 
-        private ImageManagement Im { get; set; }
+        /// <summary>
+        /// Image management class to manage the image
+        /// </summary>
+        private ImageManagement? Im { get; set; }
 
+        /// <summary>
+        /// Getter and setter for the loaded image that manage also the button visibility 
+        /// </summary>
         public BitmapImage? LoadedImage
         {
-            get { return _loadedImage; }
+            get => _loadedImage;
             set
             {
                 _loadedImage = value;
@@ -43,22 +77,33 @@ namespace BrodUI.ViewModels
                     IsImageLoaded = false;
                 }
 
-                Im.Image = value;
+                if (Im != null)
+                {
+                    Im.Image = value;
+                }
                 OnPropertyChanged();
             }
         }
+
+        /// <summary>
+        /// Getter and setter for the visibility of the button to choose an image
+        /// </summary>
         public string IsChooseImageButtonEnabled
         {
-            get { return _isChooseImageButtonEnabled; }
+            get => _isChooseImageButtonEnabled;
             set
             {
                 _isChooseImageButtonEnabled = value;
                 OnPropertyChanged();
             }
         }
+
+        /// <summary>
+        /// Getter and setter for the bool to know if an image is loaded
+        /// </summary>
         public bool IsImageLoaded
         {
-            get { return _isImageLoaded; }
+            get => _isImageLoaded;
             set
             {
                 _isImageLoaded = value;
@@ -67,22 +112,25 @@ namespace BrodUI.ViewModels
         }
 
         // TODO : FIND A WAY TO UPDATE THIS VALUE EACH TIME THERE IS A MODIFICATION ON NUMBER DISPLAY
+        /// <summary>
+        /// Getter and setter for the Width of the image that also manage the ratio and the min value for width and height
+        /// </summary>
         public int ImageWidth
         {
-            get { return _imageWidth; }
+            get => _imageWidth;
             set
             {
-                if (value > 10 || Im.ImageWidth == -1)
+                if (value > 10 || Im?.ImageWidth == -1)
                 {
-                    if ((int)(value / ratio) > 10 || Im.ImageWidth == -1)
+                    if (Im != null && ((int)(value / _ratio) > 10 || Im.ImageWidth == -1))
                     {
-                        LogManagement.WriteToLog("[" + DateTime.Now.ToString() + "] " + Assets.Languages.Resource.Terminal_WidthChanged + _imageWidth + Assets.Languages.Resource.Terminal_To + value);
+                        LogManagement.WriteToLog("[" + DateTime.Now + "] " + Assets.Languages.Resource.Terminal_WidthChanged + _imageWidth + Assets.Languages.Resource.Terminal_To + value);
                         _imageWidth = value;
                         // Set Height according to the ratio
                         if (_ratioNotOk)
                         {
                             _ratioNotOk = false;
-                            ImageHeight = (int)(value / ratio);
+                            ImageHeight = (int)(value / _ratio);
                             _ratioNotOk = true;
                         }
                         Im.ImageWidth = value;
@@ -90,7 +138,7 @@ namespace BrodUI.ViewModels
                     }
                     else
                     {
-                        MessageBox.Show("Width will be " + (int)(value / ratio) + ", but Width must be greater than 10");
+                        MessageBox.Show("Width will be " + (int)(value / _ratio) + ", but Width must be greater than 10");
                     }
                 }
                 else
@@ -101,22 +149,25 @@ namespace BrodUI.ViewModels
             }
         }
 
+        /// <summary>
+        /// Getter and setter for the Height of the image that also manage the ratio and the min value for width and height
+        /// </summary>
         public int ImageHeight
         {
-            get { return _imageHeight; }
+            get => _imageHeight;
             set
             {
-                if (value > 10 || Im.ImageHeight == -1)
+                if (Im != null && (value > 10 || Im.ImageHeight == -1))
                 {
-                    if ((int)(value * ratio) > 10 || Im.ImageHeight == -1)
+                    if ((int)(value * _ratio) > 10 || Im.ImageHeight == -1)
                     {
-                        LogManagement.WriteToLog("[" + DateTime.Now.ToString() + "] " + Assets.Languages.Resource.Terminal_HeightChanged + _imageWidth + Assets.Languages.Resource.Terminal_To + value);
+                        LogManagement.WriteToLog("[" + DateTime.Now + "] " + Assets.Languages.Resource.Terminal_HeightChanged + _imageWidth + Assets.Languages.Resource.Terminal_To + value);
                         _imageHeight = value;
                         // Set Width according to the ratio
                         if (_ratioNotOk)
                         {
                             _ratioNotOk = false;
-                            ImageWidth = (int)(value * ratio);
+                            ImageWidth = (int)(value * _ratio);
                             _ratioNotOk = true;
                         }
                         Im.ImageHeight = value;
@@ -124,7 +175,7 @@ namespace BrodUI.ViewModels
                     }
                     else
                     {
-                        MessageBox.Show("Width will be " + (int)(value * ratio) + ", but Width must be greater than 10");
+                        MessageBox.Show("Width will be " + (int)(value * _ratio) + ", but Width must be greater than 10");
                     }
 
                 }
@@ -134,60 +185,62 @@ namespace BrodUI.ViewModels
                 }
             }
         }
-        // Load Image Buttons Management PART END
 
-
-
+        /// <summary>
+        /// Function called when user navigate to this page. It initialize the view model and display a message in the terminal
+        /// </summary>
         public void OnNavigatedTo()
         {
-            LogManagement.WriteToLog("[" + DateTime.Now.ToString() + "] " + Assets.Languages.Resource.Terminal_ConvertPage);
+            LogManagement.WriteToLog("[" + DateTime.Now + "] " + Assets.Languages.Resource.Terminal_ConvertPage);
             InitializeViewModel();
         }
 
-        public void OnNavigatedFrom()
-        {
-
-        }
-
+        /// <summary>
+        /// Initialize the view model and load the image if there is one in the temp folder
+        /// </summary>
         private void InitializeViewModel()
         {
             // if not already initialized
-            if (Im == null)
-            {
-                Im = new ImageManagement();
-            }
+            Im ??= new ImageManagement();
 
             Im.LoadImageFromTemp();
-            if (Im.Image != null)
-            {
-                LoadedImage = Im.Image;
-                ratio = Im.Ratio;
-                ImageWidth = Im.ImageWidth;
-                ImageHeight = Im.ImageHeight;
-            }
-        }
-
-        [RelayCommand]
-        private void LoadImage()
-        {
-            // Open file dialog
-            Im.LoadImage();
+            if (Im.Image == null) return;
             LoadedImage = Im.Image;
-            ratio = Im.Ratio;
+            _ratio = Im.Ratio;
             ImageWidth = Im.ImageWidth;
             ImageHeight = Im.ImageHeight;
         }
 
+        /// <summary>
+        /// Function called when user click on the button to load an image from the file system
+        /// </summary>
+        [RelayCommand]
+        private void LoadImage()
+        {
+            // Open file dialog
+            Im?.LoadImage();
+            LoadedImage = Im.Image;
+            _ratio = Im.Ratio;
+            ImageWidth = Im.ImageWidth;
+            ImageHeight = Im.ImageHeight;
+        }
+
+        /// <summary>
+        /// Function called when user click on the button to remove the image
+        /// </summary>
         [RelayCommand]
         private void RemoveImage()
         {
             LoadedImage = null;
             _imageWidth = 0;
             _imageHeight = 0;
-            Im.UnloadImage();
+            Im?.UnloadImage();
 
         }
 
+        /// <summary>
+        /// Function called when user click on the button to convert the image. It also navigate to the Export page
+        /// </summary>
         [RelayCommand]
         private void ConvertImage()
         {
@@ -197,7 +250,16 @@ namespace BrodUI.ViewModels
             {
                 _ = navigationService.Navigate(typeof(ExportPage)); // Navigate to the Convert page.
             }
-            LogManagement.WriteToLog("[" + DateTime.Now.ToString() + "] " + Assets.Languages.Resource.Terminal_ImageConvertedOk);
+            LogManagement.WriteToLog("[" + DateTime.Now + "] " + Assets.Languages.Resource.Terminal_ImageConvertedOk);
+        }
+
+        /// <summary>
+        /// Function called when user click on the button to go back to the main page
+        /// </summary>
+        /// <exception cref="NotImplementedException">This method is not implemented because useless for the moment</exception>
+        public void OnNavigatedFrom()
+        {
+            throw new NotImplementedException();
         }
     }
 }

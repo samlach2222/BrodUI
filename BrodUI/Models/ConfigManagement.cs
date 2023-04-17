@@ -195,14 +195,10 @@ namespace BrodUI.Models
                     // Get current theme from Windows 11
                     var sysTheme = Wpf.Ui.Appearance.Theme.GetSystemTheme();
                     // Apply it
-                    if (sysTheme == Wpf.Ui.Appearance.SystemThemeType.Light)
-                    {
-                        Wpf.Ui.Appearance.Theme.Apply(Wpf.Ui.Appearance.ThemeType.Light, Wpf.Ui.Appearance.BackgroundType.None);
-                    }
-                    else
-                    {
-                        Wpf.Ui.Appearance.Theme.Apply(Wpf.Ui.Appearance.ThemeType.Dark, Wpf.Ui.Appearance.BackgroundType.None);
-                    }
+                    Wpf.Ui.Appearance.Theme.Apply(
+                        sysTheme == Wpf.Ui.Appearance.SystemThemeType.Light
+                            ? Wpf.Ui.Appearance.ThemeType.Light
+                            : Wpf.Ui.Appearance.ThemeType.Dark, Wpf.Ui.Appearance.BackgroundType.None);
                     break;
             }
         }

@@ -8,74 +8,29 @@ namespace BrodUI.Models
     public class Wire
     {
         /// <summary>
-        /// Color of the wire, RGB color who are used in the image
-        /// </summary>
-        private Brush _color;
-
-        /// <summary>
-        /// Number of the wire, DMC number, VàC number, etc.
-        /// </summary>
-        private int _number;
-
-        /// <summary>
-        /// Type of the wire, DMC, VàC, etc.
-        /// </summary>
-        private string _type;
-
-        /// <summary>
-        /// Name of the wire, DMC name, VàC name, etc.
-        /// </summary>
-        private string _name;
-
-        /// <summary>
-        /// Quantity of the wire
-        /// </summary>
-        private int _quantity;
-
-        /// <summary>
         /// Getter and setter of the color
         /// </summary>
-        public Brush Color
-        {
-            get { return _color; }
-            set { _color = value; }
-        }
+        public Brush Color { get; set; }
 
         /// <summary>
         /// Getter and setter of the number
         /// </summary>
-        public int Number
-        {
-            get { return _number; }
-            set { _number = value; }
-        }
+        public int Number { get; set; }
 
         /// <summary>
         /// Getter and setter of the type
         /// </summary>
-        public string Type
-        {
-            get { return _type; }
-            set { _type = value; }
-        }
+        public string Type { get; set; }
 
         /// <summary>
         /// Getter and setter of the name
         /// </summary>
-        public string Name
-        {
-            get { return _name; }
-            set { _name = value; }
-        }
+        public string Name { get; set; }
 
         /// <summary>
         /// Getter and setter of the quantity
         /// </summary>
-        public int Quantity
-        {
-            get { return _quantity; }
-            set { _quantity = value; }
-        }
+        public int Quantity { get; set; }
 
         /// <summary>
         /// Constructor of the class

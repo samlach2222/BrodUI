@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 
 namespace BrodUI.Models
 {
@@ -11,18 +12,15 @@ namespace BrodUI.Models
         /// <summary>
         /// Path of the log file
         /// </summary>
-        private static string _logPath;
+        private static string? _logPath;
 
         /// <summary>
         /// Getter and setter of the log file path
         /// </summary>
-        public static string LogPath
+        public static string? LogPath
         {
-            get { return _logPath; }
-            set
-            {
-                _logPath = value;
-            }
+            get => _logPath;
+            set => _logPath = value;
         }
 
         /// <summary>
@@ -38,12 +36,10 @@ namespace BrodUI.Models
             }
             // path combine with the file name
             LogPath = System.IO.Path.Combine(appData + "\\BrodUI", "terminal.log");
-            if (!File.Exists(LogPath))
-            {
-                // Create the file
-                FileStream newFile = File.Create(LogPath);
-                newFile.Close();
-            }
+            if (File.Exists(LogPath)) return;
+            // Create the file
+            FileStream newFile = File.Create(LogPath);
+            newFile.Close();
         }
 
         /// <summary>
@@ -53,10 +49,9 @@ namespace BrodUI.Models
         public static void WriteToLog(string text)
         {
             Console.WriteLine(text);
-            using (StreamWriter sw = File.AppendText(LogPath))
-            {
-                sw.WriteLine(text);
-            }
+            if (LogPath == null) return;
+            using StreamWriter sw = File.AppendText(LogPath);
+            sw.WriteLine(text);
         }
 
         /// <summary>
@@ -65,7 +60,10 @@ namespace BrodUI.Models
         public static void ClearLog()
         {
             // Delete the file
-            File.Delete(LogPath);
+            if (LogPath != null)
+            {
+                File.Delete(LogPath);
+            }
         }
 
         /// <summary>
@@ -73,12 +71,9 @@ namespace BrodUI.Models
         /// </summary>
         public static void WriteAllLogsInTerminal()
         {
+            if (LogPath == null) return;
             string[] lines = File.ReadAllLines(LogPath);
-            string text = "";
-            foreach (string line in lines)
-            {
-                text += line + Environment.NewLine;
-            }
+            string text = lines.Aggregate("", (current, line) => current + (line + Environment.NewLine));
             Console.WriteLine(text);
         }
     }

@@ -14,7 +14,7 @@ namespace BrodUI.Models
         /// <summary>
         /// Image used in the app
         /// </summary>
-        public BitmapImage Image { get; set; }
+        public BitmapImage? Image { get; set; }
 
         /// <summary>
         /// Width of the image
@@ -80,28 +80,26 @@ namespace BrodUI.Models
         {
             var tempPath = Path.GetTempPath();
             var tempFile = Path.Combine(tempPath, "BrodUI_CurentImage.png");
-            // Use filestream to check if the file exists
+            // Use FileStream to check if the file exists
             try
             {
-                using (FileStream fs = new FileStream(tempFile, FileMode.Open, FileAccess.Read))
-                {
-                    // Get image size
-                    Image = new BitmapImage();
-                    var stream = File.OpenRead(tempFile);
+                using FileStream fs = new FileStream(tempFile, FileMode.Open, FileAccess.Read);
+                // Get image size
+                Image = new BitmapImage();
+                var stream = File.OpenRead(tempFile);
 
-                    Image.BeginInit();
-                    Image.CacheOption = BitmapCacheOption.OnLoad;
-                    Image.StreamSource = stream;
+                Image.BeginInit();
+                Image.CacheOption = BitmapCacheOption.OnLoad;
+                Image.StreamSource = stream;
 
-                    Image.EndInit();
-                    Image.Freeze();
-                    stream.Close();
-                    stream.Dispose();
+                Image.EndInit();
+                Image.Freeze();
+                stream.Close();
+                stream.Dispose();
 
-                    Ratio = (double)Image.PixelWidth / (double)Image.PixelHeight;
-                    ImageWidth = Image.PixelWidth;
-                    ImageHeight = Image.PixelHeight;
-                }
+                Ratio = (double)Image.PixelWidth / (double)Image.PixelHeight;
+                ImageWidth = Image.PixelWidth;
+                ImageHeight = Image.PixelHeight;
             }
             catch (FileNotFoundException)
             {
@@ -136,13 +134,16 @@ namespace BrodUI.Models
         /// </summary>
         public void ResizeImage()
         {
-            BitmapImage old = Image;
+            BitmapImage? old = Image;
 
             Image = new BitmapImage();
             Image.BeginInit();
             Image.StreamSource = new MemoryStream();
-            PngBitmapEncoder resizedImage = new PngBitmapEncoder();
-            resizedImage.Frames.Add(BitmapFrame.Create(old));
+            PngBitmapEncoder resizedImage = new();
+            if (old != null)
+            {
+                resizedImage.Frames.Add(BitmapFrame.Create(old));
+            }
             resizedImage.Save(Image.StreamSource);
             Image.DecodePixelWidth = ImageWidth;
             Image.DecodePixelHeight = ImageHeight;
@@ -151,13 +152,13 @@ namespace BrodUI.Models
             // If image use a palette (indexed colors), convert it to BGRA
             if (Image.Palette != null)
             {
-                FormatConvertedBitmap ImageBGRA = new FormatConvertedBitmap(Image, PixelFormats.Bgra32, null, 0);
+                FormatConvertedBitmap imageBgra = new(Image, PixelFormats.Bgra32, null, 0);
                 Image = new BitmapImage();
                 Image.BeginInit();
                 Image.StreamSource = new MemoryStream();
-                PngBitmapEncoder encoderRGBA = new PngBitmapEncoder();
-                encoderRGBA.Frames.Add(BitmapFrame.Create(ImageBGRA));
-                encoderRGBA.Save(Image.StreamSource);
+                PngBitmapEncoder encoderRgba = new();
+                encoderRgba.Frames.Add(BitmapFrame.Create(imageBgra));
+                encoderRgba.Save(Image.StreamSource);
                 Image.EndInit();
             }
 
@@ -170,13 +171,13 @@ namespace BrodUI.Models
             {
                 File.Delete(tempFile);
             }
-            using (FileStream fs = new FileStream(tempFile, FileMode.Create, FileAccess.Write))
+            using (FileStream fs = new(tempFile, FileMode.Create, FileAccess.Write))
             {
-                PngBitmapEncoder encoder = new PngBitmapEncoder();
+                PngBitmapEncoder encoder = new();
                 encoder.Frames.Add(BitmapFrame.Create(Image));
                 encoder.Save(fs);
             }
-            Console.WriteLine("[" + DateTime.Now.ToString() + "] " + Assets.Languages.Resource.Terminal_ImageWidthAndHeight + " (" + ImageWidth + "x" + ImageHeight + ") " + Assets.Languages.Resource.Terminal_ImageSaveIn + tempFile);
+            Console.WriteLine("[" + DateTime.Now + "] " + Assets.Languages.Resource.Terminal_ImageWidthAndHeight + " (" + ImageWidth + "x" + ImageHeight + ") " + Assets.Languages.Resource.Terminal_ImageSaveIn + tempFile);
         }
     }
 }

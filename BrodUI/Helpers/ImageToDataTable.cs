@@ -1,5 +1,4 @@
-﻿using System.Data;
-using System.Windows.Media;
+﻿using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace BrodUI.Helpers
