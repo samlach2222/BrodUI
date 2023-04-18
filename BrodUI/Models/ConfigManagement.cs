@@ -14,7 +14,7 @@ namespace BrodUI.Models
         /// <summary>
         /// Path of the config file
         /// </summary>
-        private static string path;
+        private static string _path;
 
         /// <summary>
         /// Create the config file if it doesn't exist and set the default values who are :
@@ -32,10 +32,10 @@ namespace BrodUI.Models
                 Directory.CreateDirectory(appData + "\\BrodUI");
             }
             // path combine with the file name
-            path = Path.Combine(appData + "\\BrodUI", "settings.cfg");
-            if (!File.Exists(path))
+            _path = Path.Combine(appData + "\\BrodUI", "settings.cfg");
+            if (!File.Exists(_path))
             {
-                File.WriteAllText(path, "Theme=System\nLanguage=English\nTerminal=false");
+                File.WriteAllText(_path, "Theme=System\nLanguage=English\nTerminal=false\nEmbroiderySize=15");
             }
         }
 
@@ -44,7 +44,7 @@ namespace BrodUI.Models
         /// </summary>
         public static void DeleteConfigFile()
         {
-            File.Delete(path);
+            File.Delete(_path);
         }
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace BrodUI.Models
         /// </summary>
         public static void SetTheme()
         {
-            string[] settings = File.ReadAllLines(path);
+            string[] settings = File.ReadAllLines(_path);
             // Set theme
             switch (settings[0].Split('=')[1])
             {
@@ -80,7 +80,7 @@ namespace BrodUI.Models
         /// </summary>
         public static void SetLanguage()
         {
-            string[] settings = File.ReadAllLines(path);
+            string[] settings = File.ReadAllLines(_path);
             // Set language
             switch (settings[1].Split('=')[1])
             {
@@ -113,7 +113,7 @@ namespace BrodUI.Models
         /// <returns>string with the name of the theme in the config file</returns>
         public static string? GetThemeFromConfigFile()
         {
-            string[] settings = File.ReadAllLines(path);
+            string[] settings = File.ReadAllLines(_path);
             return settings[0].Split('=')[1];
         }
 
@@ -123,7 +123,7 @@ namespace BrodUI.Models
         /// <returns>string with the name of the language in the config file</returns>
         public static string? GetLanguageFromConfigFile()
         {
-            string[] settings = File.ReadAllLines(path);
+            string[] settings = File.ReadAllLines(_path);
             return settings[1].Split('=')[1];
         }
 
@@ -133,8 +133,18 @@ namespace BrodUI.Models
         /// <returns>bool which is true if the terminal is active, or false if not active in the config file</returns>
         public static bool GetTerminalFromConfigFile()
         {
-            string[] settings = File.ReadAllLines(path);
+            string[] settings = File.ReadAllLines(_path);
             return Convert.ToBoolean(settings[2].Split('=')[1]);
+        }
+
+        /// <summary>
+        /// Get the embroidery point size from the config file
+        /// </summary>
+        /// <returns>bool which is true if the terminal is active, or false if not active in the config file</returns>
+        public static string? GetEmbroiderySizeFromConfigFile()
+        {
+            string[] settings = File.ReadAllLines(_path);
+            return settings[3].Split('=')[1];
         }
 
         /// <summary>
@@ -144,9 +154,9 @@ namespace BrodUI.Models
         public static void SetThemeToConfigFile(string? theme)
         {
             // save the language in the file "settings.cfg" in the first row
-            string[] settings = File.ReadAllLines(path);
+            string[] settings = File.ReadAllLines(_path);
             settings[0] = $"Theme={theme}";
-            File.WriteAllLines(path, settings);
+            File.WriteAllLines(_path, settings);
         }
 
         /// <summary>
@@ -155,9 +165,9 @@ namespace BrodUI.Models
         /// <param name="language">language you want to put in the config file</param>
         public static void SetLanguageToConfigFile(string? language)
         {
-            string[] settings = File.ReadAllLines(path);
+            string[] settings = File.ReadAllLines(_path);
             settings[1] = $"Language={language}";
-            File.WriteAllLines(path, settings);
+            File.WriteAllLines(_path, settings);
         }
 
         /// <summary>
@@ -166,9 +176,20 @@ namespace BrodUI.Models
         /// <param name="terminal">bool you want to put in the config file (true if terminal is activated)</param>
         public static void SetTerminalToConfigFile(bool terminal)
         {
-            string[] settings = File.ReadAllLines(path);
+            string[] settings = File.ReadAllLines(_path);
             settings[2] = $"Terminal={terminal}";
-            File.WriteAllLines(path, settings);
+            File.WriteAllLines(_path, settings);
+        }
+
+        /// <summary>
+        /// Set the embroidery size in the config file
+        /// </summary>
+        /// <param name="embroiderySize">string you want to put in the config file</param>
+        public static void SetEmbroiderySizeToConfigFile(string embroiderySize)
+        {
+            string[] settings = File.ReadAllLines(_path);
+            settings[3] = $"EmbroiderySize={embroiderySize}";
+            File.WriteAllLines(_path, settings);
         }
 
         /// <summary>

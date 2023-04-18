@@ -1,10 +1,7 @@
-﻿using System;
+﻿using BrodUI.Models;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
-using BrodUI.Models;
 using Wpf.Ui.Common.Interfaces;
-using Wpf.Ui.Controls;
 using TextBox = Wpf.Ui.Controls.TextBox;
 
 namespace BrodUI.Views.Pages
@@ -28,26 +25,56 @@ namespace BrodUI.Views.Pages
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Method called when the user clicks the Down arrow on the Y Resolution TextBox
+        /// It decrements the Y resolution by 1
+        /// </summary>
+        /// <param name="sender">TextBox for the Y resolution</param>
+        /// <param name="e">Routed event args</param>
         private void YRes_OnDecremented(object sender, RoutedEventArgs e)
         {
             ViewModel.ImageHeight -= 1;
         }
 
+        /// <summary>
+        /// Method called when the user clicks the Up arrow on the Y Resolution TextBox
+        /// It increments the Y resolution by 1
+        /// </summary>
+        /// <param name="sender">TextBox for the Y resolution</param>
+        /// <param name="e">Routed event args</param>
         private void YRes_OnIncremented(object sender, RoutedEventArgs e)
         {
             ViewModel.ImageHeight += 1;
         }
 
+        /// <summary>
+        /// Method called when the user clicks the Up arrow on the X Resolution TextBox
+        /// It increments the X resolution by 1
+        /// </summary>
+        /// <param name="sender">TextBox for the Y resolution</param>
+        /// <param name="e">Routed event args</param>
         private void XRes_OnIncremented(object sender, RoutedEventArgs e)
         {
             ViewModel.ImageWidth += 1;
         }
 
+        /// <summary>
+        /// Method called when the user clicks the Down arrow on the X Resolution TextBox
+        /// It will decrease the value of the X resolution by 1
+        /// </summary>
+        /// <param name="sender">TextBox for the Y resolution</param>
+        /// <param name="e">Routed event args</param>
         private void XRes_OnDecremented(object sender, RoutedEventArgs e)
         {
             ViewModel.ImageHeight -= 1;
         }
 
+        /// <summary>
+        /// Method called when the user type anything in the Y Resolution TextBox
+        /// It will update the Y resolution value only if the value is greater than 10
+        /// </summary>
+        /// <param name="sender">TextBox for the Y resolution</param>
+        /// <param name="e">Routed event args</param>
         private void YRes_OnTextChanged(object sender, TextChangedEventArgs e)
         {
             TextBox textBox = (TextBox)sender;
@@ -61,6 +88,12 @@ namespace BrodUI.Views.Pages
             }
         }
 
+        /// <summary>
+        /// Method called when the user type anything in the X Resolution TextBox
+        /// It will update the X resolution value only if the value is greater than 10
+        /// </summary>
+        /// <param name="sender">TextBox for the X resolution</param>
+        /// <param name="e">Routed event args</param>
         private void XRes_OnTextChanged(object sender, TextChangedEventArgs e)
         {
             TextBox textBox = (TextBox)sender;

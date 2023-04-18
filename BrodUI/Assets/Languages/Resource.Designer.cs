@@ -286,6 +286,15 @@ namespace BrodUI.Assets.Languages {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Embroidery point Size.
+        /// </summary>
+        public static string Settings_LabelEmbroiderySize {
+            get {
+                return ResourceManager.GetString("Settings_LabelEmbroiderySize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Links.
         /// </summary>
         public static string Settings_LabelGitHubLinks {

@@ -88,7 +88,8 @@
                               Min="0" 
                               Margin="20,0,20,0"
                               Incremented="YRes_OnIncremented"
-                              Decremented="YRes_OnDecremented" TextChanged="YRes_OnTextChanged"/>
+                              Decremented="YRes_OnDecremented" 
+                              TextChanged="YRes_OnTextChanged"/>
             </Grid>
         </ui:Card>
 

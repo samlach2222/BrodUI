@@ -1,4 +1,6 @@
-﻿using BrodUI.Models;
+﻿using System.Windows;
+using System.Windows.Controls;
+using BrodUI.Models;
 using Wpf.Ui.Common.Interfaces;
 
 namespace BrodUI.Views.Pages
@@ -20,6 +22,36 @@ namespace BrodUI.Views.Pages
             ViewModel = viewModel;
 
             InitializeComponent();
+        }
+
+        private void EmbroiderySize_OnIncremented_OnIncremented(object sender, RoutedEventArgs e)
+        {
+            string es = ViewModel.CurEmbroiderySize;
+            int embroiderySize = int.Parse(es);
+            embroiderySize++;
+            ViewModel.CurEmbroiderySize = embroiderySize.ToString();
+        }
+
+        private void EmbroiderySize_OnDecremented(object sender, RoutedEventArgs e)
+        {
+            string es = ViewModel.CurEmbroiderySize;
+            int embroiderySize = int.Parse(es);
+            if (embroiderySize > 0)
+            {
+                embroiderySize--;
+            }
+            ViewModel.CurEmbroiderySize = embroiderySize.ToString();
+        }
+
+        private void EmbroiderySize_OnTextChanged(object sender, TextChangedEventArgs e)
+        {
+            string es = ViewModel.CurEmbroiderySize;
+            int embroiderySize = int.Parse(es);
+            if (embroiderySize < 0)
+            {
+                embroiderySize = 0;
+            }
+            ViewModel.CurEmbroiderySize = embroiderySize.ToString();
         }
     }
 }

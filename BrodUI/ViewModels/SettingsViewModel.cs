@@ -139,6 +139,25 @@ namespace BrodUI.ViewModels
         }
 
         /// <summary>
+        /// Size of the embroidery point
+        /// </summary>
+        private string _curEmbroiderySize;
+
+        /// <summary>
+        /// Get or set the embroidery size
+        /// </summary>
+        public string CurEmbroiderySize
+        {
+            get => _curEmbroiderySize;
+            set
+            {
+                ConfigManagement.SetEmbroiderySizeToConfigFile(value);
+                SetProperty(ref _curEmbroiderySize, value);
+            }
+                
+        }
+
+        /// <summary>
         /// Function to restart the application
         /// </summary>
         private static void RestartApp()
@@ -186,6 +205,7 @@ namespace BrodUI.ViewModels
             CurTheme = ConfigManagement.GetThemeFromConfigFile();
             CurLanguage = ConfigManagement.GetLanguageFromConfigFile();
             CurTerminal = ConfigManagement.GetTerminalFromConfigFile();
+            CurEmbroiderySize = ConfigManagement.GetEmbroiderySizeFromConfigFile();
             _initTerminalDone = true;
 
             _isInitialized = true;
@@ -198,8 +218,8 @@ namespace BrodUI.ViewModels
         private static void ResetParameters()
         {
             ConfigManagement.DeleteConfigFile();
-            ImageManagement IM = new ImageManagement();
-            IM.UnloadImage();
+            ImageManagement im = new();
+            im.UnloadImage();
             RestartApp();
         }
 

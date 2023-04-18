@@ -117,7 +117,6 @@ namespace BrodUI.ViewModels
             }
         }
 
-        // TODO : FIND A WAY TO UPDATE THIS VALUE EACH TIME THERE IS A MODIFICATION ON NUMBER DISPLAY
         /// <summary>
         /// Getter and setter for the Width of the image that also manage the ratio and the min value for width and height
         /// </summary>

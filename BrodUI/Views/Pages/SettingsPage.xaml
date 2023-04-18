@@ -56,6 +56,26 @@
                 IsChecked="{Binding ViewModel.CurTerminal}"
             />
         </ui:CardControl>
+
+        <!-- EMBROIDERY SIZE MANAGEMENT -->
+        <ui:CardControl x:Name="EmbroiderySizeCardControl" Margin="0,0,0,8" Icon="SlideSize24">
+            <ui:CardControl.Header>
+                    <TextBlock Text="{x:Static p:Resource.Settings_LabelEmbroiderySize}" />
+            </ui:CardControl.Header>
+                <ui:NumberBox x:Name="EmbroiderySize" 
+                              IntegersOnly="True" 
+                              Text="{Binding ViewModel.CurEmbroiderySize}" 
+                              DecimalPlaces="0" 
+                              ClearButtonEnabled="False"  
+                              VerticalAlignment="Center" 
+                              PlaceholderEnabled="False" 
+                              Min="0" 
+                              Incremented="EmbroiderySize_OnIncremented_OnIncremented"
+                              Decremented="EmbroiderySize_OnDecremented" 
+                              TextChanged="EmbroiderySize_OnTextChanged"/>
+        </ui:CardControl>
+
+            <!-- RESET CARD -->
         <ui:Card Margin="0,0,0,8">
             <Grid>
                 <Grid.ColumnDefinitions>

@@ -267,4 +267,7 @@
   <data name="ImageManagement_InvalidImageFile" xml:space="preserve">
     <value>Fichier image non valide</value>
   </data>
+  <data name="Settings_LabelEmbroiderySize" xml:space="preserve">
+    <value>Taille d'un point de broderie</value>
+  </data>
 </root>

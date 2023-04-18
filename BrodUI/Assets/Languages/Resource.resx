@@ -317,4 +317,8 @@
     <value>Invalid image file</value>
     <comment>Shown when cancelling the load image dialog</comment>
   </data>
+  <data name="Settings_LabelEmbroiderySize" xml:space="preserve">
+    <value>Embroidery point Size</value>
+    <comment>Label for Embroidery Size panel</comment>
+  </data>
 </root>
