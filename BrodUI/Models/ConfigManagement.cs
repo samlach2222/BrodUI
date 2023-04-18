@@ -40,7 +40,13 @@ namespace BrodUI.Models
                 // Get the language to use by default
                 String language = GetSystemLanguageOrDefault();
 
-                File.WriteAllText(_path, "Theme=System\nLanguage=" + language + "\nTerminal=false\nEmbroiderySize=15");
+                // Get whether we should activate the terminal by default
+                bool terminal = false;
+#if DEBUG
+                terminal = true;
+#endif
+
+                File.WriteAllText(_path, "Theme=System\nLanguage=" + language + "\nTerminal=" + terminal + "\nEmbroiderySize=15");
             }
         }
 
