@@ -1,6 +1,6 @@
-﻿using System.Windows;
+﻿using BrodUI.Models;
+using System.Windows;
 using System.Windows.Controls;
-using BrodUI.Models;
 using Wpf.Ui.Common.Interfaces;
 
 namespace BrodUI.Views.Pages

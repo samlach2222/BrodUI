@@ -154,7 +154,7 @@ namespace BrodUI.ViewModels
                 ConfigManagement.SetEmbroiderySizeToConfigFile(value);
                 SetProperty(ref _curEmbroiderySize, value);
             }
-                
+
         }
 
         /// <summary>

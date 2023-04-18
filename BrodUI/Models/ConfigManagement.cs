@@ -1,6 +1,8 @@
-﻿using System;
+﻿using BrodUI.Assets.Languages;
+using System;
 using System.Globalization;
 using System.IO;
+using System.Resources;
 using System.Threading;
 using Wpf.Ui.Appearance;
 
@@ -35,8 +37,40 @@ namespace BrodUI.Models
             _path = Path.Combine(appData + "\\BrodUI", "settings.cfg");
             if (!File.Exists(_path))
             {
-                File.WriteAllText(_path, "Theme=System\nLanguage=English\nTerminal=false\nEmbroiderySize=15");
+                // Get the language to use by default
+                String language = GetSystemLanguageOrDefault();
+
+                File.WriteAllText(_path, "Theme=System\nLanguage=" + language + "\nTerminal=false\nEmbroiderySize=15");
             }
+        }
+
+        /// <summary>
+        /// Get the name of the Windows display language, or English if the language is not supported
+        /// </summary>
+        /// <returns>Name of the language in its language (ex: Français, English), or English if not supported</returns>
+        private static string GetSystemLanguageOrDefault()
+        {
+            CultureInfo windowsLangage = CultureInfo.CurrentUICulture; // Get Windows display language
+            string twoLettersISO = windowsLangage.TwoLetterISOLanguageName.ToLower(); // Convert to two letters ISO (ex: en-US => en)
+            ResourceManager rm = new ResourceManager(typeof(Resource));
+
+            // For each language in all languages
+            CultureInfo[] cultures = CultureInfo.GetCultures(CultureTypes.AllCultures);
+            foreach (CultureInfo culture in cultures)
+            {
+                // If the language is supported in this app and correspond to the two letters ISO
+                // "Supported" means we have a .resx file for this specific language (if we have fr but not fr-FR, only fr is supported)
+                ResourceSet? rs = rm.GetResourceSet(culture, true, false);
+                if (rs != null && culture.TwoLetterISOLanguageName == twoLettersISO)
+                {
+                    string nativeName = culture.NativeName;
+
+                    // Some languages use capitalized languages and some don't, so we force it to be capitalized
+                    return string.Concat(nativeName[0].ToString().ToUpperInvariant(), nativeName.AsSpan(1));
+                }
+            }
+
+            return "English";
         }
 
         /// <summary>
@@ -84,24 +118,10 @@ namespace BrodUI.Models
             // Set language
             switch (settings[1].Split('=')[1])
             {
-                case "System":
-                    // Get system language
-                    string? language = CultureInfo.CurrentCulture.Name;
-                    // Set it
-                    switch (language)
-                    {
-                        case "fr":
-                            Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("fr");
-                            break;
-                        default:
-                            Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("en");
-                            break;
-                    }
-                    break;
                 case "English":
                     Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("en");
                     break;
-                case "French":
+                case "Français":
                     Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("fr");
                     break;
             }
