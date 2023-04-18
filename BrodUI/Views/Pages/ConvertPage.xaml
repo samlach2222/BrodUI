@@ -71,7 +71,10 @@
                               VerticalAlignment="Center" 
                               PlaceholderEnabled="False" 
                               Min="0" 
-                              Margin="20,0,20,0" />
+                              Margin="20,0,20,0" 
+                              Incremented="XRes_OnIncremented"
+                              Decremented="XRes_OnDecremented"
+                              TextChanged="XRes_OnTextChanged"/>
 
                 <Label Grid.Column="2" Grid.Row="0" Content="{x:Static p:Resource.Convert_LabelImageHeight}" Margin="20,0,20,0" HorizontalAlignment="Center"/>
                 <ui:NumberBox Grid.Column="2" Grid.Row="1" 
@@ -83,7 +86,9 @@
                               VerticalAlignment="Center" 
                               PlaceholderEnabled="False" 
                               Min="0" 
-                              Margin="20,0,20,0" />
+                              Margin="20,0,20,0"
+                              Incremented="YRes_OnIncremented"
+                              Decremented="YRes_OnDecremented" TextChanged="YRes_OnTextChanged"/>
             </Grid>
         </ui:Card>
 

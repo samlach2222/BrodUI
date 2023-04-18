@@ -60,7 +60,7 @@ namespace BrodUI.ViewModels
         /// <summary>
         /// Minimum value for width and height
         /// </summary>
-        private const int minimumWidthHeight = 10;
+        private const int MinimumWidthHeight = 10;
 
         /// <summary>
         /// Getter and setter for the loaded image that manage also the button visibility 
@@ -126,9 +126,9 @@ namespace BrodUI.ViewModels
             get => _imageWidth;
             set
             {
-                if (value > minimumWidthHeight || Im?.ImageWidth == -1)
+                if (value > MinimumWidthHeight || Im?.ImageWidth == -1)
                 {
-                    if (Im != null && ((int)(value / _ratio) > minimumWidthHeight || Im.ImageWidth == -1))
+                    if (Im != null && ((int)(value / _ratio) > MinimumWidthHeight || Im.ImageWidth == -1))
                     {
                         LogManagement.WriteToLog("[" + DateTime.Now + "] " + Assets.Languages.Resource.Terminal_WidthChanged + _imageWidth + Assets.Languages.Resource.Terminal_To + value);
                         _imageWidth = value;
@@ -145,12 +145,12 @@ namespace BrodUI.ViewModels
                     else
                     {
                         String badValue = ((int)(value / _ratio)).ToString();
-                        MessageBox.Show(String.Format(Assets.Languages.Resource.Convert_MinimumWidth_WithValue, badValue) + minimumWidthHeight);
+                        MessageBox.Show(String.Format(Assets.Languages.Resource.Convert_MinimumWidth_WithValue, badValue) + MinimumWidthHeight);
                     }
                 }
                 else
                 {
-                    MessageBox.Show(Assets.Languages.Resource.Convert_MinimumWidth + minimumWidthHeight);
+                    MessageBox.Show(Assets.Languages.Resource.Convert_MinimumWidth + MinimumWidthHeight);
 
                 }
             }
@@ -164,9 +164,9 @@ namespace BrodUI.ViewModels
             get => _imageHeight;
             set
             {
-                if (Im != null && (value > minimumWidthHeight || Im.ImageHeight == -1))
+                if (Im != null && (value > MinimumWidthHeight || Im.ImageHeight == -1))
                 {
-                    if ((int)(value * _ratio) > minimumWidthHeight || Im.ImageHeight == -1)
+                    if ((int)(value * _ratio) > MinimumWidthHeight || Im.ImageHeight == -1)
                     {
                         LogManagement.WriteToLog("[" + DateTime.Now + "] " + Assets.Languages.Resource.Terminal_HeightChanged + _imageWidth + Assets.Languages.Resource.Terminal_To + value);
                         _imageHeight = value;
@@ -183,13 +183,13 @@ namespace BrodUI.ViewModels
                     else
                     {
                         String badValue = ((int)(value * _ratio)).ToString();
-                        MessageBox.Show(String.Format(Assets.Languages.Resource.Convert_MinimumHeight_WithValue, badValue) + minimumWidthHeight);
+                        MessageBox.Show(String.Format(Assets.Languages.Resource.Convert_MinimumHeight_WithValue, badValue) + MinimumWidthHeight);
                     }
 
                 }
                 else
                 {
-                    MessageBox.Show(Assets.Languages.Resource.Convert_MinimumHeight + minimumWidthHeight);
+                    MessageBox.Show(Assets.Languages.Resource.Convert_MinimumHeight + MinimumWidthHeight);
                 }
             }
         }
@@ -227,7 +227,8 @@ namespace BrodUI.ViewModels
         {
             // Open file dialog
             Im?.LoadImageDialog();
-            LoadedImage = Im.Image;
+            LoadedImage = Im?.Image;
+            if (Im == null) return;
             _ratio = Im.Ratio;
             ImageWidth = Im.ImageWidth;
             ImageHeight = Im.ImageHeight;
@@ -259,6 +260,29 @@ namespace BrodUI.ViewModels
                 _ = navigationService.Navigate(typeof(ExportPage)); // Navigate to the Convert page.
             }
             LogManagement.WriteToLog("[" + DateTime.Now + "] " + Assets.Languages.Resource.Terminal_ImageConvertedOk);
+        }
+
+        [RelayCommand]
+        private void IncrementWidth()
+        {
+            MessageBox.Show("Increment Width");
+        }
+
+        [RelayCommand]
+        private void DecrementWidth()
+        {
+            MessageBox.Show("Decrement Width");
+        }
+        [RelayCommand]
+        private void IncrementHeight()
+        {
+            MessageBox.Show("Increment Height");
+        }
+
+        [RelayCommand]
+        private void DecrementHeight()
+        {
+            MessageBox.Show("Decrement Height");
         }
 
         /// <summary>
