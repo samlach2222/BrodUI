@@ -1,4 +1,6 @@
-﻿using Wpf.Ui.Common.Interfaces;
+﻿using BrodUI.Helpers;
+using System;
+using Wpf.Ui.Common.Interfaces;
 
 namespace BrodUI.Views.Pages
 {
@@ -17,6 +19,7 @@ namespace BrodUI.Views.Pages
             ViewModel = viewModel;
 
             InitializeComponent();
+            RGBToDMC rGBToDMC = new RGBToDMC();
         }
     }
 }
