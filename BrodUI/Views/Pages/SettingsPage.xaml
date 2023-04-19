@@ -120,6 +120,10 @@
             Content="wpfui"
             Icon="Link24"
             NavigateUri="https://github.com/lepoco/wpfui" />
-    </StackPanel>
+        <ui:Hyperlink 
+            Content="itext7 "
+            Icon="Link24"
+            NavigateUri="https://github.com/itext/itext7-dotnet" />
+        </StackPanel>
     </ScrollViewer>
 </ui:UiPage>
