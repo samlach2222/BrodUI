@@ -2,6 +2,7 @@ using BrodUI.Helpers;
 using BrodUI.Models;
 using BrodUI.Views.Pages;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +21,7 @@ namespace BrodUI.ViewModels
     /// <summary>
     /// ViewModel for the ExportPage
     /// </summary>
-    public class ExportViewModel : ObservableObject, INavigationAware
+    public partial class ExportViewModel : ObservableObject, INavigationAware
     {
         /// <summary>
         /// Image loaded
@@ -201,21 +202,21 @@ namespace BrodUI.ViewModels
                         double borderTop = 0.5;
                         const double borderBottom = 0.5;
 
-                        if(j%5 == 0)
+                        if (j % 5 == 0)
                         {
-                            borderLeft+=1;
+                            borderLeft += 1;
                         }
-                        if(j%10 == 0)
+                        if (j % 10 == 0)
                         {
-                            borderLeft+=1;
+                            borderLeft += 1;
                         }
-                        if (i%5 == 0)
+                        if (i % 5 == 0)
                         {
-                            borderTop+=1;
+                            borderTop += 1;
                         }
-                        if (i%10 == 0)
+                        if (i % 10 == 0)
                         {
-                            borderTop+=1;
+                            borderTop += 1;
                         }
                         border.BorderThickness = new Thickness(borderLeft, borderTop, borderRight, borderBottom);
                         border.Child = rect;
@@ -265,6 +266,12 @@ namespace BrodUI.ViewModels
         public void OnNavigatedFrom()
         {
 
+        }
+
+        [RelayCommand]
+        private void ExportToPdf()
+        {
+            PdfManagement pdf = new PdfManagement();
         }
     }
 }

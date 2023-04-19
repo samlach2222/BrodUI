@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BrodUI.Helpers
 {
@@ -13,7 +9,7 @@ namespace BrodUI.Helpers
     internal class RGBToDMC
     {
         //array for DMC colors 0 = R, 1 = G, 2 = B, 3 = DMC
-        int[,] DMC = new int[500,4];
+        int[,] DMC = new int[500, 4];
         int nbDMC = 0;
 
         private void initialisation()
@@ -27,17 +23,17 @@ namespace BrodUI.Helpers
                 string nb = "";
                 int etat = 3;
                 int nbS = 0;
-                while (line!= null)
+                while (line != null)
                 {
                     for (int i = 0; i < line.Length; i++)
                     {
-                        if (line[i]==' ')
+                        if (line[i] == ' ')
                         {
-                            nbS=int.Parse(nb);
+                            nbS = int.Parse(nb);
                             if (etat == 0)
                             {
-                                DMC[comp,0]= nbS;
-                                etat=1;
+                                DMC[comp, 0] = nbS;
+                                etat = 1;
                             }
                             else
                             {
@@ -81,9 +77,9 @@ namespace BrodUI.Helpers
         {
             initialisation();
             string s = "";
-            for(int i = 0;i < nbDMC; i++)
+            for (int i = 0; i < nbDMC; i++)
             {
-                s="DMC:"+ DMC[i,3]+" R:"+DMC[i,0]+" G:"+DMC[i,1]+" B:"+DMC[i,2];
+                s = "DMC:" + DMC[i, 3] + " R:" + DMC[i, 0] + " G:" + DMC[i, 1] + " B:" + DMC[i, 2];
                 Console.WriteLine(s);
             }
         }

@@ -86,6 +86,7 @@
         <ui:Button Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" 
                        Name="ConvertButton" 
                        Content="{x:Static p:Resource.Export_ExportToPdfButton}"
+                       Command="{Binding ViewModel.ExportToPdfCommand}"
                        Icon="ArrowExportLtr24"
                        />
     </Grid>
