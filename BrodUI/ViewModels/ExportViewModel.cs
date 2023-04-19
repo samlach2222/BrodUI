@@ -133,7 +133,6 @@ namespace BrodUI.ViewModels
                     {
                         count++;
                         // TEMP LOADING OF WIRE ARRAY TODO : CHANGE TO PROGRESS BAR OR PROGRESS WHEEL
-                        Console.WriteLine(count + "/" + width * height);
 
                         bool found = false;
                         foreach (Wire? wire in from wire in WireArray let color1 = ((SolidColorBrush)wireTable[i, j]).Color let color2 = ((SolidColorBrush)wire.Color).Color where color1 == color2 select wire)
@@ -189,8 +188,6 @@ namespace BrodUI.ViewModels
                         Rectangle rect = new()
                         {
                             Fill = wireTable[j, i],
-                            //Stroke = new SolidColorBrush(Colors.Black),
-                            //StrokeThickness = 1,
                         };
                         Border border = new()
                         {
