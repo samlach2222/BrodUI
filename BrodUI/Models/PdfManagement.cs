@@ -1,24 +1,36 @@
 ﻿using iText.IO.Font.Constants;
 using iText.IO.Image;
+using iText.Kernel.Colors;
 using iText.Kernel.Font;
 using iText.Kernel.Pdf;
 using iText.Kernel.Pdf.Canvas;
+using iText.Layout.Borders;
+using iText.Layout.Element;
+using iText.Layout.Properties;
 using Microsoft.Win32;
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using Canvas = iText.Layout.Canvas;
+using File = System.IO.File;
 using Path = System.IO.Path;
+using Rectangle = iText.Kernel.Geom.Rectangle;
 
 namespace BrodUI.Models
 {
     public class PdfManagement
     {
-        public string? PdfPath { get; set; }
+        private string? PdfPath { get; set; }
 
-        public PdfDocument? Document { get; set; }
+        private PdfDocument? Document { get; set; }
 
-        public PdfManagement()
+        private List<Wire> WiresList { get; set; }
+
+        public PdfManagement(List<Wire> wiresList)
         {
+            WiresList = wiresList;
             UserChooseWhereToSaveThePdfFile();
         }
 
@@ -30,8 +42,9 @@ namespace BrodUI.Models
             Document.AddNewPage();
             Document.AddNewPage();
 
-            // Create the first page
+            // Create pages
             CreateFirstPage();
+            CreateSecondPage();
             InsertFooter();
 
             // Close the document
@@ -103,23 +116,27 @@ namespace BrodUI.Models
 
             PdfCanvas titleCanvas = new(page);
             // Get the title of the PDF file
-            string[] temp = PdfPath.Split('\\');
-            string title = temp[^1].Split('.')[0];
-            // Get the font
-            PdfFont font = PdfFontFactory.CreateFont(StandardFonts.HELVETICA_BOLD);
-            // Get the size of the font
-            float fontSize = 40;
-            // Get the width of the title
-            float titleWidth = font.GetWidth(title, fontSize);
-            // Get the position of the title
-            float titleX = (page.GetPageSize().GetWidth() - titleWidth) / 2;
-            float titleY = page.GetPageSize().GetHeight() - (page.GetPageSize().GetHeight() / 9);
-            // Display the title
-            titleCanvas.BeginText()
-                .SetFontAndSize(font, fontSize)
-                .MoveText(titleX, titleY)
-                .ShowText(title)
-                .EndText();
+            if (PdfPath != null)
+            {
+                string[] temp = PdfPath.Split('\\');
+                string title = temp[^1].Split('.')[0];
+                // Get the font
+                PdfFont font = PdfFontFactory.CreateFont(StandardFonts.HELVETICA_BOLD);
+                // Get the size of the font
+                float fontSize = 40;
+                // Get the width of the title
+                float titleWidth = font.GetWidth(title, fontSize);
+                // Get the position of the title
+                float titleX = (page.GetPageSize().GetWidth() - titleWidth) / 2;
+                float titleY = page.GetPageSize().GetHeight() - (page.GetPageSize().GetHeight() / 9);
+                // Display the title
+                titleCanvas.BeginText()
+                    .SetFontAndSize(font, fontSize)
+                    .MoveText(titleX, titleY)
+                    .ShowText(title)
+                    .EndText();
+            }
+
             titleCanvas.Release();
 
             // ------------------------ //
@@ -228,6 +245,143 @@ namespace BrodUI.Models
                 File.Delete(tempFile);
             }
             imgCanvas.Release();
+        }
+
+        private void CreateSecondPage()
+        {
+            // Get the second page
+            PdfPage page = Document!.GetPage(2);
+
+            // ------------------------ //
+            //     TITLE OF THE PAGE    //
+            // ------------------------ //
+
+            PdfCanvas titleCanvas = new(page);
+            const string title = "List of wires";
+            // Get the font
+            PdfFont font = PdfFontFactory.CreateFont(StandardFonts.HELVETICA_BOLD);
+            // Get the size of the font
+            const float fontSize = 30;
+            // Get the width of the title
+            float titleWidth = font.GetWidth(title, fontSize);
+            // Get the position of the title
+            float titleX = (page.GetPageSize().GetWidth() - titleWidth) / 2;
+            float titleY = page.GetPageSize().GetHeight() - (page.GetPageSize().GetHeight() / 7);
+            // Display the title
+            titleCanvas.BeginText()
+                .SetFontAndSize(font, fontSize)
+                .MoveText(titleX, titleY)
+                .ShowText(title)
+                .EndText();
+            titleCanvas.Release();
+
+            // ------------------------ //
+            //       TABLE OF WIRES     //
+            // ------------------------ //
+            // Add  table to the canvas
+            Table table = new(5);
+            table.SetWidth(UnitValue.CreatePercentValue(100));
+            table.SetHorizontalAlignment(HorizontalAlignment.CENTER);
+            table.SetVerticalAlignment(VerticalAlignment.MIDDLE);
+            // Add the header for the 5 columns
+            Cell headerColor = new();
+            headerColor.Add(new Paragraph("Color"));
+            headerColor.SetHorizontalAlignment(HorizontalAlignment.CENTER);
+            headerColor.SetVerticalAlignment(VerticalAlignment.MIDDLE);
+            headerColor.SetTextAlignment(TextAlignment.CENTER);
+            headerColor.SetBackgroundColor(ColorConstants.LIGHT_GRAY);
+            table.AddHeaderCell(headerColor);
+
+            Cell headerNumber = new();
+            headerNumber.Add(new Paragraph("Number"));
+            headerNumber.SetHorizontalAlignment(HorizontalAlignment.CENTER);
+            headerNumber.SetVerticalAlignment(VerticalAlignment.MIDDLE);
+            headerNumber.SetTextAlignment(TextAlignment.CENTER);
+            headerNumber.SetBackgroundColor(ColorConstants.LIGHT_GRAY);
+            table.AddHeaderCell(headerNumber);
+
+            Cell headerType = new();
+            headerType.Add(new Paragraph("Type"));
+            headerType.SetHorizontalAlignment(HorizontalAlignment.CENTER);
+            headerType.SetVerticalAlignment(VerticalAlignment.MIDDLE);
+            headerType.SetTextAlignment(TextAlignment.CENTER);
+            headerType.SetBackgroundColor(ColorConstants.LIGHT_GRAY);
+            table.AddHeaderCell(headerType);
+
+            Cell headerName = new();
+            headerName.Add(new Paragraph("Name"));
+            headerName.SetHorizontalAlignment(HorizontalAlignment.CENTER);
+            headerName.SetVerticalAlignment(VerticalAlignment.MIDDLE);
+            headerName.SetTextAlignment(TextAlignment.CENTER);
+            headerName.SetBackgroundColor(ColorConstants.LIGHT_GRAY);
+            table.AddHeaderCell(headerName);
+
+            Cell headerQuantity = new();
+            headerQuantity.Add(new Paragraph("Quantity"));
+            headerQuantity.SetHorizontalAlignment(HorizontalAlignment.CENTER);
+            headerQuantity.SetVerticalAlignment(VerticalAlignment.MIDDLE);
+            headerQuantity.SetTextAlignment(TextAlignment.CENTER);
+            headerQuantity.SetBackgroundColor(ColorConstants.LIGHT_GRAY);
+            table.AddHeaderCell(headerQuantity);
+
+            // Add the data for each wire
+            foreach (Wire wire in WiresList)
+            {
+                // Convert Color
+                BrushConverter converter = new();
+                SolidColorBrush brush = (SolidColorBrush)converter.ConvertFromString(wire.Color.ToString())!;
+                iText.Kernel.Colors.Color color = new DeviceRgb(brush.Color.R, brush.Color.G, brush.Color.B);
+
+                Div rectangle = new Div()
+                    .SetHeight(15)
+                    .SetWidth(15)
+                    .SetBackgroundColor(color)
+                    .SetBorder(new SolidBorder(ColorConstants.BLACK, 1));
+
+                Cell colorCell = new();
+                colorCell.Add(rectangle);
+                colorCell.SetHorizontalAlignment(HorizontalAlignment.CENTER);
+                colorCell.SetVerticalAlignment(VerticalAlignment.MIDDLE);
+                colorCell.SetTextAlignment(TextAlignment.CENTER);
+                table.AddCell(colorCell);
+
+                Cell numberCell = new();
+                numberCell.Add(new Paragraph(wire.Number.ToString()));
+                numberCell.SetHorizontalAlignment(HorizontalAlignment.CENTER);
+                numberCell.SetVerticalAlignment(VerticalAlignment.MIDDLE);
+                numberCell.SetTextAlignment(TextAlignment.CENTER);
+                table.AddCell(numberCell);
+
+                Cell typeCell = new();
+                typeCell.Add(new Paragraph(wire.Type));
+                typeCell.SetHorizontalAlignment(HorizontalAlignment.CENTER);
+                typeCell.SetVerticalAlignment(VerticalAlignment.MIDDLE);
+                typeCell.SetTextAlignment(TextAlignment.CENTER);
+                table.AddCell(typeCell);
+
+                Cell nameCell = new();
+                nameCell.Add(new Paragraph(wire.Name));
+                nameCell.SetHorizontalAlignment(HorizontalAlignment.CENTER);
+                nameCell.SetVerticalAlignment(VerticalAlignment.MIDDLE);
+                nameCell.SetTextAlignment(TextAlignment.CENTER);
+                table.AddCell(nameCell);
+
+                Cell quantityCell = new();
+                quantityCell.Add(new Paragraph(wire.Quantity.ToString()));
+                quantityCell.SetHorizontalAlignment(HorizontalAlignment.CENTER);
+                quantityCell.SetVerticalAlignment(VerticalAlignment.MIDDLE);
+                quantityCell.SetTextAlignment(TextAlignment.CENTER);
+                table.AddCell(quantityCell);
+            }
+
+            PdfCanvas tableCanvas = new(Document.GetPage(2));
+            Rectangle canvasArea = new(20, 40, page.GetPageSize().GetWidth() - 40, page.GetPageSize().GetHeight() * 6 / 8);
+            Canvas canvas = new(tableCanvas, canvasArea);
+            canvas.Add(table); ;
+            canvas.Close();
+
+            // Add the table to the canvas 
+            tableCanvas.Release();
         }
     }
 

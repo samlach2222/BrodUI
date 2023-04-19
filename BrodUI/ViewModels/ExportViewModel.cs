@@ -126,7 +126,7 @@ namespace BrodUI.ViewModels
                 int count = 0;
                 int imageSize = width * height;
 
-                LogManagement.WriteToLog("[" + DateTime.Now.ToString() + "] " + Assets.Languages.Resource.Export_ConvertToCrossStitchEmbroidery);
+                LogManagement.WriteToLog("[" + DateTime.Now + "] " + Assets.Languages.Resource.Export_ConvertToCrossStitchEmbroidery);
                 for (int i = 0; i < width; i++)
                 {
                     for (int j = 0; j < height; j++)
@@ -268,7 +268,7 @@ namespace BrodUI.ViewModels
         [RelayCommand]
         private void ExportToPdf()
         {
-            PdfManagement pdf = new PdfManagement();
+            PdfManagement pdf = new PdfManagement(WireArray);
         }
     }
 }
