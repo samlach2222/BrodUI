@@ -188,12 +188,41 @@ namespace BrodUI.ViewModels
                         Rectangle rect = new()
                         {
                             Fill = wireTable[j, i],
-                            Stroke = new SolidColorBrush(Colors.Black),
-                            StrokeThickness = 1
+                            //Stroke = new SolidColorBrush(Colors.Black),
+                            //StrokeThickness = 1,
                         };
-                        Grid.SetRow(rect, i);
-                        Grid.SetColumn(rect, j);
-                        GridImage.Children.Add(rect);
+                        Border border = new()
+                        {
+                            BorderBrush = new SolidColorBrush(Colors.Black)
+                        };
+
+                        double borderLeft = 0.5;
+                        const double borderRight = 0.5;
+                        double borderTop = 0.5;
+                        const double borderBottom = 0.5;
+
+                        if(j%5 == 0)
+                        {
+                            borderLeft+=1;
+                        }
+                        if(j%10 == 0)
+                        {
+                            borderLeft+=1;
+                        }
+                        if (i%5 == 0)
+                        {
+                            borderTop+=1;
+                        }
+                        if (i%10 == 0)
+                        {
+                            borderTop+=1;
+                        }
+                        border.BorderThickness = new Thickness(borderLeft, borderTop, borderRight, borderBottom);
+                        border.Child = rect;
+
+                        Grid.SetRow(border, i);
+                        Grid.SetColumn(border, j);
+                        GridImage.Children.Add(border);
                     }
                 }
             }
