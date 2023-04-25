@@ -14,7 +14,7 @@ namespace BrodUI.Helpers
 
         private void initialisation()
         {
-            StreamReader sr = new StreamReader("DMC.txt");
+            StreamReader sr = new StreamReader("./Assets/DMC.txt");
             int comp = 0;
             if (sr != null)
             {
