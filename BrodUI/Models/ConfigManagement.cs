@@ -57,7 +57,7 @@ namespace BrodUI.Models
         private static string GetSystemLanguageOrDefault()
         {
             CultureInfo windowsLangage = CultureInfo.CurrentUICulture; // Get Windows display language
-            string twoLettersISO = windowsLangage.TwoLetterISOLanguageName.ToLower(); // Convert to two letters ISO (ex: en-US => en)
+            string twoLettersIso = windowsLangage.TwoLetterISOLanguageName.ToLower(); // Convert to two letters ISO (ex: en-US => en)
             ResourceManager rm = new ResourceManager(typeof(Resource));
 
             // For each language in all languages
@@ -67,7 +67,7 @@ namespace BrodUI.Models
                 // If the language is supported in this app and correspond to the two letters ISO
                 // "Supported" means we have a .resx file for this specific language (if we have fr but not fr-FR, only fr is supported)
                 ResourceSet? rs = rm.GetResourceSet(culture, true, false);
-                if (rs != null && culture.TwoLetterISOLanguageName == twoLettersISO)
+                if (rs != null && culture.TwoLetterISOLanguageName == twoLettersIso)
                 {
                     string nativeName = culture.NativeName;
 

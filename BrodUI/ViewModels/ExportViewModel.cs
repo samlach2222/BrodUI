@@ -115,7 +115,6 @@ namespace BrodUI.ViewModels
             }
             else
             {
-                // HERE IS TEMPLATE VALUES
                 int width = Im.ImageWidth;
                 int height = Im.ImageHeight;
                 BitmapImage? img = Im.Image;

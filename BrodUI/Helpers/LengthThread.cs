@@ -1,70 +1,78 @@
 using System;
-using System.IO;
 
 
-//les longueurs sont calculées en centimètres
-//un carré fait une taille de 0.5x0.5 cm
+// Length are calculated in cm
+// A square is 0.5cm x 0.5cm
 
 namespace BrodUI.Helpers
 {
-    internal class LengthThread 
+    internal class LengthThread
     {
-        //longueur totale de fil nécessaire
-		private double longueur_tot;
+        /// <summary>
+        /// Length of yarn needed to make a knot at the beginning and at the end of the yarn use
+        /// </summary>
+        private const double Knot = 2;
 
-        //longueur de fil nécessaire pour réaliser un noeud au début et à la fin de l'utilisation du fil
-        private double knot = 2;
-        public double square = Math.Sqrt(0.5);
-        //longueur de fil nécessaire pour réaliser une croix
-        private double cross;
+        /// <summary>
+        /// TODO : MISSING DOCUMENTATION
+        /// </summary>
+        public double Square = Math.Sqrt(0.5);
 
+        /// <summary>
+        /// Length of wire needed to make a cross
+        /// </summary>
+        private double Cross { get; set; }
 
-        
+        /// <summary>
+        /// Total length of the thread
+        /// </summary>
+        public double TotalLength { get; set; }
 
-        public double Longueur_tot
-        {
-            get { return longueur_tot; }
-            set { longueur_tot = value; }
-        }
-
+        /// <summary>
+        /// TODO : MISSING DOCUMENTATION
+        /// </summary>
+        /// <param name="color">TODO : MISSING DOCUMENTATION</param>
+        /// <param name="image">TODO : MISSING DOCUMENTATION</param>
         public LengthThread(int color, int[,] image)
         {
 
-            cross = (2 * square) + 1;
+            Cross = (2 * Square) + 1;
 
-            longueur_tot = 0;
-            longueur_tot = Taille_Fil(color, image);
+            TotalLength = 0;
+            TotalLength = WireSize(color, image);
 
         }
 
-        public double Taille_Fil(int color, int[,] image)
+        /// <summary>
+        /// TODO : MISSING DOCUMENTATION
+        /// </summary>
+        /// <param name="color">TODO : MISSING DOCUMENTATION</param>
+        /// <param name="image">TODO : MISSING DOCUMENTATION</param>
+        public double WireSize(int color, int[,] image)
         {
-            //compteur pour savoir le nombre de pixel de même couleur consécutif
-            int longueur = 1;
+            // Counter to know the number of consecutive pixels of the same color
+            int length = 1;
 
-            //on regarde sur l'image les pixels où la couleur color est présente
+            // We look on the image at the pixels where the color is present
             for (int i = 0; i < image.GetLongLength(1); i++)
             {
                 for (int j = 0; j < image.GetLongLength(2); j++)
                 {
-                    //si le pixel est de couleur color
-                    if (image[i,j] == color)
-                    {
-                        //et que le pixel voisin est de couleur color 
-                        if (image[i,j + 1] == color)
-                            longueur += longueur;
+                    // If the pixel is not of the color
+                    if (image[i, j] != color) continue;
+                    // If the neighboring pixel is of the color
+                    if (image[i, j + 1] == color)
+                        length += length;
 
-                        //une fois qu'on a plus de pixels consécutifs de la couleur color : calcul longueur total et remise à 1 de longueur
-                        else
-                        {
-                            longueur_tot = longueur_tot + (cross * longueur) + (2 * knot);
-                            longueur = 1;
-                        }
+                    // Once we have no more consecutive pixels of the color : total length calculation and length reset to 1
+                    else
+                    {
+                        TotalLength = TotalLength + (Cross * length) + (2 * Knot);
+                        length = 1;
                     }
                 }
             }
-
-            return longueur_tot;
+            return TotalLength;
         }
 
     }
