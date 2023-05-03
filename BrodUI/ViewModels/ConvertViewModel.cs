@@ -207,15 +207,21 @@ namespace BrodUI.ViewModels
         /// </summary>
         private void InitializeViewModel()
         {
-            // if not already initialized
-            Im ??= new ImageManagement();
+            // If not already initialized
+            if (Im == null)
+            {
+                Im = new ImageManagement();
 
-            Im.LoadCurrentImage();
-            if (Im.Image == null) return;
-            LoadedImage = Im.Image;
-            _ratio = Im.Ratio;
-            ImageWidth = Im.ImageWidth;
-            ImageHeight = Im.ImageHeight;
+                // Try to load the last saved image
+                Im.LoadCurrentImage();
+                if (Im.Image != null)
+                {
+                    LoadedImage = Im.Image;
+                    _ratio = Im.Ratio;
+                    ImageWidth = Im.ImageWidth;
+                    ImageHeight = Im.ImageHeight;
+                }
+            }
         }
 
         /// <summary>

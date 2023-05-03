@@ -131,15 +131,13 @@ namespace BrodUI.ViewModels
                     for (int j = 0; j < height; j++)
                     {
                         count++;
-                        // TEMP LOADING OF WIRE ARRAY TODO : CHANGE TO PROGRESS BAR OR PROGRESS WHEEL
+                        ShowProgression(count, imageSize);
 
                         bool found = false;
                         foreach (Wire? wire in from wire in WireArray let color1 = ((SolidColorBrush)wireTable[i, j]).Color let color2 = ((SolidColorBrush)wire.Color).Color where color1 == color2 select wire)
                         {
-                            count++;
                             found = true;
                             wire.Quantity++;
-                            ShowProgression(count, imageSize);
                         }
 
                         if (!found)
