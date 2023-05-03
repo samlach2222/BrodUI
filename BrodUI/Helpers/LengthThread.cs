@@ -6,6 +6,9 @@ using System;
 
 namespace BrodUI.Helpers
 {
+    /// <summary>
+    /// Class to calculate the length of on thread for an image based on its color
+    /// </summary>
     internal class LengthThread
     {
         /// <summary>
@@ -14,14 +17,9 @@ namespace BrodUI.Helpers
         private const double Knot = 2;
 
         /// <summary>
-        /// TODO : MISSING DOCUMENTATION
+        /// Length of thread needed too make a cross 
         /// </summary>
-        public double Square = Math.Sqrt(0.5);
-
-        /// <summary>
-        /// Length of wire needed to make a cross
-        /// </summary>
-        private double Cross { get; set; }
+        public double Cross = (2 * Math.Sqrt(0.5)) + 1;
 
         /// <summary>
         /// Total length of the thread
@@ -29,14 +27,16 @@ namespace BrodUI.Helpers
         public double TotalLength { get; set; }
 
         /// <summary>
-        /// TODO : MISSING DOCUMENTATION
+        /// Constructor of the class
         /// </summary>
-        /// <param name="color">TODO : MISSING DOCUMENTATION</param>
-        /// <param name="image">TODO : MISSING DOCUMENTATION</param>
+        ///Color of the thread of which we are measuring the length
+        /// <param name="color"></param>
+        ///Image we are working on
+        /// <param name="image"></param>
         public LengthThread(int color, int[,] image)
         {
 
-            Cross = (2 * Square) + 1;
+            Cross = (2 * Math.Sqrt(0.5)) + 1;
 
             TotalLength = 0;
             TotalLength = WireSize(color, image);
@@ -44,10 +44,12 @@ namespace BrodUI.Helpers
         }
 
         /// <summary>
-        /// TODO : MISSING DOCUMENTATION
+        /// Function to calculate the length of the thread which color is defined in the parameters as well as the image we are working on
         /// </summary>
-        /// <param name="color">TODO : MISSING DOCUMENTATION</param>
-        /// <param name="image">TODO : MISSING DOCUMENTATION</param>
+        ///Color of the thread of which we are measuring the length
+        /// <param name="color"></param>
+        ///Image we are working on
+        /// <param name="image"></param>
         public double WireSize(int color, int[,] image)
         {
             // Counter to know the number of consecutive pixels of the same color
