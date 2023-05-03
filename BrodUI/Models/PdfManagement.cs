@@ -1,4 +1,5 @@
-﻿using iText.IO.Font.Constants;
+﻿using BrodUI.Helpers;
+using iText.IO.Font.Constants;
 using iText.IO.Image;
 using iText.Kernel.Colors;
 using iText.Kernel.Font;
@@ -10,6 +11,7 @@ using iText.Layout.Properties;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -20,20 +22,47 @@ using Rectangle = iText.Kernel.Geom.Rectangle;
 
 namespace BrodUI.Models
 {
+    /// <summary>
+    /// Class to manage the PDF file
+    /// </summary>
     public class PdfManagement
     {
+        /// <summary>
+        /// Path of the PDF file
+        /// </summary>
         private string? PdfPath { get; set; }
 
+        /// <summary>
+        /// Document of the PDF file
+        /// </summary>
         private PdfDocument? Document { get; set; }
 
+        /// <summary>
+        /// List of wires passed in the constructor
+        /// </summary>
         private List<Wire> WiresList { get; set; }
 
+        /// <summary>
+        /// Image to insert in the PDF file
+        /// </summary>
+        private BitmapImage? Image { get; set; }
+
+        /// <summary>
+        /// Constructor of the class
+        /// </summary>
+        /// <param name="wiresList">List of wires to display it in the second page</param>
         public PdfManagement(List<Wire> wiresList)
         {
             WiresList = wiresList;
             UserChooseWhereToSaveThePdfFile();
         }
 
+        /// <summary>
+        /// Function to create all pages of the PDF file and add them to the document
+        /// - The first page have the title of the file itself, the date and time, and the image
+        /// - The second page is the list of the wires and the quantity for each
+        /// - The third page is the embroidery pattern
+        /// </summary>
         private void CreatePdfDocument()
         {
             Document = new PdfDocument(new PdfWriter(PdfPath));
@@ -45,12 +74,20 @@ namespace BrodUI.Models
             // Create pages
             CreateFirstPage();
             CreateSecondPage();
+            CreateThirdPage();
             InsertFooter();
 
             // Close the document
             Document.Close();
+
+            // Open the PDF file
+            OpenPdfInDefaultApplication();
         }
 
+        /// <summary>
+        /// Function to insert a footer in each page in the PDF document
+        /// The footer contains the page number and the watermark
+        /// </summary>
         private void InsertFooter()
         {
             for (int i = 1; i <= 3; i++)
@@ -83,6 +120,9 @@ namespace BrodUI.Models
             }
         }
 
+        /// <summary>
+        /// Function to allow the user to choose where to save the PDF file and the name of the file
+        /// </summary>
         private void UserChooseWhereToSaveThePdfFile()
         {
             // Create a SaveFileDialog
@@ -104,6 +144,10 @@ namespace BrodUI.Models
             CreatePdfDocument();
         }
 
+        /// <summary>
+        /// Function to create the first page of the PDF file
+        /// The first page contain the title of the file itself, the date and time, and the image
+        /// </summary>
         private void CreateFirstPage()
         {
             // The first page have the title of the file itself, the date and time, and the image
@@ -149,7 +193,7 @@ namespace BrodUI.Models
             // Get the font
             PdfFont fontDateTime = PdfFontFactory.CreateFont(StandardFonts.HELVETICA);
             // Get the size of the font
-            float fontSizeDateTime = 12;
+            float fontSizeDateTime = 12f;
             // Get the width of the title
             float dateTimeWidth = fontDateTime.GetWidth(dateTime, fontSizeDateTime);
             // Get the position of the title
@@ -184,13 +228,13 @@ namespace BrodUI.Models
             {
                 // create a temp copy of the image with specified width and height
                 // Get the image from the path
-                BitmapImage img = new(new Uri(imgPath));
+                Image = new(new Uri(imgPath));
                 // Create a new image with the specified width and height
                 double minWidth = Document.GetDefaultPageSize().GetWidth() / 2;
                 double minHeight = Document.GetDefaultPageSize().GetHeight() / 2;
                 // Get the width and height of the image
-                double width = img.Width;
-                double height = img.Height;
+                double width = Image.Width;
+                double height = Image.Height;
                 // Get the ratio of the image
                 double ratio = width / height;
                 // Get the new width and height of the image
@@ -247,6 +291,10 @@ namespace BrodUI.Models
             imgCanvas.Release();
         }
 
+        /// <summary>
+        /// Function to create the second page of the PDF file
+        /// This page contains the list of wires
+        /// </summary>
         private void CreateSecondPage()
         {
             // Get the second page
@@ -377,41 +425,118 @@ namespace BrodUI.Models
             PdfCanvas tableCanvas = new(Document.GetPage(2));
             Rectangle canvasArea = new(20, 40, page.GetPageSize().GetWidth() - 40, page.GetPageSize().GetHeight() * 6 / 8);
             Canvas canvas = new(tableCanvas, canvasArea);
-            canvas.Add(table); ;
+            canvas.Add(table);
             canvas.Close();
 
             // Add the table to the canvas 
             tableCanvas.Release();
         }
+
+        /// <summary>
+        /// Function to create the third page of the PDF
+        /// This page contains the image of the embroidery
+        /// </summary>
+        private void CreateThirdPage()
+        {
+            // Get the second page
+            PdfPage page = Document!.GetPage(3);
+
+            // ------------------------ //
+            //     TITLE OF THE PAGE    //
+            // ------------------------ //
+            int imgWidth = Image!.PixelWidth;
+            int imgHeight = Image!.PixelHeight;
+
+            Brush[,] wireTable = ImageToDataTable.ConvertTo2dArray(Image!);
+
+            int cellSize = int.Parse(ConfigManagement.GetEmbroiderySizeFromConfigFile()!);
+
+            Table table = new(imgWidth);
+            table.SetWidth(cellSize * imgWidth);
+            table.SetHeight(cellSize * imgHeight);
+
+            // add each pixel of the wireTable to the table
+            for (int i = 0; i < imgHeight; i++)
+            {
+                for (int j = 0; j < imgWidth; j++)
+                {
+                    // Convert Color
+                    BrushConverter converter = new();
+                    SolidColorBrush brush = (SolidColorBrush)converter.ConvertFromString(wireTable[j, i].ToString())!;
+                    iText.Kernel.Colors.Color color = new DeviceRgb(brush.Color.R, brush.Color.G, brush.Color.B);
+                    Cell cell = new();
+                    cell.SetBackgroundColor(color);
+
+                    // borders
+                    float borderLeft = 0.5f;
+                    const float borderRight = 0.5f;
+                    float borderTop = 0.5f;
+                    const float borderBottom = 0.5f;
+                    if (j > 0)
+                    {
+                        if (j % 5 == 0)
+                        {
+                            borderLeft += 1;
+                        }
+
+                        if (j % 10 == 0)
+                        {
+                            borderLeft += 1;
+                        }
+                    }
+
+                    if (i > 0)
+                    {
+                        if (i % 5 == 0)
+                        {
+                            borderTop += 1;
+                        }
+                        if (i % 10 == 0)
+                        {
+                            borderTop += 1;
+                        }
+                    }
+
+                    // create border
+                    cell.SetBorderLeft(new SolidBorder(ColorConstants.BLACK, borderLeft));
+                    cell.SetBorderRight(new SolidBorder(ColorConstants.BLACK, borderRight));
+                    cell.SetBorderTop(new SolidBorder(ColorConstants.BLACK, borderTop));
+                    cell.SetBorderBottom(new SolidBorder(ColorConstants.BLACK, borderBottom));
+
+                    table.AddCell(cell);
+                }
+            }
+
+            // ajust size of border in the table
+
+
+            PdfCanvas tableCanvas = new(Document.GetPage(3));
+
+            float startPointX = (page.GetPageSize().GetWidth()) / 2 - cellSize * imgWidth / 2f;
+            float startPointY = (page.GetPageSize().GetHeight()) / 2 - cellSize * imgHeight / 2f;
+
+            Rectangle canvasArea = new(startPointX, startPointY, cellSize * imgWidth, cellSize * imgHeight);
+            Canvas canvas = new(tableCanvas, canvasArea);
+            canvas.Add(table);
+            canvas.Close();
+
+            // Add the table to the canvas 
+            tableCanvas.Release();
+        }
+
+        /// <summary>
+        /// Function to open the PDF in the default application
+        /// </summary>
+        public void OpenPdfInDefaultApplication()
+        {
+            if (PdfPath == null) return;
+            new Process
+            {
+                StartInfo = new ProcessStartInfo(PdfPath!)
+                {
+                    UseShellExecute = true
+                }
+            }.Start();
+        }
     }
-
-    /*
-     * DESIGN
-     *
-     * - The first page have the title of the file itself, the date and time, and the image
-     * - The second page is the list of the wires and the quantity for each
-     * - The third page is the embroidery pattern
-     */
-
-
-    /*
-     * HELPER
-     *
-     * - To add a new page : Document.AddNewPage();
-     * - To add a new page at a specific index : Document.AddNewPage(index);
-     * - To get the number of pages : Document.GetNumberOfPages();
-     * - To get the page at a specific index : Document.GetPage(index);
-     * - To get the size of the page : Document.GetDefaultPageSize();
-     * - To set the size of the page : Document.SetDefaultPageSize(size);
-     * - To display a text :
-     *                      PdfCanvas canvas = new(Document.<ThePageYouWant>);
-     *                      canvas.BeginText();
-     *                      canvas.SetFontAndSize(PdfFontFactory.CreateFont(), <FontSize>);
-     *                      canvas.MoveText(<CoordX>, <CoordY>);
-     *                      canvas.ShowText(<Your Text>);
-     *                      canvas.EndText();
-     *                      canvas.Release();
-     * - To display a table : Table table = new(<NumberOfColumns>);
-     *                      
-     */
 }

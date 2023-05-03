@@ -267,7 +267,7 @@ namespace BrodUI.ViewModels
         [RelayCommand]
         private void ExportToPdf()
         {
-            PdfManagement pdf = new PdfManagement(WireArray);
+            PdfManagement pdf = new(WireArray);
         }
     }
 }
