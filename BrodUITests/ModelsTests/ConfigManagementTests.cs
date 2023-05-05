@@ -15,6 +15,7 @@ namespace BrodUITests.ModelsTests
             // Check if config file exists
             string? appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             string path = Path.Combine(appData + "\\BrodUI", "settings.cfg");
+            ConfigManagement.CreateConfigFileIfNotExists();
             if (File.Exists(path))
             {
                 ConfigManagement.DeleteConfigFile();
@@ -106,20 +107,112 @@ namespace BrodUITests.ModelsTests
             Assert.Equal(expected, actual);
         }
 
-        //[Fact]
-        //public void SetThemeTest()
-        //{
-        //    // Expected
-        //    ConfigManagement.DeleteConfigFile();
-        //    ConfigManagement.CreateConfigFileIfNotExists();
-        //    const string expected = "Light";
-        //    ConfigManagement.SetThemeToConfigFile(expected);
-        //    // Actual
-        //    ConfigManagement.SetTheme();
-        //    // Get current WPFUi theme
-        //    string? actual = ThemeManager.CurrentTheme.Name;
-        //    // Assert
-        //    //Assert.Equal(expected, actual);
-        //}
+        [Fact]
+        public void SetThemeTest()
+        {
+            // TODO : Test this method (hard to implement because we have to verify the theme of the app)
+            throw new NotImplementedException();
+        }
+
+        [Fact]
+        public void SetThemeFromSettingsTest()
+        {
+            // TODO : Test this method (hard to implement because we have to verify the theme of the app)
+            throw new NotImplementedException();
+        }
+
+        [Fact]
+        public void GetLanguageFromConfigFileTest()
+        {
+            // Expected
+            ResetConfigFile();
+            string expected = CultureInfo.CurrentUICulture.NativeName;
+            expected = expected[..(expected.IndexOf('(') - 1)].ToLower();
+            // Actual
+            string actual = ConfigManagement.GetLanguageFromConfigFile()!.ToLower();
+            // Assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void SetLanguageToConfigFileTest()
+        {
+            // Expected
+            ResetConfigFile();
+            const string expected = "Spanish";
+            // Actual
+            ConfigManagement.SetLanguageToConfigFile(expected);
+            string? actual = ConfigManagement.GetLanguageFromConfigFile();
+            // Assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void SetLanguageTest()
+        {
+            // Expected
+            ResetConfigFile();
+            const string expected = "en";
+            ConfigManagement.SetLanguageToConfigFile("English");
+            // Actual
+            ConfigManagement.SetLanguage();
+            // get actual language of the app
+            string actual = CultureInfo.CurrentUICulture.Name;
+            // Assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void GetTerminalFromConfigFileTest()
+        { 
+            // Expected
+            ResetConfigFile();
+            bool expected = false;
+#if DEBUG
+            expected = true;
+#endif
+            // Actual
+            bool actual = ConfigManagement.GetTerminalFromConfigFile();
+            // Assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void SetTerminalToConfigFileTest()
+        {
+            // Expected
+            ResetConfigFile();
+            const bool expected = true;
+            // Actual
+            ConfigManagement.SetTerminalToConfigFile(expected);
+            bool actual = ConfigManagement.GetTerminalFromConfigFile();
+            // Assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void GetEmbroiderySizeFromConfigFileTest()
+        {
+            // Expected
+            ResetConfigFile();
+            const int expected = 15;
+            // Actual
+            int actual = int.Parse(ConfigManagement.GetEmbroiderySizeFromConfigFile() ?? string.Empty);
+            // Assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void SetEmbroiderySizeToConfigFileTest()
+        {
+            // Expected
+            ResetConfigFile();
+            const int expected = 20;
+            // Actual
+            ConfigManagement.SetEmbroiderySizeToConfigFile(expected.ToString());
+            int actual = int.Parse(ConfigManagement.GetEmbroiderySizeFromConfigFile() ?? string.Empty);
+            // Assert
+            Assert.Equal(expected, actual);
+        }
     }
 }
