@@ -9,7 +9,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using Wpf.Ui.Common.Interfaces;
 using Wpf.Ui.Controls.Interfaces;
 using Wpf.Ui.Mvvm.Contracts;
@@ -186,49 +185,48 @@ namespace BrodUI.ViewModels
                     GridImage!.ColumnDefinitions.Add(col);
                 }
 
-                // add rectangle for each row/column
-                for (int j = 0; j < width; j++)
+                // Add a square for each row/column
+                GridImage.Children.Capacity = width * height;
+                for (int i = 0; i < width; i++)
                 {
-                    for (int i = 0; i < height; i++)
+                    for (int j = 0; j < height; j++)
                     {
                         count++;
                         ShowProgression(count, countMax);
-
-                        Rectangle rect = new()
-                        {
-                            Fill = wireTable[j, i],
-                        };
-                        Border border = new()
-                        {
-                            BorderBrush = new SolidColorBrush(Colors.Black)
-                        };
 
                         double borderLeft = 0.5;
                         const double borderRight = 0.5;
                         double borderTop = 0.5;
                         const double borderBottom = 0.5;
 
-                        if (j % 5 == 0)
-                        {
-                            borderLeft += 1;
-                        }
-                        if (j % 10 == 0)
-                        {
-                            borderLeft += 1;
-                        }
                         if (i % 5 == 0)
                         {
-                            borderTop += 1;
+                            borderLeft += 1;
+
+                            if (i % 10 == 0)
+                            {
+                                borderLeft += 1;
+                            }
                         }
-                        if (i % 10 == 0)
+                        if (j % 5 == 0)
                         {
                             borderTop += 1;
-                        }
-                        border.BorderThickness = new Thickness(borderLeft, borderTop, borderRight, borderBottom);
-                        border.Child = rect;
 
-                        Grid.SetRow(border, i);
-                        Grid.SetColumn(border, j);
+                            if (j % 10 == 0)
+                            {
+                                borderTop += 1;
+                            }
+                        }
+
+                        Border border = new()
+                        {
+                            BorderBrush = new SolidColorBrush(Colors.Black),
+                            BorderThickness = new Thickness(borderLeft, borderTop, borderRight, borderBottom),
+                            Background = wireTable[i, j]
+                        };
+
+                        Grid.SetRow(border, j);
+                        Grid.SetColumn(border, i);
                         GridImage.Children.Add(border);
                     }
                 }
