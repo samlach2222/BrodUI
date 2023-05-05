@@ -150,8 +150,9 @@ namespace BrodUI.Models
             Image.DecodePixelHeight = ImageHeight;
             Image.EndInit();
 
-            // If image use a palette (indexed colors), convert it to BGRA
-            if (Image.Palette != null)
+            // We only support images in Bgr32 or Bgra32 format (see Helpers/ImageTo2DArrayBrushes)
+            // Convert to Bgra32 if needed
+            if (Image.Format != PixelFormats.Bgr32 || Image.Format  != PixelFormats.Bgra32)
             {
                 FormatConvertedBitmap imageBgra = new(Image, PixelFormats.Bgra32, null, 0);
                 Image = new BitmapImage();
