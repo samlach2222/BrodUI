@@ -74,9 +74,6 @@ namespace BrodUI
                 services.AddScoped<ViewModels.ExportViewModel>();
                 services.AddScoped<Views.Pages.SettingsPage>();
                 services.AddScoped<ViewModels.SettingsViewModel>();
-
-                // Configuration
-                services.Configure<AppConfig>(context.Configuration.GetSection(nameof(AppConfig)));
             }).Build();
 
         /// <summary>

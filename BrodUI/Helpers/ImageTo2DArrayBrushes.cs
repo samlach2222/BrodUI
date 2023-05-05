@@ -6,7 +6,7 @@ namespace BrodUI.Helpers
     /// <summary>
     /// Class to convert an image to a 2D array of brushes
     /// </summary>
-    internal class ImageToDataTable
+    public class ImageTo2DArrayBrushes
     {
         /// <summary>
         /// Convert an image to a 2D array of brushes

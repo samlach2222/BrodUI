@@ -35,30 +35,28 @@ namespace BrodUI.Models
             }
             // path combine with the file name
             _path = Path.Combine(appData + "\\BrodUI", "settings.cfg");
-            if (!File.Exists(_path))
-            {
-                // Get the language to use by default
-                String language = GetSystemLanguageOrDefault();
+            if (File.Exists(_path)) return;
+            // Get the language to use by default
+            string language = GetSystemLanguageOrDefault();
 
-                // Get whether we should activate the terminal by default
-                bool terminal = false;
+            // Get whether we should activate the terminal by default
+            bool terminal = false;
 #if DEBUG
-                terminal = true;
+            terminal = true;
 #endif
 
-                File.WriteAllText(_path, "Theme=System\nLanguage=" + language + "\nTerminal=" + terminal + "\nEmbroiderySize=15");
-            }
+            File.WriteAllText(_path, "Theme=System\nLanguage=" + language + "\nTerminal=" + terminal + "\nEmbroiderySize=15");
         }
 
         /// <summary>
         /// Get the name of the Windows display language, or English if the language is not supported
         /// </summary>
         /// <returns>Name of the language in its language (ex: Français, English), or English if not supported</returns>
-        private static string GetSystemLanguageOrDefault()
+        public static string GetSystemLanguageOrDefault()
         {
             CultureInfo windowsLangage = CultureInfo.CurrentUICulture; // Get Windows display language
             string twoLettersIso = windowsLangage.TwoLetterISOLanguageName.ToLower(); // Convert to two letters ISO (ex: en-US => en)
-            ResourceManager rm = new ResourceManager(typeof(Resource));
+            ResourceManager rm = new(typeof(Resource));
 
             // For each language in all languages
             CultureInfo[] cultures = CultureInfo.GetCultures(CultureTypes.AllCultures);
@@ -236,7 +234,7 @@ namespace BrodUI.Models
                     // Get current theme from Windows 11
                     SystemThemeType sysTheme = Theme.GetSystemTheme();
                     // Apply it
-                    Wpf.Ui.Appearance.Theme.Apply(
+                    Theme.Apply(
                         sysTheme == SystemThemeType.Light
                             ? ThemeType.Light
                             : ThemeType.Dark, BackgroundType.None);

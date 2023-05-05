@@ -447,7 +447,7 @@ namespace BrodUI.Models
             int imgWidth = Image!.PixelWidth;
             int imgHeight = Image!.PixelHeight;
 
-            Brush[,] wireTable = ImageToDataTable.ConvertTo2dArray(Image!);
+            Brush[,] wireTable = ImageTo2DArrayBrushes.ConvertTo2dArray(Image!);
 
             int cellSize = int.Parse(ConfigManagement.GetEmbroiderySizeFromConfigFile()!);
 
