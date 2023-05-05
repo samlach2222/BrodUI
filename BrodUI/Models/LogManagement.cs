@@ -73,7 +73,7 @@ namespace BrodUI.Models
         {
             if (LogPath == null) return;
             string[] lines = File.ReadAllLines(LogPath);
-            string text = lines.Aggregate("", (current, line) => current + (line + Environment.NewLine));
+            string text = string.Join(Environment.NewLine, lines);
             Console.WriteLine(text);
         }
     }
