@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 
-namespace KmeansAlgorithm
+namespace BrodUI.Kmeans
 {
     public class GenericVector
     {
@@ -10,7 +11,7 @@ namespace KmeansAlgorithm
         public int Cluster;
 
         //list of floats that's creating the GenericVector
-        public List<float> Points = new List<float>();
+        public List<float> Points = new();
 
         //CONSTRUCTORS
         //Creates a new GenericVector with the points given
@@ -61,7 +62,7 @@ namespace KmeansAlgorithm
         //Override ToString-Method to show the content of the GenericVector
         public override string ToString()
         {
-            return string.Join("\t", Points.Select(x => x.ToString()).ToArray());
+            return string.Join("\t", Points.Select(x => x.ToString(CultureInfo.InvariantCulture)).ToArray());
         }
 
         public float BiggestPoint()
@@ -110,7 +111,7 @@ namespace KmeansAlgorithm
         public static float GetAngle(GenericVector a, GenericVector b)
         {
             var x = DotProduct(a, b) / (a.VectorLength() * b.VectorLength());
-            if (x > 1 || x < -1)
+            if (x is > 1 or < -1)
                 return 0;
             return (float) Math.Acos(x);
         }

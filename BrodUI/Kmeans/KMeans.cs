@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace KmeansAlgorithm
+namespace BrodUI.Kmeans
 {
     public class KMeans
     {
         public int Iterations;
         public int Clusters;
         public double Sse;
-        public List<GenericVector> Dataset;
-        public Dictionary<int, GenericVector> Centroids;
-        private readonly Random _random = new Random();
+        public List<GenericVector>? Dataset;
+        public Dictionary<int, GenericVector>? Centroids;
+        private readonly Random _random = new();
         private int _i;
 
         //the method to run the KMeans algorithm
@@ -41,13 +41,13 @@ namespace KmeansAlgorithm
         //assign the vectors to the clusters nearby
         private void AssignDataset()
         {
-            Dataset.ForEach(vector => vector.Cluster = GetNearestCluster(vector));
+            Dataset?.ForEach(vector => vector.Cluster = GetNearestCluster(vector));
         }
 
         //get nearest cluster
         private int GetNearestCluster(GenericVector vector)
         {
-            var clusterid = Centroids
+            var clusterid = Centroids!
                 .OrderBy(v => GenericVector.Distance(vector, v.Value))
                 .Select(v => v.Key)
                 .FirstOrDefault();
@@ -73,8 +73,10 @@ namespace KmeansAlgorithm
         //recalculate the new centroids based on the mean
         private void RecalculateCentroids()
         {
+            if (Centroids == null) return;
             foreach (var centroidkey in Centroids.Keys.ToList())
             {
+                if (Dataset == null) continue;
                 var cluster = Dataset.Where(v => v.Cluster == centroidkey).ToList();
 
                 //generating a new genericvector with the mean of the existing vectors
@@ -90,6 +92,7 @@ namespace KmeansAlgorithm
         {
             while (true)
             {
+                if (Dataset == null) continue;
                 var genericVector = Dataset[_random.Next(Dataset.Count)];
                 var found = false;
                 if (Centroids != null)
@@ -110,25 +113,32 @@ namespace KmeansAlgorithm
         //print the clusters to the console.
         public void PrintClusters()
         {
+            if (Dataset == null) return;
             var clusters = Dataset.GroupBy(v => v.Cluster).ToList().OrderBy(v => v.Key);
             foreach (var cluster in clusters)
             {
+                // TODO : Change strings to use Assets
                 Console.WriteLine("Cluster " + cluster.ElementAt(0).Cluster + " has " + cluster.Count());
             }
         }
 
         public void PrintClustersInLine()
         {
-            var clusters = Dataset.GroupBy(v => v.Cluster).ToList().OrderBy(v => v.Key);
-            foreach (var cluster in clusters)
+            if (Dataset != null)
             {
-                Console.Write(cluster.ElementAt(0).Cluster + " -> " + cluster.Count() + " || ");
+                var clusters = Dataset.GroupBy(v => v.Cluster).ToList().OrderBy(v => v.Key);
+                foreach (var cluster in clusters)
+                {
+                    Console.Write(cluster.ElementAt(0).Cluster + " -> " + cluster.Count() + " || ");
+                }
             }
+
             Console.WriteLine();
         }
 
         public void PrintClusterInfo()
         {
+            // TODO : Change strings to use Assets
             Console.WriteLine("KMEANS COMPLETED");
             Console.WriteLine("SSE = \t\t\t\t" + Sse);
             Console.WriteLine("amount of clusters: \t\t" + Clusters);
@@ -136,43 +146,47 @@ namespace KmeansAlgorithm
             Console.WriteLine("amount of actual iterations: \t" + _i);
             Console.WriteLine();
 
-            var clusters = Dataset.GroupBy(v => v.Cluster).ToList().OrderBy(v => v.Key).ToList();
-
-            foreach (var cluster in clusters)
+            if (Dataset != null)
             {
-                Console.WriteLine("***************************************************");
-                Console.WriteLine("cluster " + cluster.Key + " has " + cluster.Count() + " items");
-                Console.WriteLine("***************************************************");
-                var offersBoughtXTimes = new Dictionary<int, int>();
-                var clusterpoints = cluster.ToList();
-                foreach (var clusterpoint in clusterpoints)
+                var clusters = Dataset.GroupBy(v => v.Cluster).ToList().OrderBy(v => v.Key).ToList();
+
+                foreach (var cluster in clusters)
                 {
-                    for (var j = 0; j < clusterpoint.Size; j++)
+                    // TODO : Change strings to use Assets
+                    Console.WriteLine("***************************************************");
+                    Console.WriteLine("cluster " + cluster.Key + " has " + cluster.Count() + " items");
+                    Console.WriteLine("***************************************************");
+                    var offersBoughtXTimes = new Dictionary<int, int>();
+                    var clusterpoints = cluster.ToList();
+                    foreach (var clusterpoint in clusterpoints)
                     {
-                        if (Math.Abs(clusterpoint.Points[j] - 1) < 0.001)
+                        for (var j = 0; j < clusterpoint.Size; j++)
+                        {
+                            if (!(Math.Abs(clusterpoint.Points[j] - 1) < 0.001)) continue;
                             if (offersBoughtXTimes.ContainsKey(j))
                                 offersBoughtXTimes[j]++;
                             else
                                 offersBoughtXTimes.Add(j, 1);
+                        }
+                    }
+                    offersBoughtXTimes =
+                        (from entry in offersBoughtXTimes orderby entry.Value descending select entry).ToDictionary(
+                            v => v.Key,
+                            v => v.Value);
+                    foreach (var offerBought in offersBoughtXTimes.Where(offerBought => offerBought.Value >= 3))
+                    {
+                        // TODO : Change strings to use Assets
+                        Console.WriteLine("Offer " + (offerBought.Key + 1) + " \t-> bought " + offerBought.Value + " times ");
                     }
                 }
-                offersBoughtXTimes =
-                    (from entry in offersBoughtXTimes orderby entry.Value descending select entry).ToDictionary(
-                        v => v.Key,
-                        v => v.Value);
-                foreach (var offerBought in offersBoughtXTimes)
-                {
-                    if (offerBought.Value >= 3)
-                        Console.WriteLine(
-                            "Offer " + (offerBought.Key + 1) + " \t-> bought " + offerBought.Value + " times ");
-                }
             }
+
             Console.WriteLine();
         }
 
         public double CalculateSumofSquaredErrors()
         {
-            var orderedclusters = Dataset.GroupBy(v => v.Cluster).OrderBy(v => v.Key).ToList();
+            var orderedclusters = Dataset!.GroupBy(v => v.Cluster).OrderBy(v => v.Key).ToList();
             var sse = (from cluster in orderedclusters
                 let clustercenter = Centroids[cluster.Key]
                 from point in cluster
