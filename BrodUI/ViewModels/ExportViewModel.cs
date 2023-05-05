@@ -5,7 +5,6 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -126,6 +125,9 @@ namespace BrodUI.ViewModels
                 int imageSize = width * height;
 
                 LogManagement.WriteToLog("[" + DateTime.Now + "] " + Assets.Languages.Resource.Export_ConvertToCrossStitchEmbroidery);
+
+                // Use a dictionary to count the quantity of each color
+                Dictionary<Color, int> colorQuantity = new();
                 for (int i = 0; i < width; i++)
                 {
                     for (int j = 0; j < height; j++)
@@ -133,20 +135,30 @@ namespace BrodUI.ViewModels
                         count++;
                         ShowProgression(count, imageSize);
 
-                        bool found = false;
-                        foreach (Wire? wire in from wire in WireArray let color1 = ((SolidColorBrush)wireTable[i, j]).Color let color2 = ((SolidColorBrush)wire.Color).Color where color1 == color2 select wire)
-                        {
-                            found = true;
-                            wire.Quantity++;
-                        }
+                        // We can't use wireTable[i, j] directly,
+                        // because even those with the same color are considered not the same object
+                        Color color = ((SolidColorBrush)wireTable[i, j]).Color;
 
-                        if (!found)
+                        if (colorQuantity.ContainsKey(color))
                         {
-                            // TODO add color name, Type and Number when the work is done
-                            WireArray.Add(new Wire(wireTable[i, j], 404, "DMC", "White", 1));
+                            colorQuantity[color]++;
+                        }
+                        else
+                        {
+                            colorQuantity.Add(color, 1);
                         }
                     }
                 }
+
+                // Add the wires to the WireArray
+                foreach (KeyValuePair<Color, int> color in colorQuantity)
+                {
+                    SolidColorBrush scbColor = new(color.Key);
+                    // TODO use the RGB values of color.Key to add color number, type and name here when the work is done
+
+                    WireArray.Add(new Wire(scbColor, 404, "DMC", "White", color.Value));
+                }
+
                 Console.WriteLine(); // Line break
                 LogManagement.WriteToLog("[" + DateTime.Now + "] " + Assets.Languages.Resource.Export_ConvertToCrossStitchEmbroideryDone);
 
