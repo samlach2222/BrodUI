@@ -35,7 +35,10 @@ namespace BrodUI.Helpers
             return dict;
         }
 
-        public static Brush[,] DictToBrush2D(Dictionary<int, GenericVector> dict, KMeans kmean, int sizeX, int sizeY)
+        /// <summary>
+        /// convert Dictionnary containing the colors to DMC 2D Array of Brush
+        /// </summary>
+        public static Brush[,] DictToBrush2D(Dictionary<int, GenericVector> dict, Dictionary<int, GenericVector> centroids, int sizeX, int sizeY)
         {
             Brush[,] res = new Brush[sizeX, sizeY];
             for (var i = 0; i < sizeX; i++)
@@ -43,11 +46,11 @@ namespace BrodUI.Helpers
                 for (var j = 0; j < sizeY; j++)
                 {
                     GenericVector gv = dict[i + j * sizeX];
-                    int centroidid = kmean.Centroids
+                    int centroidid = centroids
                         .OrderBy(v => GenericVector.Distance(gv, v.Value))
                         .Select(v => v.Key)
                         .FirstOrDefault();
-                    GenericVector centroid = kmean.Centroids[centroidid];
+                    GenericVector centroid = centroids[centroidid];
                     res[i, j] = new SolidColorBrush(Color.FromArgb(255, BitConverter.GetBytes(centroid.Points[0])[0], BitConverter.GetBytes(centroid.Points[1])[0], BitConverter.GetBytes(centroid.Points[2])[0]));
                 }
             }

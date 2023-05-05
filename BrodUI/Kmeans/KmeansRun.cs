@@ -24,7 +24,7 @@ namespace BrodUI.Kmeans
             }
             // We keep the lowest SSE
             var lowestKmeans = kMeanses.Aggregate((minItem, nextItem) => minItem.Sse < nextItem.Sse ? minItem : nextItem);
-            return Brush2DtoColorDict.DictToBrush2D(dict, lowestKmeans, image.GetLength(0), image.GetLength(1));
+            return Brush2DtoColorDict.DictToBrush2D(dict, lowestKmeans.Centroids,image.GetLength(0),image.GetLength(1));
         }
     }
 }
