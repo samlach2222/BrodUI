@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using KmeansAlgorithm;
 using System.Windows.Media;
 using System.Linq;
+using BrodUI.Kmeans;
 
 namespace BrodUI.Helpers
 {

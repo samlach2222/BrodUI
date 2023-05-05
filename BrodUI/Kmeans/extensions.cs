@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace KmeansAlgorithm
+namespace BrodUI.Kmeans
 {
     public static class Extensions
     {
