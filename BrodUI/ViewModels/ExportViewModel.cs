@@ -118,7 +118,7 @@ namespace BrodUI.ViewModels
                 int width = Im.ImageWidth;
                 int height = Im.ImageHeight;
                 BitmapImage? img = Im.Image;
-                Brush[,] wireTable = ImageToDataTable.ConvertTo2dArray(img!);
+                Brush[,] wireTable = ImageTo2DArrayBrushes.ConvertTo2dArray(img!);
                 // add Wires to WireArray from wireTable for each color
 
                 // LOADING COUNT

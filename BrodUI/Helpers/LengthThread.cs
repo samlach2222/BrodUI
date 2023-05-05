@@ -19,7 +19,7 @@ namespace BrodUI.Helpers
         /// <summary>
         /// Length of thread needed too make a cross 
         /// </summary>
-        public double Cross = (2 * Math.Sqrt(0.5)) + 1;
+        public double Cross;
 
         /// <summary>
         /// Total length of the thread

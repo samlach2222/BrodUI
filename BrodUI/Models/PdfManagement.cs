@@ -507,7 +507,7 @@ namespace BrodUI.Models
                 }
             }
 
-            // ajust size of border in the table
+            // adjust size of border in the table
 
 
             PdfCanvas tableCanvas = new(Document.GetPage(3));

@@ -6,7 +6,7 @@ namespace BrodUI.Helpers
     /// <summary>
     /// class to convert DMC value into their Name
     /// </summary>
-    internal class DMCtoString
+    internal class DmCtoString
     {
         //array for DMC colors 0 = DMC, 1 = name of the DMC
         private readonly string[,] _dmcString = new string[500, 2];
@@ -23,8 +23,8 @@ namespace BrodUI.Helpers
 
             while (line != null)
             {
-                _dmcString[comp,0] = line.Substring(0, line.IndexOf("-"));
-                _dmcString[comp, 1] = line.Substring(line.IndexOf("-") + 2);
+                _dmcString[comp, 0] = line[..line.IndexOf("-", StringComparison.Ordinal)];
+                _dmcString[comp, 1] = line[(line.IndexOf("-", StringComparison.Ordinal) + 2)..];
                 comp++;
                 line = sr.ReadLine();
             }
@@ -36,7 +36,7 @@ namespace BrodUI.Helpers
         /// <summary>
         /// Constructor of the class
         /// </summary>
-        public DMCtoString()
+        public DmCtoString()
         {
             Initialization();
             for (int i = 0; i < _nbDmc; i++)
@@ -56,7 +56,7 @@ namespace BrodUI.Helpers
             string val = "";
             for (int i = 0; i < _nbDmc; i++)
             {
-                if (_dmcString[i, 0] == dmc.ToString()) 
+                if (_dmcString[i, 0] == dmc.ToString())
                     val = _dmcString[i, 1];
             }
             return val;
@@ -64,11 +64,3 @@ namespace BrodUI.Helpers
 
     }
 }
-
-
-
-
-
-
-
-
