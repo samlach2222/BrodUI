@@ -1,13 +1,9 @@
-﻿using System.Drawing;
-using System.Globalization;
-using System.Windows.Media.Imaging;
-using BrodUI.Helpers;
+﻿using BrodUI.Helpers;
 using BrodUI.Models;
-using Xunit;
 using Moq;
+using System.Windows.Media.Imaging;
+using Xunit;
 using static BrodUI.Models.ImageManagement;
-using Microsoft.Win32;
-using System.Windows.Media;
 
 namespace BrodUITests.ModelsTests;
 

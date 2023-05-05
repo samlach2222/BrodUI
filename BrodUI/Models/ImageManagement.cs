@@ -1,9 +1,7 @@
-﻿using Microsoft.Win32;
-using System;
+﻿using System;
 using System.IO;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using static BrodUI.Models.ImageManagement;
 using MessageBox = System.Windows.MessageBox;
 
 namespace BrodUI.Models
@@ -186,7 +184,7 @@ namespace BrodUI.Models
 
             // We only support images in Bgr32 or Bgra32 format (see Helpers/ImageTo2DArrayBrushes)
             // Convert to Bgra32 if needed
-            if (Image.Format != PixelFormats.Bgr32 || Image.Format  != PixelFormats.Bgra32)
+            if (Image.Format != PixelFormats.Bgr32 || Image.Format != PixelFormats.Bgra32)
             {
                 FormatConvertedBitmap imageBgra = new(Image, PixelFormats.Bgra32, null, 0);
                 Image = new BitmapImage();

@@ -1,8 +1,5 @@
-﻿using System.Globalization;
-using System.Windows.Media;
-using BrodUI.Models;
+﻿using BrodUI.Models;
 using Xunit;
-using static iText.StyledXmlParser.Jsoup.Select.Evaluator;
 
 namespace BrodUITests.ModelsTests
 {

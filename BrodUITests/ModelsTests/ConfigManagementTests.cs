@@ -1,12 +1,6 @@
-﻿using System.Drawing;
+﻿using BrodUI.Models;
 using System.Globalization;
-using BrodUI.Helpers;
-using BrodUI.Models;
-using Microsoft.Win32;
-using Wpf.Ui.Appearance;
-using Wpf.Ui.Markup;
 using Xunit;
-using static BrodUI.Models.ImageManagement;
 
 namespace BrodUITests.ModelsTests
 {
@@ -166,7 +160,7 @@ namespace BrodUITests.ModelsTests
 
         [Fact]
         public void GetTerminalFromConfigFileTest()
-        { 
+        {
             // Expected
             ResetConfigFile();
             bool expected = false;

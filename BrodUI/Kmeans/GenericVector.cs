@@ -56,7 +56,7 @@ namespace BrodUI.Kmeans
         //Returns the length of the Vector
         public double VectorLength()
         {
-            return (float) Math.Sqrt(Points.Sum(item => Math.Pow(item, 2)));
+            return (float)Math.Sqrt(Points.Sum(item => Math.Pow(item, 2)));
         }
 
         //Override ToString-Method to show the content of the GenericVector
@@ -113,7 +113,7 @@ namespace BrodUI.Kmeans
             var x = DotProduct(a, b) / (a.VectorLength() * b.VectorLength());
             if (x is > 1 or < -1)
                 return 0;
-            return (float) Math.Acos(x);
+            return (float)Math.Acos(x);
         }
 
         public static double Distance(GenericVector a, GenericVector b)

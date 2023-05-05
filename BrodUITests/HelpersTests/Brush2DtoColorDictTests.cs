@@ -1,5 +1,4 @@
-﻿using BrodUI.Helpers;
-using Xunit;
+﻿using Xunit;
 
 namespace BrodUITests.HelpersTests
 {

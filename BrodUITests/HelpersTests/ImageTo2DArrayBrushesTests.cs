@@ -1,7 +1,7 @@
-﻿using System.Drawing;
+﻿using BrodUI.Helpers;
+using System.Drawing;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using BrodUI.Helpers;
 using Xunit;
 using Brush = System.Windows.Media.Brush;
 using Color = System.Windows.Media.Color;

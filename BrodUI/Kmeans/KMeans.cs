@@ -188,9 +188,9 @@ namespace BrodUI.Kmeans
         {
             var orderedclusters = Dataset!.GroupBy(v => v.Cluster).OrderBy(v => v.Key).ToList();
             var sse = (from cluster in orderedclusters
-                let clustercenter = Centroids[cluster.Key]
-                from point in cluster
-                select Math.Pow(GenericVector.Distance(clustercenter, point), 2)).Sum();
+                       let clustercenter = Centroids[cluster.Key]
+                       from point in cluster
+                       select Math.Pow(GenericVector.Distance(clustercenter, point), 2)).Sum();
             return sse;
         }
     }

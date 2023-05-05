@@ -1,5 +1,4 @@
 ﻿using Xunit;
-using BrodUI.Kmeans;
 
 namespace BrodUITests.KmeansTests
 {
@@ -8,7 +7,7 @@ namespace BrodUITests.KmeansTests
         [Fact]
         public void NameOfFunction()
         {
-            
+
         }
     }
 }

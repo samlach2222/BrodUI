@@ -1,8 +1,8 @@
+using BrodUI.Kmeans;
 using System;
 using System.Collections.Generic;
-using System.Windows.Media;
 using System.Linq;
-using BrodUI.Kmeans;
+using System.Windows.Media;
 
 namespace BrodUI.Helpers
 {
@@ -19,36 +19,36 @@ namespace BrodUI.Helpers
             var dict = new Dictionary<int, GenericVector>();
             var x = image.GetLength(0);
             BrushConverter converter = new();
-            for(var i=0; i<x;i++)
+            for (var i = 0; i < x; i++)
             {
-                for(var j=0; j<image.GetLength(1);j++)
+                for (var j = 0; j < image.GetLength(1); j++)
                 {
                     var vec = new GenericVector();
-                    Brush brush = image[i,j];
+                    Brush brush = image[i, j];
                     SolidColorBrush col = (SolidColorBrush)converter.ConvertFromString(brush.ToString())!;
                     vec.Add(col.Color.R);
                     vec.Add(col.Color.G);
                     vec.Add(col.Color.B);
-                    dict.Add(j*x+i,vec);
+                    dict.Add(j * x + i, vec);
                 }
             }
             return dict;
         }
 
-        public static Brush[,] DictToBrush2D(Dictionary<int,GenericVector> dict, KMeans kmean, int sizeX, int sizeY)
+        public static Brush[,] DictToBrush2D(Dictionary<int, GenericVector> dict, KMeans kmean, int sizeX, int sizeY)
         {
-            Brush[,] res = new Brush[sizeX,sizeY];
-            for(var i=0; i<sizeX; i++)
+            Brush[,] res = new Brush[sizeX, sizeY];
+            for (var i = 0; i < sizeX; i++)
             {
-                for(var j=0; j<sizeY; j++)
+                for (var j = 0; j < sizeY; j++)
                 {
-                    GenericVector gv = dict[i+j*sizeX];
+                    GenericVector gv = dict[i + j * sizeX];
                     int centroidid = kmean.Centroids
                         .OrderBy(v => GenericVector.Distance(gv, v.Value))
                         .Select(v => v.Key)
                         .FirstOrDefault();
                     GenericVector centroid = kmean.Centroids[centroidid];
-                    res[i,j]=new SolidColorBrush(Color.FromArgb(255,BitConverter.GetBytes(centroid.Points[0])[0],BitConverter.GetBytes(centroid.Points[1])[0],BitConverter.GetBytes(centroid.Points[2])[0]));
+                    res[i, j] = new SolidColorBrush(Color.FromArgb(255, BitConverter.GetBytes(centroid.Points[0])[0], BitConverter.GetBytes(centroid.Points[1])[0], BitConverter.GetBytes(centroid.Points[2])[0]));
                 }
             }
             return res;
