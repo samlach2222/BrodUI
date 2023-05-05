@@ -6,7 +6,7 @@ using Wpf.Ui.Appearance;
 using Wpf.Ui.Markup;
 using Xunit;
 
-namespace BrodUITests
+namespace BrodUITests.ModelsTests
 {
     public class ConfigManagementTests
     {
@@ -18,7 +18,7 @@ namespace BrodUITests
             if (File.Exists(path))
             {
                 ConfigManagement.DeleteConfigFile();
-                
+
             }
             ConfigManagement.CreateConfigFileIfNotExists();
         }
@@ -33,10 +33,10 @@ namespace BrodUITests
 #if DEBUG
             terminal = true;
 #endif
-            string expected = "Theme=System\nLanguage="+ language + "\nTerminal=" + terminal + "\nEmbroiderySize=15";
+            string expected = "Theme=System\nLanguage=" + language + "\nTerminal=" + terminal + "\nEmbroiderySize=15";
 
             // Actual
-            string? appData = System.Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            string? appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             string path = Path.Combine(appData + "\\BrodUI", "settings.cfg");
             File.Delete(path);
 
@@ -68,7 +68,7 @@ namespace BrodUITests
             // Create file and verify if it exists
             // -----------------------------------
             ConfigManagement.CreateConfigFileIfNotExists();
-            string? appData = System.Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            string? appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             string path = Path.Combine(appData + "\\BrodUI", "settings.cfg");
             FileInfo file = new(path);
             Assert.True(file.Exists);

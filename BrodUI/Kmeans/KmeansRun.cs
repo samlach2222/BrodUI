@@ -1,10 +1,9 @@
-using System;
 using System.Collections.Generic;
-using BrodUI.Helpers;
 using System.Linq;
 using System.Windows.Media;
+using BrodUI.Helpers;
 
-namespace KmeansAlgorithm
+namespace BrodUI.Kmeans
 {
     public static class KmeansRun
     {
@@ -23,7 +22,7 @@ namespace KmeansAlgorithm
                 kMeans.Run();
                 kMeanses.Add(kMeans);
             }
-            //On ne garde que le meilleur parmi les KMeans
+            // We keep the lowest SSE
             var lowestKmeans = kMeanses.Aggregate((minItem, nextItem) => minItem.Sse < nextItem.Sse ? minItem : nextItem);
             return Brush2DtoColorDict.DictToBrush2D(dict, lowestKmeans,image.GetLength(0),image.GetLength(1));
         }

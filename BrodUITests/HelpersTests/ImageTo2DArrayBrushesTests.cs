@@ -6,7 +6,7 @@ using Xunit;
 using Brush = System.Windows.Media.Brush;
 using Color = System.Windows.Media.Color;
 
-namespace BrodUITests
+namespace BrodUITests.HelpersTests
 {
     public class ImageTo2DArrayBrushesTests
     {
@@ -21,7 +21,7 @@ namespace BrodUITests
                 {
                     expected[i, j] = new SolidColorBrush(Color.FromRgb((byte)(i * 10), (byte)(i * 10), (byte)(i * 10)));
                 }
-                
+
             }
 
             // Actual
