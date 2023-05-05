@@ -122,7 +122,7 @@ namespace BrodUI.ViewModels
 
                 // LOADING COUNT
                 int count = 0;
-                int imageSize = width * height;
+                int countMax = width * height * 2; // "* 2" to have the first 50% for the color counting and the second 50% for the grid creation
 
                 LogManagement.WriteToLog("[" + DateTime.Now + "] " + Assets.Languages.Resource.Export_ConvertToCrossStitchEmbroidery);
 
@@ -133,7 +133,7 @@ namespace BrodUI.ViewModels
                     for (int j = 0; j < height; j++)
                     {
                         count++;
-                        ShowProgression(count, imageSize);
+                        ShowProgression(count, countMax);
 
                         // We can't use wireTable[i, j] directly,
                         // because even those with the same color are considered not the same object
@@ -158,9 +158,6 @@ namespace BrodUI.ViewModels
 
                     WireArray.Add(new Wire(scbColor, 404, "DMC", "White", color.Value));
                 }
-
-                Console.WriteLine(); // Line break
-                LogManagement.WriteToLog("[" + DateTime.Now + "] " + Assets.Languages.Resource.Export_ConvertToCrossStitchEmbroideryDone);
 
                 // GridImage creation part
                 // reset GridImage
@@ -194,6 +191,9 @@ namespace BrodUI.ViewModels
                 {
                     for (int i = 0; i < height; i++)
                     {
+                        count++;
+                        ShowProgression(count, countMax);
+
                         Rectangle rect = new()
                         {
                             Fill = wireTable[j, i],
@@ -232,6 +232,9 @@ namespace BrodUI.ViewModels
                         GridImage.Children.Add(border);
                     }
                 }
+
+                Console.WriteLine(); // Line break
+                LogManagement.WriteToLog("[" + DateTime.Now + "] " + Assets.Languages.Resource.Export_ConvertToCrossStitchEmbroideryDone);
             }
         }
 
