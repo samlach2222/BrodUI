@@ -39,7 +39,7 @@ namespace BrodUI.Models
         public double Ratio { get; set; }
 
         /// <summary>
-        /// TODO : MISSING DOCUMENTATION
+        /// Path to the current image
         /// </summary>
         public static string ImagePath => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "BrodUI", "current image.png");
 

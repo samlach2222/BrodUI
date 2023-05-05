@@ -6,6 +6,8 @@ using BrodUI.Models;
 using Xunit;
 using Moq;
 using static BrodUI.Models.ImageManagement;
+using Microsoft.Win32;
+using System.Windows.Media;
 
 namespace BrodUITests.ModelsTests;
 
@@ -153,5 +155,107 @@ public class ImageManagementTests
         Assert.Equal(-1, im2.ImageWidth);
         Assert.Equal(-1, im2.ImageHeight);
         Assert.Equal(1, im2.Ratio);
+    }
+
+    [Fact]
+    public void LoadCurrentImageTest()
+    {
+        // delete image if exists
+        string appdata = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+        string path = Path.Combine(appdata, "BrodUI", "current image.png");
+
+        if (File.Exists(path))
+        {
+            File.Delete(path);
+        }
+
+        ImageManagement im = new(new Win32OpenFileDialogAdapter())
+        {
+            // Change values
+            ImageHeight = -1,
+            ImageWidth = -1,
+            Ratio = -1,
+            Image = null
+        };
+
+        // Load current image (don't exists)
+        im.LoadCurrentImage();
+        Assert.Null(im.Image);
+        Assert.Equal(0, im.ImageWidth);
+        Assert.Equal(0, im.ImageHeight);
+
+        string pathImage = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\BrodUI\Assets\applicationIcon-1024.png");
+        // copy image to AppData
+        File.Delete(path);
+        File.Copy(pathImage, path);
+
+        im.LoadCurrentImage();
+        Assert.NotNull(im.Image);
+        Assert.Equal(1024, im.ImageWidth);
+        Assert.Equal(1024, im.ImageHeight);
+        Assert.Equal(1, im.Ratio);
+
+        File.Delete(path);
+    }
+
+    [Fact]
+    public void UnloadImageTest()
+    {
+        Mock<IOpenFileDialog> openFileDialogMock = new();
+        ImageManagement im = new(openFileDialogMock.Object);
+
+        string path = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\BrodUI\Assets\applicationIcon-1024.png");
+        openFileDialogMock.Setup(x => x.ShowDialog()).Returns(true);
+        openFileDialogMock.Setup(x => x.FileName).Returns(path);
+
+        im.LoadImageDialog();
+
+        Assert.NotNull(im.Image);
+        Assert.Equal(1024, im.ImageWidth);
+        Assert.Equal(1024, im.ImageHeight);
+        Assert.Equal(1, im.Ratio);
+
+        // Unload Part
+
+        im.UnloadImage();
+
+        Assert.Null(im.Image);
+        Assert.Equal(0, im.ImageWidth);
+        Assert.Equal(0, im.ImageHeight);
+        Assert.Equal(1, im.Ratio);
+    }
+
+    [Fact]
+    public void ResizeImageTest()
+    {
+        ImageManagement im = new(new Win32OpenFileDialogAdapter());
+        string appdata = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+        string path = Path.Combine(appdata, "BrodUI", "current image.png");
+        string pathImage = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\BrodUI\Assets\applicationIcon-1024.png");
+        // copy image to AppData
+        File.Delete(path);
+        File.Copy(pathImage, path);
+
+        // Load the image
+        im.LoadCurrentImage();
+        Assert.NotNull(im.Image);
+        Assert.Equal(1024, im.ImageWidth);
+        Assert.Equal(1024, im.ImageHeight);
+        Assert.Equal(1, im.Ratio);
+
+        // Resize the image
+        im.ImageWidth = 100;
+        im.ImageHeight = 100; // We have to set both values because the respect of the ratio is done in the setter used in the UI.
+
+        im.ResizeImage();
+
+        // Reload the image
+        im.LoadCurrentImage();
+        Assert.NotNull(im.Image);
+        Assert.Equal(100, im.ImageWidth);
+        Assert.Equal(100, im.ImageHeight);
+        Assert.Equal(1, im.Ratio);
+
+        File.Delete(path);
     }
 }
