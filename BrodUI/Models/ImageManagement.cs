@@ -3,6 +3,7 @@ using System;
 using System.IO;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using static BrodUI.Models.ImageManagement;
 using MessageBox = System.Windows.MessageBox;
 
 namespace BrodUI.Models
@@ -12,6 +13,11 @@ namespace BrodUI.Models
     /// </summary>
     public class ImageManagement
     {
+        /// <summary>
+        /// Dialog to open a file
+        /// </summary>
+        private readonly IOpenFileDialog _openFileDialog;
+
         /// <summary>
         /// Image used in the app
         /// </summary>
@@ -32,44 +38,71 @@ namespace BrodUI.Models
         /// </summary>
         public double Ratio { get; set; }
 
-        public static String ImagePath
-        {
-            get => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "BrodUI", "current image.png");
-        }
+        /// <summary>
+        /// TODO : MISSING DOCUMENTATION
+        /// </summary>
+        public static string ImagePath => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "BrodUI", "current image.png");
 
         /// <summary>
         /// Constructor that set the default values
         /// </summary>
-        public ImageManagement()
+        public ImageManagement(IOpenFileDialog openFileDialog)
         {
             Image = null;
             ImageWidth = -1;
             ImageHeight = -1;
             Ratio = 1;
+            _openFileDialog = openFileDialog;
         }
+
+        /// <summary>
+        /// Interface for OpenFileDialog to be able to mock it
+        /// </summary>
+        public interface IOpenFileDialog
+        {
+            /// <summary>
+            /// Name of the file
+            /// </summary>
+            string? FileName { get; set; }
+
+            /// <summary>
+            /// Function to show the dialog
+            /// </summary>
+            /// <returns>return if it's Ok or not</returns>
+            bool? ShowDialog();
+
+            /// <summary>
+            /// Name of the files
+            /// </summary>
+            string[] FileNames { get; }
+
+            /// <summary>
+            /// Filters for the dialog (image filter)
+            /// </summary>
+            string Filter { get; set; }
+        }
+
 
         /// <summary>
         /// Load an image from a file with a dialog and set Image, ImageWidth, ImageHeight and Ratio
         /// </summary>
         public void LoadImageDialog()
         {
-            OpenFileDialog dialog = new()
-            {
-                Filter = "Image files (*.png;*.jpeg;*.jpg;*.bmp;*.gif)|*.png;*.jpeg;*.jpg;*.bmp;*.gif|All files (*.*)|*.*"
-            };
-            bool ok = (bool)dialog.ShowDialog()!;
-            if (ok)
+            _openFileDialog.Filter = "Image files (*.png;*.jpeg;*.jpg;*.bmp;*.gif)|*.png;*.jpeg;*.jpg;*.bmp;*.gif|All files (*.*)|*.*";
+            bool? dialogResult = _openFileDialog.ShowDialog();
+
+            if (dialogResult == true)
             {
                 // Get image size
                 Image = new BitmapImage();
-                FileStream stream = File.OpenRead(dialog.FileName);
+                FileStream stream = File.OpenRead(_openFileDialog.FileName!);
                 Image.BeginInit();
                 Image.CacheOption = BitmapCacheOption.OnLoad;
                 Image.StreamSource = stream;
                 Image.EndInit();
                 stream.Close();
                 stream.Dispose();
-                Ratio = (double)Image.PixelWidth / (double)Image.PixelHeight;
+                Ratio = (double)Image.PixelWidth / Image.PixelHeight;
                 ImageWidth = Image.PixelWidth;
                 ImageHeight = Image.PixelHeight;
             }
@@ -78,6 +111,7 @@ namespace BrodUI.Models
                 MessageBox.Show(Assets.Languages.Resource.ImageManagement_InvalidImageFile);
             }
         }
+
 
         /// <summary>
         /// Load the current image and set Image, ImageWidth, ImageHeight and Ratio
@@ -100,7 +134,7 @@ namespace BrodUI.Models
                 stream.Close();
                 stream.Dispose();
 
-                Ratio = (double)Image.PixelWidth / (double)Image.PixelHeight;
+                Ratio = (double)Image.PixelWidth / Image.PixelHeight;
                 ImageWidth = Image.PixelWidth;
                 ImageHeight = Image.PixelHeight;
             }

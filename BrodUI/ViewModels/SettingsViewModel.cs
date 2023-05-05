@@ -1,3 +1,4 @@
+using BrodUI.Helpers;
 using BrodUI.Models;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -218,7 +219,7 @@ namespace BrodUI.ViewModels
         private static void ResetParameters()
         {
             ConfigManagement.DeleteConfigFile();
-            ImageManagement im = new();
+            ImageManagement im = new(new Win32OpenFileDialogAdapter());
             im.UnloadImage();
             RestartApp();
         }

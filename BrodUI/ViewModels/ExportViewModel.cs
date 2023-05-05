@@ -3,6 +3,7 @@ using BrodUI.Models;
 using BrodUI.Views.Pages;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -99,7 +100,7 @@ namespace BrodUI.ViewModels
         public void OnNavigatedTo()
         {
             LogManagement.WriteToLog("[" + DateTime.Now + "] " + Assets.Languages.Resource.Terminal_ExportPage);
-            Im ??= new ImageManagement();
+            Im ??= new ImageManagement(new Win32OpenFileDialogAdapter());
             Im.LoadCurrentImage();
             LoadedImage = Im.Image;
 

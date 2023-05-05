@@ -1,4 +1,5 @@
-﻿using BrodUI.Models;
+﻿using BrodUI.Helpers;
+using BrodUI.Models;
 using BrodUI.Views.Pages;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -210,7 +211,7 @@ namespace BrodUI.ViewModels
             // If not already initialized
             if (Im == null)
             {
-                Im = new ImageManagement();
+                Im = new ImageManagement(new Win32OpenFileDialogAdapter());
 
                 // Try to load the last saved image
                 Im.LoadCurrentImage();
