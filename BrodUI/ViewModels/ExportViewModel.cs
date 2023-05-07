@@ -69,10 +69,6 @@ namespace BrodUI.ViewModels
             {
 
                 _loadedImage = value;
-                if (Im != null)
-                {
-                    Im.Image = value;
-                }
                 OnPropertyChanged();
             }
         }
@@ -272,7 +268,12 @@ namespace BrodUI.ViewModels
         /// </summary>
         public void OnNavigatedFrom()
         {
-
+            // Clear the page elements
+            GridImage?.Children.Clear();
+            GridImage?.RowDefinitions.Clear();
+            GridImage?.ColumnDefinitions.Clear();
+            LoadedImage = null;
+            WireArray = new();
         }
 
         [RelayCommand]
