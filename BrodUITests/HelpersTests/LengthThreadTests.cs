@@ -6,6 +6,7 @@ namespace BrodUITests.HelpersTests
 {
 	public class LengthThreadTests
 	{
+		[Fact]
 		public void WireSizeTest()
 		{
 			int[,] imageTest = new int[,] {{3,4,3}, {3,3,5}, {5,4,3}, {4,3,3}};

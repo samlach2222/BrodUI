@@ -6,6 +6,7 @@ namespace BrodUITests.HelpersTests
 { 
     public class DMCtoStringTests
 	{
+		[Fact]
 		public void GetNameDmcTests()
 		{
 			DMCtoString d = new DMCtoString();

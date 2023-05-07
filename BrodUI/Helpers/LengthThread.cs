@@ -56,18 +56,28 @@ namespace BrodUI.Helpers
             int length = 1;
 
             // We look on the image at the pixels where the color is present
-            for (int i = 0; i < image.GetLongLength(1); i++)
+            for (int i = 0; i < image.GetLongLength(0); i++)
             {
-                for (int j = 0; j < image.GetLongLength(2); j++)
+                for (int j = 0; j < image.GetLongLength(1); j++)
                 {
                     // If the pixel is not of the color
                     if (image[i, j] != color) continue;
-                    // If the neighboring pixel is of the color
-                    if (image[i, j + 1] == color)
-                        length += length;
 
-                    // Once we have no more consecutive pixels of the color : total length calculation and length reset to 1
-                    else
+                    if (j < image.GetLongLength(1) - 1)
+                    {
+                        // If the neighboring pixel is of the color
+                        if (image[i, j + 1] == color)
+                            length += length;
+
+                        // Once we have no more consecutive pixels of the color : total length calculation and length reset to 1
+                        else
+                        {
+                            TotalLength = TotalLength + (Cross * length) + (2 * Knot);
+                            length = 1;
+                        }
+                    }
+                     
+                    if(j == image.GetLongLength(1)-1)
                     {
                         TotalLength = TotalLength + (Cross * length) + (2 * Knot);
                         length = 1;
