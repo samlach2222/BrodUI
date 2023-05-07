@@ -12,7 +12,7 @@ namespace BrodUITests.HelpersTests
 			DMCtoString d = new DMCtoString();
 			var actual = d.GetNameDmc(517);
 			string expected = "Dark Wedgwood";
-			Assert.Equal(actual, expected);
+			Assert.Equal(expected, actual);
 		}
 	}
 }

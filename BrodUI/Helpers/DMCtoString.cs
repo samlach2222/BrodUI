@@ -24,7 +24,7 @@ namespace BrodUI.Helpers
             while (line != null)
             {
                 _dmcString[comp, 0] = line[..line.IndexOf("-", StringComparison.Ordinal)];
-                _dmcString[comp, 1] = line[(line.IndexOf("-", StringComparison.Ordinal) + 2)..];
+                _dmcString[comp, 1] = line[(line.IndexOf("-", StringComparison.Ordinal) + 1)..];
                 comp++;
                 line = sr.ReadLine();
             }
