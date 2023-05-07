@@ -6,7 +6,7 @@ namespace BrodUI.Helpers
     /// <summary>
     /// class to convert RGB to DMC
     /// </summary>
-    internal class RgbToDmc
+    public class RgbToDmc
     {
         //array for DMC colors 0 = R, 1 = G, 2 = B, 3 = DMC
         private readonly int[,] _dmc = new int[500, 4];
