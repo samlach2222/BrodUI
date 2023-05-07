@@ -9,7 +9,7 @@ namespace BrodUI.Helpers
     /// <summary>
     /// Class to calculate the length of on thread for an image based on its color
     /// </summary>
-    internal class LengthThread
+    public class LengthThread
     {
         /// <summary>
         /// Length of yarn needed to make a knot at the beginning and at the end of the yarn use
