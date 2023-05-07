@@ -51,7 +51,7 @@ namespace BrodUI.Helpers
                         .Select(v => v.Key)
                         .FirstOrDefault();
                     GenericVector centroid = centroids[centroidid];
-                    res[i, j] = new SolidColorBrush(Color.FromArgb(255, BitConverter.GetBytes(centroid.Points[0])[0], BitConverter.GetBytes(centroid.Points[1])[0], BitConverter.GetBytes(centroid.Points[2])[0]));
+                    res[i, j] = new SolidColorBrush(Color.FromRgb((byte)Math.Round(centroid.Points[0]), (byte)Math.Round(centroid.Points[1]), (byte)Math.Round(centroid.Points[2])));
                 }
             }
             return res;

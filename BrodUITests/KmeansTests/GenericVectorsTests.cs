@@ -1,4 +1,5 @@
 ﻿using Xunit;
+using BrodUI.Kmeans;
 
 namespace BrodUITests.KmeansTests
 {

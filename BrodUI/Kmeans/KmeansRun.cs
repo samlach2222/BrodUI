@@ -7,11 +7,11 @@ namespace BrodUI.Kmeans
 {
     public static class KmeansRun
     {
-        public static Brush[,] StartKmeans(Brush[,] image, int nb_clusters)
+        public static Brush[,] StartKmeans(Brush[,] image, int nb_clusters, int nb_kmeans)
         {
             Dictionary<int, GenericVector> dict = Brush2DtoColorDict.BrushToDict(image);
             var kMeanses = new List<KMeans>();
-            for (var i = 0; i < 2; i++)
+            for (var i = 0; i < nb_kmeans; i++)
             {
                 var kMeans = new KMeans
                 {
