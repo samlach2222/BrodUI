@@ -7,24 +7,24 @@ namespace BrodUI.Kmeans
 {
     public static class KmeansRun
     {
-        public static Brush[,] StartKmeans(Brush[,] image, int nb_clusters, int nb_kmeans)
+        public static Brush[,] StartKmeans(Brush[,] image, int nbClusters, int nbKmeans)
         {
             Dictionary<int, GenericVector> dict = Brush2DtoColorDict.BrushToDict(image);
             var kMeanses = new List<KMeans>();
-            for (var i = 0; i < nb_kmeans; i++)
+            for (var i = 0; i < nbKmeans; i++)
             {
                 var kMeans = new KMeans
                 {
                     Iterations = 100,
                     Dataset = dict.Values.ToList(),
-                    Clusters = nb_clusters
+                    Clusters = nbClusters
                 };
                 kMeans.Run();
                 kMeanses.Add(kMeans);
             }
             // We keep the lowest SSE
             var lowestKmeans = kMeanses.Aggregate((minItem, nextItem) => minItem.Sse < nextItem.Sse ? minItem : nextItem);
-            return Brush2DtoColorDict.DictToBrush2D(dict, lowestKmeans.Centroids,image.GetLength(0),image.GetLength(1));
+            return Brush2DtoColorDict.DictToBrush2D(dict, lowestKmeans.Centroids!,image.GetLength(0),image.GetLength(1));
         }
     }
 }

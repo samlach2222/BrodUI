@@ -13,13 +13,6 @@ namespace BrodUI.Kmeans
         //list of floats that's creating the GenericVector
         public List<float> Points = new();
 
-        //CONSTRUCTORS
-        //Creates a new GenericVector with the points given
-        public GenericVector(List<float> points)
-        {
-            Points = points;
-        }
-
         //Creates a new GeneriVector with the points as long as the size given
         public GenericVector(int size)
         {
@@ -65,11 +58,6 @@ namespace BrodUI.Kmeans
             return string.Join("\t", Points.Select(x => x.ToString(CultureInfo.InvariantCulture)).ToArray());
         }
 
-        public float BiggestPoint()
-        {
-            return Points.Max();
-        }
-
         public GenericVector Divide(int divider)
         {
             for (var i = 0; i < Size; i++)
@@ -77,21 +65,6 @@ namespace BrodUI.Kmeans
                 Points[i] = Points[i] / divider;
             }
             return this;
-        }
-
-        //STATIC GENERICVECTOR METHODS
-        public static GenericVector Sum(GenericVector vectorA, GenericVector vectorB)
-        {
-            if (vectorA.Size != vectorB.Size)
-                throw new Exception("GenericVector size of vectorToSum not equal to instance vector size");
-
-            var summedVector = new GenericVector(vectorA.Size);
-
-            for (var i = 0; i < summedVector.Size; i++)
-            {
-                summedVector.Points[i] = vectorA.Points[i] + vectorB.Points[i];
-            }
-            return summedVector;
         }
 
         public static bool NotEqual(GenericVector a, GenericVector b)
@@ -106,14 +79,6 @@ namespace BrodUI.Kmeans
             var aTimesBpoints = vectorA.Points.Select((t, i) => t * vectorB.Points[i]).ToList();
 
             return aTimesBpoints.Sum();
-        }
-
-        public static float GetAngle(GenericVector a, GenericVector b)
-        {
-            var x = DotProduct(a, b) / (a.VectorLength() * b.VectorLength());
-            if (x is > 1 or < -1)
-                return 0;
-            return (float)Math.Acos(x);
         }
 
         public static double Distance(GenericVector a, GenericVector b)

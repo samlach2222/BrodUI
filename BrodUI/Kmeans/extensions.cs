@@ -11,10 +11,5 @@ namespace BrodUI.Kmeans
                 action();
             }
         }
-
-        public static int RandomInt(int max)
-        {
-            return new Random().Next(max);
-        }
     }
 }
