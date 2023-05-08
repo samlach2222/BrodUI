@@ -17,3 +17,7 @@ In this folder you will find all the unit tests of the project (Models and Helpe
 
 So, as you can see, all the classes you create should be in the `Models` folder and all the data manipulation classes should be in the `Helpers` folder.  
 These classes will then be used in the `ViewModel` folder and implemented graphically in the `Views` folder.
+
+## Credits
+
+Logo edited from a <a href="https://www.flaticon.com/free-icon/cross-stitch_2818654" title="Cross stitch icon">cross stitch icon created by Freepik - Flaticon</a>

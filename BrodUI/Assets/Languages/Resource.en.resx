@@ -270,4 +270,7 @@
   <data name="Settings_LabelEmbroiderySize" xml:space="preserve">
     <value>Embroidery point Size</value>
   </data>
+  <data name="Settings_LinkOriginalIcon" xml:space="preserve">
+    <value>Logo edited from a cross-stitch icon created by Freepik - Flaticon</value>
+  </data>
 </root>

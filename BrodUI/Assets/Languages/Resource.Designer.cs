@@ -358,6 +358,15 @@ namespace BrodUI.Assets.Languages {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Logo edited from a cross-stitch icon created by Freepik - Flaticon.
+        /// </summary>
+        public static string Settings_LinkOriginalIcon {
+            get {
+                return ResourceManager.GetString("Settings_LinkOriginalIcon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Project website on GitHub.
         /// </summary>
         public static string Settings_LinkProjectWebsiteOnGitHub {

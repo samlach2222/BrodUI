@@ -111,6 +111,10 @@
             Content="{x:Static p:Resource.Settings_LinkLatestReleaseOnGithub}"
             Icon="Link24"
             NavigateUri="https://github.com/samlach2222/BrodUI/releases/latest" />
+        <ui:Hyperlink
+            Content="{x:Static p:Resource.Settings_LinkOriginalIcon}"
+            Icon="Link24"
+            NavigateUri="https://www.flaticon.com/free-icon/cross-stitch_2818654" />
         <TextBlock
             Padding="0,24,0,8"
             FontSize="14"

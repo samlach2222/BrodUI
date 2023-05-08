@@ -270,4 +270,7 @@
   <data name="Settings_LabelEmbroiderySize" xml:space="preserve">
     <value>Taille d'un point de broderie</value>
   </data>
+  <data name="Settings_LinkOriginalIcon" xml:space="preserve">
+    <value>Logo modifié depuis une icône de point de croix créé par Freepik - Flaticon</value>
+  </data>
 </root>

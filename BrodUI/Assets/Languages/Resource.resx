@@ -321,4 +321,8 @@
     <value>Embroidery point Size</value>
     <comment>Label for Embroidery Size panel</comment>
   </data>
+  <data name="Settings_LinkOriginalIcon" xml:space="preserve">
+    <value>Logo edited from a cross-stitch icon created by Freepik - Flaticon</value>
+    <comment>Label link to the original icon</comment>
+  </data>
 </root>
