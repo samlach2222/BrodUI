@@ -1,5 +1,11 @@
-﻿using System.Windows.Media;
+﻿using System.Drawing;
+using System.IO;
+using System.Runtime.InteropServices;
+using System.Windows;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using Brush = System.Windows.Media.Brush;
+using Color = System.Windows.Media.Color;
 
 namespace BrodUI.Helpers
 {
@@ -35,6 +41,52 @@ namespace BrodUI.Helpers
                 }
             }
             return array;
+        }
+
+        /// <summary>
+        /// Convert a 2D array of brushes to an image
+        /// </summary>
+        /// <param name="brushes">2D array of brushes</param>
+        /// <returns>Bitmap Image to put in the ImageManagement class</returns>
+        public static BitmapImage ConvertToBitmapImage(Brush[,] brushes)
+        { // TODO : CREATE UNIT TESTS FOR THIS METHOD
+            int width = brushes.GetLength(0);
+            int height = brushes.GetLength(1);
+
+            // Create a DrawingVisual to draw brushes in a DrawingContext
+            DrawingVisual drawingVisual = new();
+            using (DrawingContext drawingContext = drawingVisual.RenderOpen())
+            {
+                for (int x = 0; x < width; x++)
+                {
+                    for (int y = 0; y < height; y++)
+                    {
+                        Rect rect = new(x, y, 1, 1);
+                        drawingContext.DrawRectangle(brushes[x, y], null, rect);
+                    }
+                }
+            }
+
+            // Convert the DrawingVisual to a BitmapImage
+            RenderTargetBitmap renderTargetBitmap = new(width, height, 96, 96, PixelFormats.Pbgra32);
+            renderTargetBitmap.Render(drawingVisual);
+
+            BitmapImage bitmapImage = new();
+            using (MemoryStream memoryStream = new())
+            {
+                // Encode the image to a bitmap
+                BitmapEncoder bitmapEncoder = new PngBitmapEncoder();
+                bitmapEncoder.Frames.Add(BitmapFrame.Create(renderTargetBitmap));
+                bitmapEncoder.Save(memoryStream);
+                memoryStream.Seek(0, SeekOrigin.Begin);
+
+                bitmapImage.BeginInit();
+                bitmapImage.StreamSource = memoryStream;
+                bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+                bitmapImage.EndInit();
+            }
+
+            return bitmapImage;
         }
     }
 }

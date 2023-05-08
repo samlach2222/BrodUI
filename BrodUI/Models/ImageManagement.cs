@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BrodUI.Helpers;
+using BrodUI.Kmeans;
+using System;
 using System.IO;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -195,6 +197,12 @@ namespace BrodUI.Models
                 encoderRgba.Save(Image.StreamSource);
                 Image.EndInit();
             }
+
+            Brush[,] kMeansArray = ImageTo2DArrayBrushes.ConvertTo2dArray(Image);
+            // TODO : Create parameters for nb_clusters and nb_iterations (KMeans) in the UI
+            // TODO : Save image before KMeans and after to different names.
+            kMeansArray = KmeansRun.StartKmeans(kMeansArray, 5, 10);
+            Image = ImageTo2DArrayBrushes.ConvertToBitmapImage(kMeansArray);
 
             // Save resized image
             GC.Collect();
