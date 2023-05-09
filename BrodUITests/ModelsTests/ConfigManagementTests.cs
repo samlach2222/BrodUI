@@ -1,9 +1,6 @@
 ﻿using BrodUI.Models;
-using System.Drawing.Imaging;
 using System.Globalization;
-using Wpf.Ui.Appearance;
 using Xunit;
-using static iText.Kernel.Pdf.Colorspace.PdfDeviceCs;
 
 namespace BrodUITests.ModelsTests
 {

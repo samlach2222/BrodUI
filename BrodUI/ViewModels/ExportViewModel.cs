@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using Wpf.Ui.Common.Interfaces;
 using Wpf.Ui.Controls.Interfaces;
+using Wpf.Ui.Extensions;
 using Wpf.Ui.Mvvm.Contracts;
 using MessageBox = System.Windows.MessageBox;
 
@@ -148,17 +149,19 @@ namespace BrodUI.ViewModels
                 // Add the wires to the WireArray
                 foreach (KeyValuePair<Color, int> color in colorQuantity)
                 {
+                    // TODO Check and fix if bug : The colors and quantities are different on RGB/HSL despite only checking RGB or HSL here
                     SolidColorBrush scbColor = new(color.Key);
 
                     int dmc = 0;
                     switch (ConfigManagement.GetColorModelFromConfigFile())
                     {
-                        case "HSL" :
+                        case "HSL":
                             HslToDmc hslToDmc = new();
-                            dmc = hslToDmc.GetValDmc(color.Key.R, color.Key.G, color.Key.B);
+                            (float hue, float saturation, float lightness) = color.Key.ToHsl();
+                            dmc = hslToDmc.GetValDmc((((int)hue) % 360), ((int)saturation), ((int)lightness));
                             break;
-                        case "RGB" :
-                        default :
+                        case "RGB":
+                        default:
                             RgbToDmc rgbToDmc = new();
                             dmc = rgbToDmc.GetValDmc(color.Key.R, color.Key.G, color.Key.B);
                             break;

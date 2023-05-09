@@ -14,12 +14,12 @@ namespace BrodUITests.HelpersTests
         [Fact]
         public void GetValDmcTests()
         {
-            const int red = 255;
-            const int green = 226;
-            const int blue = 226;
+            const int hue = 0;
+            const int saturation = 100;
+            const int lightness = 94;
             int dmc1 = 3713;
             HslToDmc hslToDmc = new();
-            int dmc2 = hslToDmc.GetValDmc(red, green, blue);
+            int dmc2 = hslToDmc.GetValDmc(hue, saturation, lightness);
             Assert.Equal(dmc1, dmc2);
         }
     }
