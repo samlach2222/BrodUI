@@ -16,7 +16,7 @@ namespace BrodUI.Kmeans
         //Creates a new GeneriVector with the points as long as the size given
         public GenericVector(int size)
         {
-            for (var i = 0; i < size; i++)
+            for (int i = 0; i < size; i++)
             {
                 Points.Add(0);
             }
@@ -39,7 +39,7 @@ namespace BrodUI.Kmeans
             if (Size != vectorToSum.Size)
                 throw new Exception("GenericVector size of vectorToSum not equal to instance vector size");
 
-            for (var i = 0; i < Size; i++)
+            for (int i = 0; i < Size; i++)
             {
                 Points[i] += vectorToSum.Points[i];
             }
@@ -60,7 +60,7 @@ namespace BrodUI.Kmeans
 
         public GenericVector Divide(int divider)
         {
-            for (var i = 0; i < Size; i++)
+            for (int i = 0; i < Size; i++)
             {
                 Points[i] = Points[i] / divider;
             }
@@ -76,14 +76,14 @@ namespace BrodUI.Kmeans
         {
             if (vectorA.Size != vectorB.Size)
                 throw new Exception("GenericVector a size of dotProduct not equal to GenericVector b size");
-            var aTimesBpoints = vectorA.Points.Select((t, i) => t * vectorB.Points[i]).ToList();
+            List<float> aTimesBpoints = vectorA.Points.Select((t, i) => t * vectorB.Points[i]).ToList();
 
             return aTimesBpoints.Sum();
         }
 
         public static double Distance(GenericVector a, GenericVector b)
         {
-            var aMinusBpoints = a.Points.Select((t, i) => t - b.Points[i]).ToList();
+            List<float> aMinusBpoints = a.Points.Select((t, i) => t - b.Points[i]).ToList();
 
             return Math.Sqrt(aMinusBpoints.Sum(item => Math.Pow(item, 2)));
         }

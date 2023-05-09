@@ -16,14 +16,14 @@ namespace BrodUI.Helpers
         /// </summary>
         public static Dictionary<int, GenericVector> BrushToDict(Brush[,] image)
         {
-            var dict = new Dictionary<int, GenericVector>();
-            var x = image.GetLength(0);
+            Dictionary<int, GenericVector> dict = new();
+            int x = image.GetLength(0);
             BrushConverter converter = new();
-            for (var i = 0; i < x; i++)
+            for (int i = 0; i < x; i++)
             {
-                for (var j = 0; j < image.GetLength(1); j++)
+                for (int j = 0; j < image.GetLength(1); j++)
                 {
-                    var vec = new GenericVector();
+                    GenericVector vec = new();
                     Brush brush = image[i, j];
                     SolidColorBrush col = (SolidColorBrush)converter.ConvertFromString(brush.ToString())!;
                     vec.Add(col.Color.R);
@@ -41,9 +41,9 @@ namespace BrodUI.Helpers
         public static Brush[,] DictToBrush2D(Dictionary<int, GenericVector> dict, Dictionary<int, GenericVector> centroids, int sizeX, int sizeY)
         {
             Brush[,] res = new Brush[sizeX, sizeY];
-            for (var i = 0; i < sizeX; i++)
+            for (int i = 0; i < sizeX; i++)
             {
-                for (var j = 0; j < sizeY; j++)
+                for (int j = 0; j < sizeY; j++)
                 {
                     GenericVector gv = dict[i + j * sizeX];
                     int centroidid = centroids

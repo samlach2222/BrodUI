@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BrodUI.Helpers
 {
@@ -29,7 +25,7 @@ namespace BrodUI.Helpers
             while (line != null)
             {
                 int count;
-                foreach (var t in line)
+                foreach (char t in line)
                 {
                     if (t == ' ')
                     {

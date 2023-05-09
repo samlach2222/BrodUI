@@ -1,11 +1,5 @@
-﻿using BrodUI.Helpers;
-using System.Drawing;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using Xunit;
-using rgbDMC=BrodUI.Helpers.RgbToDmc;
-using Brush = System.Windows.Media.Brush;
-using Color = System.Windows.Media.Color;
+﻿using Xunit;
+using rgbDMC = BrodUI.Helpers.RgbToDmc;
 
 namespace BrodUITests.HelpersTests
 {
@@ -14,7 +8,7 @@ namespace BrodUITests.HelpersTests
         [Fact]
         public void InitializationTests()
         {
-            
+
         }
         [Fact]
         public void GetValDmcTests()

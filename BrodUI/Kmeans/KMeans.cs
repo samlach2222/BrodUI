@@ -23,7 +23,7 @@ namespace BrodUI.Kmeans
             for (_i = 0; _i < Iterations; _i++)
             {
                 //storing the old centroids to compare it later on.
-                var oldCentroids = Centroids.Values.ToList();
+                List<GenericVector> oldCentroids = Centroids.Values.ToList();
 
                 //assign data set
                 AssignDataset();
@@ -47,18 +47,18 @@ namespace BrodUI.Kmeans
         //get nearest cluster
         private int GetNearestCluster(GenericVector vector)
         {
-            var clusterid = Centroids!
+            int clusterId = Centroids!
                 .OrderBy(v => GenericVector.Distance(vector, v.Value))
                 .Select(v => v.Key)
                 .FirstOrDefault();
-            return clusterid;
+            return clusterId;
         }
 
         //generate random centroids for the first time
         private Dictionary<int, GenericVector> GenerateRandomCentroids(int clusters)
         {
-            var centroids = new Dictionary<int, GenericVector>();
-            var index = 0;
+            Dictionary<int, GenericVector> centroids = new();
+            int index = 0;
             clusters.Times(() => centroids.Add(index++, RandomVector()));
             return centroids;
         }
@@ -74,13 +74,13 @@ namespace BrodUI.Kmeans
         private void RecalculateCentroids()
         {
             if (Centroids == null) return;
-            foreach (var centroidkey in Centroids.Keys.ToList())
+            foreach (int centroidKey in Centroids.Keys.ToList())
             {
                 if (Dataset == null) continue;
-                var cluster = Dataset.Where(v => v.Cluster == centroidkey).ToList();
+                List<GenericVector> cluster = Dataset.Where(v => v.Cluster == centroidKey).ToList();
 
-                //generating a new genericvector with the mean of the existing vectors
-                Centroids[centroidkey] = cluster
+                //generating a new genericVector with the mean of the existing vectors
+                Centroids[centroidKey] = cluster
                     .Aggregate(new GenericVector(Dataset.First().Size),
                         (current, y) => current.Sum(y))
                     .Divide(cluster.Count);
@@ -93,11 +93,11 @@ namespace BrodUI.Kmeans
             while (true)
             {
                 if (Dataset == null) continue;
-                var genericVector = Dataset[_random.Next(Dataset.Count)];
-                var found = false;
+                GenericVector genericVector = Dataset[_random.Next(Dataset.Count)];
+                bool found = false;
                 if (Centroids != null)
                 {
-                    for (var i = 0; i < Centroids.Values.ToList().Count; i++)
+                    for (int i = 0; i < Centroids.Values.ToList().Count; i++)
                     {
                         if (Centroids.Values.ToList()[i] == genericVector)
                             found = true;
@@ -114,8 +114,8 @@ namespace BrodUI.Kmeans
         public void PrintClusters()
         {
             if (Dataset == null) return;
-            var clusters = Dataset.GroupBy(v => v.Cluster).ToList().OrderBy(v => v.Key);
-            foreach (var cluster in clusters)
+            IOrderedEnumerable<IGrouping<int, GenericVector>> clusters = Dataset.GroupBy(v => v.Cluster).ToList().OrderBy(v => v.Key);
+            foreach (IGrouping<int, GenericVector> cluster in clusters)
             {
                 // TODO : Change strings to use Assets
                 Console.WriteLine("Cluster " + cluster.ElementAt(0).Cluster + " has " + cluster.Count());
@@ -126,8 +126,8 @@ namespace BrodUI.Kmeans
         {
             if (Dataset != null)
             {
-                var clusters = Dataset.GroupBy(v => v.Cluster).ToList().OrderBy(v => v.Key);
-                foreach (var cluster in clusters)
+                IOrderedEnumerable<IGrouping<int, GenericVector>> clusters = Dataset.GroupBy(v => v.Cluster).ToList().OrderBy(v => v.Key);
+                foreach (IGrouping<int, GenericVector> cluster in clusters)
                 {
                     Console.Write(cluster.ElementAt(0).Cluster + " -> " + cluster.Count() + " || ");
                 }
@@ -148,19 +148,19 @@ namespace BrodUI.Kmeans
 
             if (Dataset != null)
             {
-                var clusters = Dataset.GroupBy(v => v.Cluster).ToList().OrderBy(v => v.Key).ToList();
+                List<IGrouping<int, GenericVector>> clusters = Dataset.GroupBy(v => v.Cluster).ToList().OrderBy(v => v.Key).ToList();
 
-                foreach (var cluster in clusters)
+                foreach (IGrouping<int, GenericVector> cluster in clusters)
                 {
                     // TODO : Change strings to use Assets
                     Console.WriteLine("***************************************************");
                     Console.WriteLine("cluster " + cluster.Key + " has " + cluster.Count() + " items");
                     Console.WriteLine("***************************************************");
-                    var offersBoughtXTimes = new Dictionary<int, int>();
-                    var clusterpoints = cluster.ToList();
-                    foreach (var clusterpoint in clusterpoints)
+                    Dictionary<int, int> offersBoughtXTimes = new();
+                    List<GenericVector> clusterpoints = cluster.ToList();
+                    foreach (GenericVector clusterpoint in clusterpoints)
                     {
-                        for (var j = 0; j < clusterpoint.Size; j++)
+                        for (int j = 0; j < clusterpoint.Size; j++)
                         {
                             if (!(Math.Abs(clusterpoint.Points[j] - 1) < 0.001)) continue;
                             if (offersBoughtXTimes.ContainsKey(j))
@@ -173,7 +173,7 @@ namespace BrodUI.Kmeans
                         (from entry in offersBoughtXTimes orderby entry.Value descending select entry).ToDictionary(
                             v => v.Key,
                             v => v.Value);
-                    foreach (var offerBought in offersBoughtXTimes.Where(offerBought => offerBought.Value >= 3))
+                    foreach (KeyValuePair<int, int> offerBought in offersBoughtXTimes.Where(offerBought => offerBought.Value >= 3))
                     {
                         // TODO : Change strings to use Assets
                         Console.WriteLine("Offer " + (offerBought.Key + 1) + " \t-> bought " + offerBought.Value + " times ");
@@ -186,11 +186,11 @@ namespace BrodUI.Kmeans
 
         public double CalculateSumofSquaredErrors()
         {
-            var orderedclusters = Dataset!.GroupBy(v => v.Cluster).OrderBy(v => v.Key).ToList();
-            var sse = (from cluster in orderedclusters
-                       let clustercenter = Centroids[cluster.Key]
-                       from point in cluster
-                       select Math.Pow(GenericVector.Distance(clustercenter, point), 2)).Sum();
+            List<IGrouping<int, GenericVector>> orderedclusters = Dataset!.GroupBy(v => v.Cluster).OrderBy(v => v.Key).ToList();
+            double sse = (from cluster in orderedclusters
+                          let clustercenter = Centroids[cluster.Key]
+                          from point in cluster
+                          select Math.Pow(GenericVector.Distance(clustercenter, point), 2)).Sum();
             return sse;
         }
     }

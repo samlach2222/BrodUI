@@ -6,7 +6,7 @@ namespace BrodUI.Kmeans
     {
         public static void Times(this int i, Action action)
         {
-            for (var j = 0; j < i; j++)
+            for (int j = 0; j < i; j++)
             {
                 action();
             }

@@ -76,8 +76,8 @@ namespace BrodUI.Helpers
                             length = 1;
                         }
                     }
-                     
-                    if(j == image.GetLongLength(1)-1)
+
+                    if (j == image.GetLongLength(1) - 1)
                     {
                         TotalLength = TotalLength + (Cross * length) + (2 * Knot);
                         length = 1;

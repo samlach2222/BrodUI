@@ -25,7 +25,7 @@ namespace BrodUI.Helpers
             while (line != null)
             {
                 int count;
-                foreach (var t in line)
+                foreach (char t in line)
                 {
                     if (t == ' ')
                     {

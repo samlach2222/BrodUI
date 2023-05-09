@@ -1,7 +1,5 @@
-﻿using Xunit;
-using BrodUI.Kmeans;
-using System.Collections.Generic;
-using System;
+﻿using BrodUI.Kmeans;
+using Xunit;
 
 namespace BrodUITests.KmeansTests
 {
@@ -12,8 +10,8 @@ namespace BrodUITests.KmeansTests
         {
             int val = 0;
             int nb = 5;
-            nb.Times(()=>val++);
-            Assert.Equal(nb,val);
+            nb.Times(() => val++);
+            Assert.Equal(nb, val);
         }
 
         [Fact]
@@ -26,8 +24,8 @@ namespace BrodUITests.KmeansTests
             expected.Add(2);
             List<int> actual = new();
             int nb = 3;
-            nb.Times(()=>actual.Add(val++));
-            Assert.Equal(expected,actual);
+            nb.Times(() => actual.Add(val++));
+            Assert.Equal(expected, actual);
         }
     }
 }
