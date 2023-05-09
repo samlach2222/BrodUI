@@ -1,13 +1,13 @@
-﻿using BrodUI.Kmeans;
+﻿using BrodUI.KMeans;
 using System.Windows.Media;
 using Xunit;
 
-namespace BrodUITests.KmeansTests
+namespace BrodUITests.KMeansTests
 {
     public class KMeansRunTests
     {
         [Fact]
-        public void CompleteKmeansRunTest()
+        public void CompleteKMeansRunTest()
         {
             SolidColorBrush[,] expected = new SolidColorBrush[2, 2];
             Brush[,] image = new Brush[2, 2];
@@ -19,7 +19,7 @@ namespace BrodUITests.KmeansTests
             image[1, 0] = new SolidColorBrush(Color.FromRgb(0, 255, 0));
             image[0, 1] = new SolidColorBrush(Color.FromRgb(0, 0, 255));
             image[1, 1] = new SolidColorBrush(Color.FromRgb(0, 0, 180));
-            Brush[,] actual = KmeansRun.StartKmeans(image, 3, 30); //We ask a new coloration of the picture with 3 colors using 30 kmeans to calculate the best results
+            Brush[,] actual = KMeansRun.StartKMeans(image, 3, 30); //We ask a new coloration of the picture with 3 colors using 30 kmeans to calculate the best results
             BrushConverter converter = new();
             for (int i = 0; i < 2; i++)
             {

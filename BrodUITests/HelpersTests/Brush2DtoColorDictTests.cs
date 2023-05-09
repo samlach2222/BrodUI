@@ -1,5 +1,5 @@
 ﻿using BrodUI.Helpers;
-using BrodUI.Kmeans;
+using BrodUI.KMeans;
 using System.Windows.Media;
 using Xunit;
 

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace BrodUI.Kmeans
+namespace BrodUI.KMeans
 {
     public class KMeans
     {

@@ -195,9 +195,9 @@ namespace BrodUI.ViewModels
         }
 
         /// <summary>
-        /// Getter and setter for the number of color for the kmeans algorithm
+        /// Getter and setter for the number of color for the kMeans algorithm
         /// </summary>
-        public int KmeansColorNumber
+        public int KMeansColorNumber
         {
             get => _kmeansColorNumber;
             set
@@ -208,9 +208,9 @@ namespace BrodUI.ViewModels
         }
 
         /// <summary>
-        /// Getter and setter for the number of iteration for the kmeans algorithm
+        /// Getter and setter for the number of iteration for the kMeans algorithm
         /// </summary>
-        public int KmeansIterationNumber
+        public int KMeansIterationNumber
         {
             get => _kmeansIterationNumber;
             set
@@ -266,8 +266,8 @@ namespace BrodUI.ViewModels
             LogManagement.WriteToLog("[" + DateTime.Now + "] " + Assets.Languages.Resource.Terminal_ConvertPage);
             // Set the default value for the kmeans algorithm
             IsImageLoaded = true;
-            KmeansColorNumber = ConfigManagement.GetKMeansClustersFromConfigFile();
-            KmeansIterationNumber = ConfigManagement.GetKMeansIterationsFromConfigFile();
+            KMeansColorNumber = ConfigManagement.GetKMeansClustersFromConfigFile();
+            KMeansIterationNumber = ConfigManagement.GetKMeansIterationsFromConfigFile();
             CurColorModel = ConfigManagement.GetColorModelFromConfigFile();
             if (LoadedImage == null)
             {
@@ -328,7 +328,7 @@ namespace BrodUI.ViewModels
         [RelayCommand]
         private void ConvertImage()
         {
-            Im?.ResizeImage(KmeansColorNumber, KmeansIterationNumber);
+            Im?.ResizeImage(KMeansColorNumber, KMeansIterationNumber);
             INavigation? navigationService = (Application.Current.MainWindow as INavigationWindow)?.GetNavigation(); // Get the navigation service from the window.
             if (navigationService != null)
             {

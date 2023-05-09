@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BrodUI.Kmeans
+namespace BrodUI.KMeans
 {
     public static class Extensions
     {

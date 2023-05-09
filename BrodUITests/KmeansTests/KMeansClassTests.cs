@@ -1,14 +1,14 @@
-﻿using BrodUI.Kmeans;
+﻿using BrodUI.KMeans;
 using System.Reflection;
 using Xunit;
 
-namespace BrodUITests.KmeansTests
+namespace BrodUITests.KMeansTests
 {
     public class KMeansClassTests
     {
 
         [Fact]
-        public void NearestClusterKmeansTest()
+        public void NearestClusterKMeansTest()
         {
             KMeans km = new();
             MethodInfo GetNearestCluster = typeof(KMeans).GetMethod("GetNearestCluster", BindingFlags.NonPublic | BindingFlags.Instance);
@@ -50,7 +50,7 @@ namespace BrodUITests.KmeansTests
         }
 
         [Fact]
-        public void AssignDatasetKmeansTest()
+        public void AssignDatasetKMeansTest()
         {
             KMeans km = new();
             MethodInfo AssignDataset = typeof(KMeans).GetMethod("AssignDataset", BindingFlags.NonPublic | BindingFlags.Instance);
@@ -95,7 +95,7 @@ namespace BrodUITests.KmeansTests
 
 
         [Fact]
-        public void RandomVectorKmeansTest()
+        public void RandomVectorKMeansTest()
         {
             KMeans km = new();
             MethodInfo RandomVector = typeof(KMeans).GetMethod("RandomVector", BindingFlags.NonPublic | BindingFlags.Instance);
@@ -125,7 +125,7 @@ namespace BrodUITests.KmeansTests
         }
 
         [Fact]
-        public void RandomCentroidsKmeansTest()
+        public void RandomCentroidsKMeansTest()
         {
             KMeans km = new();
             MethodInfo GenerateRandomCentroids = typeof(KMeans).GetMethod("GenerateRandomCentroids", BindingFlags.NonPublic | BindingFlags.Instance);
@@ -153,7 +153,7 @@ namespace BrodUITests.KmeansTests
         }
 
         [Fact]
-        public void CentroidsChangedKmeansTest()
+        public void CentroidsChangedKMeansTest()
         {
             KMeans km = new();
             MethodInfo CentroidsChanged = typeof(KMeans).GetMethod("CentroidsChanged", BindingFlags.NonPublic | BindingFlags.Static);
@@ -189,7 +189,7 @@ namespace BrodUITests.KmeansTests
         }
 
         [Fact]
-        public void RecalculateCentroidsKmeansTest()
+        public void RecalculateCentroidsKMeansTest()
         {
             KMeans km = new();
             MethodInfo RecalculateCentroids = typeof(KMeans).GetMethod("RecalculateCentroids", BindingFlags.NonPublic | BindingFlags.Instance);
@@ -246,7 +246,7 @@ namespace BrodUITests.KmeansTests
         }
 
         [Fact]
-        public void ErrorsCalculationsKmeansTest()
+        public void ErrorsCalculationsKMeansTest()
         {
             List<GenericVector> data = new();
             Dictionary<int, GenericVector> dict = new();
@@ -290,7 +290,7 @@ namespace BrodUITests.KmeansTests
         }
 
         [Fact]
-        public void ThreeColorsKmeansRunTest()
+        public void ThreeColorsKMeansRunTest()
         {
             List<GenericVector> data = new();
             GenericVector val1 = new();
@@ -326,7 +326,7 @@ namespace BrodUITests.KmeansTests
         }
 
         [Fact]
-        public void OneColorKmeansRunTest()
+        public void OneColorKMeansRunTest()
         {
             List<GenericVector> data = new();
             GenericVector val1 = new();
@@ -355,7 +355,7 @@ namespace BrodUITests.KmeansTests
         }
 
         [Fact]
-        public void MoreColorsKmeansRunTest()
+        public void MoreColorsKMeansRunTest()
         {
             List<GenericVector> data = new();
             GenericVector val1 = new();

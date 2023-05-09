@@ -327,11 +327,11 @@
   </data>
   <data name="Convert_LabelNbColors" xml:space="preserve">
     <value>Colors</value>
-    <comment>Label for the number of color in Kmeans process</comment>
+    <comment>Label for the number of color in KMeans process</comment>
   </data>
   <data name="Convert_LabelNbIteration" xml:space="preserve">
     <value>Iterations</value>
-    <comment>Label for the number of iteration of Kmeans process</comment>
+    <comment>Label for the number of iteration of KMeans process</comment>
   </data>
   <data name="ConvertLabelModel" xml:space="preserve">
     <value>Model</value>

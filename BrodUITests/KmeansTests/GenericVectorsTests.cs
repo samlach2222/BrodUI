@@ -1,7 +1,7 @@
-﻿using BrodUI.Kmeans;
+﻿using BrodUI.KMeans;
 using Xunit;
 
-namespace BrodUITests.KmeansTests
+namespace BrodUITests.KMeansTests
 {
     public class GenericVectorsTests
     {

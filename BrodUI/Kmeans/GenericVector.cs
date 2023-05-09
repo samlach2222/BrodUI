@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 
-namespace BrodUI.Kmeans
+namespace BrodUI.KMeans
 {
     public class GenericVector
     {

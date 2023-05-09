@@ -98,7 +98,7 @@
             </Grid>
         </ui:Card>
 
-        <ui:Card x:Name="ControlKmeans" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Right" IsEnabled="{Binding Path=ViewModel.IsImageLoaded}" Margin="20,0,20,0">
+        <ui:Card x:Name="ControlKMeans" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Right" IsEnabled="{Binding Path=ViewModel.IsImageLoaded}" Margin="20,0,20,0">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
@@ -114,7 +114,7 @@
                 <ui:NumberBox Grid.Column="0" Grid.Row="1" 
                               Name="NbColor"  
                               IntegersOnly="True" 
-                              Text="{Binding ViewModel.KmeansColorNumber}" 
+                              Text="{Binding ViewModel.KMeansColorNumber}" 
                               DecimalPlaces="0" 
                               ClearButtonEnabled="False"  
                               VerticalAlignment="Center" 
@@ -129,7 +129,7 @@
                 <ui:NumberBox Grid.Column="1" Grid.Row="1" 
                               Name="NbIterations"  
                               IntegersOnly="True" 
-                              Text="{Binding ViewModel.KmeansIterationNumber}" 
+                              Text="{Binding ViewModel.KMeansIterationNumber}" 
                               DecimalPlaces="0" 
                               ClearButtonEnabled="False"  
                               VerticalAlignment="Center" 

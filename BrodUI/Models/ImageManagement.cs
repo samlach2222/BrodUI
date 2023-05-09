@@ -1,5 +1,5 @@
 ﻿using BrodUI.Helpers;
-using BrodUI.Kmeans;
+using BrodUI.KMeans;
 using System;
 using System.IO;
 using System.Windows.Media;
@@ -167,7 +167,7 @@ namespace BrodUI.Models
         /// <summary>
         /// Resize the image to ImageWidth and ImageHeight and save it
         /// </summary>
-        public void ResizeImage(int kmeansColorNumber, int kmeansIterationNumber)
+        public void ResizeImage(int kMeansColorNumber, int kmeansIterationNumber)
         {
             BitmapImage? old = Image;
 
@@ -200,7 +200,7 @@ namespace BrodUI.Models
 
             Brush[,] kMeansArray = ImageTo2DArrayBrushes.ConvertTo2dArray(Image);
             // TODO : Save image before KMeans and after to different names.
-            kMeansArray = KmeansRun.StartKmeans(kMeansArray, kmeansColorNumber, kmeansIterationNumber);
+            kMeansArray = KMeansRun.StartKMeans(kMeansArray, kMeansColorNumber, kmeansIterationNumber);
             Image = ImageTo2DArrayBrushes.ConvertToBitmapImage(kMeansArray);
 
             // Save resized image

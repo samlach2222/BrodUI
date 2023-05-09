@@ -1,4 +1,4 @@
-using BrodUI.Kmeans;
+using BrodUI.KMeans;
 using System;
 using System.Collections.Generic;
 using System.Linq;
