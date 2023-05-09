@@ -149,9 +149,24 @@ namespace BrodUI.ViewModels
                 foreach (KeyValuePair<Color, int> color in colorQuantity)
                 {
                     SolidColorBrush scbColor = new(color.Key);
-                    // TODO use the RGB values of color.Key to add color number, type and name here when the work is done
 
-                    WireArray.Add(new Wire(scbColor, 404, "DMC", "White", color.Value));
+                    int dmc = 0;
+                    switch (ConfigManagement.GetColorModelFromConfigFile())
+                    {
+                        case "HSL" :
+                            HSLToDMC hslToDmc = new();
+                            dmc = hslToDmc.GetValDmc(color.Key.R, color.Key.G, color.Key.B);
+                            break;
+                        case "RGB" :
+                        default :
+                            RgbToDmc rgbToDmc = new();
+                            dmc = rgbToDmc.GetValDmc(color.Key.R, color.Key.G, color.Key.B);
+                            break;
+                    }
+                    DMCtoString dmcToString = new();
+                    string colorName = dmcToString.GetNameDmc(dmc);
+
+                    WireArray.Add(new Wire(scbColor, dmc, "DMC", colorName, color.Value));
                 }
 
                 // GridImage creation part

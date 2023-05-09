@@ -19,6 +19,7 @@ namespace BrodUI.Helpers
         {
             StreamReader sr = new("./Assets/DMC.txt");
             int comp = 0;
+            sr.ReadLine(); // skip first line
             string? line = sr.ReadLine();
             string nb = "";
             int state = 3;
