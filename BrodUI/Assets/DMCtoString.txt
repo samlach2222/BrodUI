@@ -485,5 +485,5 @@ DMC-Name
 31-Blueberry
 32-Dark Blueberry
 33-Fuchsia
-34-Da rk Fuchsia
+34-Dark Fuchsia
 35-Very Dark Fuchsia

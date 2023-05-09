@@ -10,6 +10,7 @@ namespace BrodUITests.HelpersTests
         {
 
         }
+
         [Fact]
         public void GetValDmcTests()
         {

@@ -121,7 +121,11 @@ namespace BrodUI.ViewModels
             get => _curColorModel;
             set
             {
-                ConfigManagement.SetColorModelToConfigFile(_curColorModel!);
+                if (value == null)
+                {
+                    return;
+                }
+                ConfigManagement.SetColorModelToConfigFile(value);
                 SetProperty(ref _curColorModel, value);
             }
         }
