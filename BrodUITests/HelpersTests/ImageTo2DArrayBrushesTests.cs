@@ -38,5 +38,42 @@ namespace BrodUITests.HelpersTests
             // Assert
             Assert.Equal(expected.ToString(), actual.ToString());
         }
+
+        [Fact]
+        public void ConvertToBitmapImageTest()
+        {
+            // Expected
+
+            Bitmap bitmap = new(2, 2);
+            bitmap.SetPixel(0, 0, System.Drawing.Color.FromArgb(0, 0, 0));
+            bitmap.SetPixel(0, 1, System.Drawing.Color.FromArgb(0, 0, 0));
+            bitmap.SetPixel(1, 0, System.Drawing.Color.FromArgb(10, 10, 10));
+            bitmap.SetPixel(1, 1, System.Drawing.Color.FromArgb(10, 10, 10));
+
+            BitmapSource expected = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(bitmap.GetHbitmap(), IntPtr.Zero, System.Windows.Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
+
+            Brush[,] brushes = ImageTo2DArrayBrushes.ConvertTo2dArray(expected);
+
+            BitmapImage actual = ImageTo2DArrayBrushes.ConvertToBitmapImage(brushes);
+
+
+            byte[] dataExpected = { };
+            BmpBitmapEncoder encoderExpected = new();
+            encoderExpected.Frames.Add(BitmapFrame.Create(expected));
+            using MemoryStream msExpected = new();
+            encoderExpected.Save(msExpected);
+            dataExpected = msExpected.ToArray();
+
+            byte[] dataActual = { };
+            BmpBitmapEncoder encoderActual = new();
+            encoderActual.Frames.Add(BitmapFrame.Create(actual));
+            using MemoryStream msActual = new();
+            encoderActual.Save(msActual);
+            dataActual = msActual.ToArray();
+
+
+            // Actual
+            Assert.Equal(dataExpected.ToString(), dataActual.ToString());
+        }
     }
 }

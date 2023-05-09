@@ -89,17 +89,15 @@ namespace BrodUITests.ModelsTests
             LogManagement.WriteToLog("test2");
 
             // Create a StringWriter to capture console output
-            using (StringWriter sw = new())
-            {
-                Console.SetOut(sw);
+            using StringWriter sw = new();
+            Console.SetOut(sw);
 
-                // Act
-                LogManagement.WriteAllLogsInTerminal();
+            // Act
+            LogManagement.WriteAllLogsInTerminal();
 
-                // Assert
-                const string expectedOutput = "test1\r\ntest2\r\n";
-                Assert.Equal(expectedOutput, sw.ToString());
-            }
+            // Assert
+            const string expectedOutput = "test1\r\ntest2\r\n";
+            Assert.Equal(expectedOutput, sw.ToString());
         }
     }
 }

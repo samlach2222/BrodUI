@@ -110,7 +110,7 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
-                <Label Grid.Column="0" Grid.Row="0" Content="Couleurs" Margin="20,0,20,0" HorizontalAlignment="Center"/>
+                <Label Grid.Column="0" Grid.Row="0" Content="{x:Static p:Resource.Convert_LabelNbColors}" Margin="20,0,20,0" HorizontalAlignment="Center"/>
                 <ui:NumberBox Grid.Column="0" Grid.Row="1" 
                               Name="NbColor"  
                               IntegersOnly="True" 
@@ -125,7 +125,7 @@
                               Margin="20,0,20,0" 
                               />
 
-                <Label Grid.Column="1" Grid.Row="0" Content="Itérations" Margin="20,0,20,0" HorizontalAlignment="Center"/>
+                <Label Grid.Column="1" Grid.Row="0" Content="{x:Static p:Resource.Convert_LabelNbIteration}" Margin="20,0,20,0" HorizontalAlignment="Center"/>
                 <ui:NumberBox Grid.Column="1" Grid.Row="1" 
                               Name="NbIterations"  
                               IntegersOnly="True" 
@@ -140,9 +140,9 @@
                               Margin="20,0,20,0" 
                               />
 
-                <Label Grid.Column="2" Grid.Row="0" Content="Model" Margin="20,0,20,0" HorizontalAlignment="Center"/>
+                <Label Grid.Column="2" Grid.Row="0" Content="{x:Static p:Resource.ConvertLabelModel}" Margin="20,0,20,0" HorizontalAlignment="Center"/>
                 <ComboBox Grid.Column="2" Grid.Row="1"
-                    x:Name="LangComboBox"
+                    x:Name="ColorModelComboBox"
                     MaxDropDownHeight="Auto"
                     ItemsSource="{Binding ViewModel.ColorModels}"
                     SelectedItem="{Binding ViewModel.CurColorModel}"

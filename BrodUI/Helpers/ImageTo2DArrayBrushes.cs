@@ -47,7 +47,7 @@ namespace BrodUI.Helpers
         /// <param name="brushes">2D array of brushes</param>
         /// <returns>Bitmap Image to put in the ImageManagement class</returns>
         public static BitmapImage ConvertToBitmapImage(Brush[,] brushes)
-        { // TODO : CREATE UNIT TESTS FOR THIS METHOD
+        {
             int width = brushes.GetLength(0);
             int height = brushes.GetLength(1);
 

@@ -199,7 +199,6 @@ namespace BrodUI.Models
             }
 
             Brush[,] kMeansArray = ImageTo2DArrayBrushes.ConvertTo2dArray(Image);
-            // TODO : Create parameters for nb_clusters and nb_iterations (KMeans) in the UI
             // TODO : Save image before KMeans and after to different names.
             kMeansArray = KmeansRun.StartKmeans(kMeansArray, kmeansColorNumber, kmeansIterationNumber);
             Image = ImageTo2DArrayBrushes.ConvertToBitmapImage(kMeansArray);

@@ -273,4 +273,13 @@
   <data name="Settings_LinkOriginalIcon" xml:space="preserve">
     <value>Logo modifié depuis une icône de point de croix créé par Freepik - Flaticon</value>
   </data>
+  <data name="Convert_LabelNbColors" xml:space="preserve">
+    <value>Couleurs</value>
+  </data>
+  <data name="Convert_LabelNbIteration" xml:space="preserve">
+    <value>Itérations</value>
+  </data>
+  <data name="ConvertLabelModel" xml:space="preserve">
+    <value>Modèle</value>
+  </data>
 </root>

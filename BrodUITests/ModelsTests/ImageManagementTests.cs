@@ -243,6 +243,10 @@ public class ImageManagementTests
         im.ImageWidth = 100;
         im.ImageHeight = 100; // We have to set both values because the respect of the ratio is done in the setter used in the UI.
 
+
+        // StringWriter to avoid crash with console output
+        using StringWriter sw = new();
+        Console.SetOut(sw);
         im.ResizeImage(1, 1); // we only tests resizing
 
         // Reload the image

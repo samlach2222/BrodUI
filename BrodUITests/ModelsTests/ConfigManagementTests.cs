@@ -1,6 +1,9 @@
 ﻿using BrodUI.Models;
+using System.Drawing.Imaging;
 using System.Globalization;
+using Wpf.Ui.Appearance;
 using Xunit;
+using static iText.Kernel.Pdf.Colorspace.PdfDeviceCs;
 
 namespace BrodUITests.ModelsTests
 {
@@ -30,7 +33,7 @@ namespace BrodUITests.ModelsTests
 #if DEBUG
             terminal = true;
 #endif
-            string expected = "Theme=System\nLanguage=" + language + "\nTerminal=" + terminal + "\nEmbroiderySize=15";
+            string expected = "Theme=System\nLanguage=" + language + "\nTerminal=" + terminal + "\nEmbroiderySize=15\nKMeansClusters=5\nKMeansIterations=10\nColorModel=RGB";
 
             // Actual
             string? appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
@@ -104,6 +107,7 @@ namespace BrodUITests.ModelsTests
         }
 
         [Fact]
+        [STAThread]
         public void SetThemeTest()
         {
             // TODO : Test this method (hard to implement because we have to verify the theme of the app)
@@ -111,6 +115,7 @@ namespace BrodUITests.ModelsTests
         }
 
         [Fact]
+        [STAThread]
         public void SetThemeFromSettingsTest()
         {
             // TODO : Test this method (hard to implement because we have to verify the theme of the app)

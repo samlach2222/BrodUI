@@ -106,6 +106,24 @@ namespace BrodUI.Assets.Languages {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Colors.
+        /// </summary>
+        public static string Convert_LabelNbColors {
+            get {
+                return ResourceManager.GetString("Convert_LabelNbColors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Iterations.
+        /// </summary>
+        public static string Convert_LabelNbIteration {
+            get {
+                return ResourceManager.GetString("Convert_LabelNbIteration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Height must be greater than .
         /// </summary>
         public static string Convert_MinimumHeight {
@@ -138,6 +156,15 @@ namespace BrodUI.Assets.Languages {
         public static string Convert_MinimumWidth_WithValue {
             get {
                 return ResourceManager.GetString("Convert_MinimumWidth_WithValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Model.
+        /// </summary>
+        public static string ConvertLabelModel {
+            get {
+                return ResourceManager.GetString("ConvertLabelModel", resourceCulture);
             }
         }
         

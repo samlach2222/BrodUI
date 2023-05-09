@@ -273,4 +273,13 @@
   <data name="Settings_LinkOriginalIcon" xml:space="preserve">
     <value>Logo edited from a cross-stitch icon created by Freepik - Flaticon</value>
   </data>
+  <data name="Convert_LabelNbColors" xml:space="preserve">
+    <value>Colors</value>
+  </data>
+  <data name="Convert_LabelNbIteration" xml:space="preserve">
+    <value>Iterations</value>
+  </data>
+  <data name="ConvertLabelModel" xml:space="preserve">
+    <value>Model</value>
+  </data>
 </root>
