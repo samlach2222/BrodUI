@@ -154,7 +154,7 @@ namespace BrodUI.ViewModels
                     switch (ConfigManagement.GetColorModelFromConfigFile())
                     {
                         case "HSL" :
-                            HSLToDMC hslToDmc = new();
+                            HslToDmc hslToDmc = new();
                             dmc = hslToDmc.GetValDmc(color.Key.R, color.Key.G, color.Key.B);
                             break;
                         case "RGB" :
@@ -163,7 +163,7 @@ namespace BrodUI.ViewModels
                             dmc = rgbToDmc.GetValDmc(color.Key.R, color.Key.G, color.Key.B);
                             break;
                     }
-                    DMCtoString dmcToString = new();
+                    DmcToString dmcToString = new();
                     string colorName = dmcToString.GetNameDmc(dmc);
 
                     WireArray.Add(new Wire(scbColor, dmc, "DMC", colorName, color.Value));

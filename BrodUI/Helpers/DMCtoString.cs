@@ -6,7 +6,7 @@ namespace BrodUI.Helpers
     /// <summary>
     /// class to convert DMC value into their Name
     /// </summary>
-    public class DMCtoString
+    public class DmcToString
     {
         ///array for DMC colors 0 = DMC, 1 = name of the DMC
         private readonly string[,] _dmcString = new string[500, 2];
@@ -36,7 +36,7 @@ namespace BrodUI.Helpers
         /// <summary>
         /// Constructor of the class
         /// </summary>
-        public DMCtoString()
+        public DmcToString()
         {
             Initialization();
             for (int i = 0; i < _nbDmc; i++)

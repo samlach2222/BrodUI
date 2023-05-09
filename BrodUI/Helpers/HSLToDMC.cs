@@ -6,7 +6,7 @@ namespace BrodUI.Helpers
     /// <summary>
     /// class to convert HSL to DMC
     /// </summary>
-    public class HSLToDMC
+    public class HslToDmc
     {
         //array for DMC colors 0 = H, 1 = S, 2 = L, 3 = DMC
         private readonly int[,] _dmc = new int[500, 4];
@@ -17,8 +17,9 @@ namespace BrodUI.Helpers
         /// </summary>
         private void Initialization()
         {
-            StreamReader sr = new("./Assets/DMC_hsl.txt");
+            StreamReader sr = new("./Assets/DmcToHsl.txt");
             int comp = 0;
+            sr.ReadLine(); // skip first line
             string? line = sr.ReadLine();
             string nb = "";
             int state = 3;
@@ -66,7 +67,7 @@ namespace BrodUI.Helpers
         /// <summary>
         /// constructor of the class
         /// </summary>
-        public HSLToDMC()
+        public HslToDmc()
         {
             Initialization();
             for (int i = 0; i < _nbDmc; i++)

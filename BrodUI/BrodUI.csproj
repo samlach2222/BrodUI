@@ -65,13 +65,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Assets\DMC.txt">
+    <None Update="Assets\DmcToRgb.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Assets\DMCtoString.txt">
+    <None Update="Assets\DmcToString.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Assets\DMC_hsl.txt">
+    <None Update="Assets\DmcToHsl.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

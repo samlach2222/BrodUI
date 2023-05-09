@@ -17,7 +17,7 @@ namespace BrodUI.Helpers
         /// </summary>
         private void Initialization()
         {
-            StreamReader sr = new("./Assets/DMC.txt");
+            StreamReader sr = new("./Assets/DmcToRgb.txt");
             int comp = 0;
             sr.ReadLine(); // skip first line
             string? line = sr.ReadLine();

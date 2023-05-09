@@ -8,7 +8,7 @@ namespace BrodUITests.HelpersTests
         [Fact]
         public void GetNameDmcTests()
         {
-            DMCtoString d = new();
+            DmcToString d = new();
             string actual = d.GetNameDmc(517);
             string expected = "Dark Wedgwood";
             Assert.Equal(expected, actual);

@@ -28,8 +28,4 @@
     <ProjectReference Include="..\BrodUI\BrodUI.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="KmeansTests\" />
-  </ItemGroup>
-
 </Project>
