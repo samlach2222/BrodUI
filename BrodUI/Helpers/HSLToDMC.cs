@@ -79,14 +79,59 @@ namespace BrodUI.Helpers
         /// <summary>
         /// Get the DMC value of a color in HSL
         /// </summary>
-        /// <param name="h">H value of the passed color</param>
-        /// <param name="s">S value of the passed color</param>
-        /// <param name="l">L value of the passed color</param>
+        /// <param name="r">R value of the passed color</param>
+        /// <param name="g">G value of the passed color</param>
+        /// <param name="b">B value of the passed color</param>
         /// <returns></returns>
-        public int GetValDmc(int h, int s, int l)
+        public int GetValDmc(int r, int g, int b)
         {
             int val = 0;
             int valMin = 100000;
+            int h= 0;
+            int s = 0;
+            int l = 0;
+            float r1 = r / 255f;
+            float g1 = g / 255f;
+            float b1 = b / 255f;
+            float max = Math.Max(r1, Math.Max(g1, b1));
+            float min = Math.Min(r1, Math.Min(g1, b1));
+            float delta = max - min;
+            float h1 = 0;
+            float s1 = 0;
+            float l1 = (max + min) / 2f;
+            if (delta > 0)
+            {
+                h=0;
+                s1= 0;
+            }
+            else
+            {
+                s1=(l1<=0.5f)?(delta/(max+min)):(delta/(2-max-min));
+                if (r1 == max)
+                {
+                    h1 = ((g - b) / 6) / delta;
+                }
+                else if (g == max)
+                {
+                    h1= (1 / 3) + ((b - r) / 6) / delta;
+                }
+                else
+                {
+                    h1= (2 / 3) + ((r - g) / 6) / delta;
+                }
+                if (h1 < 0)
+                {
+                    h1 += 1;
+                }
+                if (h1 > 1)
+                {
+                    h1 -= 1;
+                }
+                h=(int)(h1 *360);
+                s=(int)(s1 * 100);
+                l=(int)(l1 * 100);
+            }
+
             for (int i = 0; i < _nbDmc; i++)
             {
                 int valTemp = (_dmc[i, 0] - h) * (_dmc[i, 0] - h) + (_dmc[i, 1] - s) * (_dmc[i, 1] - s) + (_dmc[i, 2] - l) * (_dmc[i, 2] - l);
