@@ -41,7 +41,7 @@
                    Icon="ArrowDownload24"
                    />
         <!-- TOOLS LINE -->
-        <ui:Card x:Name="ControlImage" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" IsEnabled="{Binding Path=ViewModel.IsImageLoaded}"  >
+        <ui:Card x:Name="ControlImage" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" IsEnabled="{Binding Path=ViewModel.IsImageLoaded}" Margin="20,0,20,0" >
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
@@ -67,10 +67,13 @@
                               Name="XRes"  
                               IntegersOnly="True" 
                               Text="{Binding ViewModel.ImageWidth}" 
-                              DecimalPlaces="0" ClearButtonEnabled="False"  
+                              DecimalPlaces="0" 
+                              ClearButtonEnabled="False"  
                               VerticalAlignment="Center" 
                               PlaceholderEnabled="False" 
-                              Min="0" 
+                              Min="0"
+                              TextAlignment="Center"
+                              SpinButtonsEnabled="False"
                               Margin="20,0,20,0" 
                               Incremented="XRes_OnIncremented"
                               Decremented="XRes_OnDecremented"
@@ -85,11 +88,66 @@
                               ClearButtonEnabled="False"  
                               VerticalAlignment="Center" 
                               PlaceholderEnabled="False" 
+                              TextAlignment="Center"
                               Min="0" 
+                              SpinButtonsEnabled="False"
                               Margin="20,0,20,0"
                               Incremented="YRes_OnIncremented"
                               Decremented="YRes_OnDecremented" 
                               TextChanged="YRes_OnTextChanged"/>
+            </Grid>
+        </ui:Card>
+
+        <ui:Card x:Name="ControlKmeans" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Right" IsEnabled="{Binding Path=ViewModel.IsImageLoaded}" Margin="20,0,20,0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Label Grid.Column="0" Grid.Row="0" Content="Couleurs" Margin="20,0,20,0" HorizontalAlignment="Center"/>
+                <ui:NumberBox Grid.Column="0" Grid.Row="1" 
+                              Name="NbColor"  
+                              IntegersOnly="True" 
+                              Text="{Binding ViewModel.KmeansColorNumber}" 
+                              DecimalPlaces="0" 
+                              ClearButtonEnabled="False"  
+                              VerticalAlignment="Center" 
+                              PlaceholderEnabled="False" 
+                              TextAlignment="Center"
+                              Min="0"
+                              SpinButtonsEnabled="False"
+                              Margin="20,0,20,0" 
+                              />
+
+                <Label Grid.Column="1" Grid.Row="0" Content="Itérations" Margin="20,0,20,0" HorizontalAlignment="Center"/>
+                <ui:NumberBox Grid.Column="1" Grid.Row="1" 
+                              Name="NbIterations"  
+                              IntegersOnly="True" 
+                              Text="{Binding ViewModel.KmeansIterationNumber}" 
+                              DecimalPlaces="0" 
+                              ClearButtonEnabled="False"  
+                              VerticalAlignment="Center" 
+                              PlaceholderEnabled="False" 
+                              TextAlignment="Center"
+                              Min="0"
+                              SpinButtonsEnabled="False"
+                              Margin="20,0,20,0" 
+                              />
+
+                <Label Grid.Column="2" Grid.Row="0" Content="Model" Margin="20,0,20,0" HorizontalAlignment="Center"/>
+                <ComboBox Grid.Column="2" Grid.Row="1"
+                    x:Name="LangComboBox"
+                    MaxDropDownHeight="Auto"
+                    ItemsSource="{Binding ViewModel.ColorModels}"
+                    SelectedItem="{Binding ViewModel.CurColorModel}"
+                />
+
             </Grid>
         </ui:Card>
 

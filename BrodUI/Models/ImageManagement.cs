@@ -167,7 +167,7 @@ namespace BrodUI.Models
         /// <summary>
         /// Resize the image to ImageWidth and ImageHeight and save it
         /// </summary>
-        public void ResizeImage()
+        public void ResizeImage(int kmeansColorNumber, int kmeansIterationNumber)
         {
             BitmapImage? old = Image;
 
@@ -201,7 +201,7 @@ namespace BrodUI.Models
             Brush[,] kMeansArray = ImageTo2DArrayBrushes.ConvertTo2dArray(Image);
             // TODO : Create parameters for nb_clusters and nb_iterations (KMeans) in the UI
             // TODO : Save image before KMeans and after to different names.
-            kMeansArray = KmeansRun.StartKmeans(kMeansArray, 5, 10);
+            kMeansArray = KmeansRun.StartKmeans(kMeansArray, kmeansColorNumber, kmeansIterationNumber);
             Image = ImageTo2DArrayBrushes.ConvertToBitmapImage(kMeansArray);
 
             // Save resized image

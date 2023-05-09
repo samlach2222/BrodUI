@@ -19,6 +19,12 @@ namespace BrodUI.ViewModels
     public partial class ConvertViewModel : ObservableObject, INavigationAware
     {
         /// <summary>
+        /// List of color models displayed in the UI.
+        /// </summary>
+        [ObservableProperty]
+        private string[] _colorModels = new string[] { "RGB", "HSL" };
+
+        /// <summary>
         /// Ratio of the image
         /// </summary>
         private double _ratio = 1;
@@ -44,9 +50,24 @@ namespace BrodUI.ViewModels
         private int _imageHeight = -1;
 
         /// <summary>
+        /// Number of color for the kmeans algorithm
+        /// </summary>
+        private int _kmeansColorNumber;
+
+        /// <summary>
+        /// Number of iteration for the kmeans algorithm
+        /// </summary>
+        private int _kmeansIterationNumber;
+
+        /// <summary>
         /// bool to know if the ratio is ok
         /// </summary>
         private bool _ratioNotOk = true;
+
+        /// <summary>
+        /// Current language of the application
+        /// </summary>
+        private string? _curColorModel;
 
         /// <summary>
         /// Loaded image
@@ -89,6 +110,19 @@ namespace BrodUI.ViewModels
                     Im.Image = value;
                 }
                 OnPropertyChanged();
+            }
+        }
+
+        /// <summary>
+        /// Getter and setter for the current color model
+        /// </summary>
+        public string? CurColorModel
+        {
+            get => _curColorModel;
+            set
+            {
+                ConfigManagement.SetColorModelToConfigFile(_curColorModel!);
+                SetProperty(ref _curColorModel, value);
             }
         }
 
@@ -144,8 +178,8 @@ namespace BrodUI.ViewModels
                     }
                     else
                     {
-                        String badValue = ((int)(value / _ratio)).ToString();
-                        MessageBox.Show(String.Format(Assets.Languages.Resource.Convert_MinimumWidth_WithValue, badValue) + MinimumWidthHeight);
+                        string badValue = ((int)(value / _ratio)).ToString();
+                        MessageBox.Show(string.Format(Assets.Languages.Resource.Convert_MinimumWidth_WithValue, badValue) + MinimumWidthHeight);
                     }
                 }
                 else
@@ -153,6 +187,32 @@ namespace BrodUI.ViewModels
                     MessageBox.Show(Assets.Languages.Resource.Convert_MinimumWidth + MinimumWidthHeight);
 
                 }
+            }
+        }
+
+        /// <summary>
+        /// Getter and setter for the number of color for the kmeans algorithm
+        /// </summary>
+        public int KmeansColorNumber
+        {
+            get => _kmeansColorNumber;
+            set
+            {
+                ConfigManagement.SetKMeansClustersToConfigFile(value);
+                SetProperty(ref _kmeansColorNumber, value);
+            }
+        }
+
+        /// <summary>
+        /// Getter and setter for the number of iteration for the kmeans algorithm
+        /// </summary>
+        public int KmeansIterationNumber
+        {
+            get => _kmeansIterationNumber;
+            set
+            {
+                ConfigManagement.SetKMeansIterationsToConfigFile(value);
+                SetProperty(ref _kmeansIterationNumber, value);
             }
         }
 
@@ -182,8 +242,8 @@ namespace BrodUI.ViewModels
                     }
                     else
                     {
-                        String badValue = ((int)(value * _ratio)).ToString();
-                        MessageBox.Show(String.Format(Assets.Languages.Resource.Convert_MinimumHeight_WithValue, badValue) + MinimumWidthHeight);
+                        string badValue = ((int)(value * _ratio)).ToString();
+                        MessageBox.Show(string.Format(Assets.Languages.Resource.Convert_MinimumHeight_WithValue, badValue) + MinimumWidthHeight);
                     }
 
                 }
@@ -200,6 +260,15 @@ namespace BrodUI.ViewModels
         public void OnNavigatedTo()
         {
             LogManagement.WriteToLog("[" + DateTime.Now + "] " + Assets.Languages.Resource.Terminal_ConvertPage);
+            // Set the default value for the kmeans algorithm
+            IsImageLoaded = true;
+            KmeansColorNumber = ConfigManagement.GetKMeansClustersFromConfigFile();
+            KmeansIterationNumber = ConfigManagement.GetKMeansIterationsFromConfigFile();
+            CurColorModel = ConfigManagement.GetColorModelFromConfigFile();
+            if (LoadedImage == null)
+            {
+                IsImageLoaded = false;
+            }
             InitializeViewModel();
         }
 
@@ -209,20 +278,16 @@ namespace BrodUI.ViewModels
         private void InitializeViewModel()
         {
             // If not already initialized
-            if (Im == null)
-            {
-                Im = new ImageManagement(new Win32OpenFileDialogAdapter());
+            if (Im != null) return;
+            Im = new ImageManagement(new Win32OpenFileDialogAdapter());
 
-                // Try to load the last saved image
-                Im.LoadCurrentImage();
-                if (Im.Image != null)
-                {
-                    LoadedImage = Im.Image;
-                    _ratio = Im.Ratio;
-                    ImageWidth = Im.ImageWidth;
-                    ImageHeight = Im.ImageHeight;
-                }
-            }
+            // Try to load the last saved image
+            Im.LoadCurrentImage();
+            if (Im.Image == null) return;
+            LoadedImage = Im.Image;
+            _ratio = Im.Ratio;
+            ImageWidth = Im.ImageWidth;
+            ImageHeight = Im.ImageHeight;
         }
 
         /// <summary>
@@ -259,7 +324,7 @@ namespace BrodUI.ViewModels
         [RelayCommand]
         private void ConvertImage()
         {
-            Im?.ResizeImage();
+            Im?.ResizeImage(KmeansColorNumber, KmeansIterationNumber);
             INavigation? navigationService = (Application.Current.MainWindow as INavigationWindow)?.GetNavigation(); // Get the navigation service from the window.
             if (navigationService != null)
             {

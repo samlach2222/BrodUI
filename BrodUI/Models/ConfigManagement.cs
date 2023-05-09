@@ -26,7 +26,7 @@ namespace BrodUI.Models
         /// </summary>
         public static void CreateConfigFileIfNotExists()
         {
-            // get Appdata Roaming folder in a string
+            // get AppData Roaming folder in a string
             string? appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             // create the folder "BrodUI" in AppData if it doesn't exist
             if (!Directory.Exists(appData + "\\BrodUI"))
