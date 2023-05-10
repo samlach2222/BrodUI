@@ -1,5 +1,7 @@
 ﻿using System;
 using System.IO;
+using System.Windows;
+using Wpf.Ui.TaskBar;
 
 namespace BrodUI.Models
 {
@@ -12,6 +14,11 @@ namespace BrodUI.Models
         /// Getter and setter of the log file path
         /// </summary>
         public static string? LogPath { get; set; }
+
+        /// <summary>
+        /// Last known percentage of the progression
+        /// </summary>
+        private static sbyte lastPercentage = -1;
 
         /// <summary>
         /// Create the log file if it doesn't exist
@@ -65,6 +72,43 @@ namespace BrodUI.Models
             string[] lines = File.ReadAllLines(LogPath);
             string text = string.Join(Environment.NewLine, lines);
             Console.WriteLine(text);
+        }
+
+        /// <summary>
+        /// Update the progression in the taskbar
+        /// </summary>
+        /// <param name="value">Value to calculate a percentage of progression</param>
+        /// <param name="max">Maximum value of value to calculate a percentage of progression</param>
+        public static void UpdateProgression(int value, int max)
+        {
+            int percentage = value * 100 / max;
+            if (percentage < lastPercentage)  // A new progression is happening
+            {
+                lastPercentage = -1;
+            }
+            if (percentage > lastPercentage)
+            {
+                lastPercentage = (sbyte)percentage;
+
+                // Stop taskbar progress if the progression is finished
+                if (percentage == 100)
+                {
+                    TaskBarProgress.SetValue(Application.Current.MainWindow, TaskBarProgressState.None, percentage, 100);
+                    return;
+                }
+
+                // Update taskbar progress
+                TaskBarProgress.SetValue(Application.Current.MainWindow, TaskBarProgressState.Normal, percentage, 100);
+            }
+        }
+
+        /// <summary>
+        /// Update the taskbar progression state
+        /// </summary>
+        /// <param name="taskBarProgressState">Taskbar progression state</param>
+        public static void UpdateProgression(TaskBarProgressState taskBarProgressState)
+        {
+            TaskBarProgress.SetState(Application.Current.MainWindow, taskBarProgressState);
         }
     }
 }

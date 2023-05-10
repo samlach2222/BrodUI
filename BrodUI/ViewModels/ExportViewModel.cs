@@ -28,11 +28,6 @@ namespace BrodUI.ViewModels
         private BitmapImage? _loadedImage;
 
         /// <summary>
-        /// Percentage of the progress bar
-        /// </summary>
-        private static sbyte _lastPercentage = -1;
-
-        /// <summary>
         /// List of wires
         /// </summary>
         private List<Wire> _wireArray = new();
@@ -129,7 +124,7 @@ namespace BrodUI.ViewModels
                     for (int j = 0; j < height; j++)
                     {
                         count++;
-                        ShowProgression(count, countMax);
+                        LogManagement.UpdateProgression(count, countMax);
 
                         // We can't use wireTable[i, j] directly,
                         // because even those with the same color are considered not the same object
@@ -211,7 +206,7 @@ namespace BrodUI.ViewModels
                     for (int j = 0; j < height; j++)
                     {
                         count++;
-                        ShowProgression(count, countMax);
+                        LogManagement.UpdateProgression(count, countMax);
 
                         double borderLeft = 0.5;
                         const double borderRight = 0.5;
@@ -249,40 +244,8 @@ namespace BrodUI.ViewModels
                         GridImage.Children.Add(border);
                     }
                 }
-
-                Console.WriteLine(); // Line break
                 LogManagement.WriteToLog("[" + DateTime.Now + "] " + Assets.Languages.Resource.Export_ConvertToCrossStitchEmbroideryDone);
             }
-        }
-
-        /// <summary>
-        /// Show the progression using a bar progressively filled with asterisks
-        /// </summary>
-        /// <param name="value">Value to calculate a percentage of progression</param>
-        /// <param name="max">Maximum value of value to calculate a percentage of progression</param>
-        public static void ShowProgression(int value, int max)
-        {
-            int percentage = value * 100 / max;
-            if (percentage < _lastPercentage)  // A new progression is happening
-            {
-                _lastPercentage = -1;
-            }
-
-            if (percentage <= _lastPercentage) return;
-            _lastPercentage = (sbyte)percentage;
-            string bar = "";
-            for (int i = 0; i < 10; i++)
-            {
-                if (percentage / 10 > i)
-                {
-                    bar += '*';
-                }
-                else
-                {
-                    bar += ' ';
-                }
-            }
-            Console.Write("\r[" + bar + "] " + percentage + '%');
         }
 
         /// <summary>

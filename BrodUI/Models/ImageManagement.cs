@@ -4,6 +4,7 @@ using System;
 using System.IO;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using Wpf.Ui.TaskBar;
 using MessageBox = System.Windows.MessageBox;
 
 namespace BrodUI.Models
@@ -169,6 +170,9 @@ namespace BrodUI.Models
         /// </summary>
         public void ResizeImage(int kMeansColorNumber, int kmeansIterationNumber)
         {
+            // Set taskbar progress to indeterminate (we can't know the progress of the resize)
+            LogManagement.UpdateProgression(TaskBarProgressState.Indeterminate);
+
             BitmapImage? old = Image;
 
             Image = new BitmapImage();
