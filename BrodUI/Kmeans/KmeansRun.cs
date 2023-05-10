@@ -2,6 +2,7 @@ using BrodUI.Helpers;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Media;
+using System;
 
 namespace BrodUI.KMeans
 {
@@ -20,6 +21,7 @@ namespace BrodUI.KMeans
             List<KMeans> kMeansList = new();
             for (int i = 0; i < nbKMeans; i++)
             {
+                Console.WriteLine("KMeans execution n°"+i+"\n");
                 KMeans kMeans = new()
                 {
                     Iterations = 100,
@@ -27,6 +29,7 @@ namespace BrodUI.KMeans
                     Clusters = nbClusters
                 };
                 kMeans.Run();
+                Console.WriteLine("Sum of squared errors : "+ kMeans.Sse+"\n\n");
                 kMeansList.Add(kMeans);
             }
             // We keep the lowest SSE

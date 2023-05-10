@@ -111,5 +111,17 @@ namespace BrodUITests.KMeansTests
             double actual = GenericVector.Distance(vec1, vec2);
             Assert.Equal(expected, actual);
         }
+
+        [Fact]
+        public void VectorToStringTest()
+        {
+            GenericVector vec1 = new();
+            vec1.Add(1);
+            vec1.Add(1);
+            vec1.Add(2);
+            String actual = vec1.ToString();
+            String expected = "1\t1\t2";
+            Assert.Equal(expected,actual);
+        }
     }
 }

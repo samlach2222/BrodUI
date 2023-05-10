@@ -58,6 +58,13 @@ namespace BrodUI.KMeans
                 //assign data set
                 AssignDataSet();
 
+                Console.WriteLine("Iterations n°"+_i);
+                foreach(var cid in Centroids.Keys)
+                {
+                    var nb = DataSet.Where(i=>i.Cluster==cid).Count();
+                    Console.WriteLine("\tCluster n°"+cid+" has "+Centroids[cid]+" as centroid. This cluster contains "+nb+" data vectors");
+                }
+
                 //recalculate clusters
                 RecalculateCentroids();
 
