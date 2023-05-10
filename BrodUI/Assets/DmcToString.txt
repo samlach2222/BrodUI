@@ -1,0 +1,489 @@
+DMC-Name
+0-White
+01-White Tin
+02-Tin
+03-Medium Tin
+04-Dark Tin
+05-Light Driftwood
+06-Medium Light Driftwood
+07-Driftwood
+08-Dark Driftwood
+09-Very Dark Cocoa
+10-Very Light Tender Green
+11-Light Tender Green
+12-Tender Green
+13-Medium Light Nile Green
+14-Pale Apple Green
+15-Apple Green
+16-Light Chartreuse
+17-Light Yellow Plum
+18-Yellow Plum
+19-Medium Light Autumn Gold
+20-Shrimp
+21-Light Alizarin
+22-Alizarin
+23-Apple Blossom
+24-White Lavender
+25-Ultra Light Lavender
+26-Pale Lavender
+27-White Violet
+28-Medium Light Eggplant
+29-Eggplant
+30-Medium Light Blueberry
+31-Blueberry
+32-Dark Blueberry
+33-Fuchsia
+34-Dark Fuchsia
+35-Very Dark Fuchsia
+41-Ecru
+150-Ultra Very Dark Dusty Rose
+151-Very Light Dusty Rose
+152-Medium Light Shell Pink
+153-Very Light Violet
+154-Very Dark Grape
+155-Medium Dark Blue Violet
+156-Medium Light Blue Violet
+157-Very Light Cornflower Blue
+158-Medium Very Dark Cornflower Blue
+159-Light Gray Blue
+160-Medium Gray Blue
+161-Gray Blue
+162-Ultra Very Light Blue
+163-Medium Celadon Green
+164-Light Forest Green
+165-Very Light Moss Green
+166-Medium Light Moss Green
+167-Very Dark Yellow Beige
+168-Very Light Pewter
+169-Light Pewter
+208-Very Dark Lavender
+209-Dark Lavender
+210-Medium Lavender
+211-Light Lavender
+221-Very Dark Shell Pink
+223-Light Shell Pink
+224-Very Light Shell Pink
+225-Ultra Very Light Shell Pink
+300-Very Dark Mahogany
+301-Medium Mahogany
+304-Medium Red
+307-Lemon
+309-Ultra Very Dark Rose
+310-Black
+311-Medium Navy Blue
+312-Very Dark Baby Blue
+315-Medium Dark Antique Mauve
+316-Medium Antique Mauve
+317-Pewter Gray
+318-Light Steel Gray
+319-Very Dark Pistchio Green
+320-Medium Pistachio Green
+321-Red
+322-Dark Baby Blue
+326-Very Dark Rose
+327-Dark Violet
+333-Very Dark Bule Violet
+334-Medium Baby Blue
+335-Rose
+336-Navy Blue
+340-Medium Blue Violet
+341-Light Blue Violet
+347-Very Dark Salmon
+349-Dark Coral
+350-Medium Coral
+351-Coral
+352-Light Coral
+353-Peach
+355-Dark Terra Cotta
+356-Medium Terra Cotta
+367-Dark Pistchio Green
+368-Light Pisstchio Green
+369-Very Light Pistachio Green
+370-Medium Mustard
+371-Mustard
+372-Light Mustard
+400-Dark Mahogany
+402-Very Light Mahogany
+407-Dark Desert Sand
+413-Dark Pewter Gray
+414-Dark Steel Gray
+415-Pearl Gray
+420-Dark Hazelnut Brown
+422-Light Hazelnut Brown
+433-Medium Brown
+434-Light Brown
+435-Very Light Brown
+436-Tan
+437-Light Tan
+444-Dark Lemon
+445-Light Lemon
+451-Dark Shell Gray
+452-Medium Shell Gray
+453-Light Shell Gray
+469-Avocado Green
+470-Light Avocado Green
+471-Very Light Avocado Green
+472-Ultra Light Avocado Green
+498-Dark Red
+500-Very Dark Blue Green
+501-Dark Blue Green
+502-Blue Green
+503-Medium Blue Green
+504-Very Light Blue Green
+505-Jade Green
+517-Dark Wedgwood
+518-Light Wedgwood
+519-Sky Blue
+520-Dark Fern Green
+522-Fern Green
+523-Light Fern Green
+524-Very Light Fern Green
+535-Very Light Ash Gray
+543-Ultra Very Light Beige
+550-Very Dark Violet
+552-Medium Violet
+553-Violet
+554-Light Violet
+561-Very Dark Jade
+562-Medium Jade
+563-Light Jade
+564-Very Light Jade
+580-Dark Moss Green
+581-Moss Green
+597-Turquoise 
+598-Light Turquoise
+600-Very Dark Cranberry
+601-Dark Cranberry
+602-Medium Cranberry
+603-Cranberry
+604-Light Cranberry
+605-Very Loght Cranberry
+606-Bright Orange Red
+608-Bright Orange
+610-Dark Drab Brown
+611-Drab Brown
+612-Light Drab Brown
+613-Very Light Drab Brown
+632-Ultra Very Dark Desert Sand
+640-Very Dark Beige Gray
+642-Dark Beige Gray
+644-Medium Beige Gray
+645-Very Dark Beaver Gray
+647-Medium Beeaver Gray
+648-Light Beaver Gray
+666-Bright Red
+676-Light Old Gold
+677-Very Light Old Gold
+680-Dark Old Gold
+699-Green
+700-Bright Green
+701-Light Green
+702-Kelly Green
+703-Chartreuse
+704-Bright Chartreuse
+712-Cream
+718-Plum
+720-Dark Orange Spice
+721-Medium Orange Spice
+722-Light Orange Spice
+725-Medium Light Topaz
+726-Light Topaz
+727-Very Light Topaz
+728-Topaz
+729-Medium Old Gold
+730-Very Dark Olive Green
+731-Dark Olive Green
+732-Olive Green
+733-Medium Olive Green
+734-Light Olive Green
+738-Very Light Tan
+739-Ultra Very Light Tan
+740-Tangerine
+741-Medium Tangerine
+742-Light Tangerine 
+743-Medium Yellow
+744-Pale Yellow
+745-Light Pale Yellow
+746-Off White
+747-Very Light Sky Blue
+754-Light Peach
+758-Very Light Terra Cotta
+760-Salmon
+761-Light Salmon
+762-Very Light Pearl Gray
+772-Very Light Yellow Green
+775-Very Light Baby Blue
+776-Medium Pink
+777-Very Dark Raspberry
+778-Very Light Antique Mauve
+779-Dark Cocoa
+780-Ultra Very Dark Topaz
+781-Very Dark Topaz
+782-Dark Topaz
+783-Medium Topaz
+791-Very Dark Cornflower Blue
+792-Dark Cornflower Blue
+793-Medium Cornflower Blue
+794-Light Cornflower Blue
+796-Dark Royal Blue
+797-Royel Blue
+798-Dark Delft Blue
+799-Medium Delft Blue
+800-Pale Delft Blue
+801-Dark Coffee Brown
+803-Ultra Very Dark Baby Blue
+806-Medium Dark Wedgwood
+807-Peacock Blue
+809-Delft Blue
+813-Light Blue
+814-Dark Garnet
+815-Medium Garnet
+816-Garnet
+817-Very Dark Coral Red
+818-Baby Pink
+819-Light Baby Pink
+820-Very Dark Royal Blue
+822-Light Beige Gray
+823-Dark Navy Blue
+824-Vary Dark Blue
+825-Dark Blue
+826-Medium Blue
+827-Very Light Blue
+828-Ultra Very Light Sky Blue
+829-Very Dark Golden Olive
+830-Dark Golden Olive
+831-Medium Golden Olive
+832-Golden Olive
+833-Light Golden Olive
+834-Very Light Golden Olive
+838-Very Dark Beige Brown
+839-Dark Beige Brown
+840-Medium Beige Brown
+841-Light Beige Brown
+842-Very Light Beige Brown
+844-Ultra Dark Beaver Gray
+869-Very Dark Hazelnut Brown
+890-Ultra Dark Pistachio Green
+891-Dark Carnation
+892-Medium Carnation
+893-Light Carnation
+894-Very Light Carnation
+895-Very Dark Hunter Green 
+898-Very Dark Coffee Brown
+899-Medium Rose
+900-Dark Burnt Orange
+902-Very Dark Garnet
+904-Very Dark Parrot Green
+905-Dark Parrot Green
+906-Medium Parrot Green
+907-Light Parrot Green
+909-Very Dark Emerald Green
+910-Dark Emerald Green
+911-Medium Emerald Green
+912-Light Emerald Green
+913-Medium Nile Green
+915-Dark Plum
+917-Medium Plum
+918-Dark Red Cooper
+919-Red Cooper
+920-Medium Cooper
+921-Cooper
+922-Light Cooper
+924-Very Dark Gray Green
+926-Medium Gray Green
+927-Light Gray Green
+928-Very Light Gray Green
+930-Dark Antique Blue
+931-Medium Antique Blue
+932-Light Antique Blue
+934-Black Avocado Green
+935-Dark Avocado Green
+936-Very Dark Avocado Green
+937-Medium Avocado Grean
+938-Ultra Dark Coffee Brown
+939-Very Dark Navy Blue
+943-Medium Aquamarine
+945-Tawny
+946-Medium Burnt Orange
+947-Burnt Orange
+948-Very Light Peach
+950-Light Desert Sand
+951-Light Tawny
+954-Nile Green
+955-Light Nile Green
+956-Geranium
+957-Pale Geranium
+958-Dark Seagreen
+959-Medium Seagreen
+961-Dark Dusty Rose
+962-Medium Dusty Rose
+963-Ultra Very Light Dusty Rose
+964-Light Seagreen
+966-Medium Baby Green
+967-Very Light Apricot
+970-Light Pumpkin
+971-Pumpkin
+972-Deep Canary
+973-Bright Canary
+975-Dark Golden Brown
+976-Medium Golden Brown
+977-Light Golden Brown
+986-Very Dark Forest Green
+987-Dark Forest Green
+988-Medium Forest Green
+989-Forest Green
+991-Dark Aquamarine
+992-Light Aquamarine
+993-Very Light Aquamarine
+995-Dark Electric Blue
+996-Medium Electric Blue
+3011-Dark Khaki Green
+3012-Medium Khaki Green
+3013-Light Khaki Green
+3021-Very Dark Brown Gray
+3022-Medium Brown Gray
+3023-Light Brown Gray
+3024-Very Light Brown Gray
+3031-Very Dark Mocha Brown
+3032-Medium Mocha Brown
+3033-Very Light Mocha Brown
+3041-Medium Antique Violet
+3042-Light Antique Violet
+3045-Dark Yellow Beige
+3046-Medium Yellow Beige
+3047-Light Yellow Beige
+3051-Dark Green Gray 
+3052-Medium Green Gray
+3053-Green Gray
+3064-Desert Sand
+3072-Very Light Beaver Gray
+3078-Very Light Golden Yellow
+3325-Light Baby Blue
+3326-Light Rose
+3328-Dark Salmon
+3340-Medium Apricot
+3341-Apricot
+3345-Dark Hunter Green
+3346-Hunter Green
+3347-Medium Yellow Green
+3348-Light Yellow Green
+3350-Very Dark Antique Blue 
+3354-Light Dusty Rose
+3362-Dark Pine Green
+3363-Medium Pine Green
+3364-Pine Green
+3371-Black Brown
+3607-Light Plum
+3608-Very Light Plum
+3609-Ultra Light Plum
+3685-Very Dark Mauve
+3687-Mauve
+3688-Medium Mauve
+3689-Light Mauve
+3705-Dark Melon
+3706-Medium Melon
+3708-Light Melon
+3712-Medium Salmon
+3713-Very Light Salmon
+3716-Very Light Rose
+3721-Dark Shell Pink
+3722-Medium Shell Pink
+3726-Dark Antique Mauve
+3727-Light Antique Mauve
+3731-Very Dark Rusty Rose
+3733-Dusty Rose
+3740-Dark Antique Violet
+3743-Very Light Antique Violet
+3746-Dark Blue Violet
+3747-Very Light Blue Violet
+3750-Very Dark Antique Blue
+3752-Very Light Antique Blue
+3753-Ultra Very Light Antique Blue 
+3755-Baby Blue
+3756-Ultra Very Light Baby Blue 
+3760-Medium Wedgwood
+3761-Light Sky Blue
+3765-Very Dark Peacock Blue
+3766-Light Peacock Blue
+3768-Dark Gray Green
+3770-Very Light Tawny
+3771-Ultra Very Light Terra Cotta
+3772-Very Dark Desert Sand
+3773-Medium Desert Sand
+3774-Light Mahogany
+3776-Light Mahogany
+3777-Very Dark Terra Cotta
+3778-Light Terra Cotta
+3779-Very Light Rosewood
+3781-Dark Mocha Brown
+3782-Light Mocha Brown
+3787-Dark Brown Gray
+3790-Ultra Dark Beige Gray
+3799-Very Dark Pewter Gray
+3801-Very Dark Melon
+3802-Very Dark Antique Mauve
+3803-Dark Mauve
+3804-Dark Cyclamen Pink
+3805-Cyclamen Pink
+3806-Light Cyclamen Pink
+3807-Cornflower Blue
+3808-Ultra Very Dark Turquoise
+3809-Very Dark Turquoise
+3810-Dark Turquoise
+3811-Very Light Turquoise
+3812-Very Dark Seagreen
+3813-Light Blue Green
+3814-Aquamarine
+3815-Dark Celadon Green
+3816-Celadon Green
+3817-Light Celadon Green
+3818-Ultra Very Dark Emerald Green
+3819-Light Moss Green
+3820-Dark Straw
+3821-Straw
+3822-Light Straw
+3823-Ultra Pale Yellow
+3824-Light Apricot
+3825-Pale Pumpkin
+3826-Golden Brown
+3827-Pale Golden Brown
+3828-Hazelnut Brown
+3829-Very Dark Old Gold
+3830-Terra Cotta
+3831-Dark Raspberry
+3832-Medium Raspberry
+3833-Light Raspberry
+3834-Dark Grape
+3835-Medium Grape
+3836-Light Grape
+3837-Ultra Dark Lavender
+3838-Dark Lavender Blue
+3839-Medium Lavender Blue
+3840-Light Lavender Blue 
+3841-Pale Baby Blue
+3842-Very Dark Wedgwood
+3843-Electric Blue
+3844-Dark Bright Turquoise
+3845-Medium Bright Turquoise
+3846-Light Bright Turquoise
+3847-Dark Teal Green
+3848-Medium Teal Green
+3849-Light Teal Green
+3850-Dark Bright Green
+3851-Light Bright Green
+3852-Very Dark Straw
+3853-Dark Autumn Gold
+3854-Medium Autumn Gold
+3855-Light Autumn Gold
+3856-Ultra Very Light Mahogany
+3857-Dark Rosewood
+3858-Medium Rosewood
+3859-Light Rosewood
+3860-Cocoa
+3861-Light Cocoa
+3862-Dark Mocha Brown
+3863-Medium Mocha Brown
+3864-Light Mocha Brown
+3865-Winter White
+3866-Ultra Light Mocha
+5200-Snow White
