@@ -6,7 +6,7 @@ namespace BrodUITests.ModelsTests
 {
     public class ConfigManagementTests
     {
-        private void ResetConfigFile()
+        private static void ResetConfigFile()
         {
             // Check if config file exists
             string? appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);

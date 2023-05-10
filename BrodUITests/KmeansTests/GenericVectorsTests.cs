@@ -9,7 +9,7 @@ namespace BrodUITests.KMeansTests
         public void Add1PointToVectorTest()
         {
             GenericVector vec = new();
-            float expected = 125;
+            const float expected = 125;
             vec.Add(expected);
             float actual = vec.Points[0];
             Assert.Equal(expected, actual);

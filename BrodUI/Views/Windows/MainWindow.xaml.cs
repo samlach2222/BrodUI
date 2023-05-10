@@ -11,11 +11,20 @@ namespace BrodUI.Views.Windows
     /// </summary>
     public partial class MainWindow : INavigationWindow
     {
+        /// <summary>
+        /// Getter for the view model.
+        /// </summary>
         public ViewModels.MainWindowViewModel ViewModel
         {
             get;
         }
 
+        /// <summary>
+        /// Creates new instance of the <see cref="MainWindow"/>.
+        /// </summary>
+        /// <param name="viewModel">viewModel of the window</param>
+        /// <param name="pageService">pageService of the window</param>
+        /// <param name="navigationService">navigationService of the window</param>
         public MainWindow(ViewModels.MainWindowViewModel viewModel, IPageService pageService, INavigationService navigationService)
         {
             ViewModel = viewModel;

@@ -11,7 +11,7 @@ namespace BrodUITests.KMeansTests
         public void NearestClusterKMeansTest()
         {
             KMeans km = new();
-            MethodInfo GetNearestCluster = typeof(KMeans).GetMethod("GetNearestCluster", BindingFlags.NonPublic | BindingFlags.Instance);
+            MethodInfo? getNearestCluster = typeof(KMeans).GetMethod("GetNearestCluster", BindingFlags.NonPublic | BindingFlags.Instance);
             Dictionary<int, GenericVector> dict = new();
             GenericVector cen1 = new();
             cen1.Add(0);
@@ -41,19 +41,20 @@ namespace BrodUITests.KMeansTests
             val3.Add(200);
             val3.Add(100);
             val3.Add(50);
-            int actual1 = (int)GetNearestCluster.Invoke(km, new object[] { val1 });
-            int actual2 = (int)GetNearestCluster.Invoke(km, new object[] { val2 });
-            int actual3 = (int)GetNearestCluster.Invoke(km, new object[] { val3 });
+            if (getNearestCluster == null) return;
+            int actual1 = (int)getNearestCluster.Invoke(km, new object[] { val1 })!;
+            int actual2 = (int)getNearestCluster.Invoke(km, new object[] { val2 })!;
+            int actual3 = (int)getNearestCluster.Invoke(km, new object[] { val3 })!;
             Assert.Equal(0, actual1);
             Assert.Equal(1, actual2);
             Assert.Equal(2, actual3);
         }
 
         [Fact]
-        public void AssignDatasetKMeansTest()
+        public void AssignDataSetKMeansTest()
         {
             KMeans km = new();
-            MethodInfo AssignDataset = typeof(KMeans).GetMethod("AssignDataset", BindingFlags.NonPublic | BindingFlags.Instance);
+            MethodInfo? assignDataSet = typeof(KMeans).GetMethod("AssignDataset", BindingFlags.NonPublic | BindingFlags.Instance);
             Dictionary<int, GenericVector> dict = new();
             GenericVector cen1 = new();
             cen1.Add(0);
@@ -83,14 +84,19 @@ namespace BrodUITests.KMeansTests
             val3.Add(200);
             val3.Add(100);
             val3.Add(50);
-            km.Dataset = new();
-            km.Dataset.Add(val1);
-            km.Dataset.Add(val2);
-            km.Dataset.Add(val3);
-            AssignDataset.Invoke(km, new object[] { });
-            Assert.Equal(0, km.Dataset[0].Cluster);
-            Assert.Equal(1, km.Dataset[1].Cluster);
-            Assert.Equal(2, km.Dataset[2].Cluster);
+            km.DataSet = new List<GenericVector>
+            {
+                val1,
+                val2,
+                val3
+            };
+            if (assignDataSet != null)
+            {
+                assignDataSet.Invoke(km, new object[] { });
+            }
+            Assert.Equal(0, km.DataSet[0].Cluster);
+            Assert.Equal(1, km.DataSet[1].Cluster);
+            Assert.Equal(2, km.DataSet[2].Cluster);
         }
 
 
@@ -98,14 +104,13 @@ namespace BrodUITests.KMeansTests
         public void RandomVectorKMeansTest()
         {
             KMeans km = new();
-            MethodInfo RandomVector = typeof(KMeans).GetMethod("RandomVector", BindingFlags.NonPublic | BindingFlags.Instance);
+            MethodInfo? randomVector = typeof(KMeans).GetMethod("RandomVector", BindingFlags.NonPublic | BindingFlags.Instance);
             GenericVector val1 = new();
             val1.Add(0);
             val1.Add(0);
             val1.Add(255);
-            km.Dataset = new();
-            km.Dataset.Add(val1);
-            GenericVector actual = (GenericVector)RandomVector.Invoke(km, new object[] { });
+            km.DataSet = new() { val1 };
+            GenericVector? actual = (GenericVector)randomVector!.Invoke(km, new object[] { })!;
             Assert.Equal(val1.Points[0], actual.Points[0]);
             Assert.Equal(val1.Points[1], actual.Points[1]);
             Assert.Equal(val1.Points[2], actual.Points[2]);
@@ -113,15 +118,15 @@ namespace BrodUITests.KMeansTests
             val2.Add(0);
             val2.Add(200);
             val2.Add(0);
-            km.Dataset.Add(val2);
-            bool verif = false;
+            km.DataSet.Add(val2);
+            bool check = false;
             int n = 0;
-            while (n < 10 && !verif)
+            while (n < 10 && !check)
             {
-                actual = (GenericVector)RandomVector.Invoke(km, new object[] { });
-                verif = verif || (val2.Points[0] == actual.Points[0] && val2.Points[1] == actual.Points[1] && val2.Points[2] == actual.Points[2]);
+                actual = (GenericVector)randomVector.Invoke(km, new object[] { })!;
+                check = check || (val2.Points[0] == actual.Points[0] && val2.Points[1] == actual.Points[1] && val2.Points[2] == actual.Points[2]);
             }
-            Assert.True(verif);
+            Assert.True(check);
         }
 
         [Fact]
@@ -137,9 +142,9 @@ namespace BrodUITests.KMeansTests
             val2.Add(0);
             val2.Add(200);
             val2.Add(0);
-            km.Dataset = new();
-            km.Dataset.Add(val1);
-            km.Dataset.Add(val2);
+            km.DataSet = new();
+            km.DataSet.Add(val1);
+            km.DataSet.Add(val2);
             Dictionary<int, GenericVector> dict = (Dictionary<int, GenericVector>)GenerateRandomCentroids.Invoke(km, new object[] { 2 });
             Assert.Equal(2, dict.Count);
             GenericVector cen1 = dict[0];
@@ -205,7 +210,7 @@ namespace BrodUITests.KMeansTests
             cen2.Add(0);
             dict.Add(1, cen2);
             km.Centroids = dict;
-            km.Dataset = new();
+            km.DataSet = new();
             GenericVector val1_1 = new();
             val1_1.Add(0);
             val1_1.Add(0);
@@ -234,10 +239,10 @@ namespace BrodUITests.KMeansTests
             exp2.Add(0);
             exp2.Add(100);
             exp2.Add(0);
-            km.Dataset.Add(val1_1);
-            km.Dataset.Add(val1_2);
-            km.Dataset.Add(val2_1);
-            km.Dataset.Add(val2_2);
+            km.DataSet.Add(val1_1);
+            km.DataSet.Add(val1_2);
+            km.DataSet.Add(val2_1);
+            km.DataSet.Add(val2_2);
             RecalculateCentroids.Invoke(km, new object[] { });
             cen1 = km.Centroids[0];
             cen2 = km.Centroids[1];
@@ -261,8 +266,8 @@ namespace BrodUITests.KMeansTests
             cen1.Add(0);
             cen1.Add(255);
             dict.Add(0, cen1);
-            KMeans km = new() { Dataset = data, Centroids = dict };
-            Assert.True(Math.Abs(km.CalculateSumofSquaredErrors()) < 0.0000001);//Egal à 0
+            KMeans km = new() { DataSet = data, Centroids = dict };
+            Assert.True(Math.Abs(km.CalculateSumOfSquaredErrors()) < 0.0000001);//Egal à 0
             GenericVector val2 = new();
             val2.Add(245);
             val2.Add(0);
@@ -274,7 +279,7 @@ namespace BrodUITests.KMeansTests
             cen2.Add(0);
             cen2.Add(0);
             dict.Add(1, cen2);
-            Assert.True(Math.Abs(100 - km.CalculateSumofSquaredErrors()) < 0.0000001);//Egal à 100
+            Assert.True(Math.Abs(100 - km.CalculateSumOfSquaredErrors()) < 0.0000001);//Egal à 100
             GenericVector val3 = new();
             val3.Add(10);
             val3.Add(10);
@@ -286,7 +291,7 @@ namespace BrodUITests.KMeansTests
             cen3.Add(0);
             cen3.Add(0);
             dict.Add(2, cen3);
-            Assert.True(Math.Abs(400 - km.CalculateSumofSquaredErrors()) < 0.0000001);//Egal à 400
+            Assert.True(Math.Abs(400 - km.CalculateSumOfSquaredErrors()) < 0.0000001);//Egal à 400
         }
 
         [Fact]
@@ -314,7 +319,7 @@ namespace BrodUITests.KMeansTests
                 KMeans kMeans = new()
                 {
                     Iterations = 100,
-                    Dataset = data,
+                    DataSet = data,
                     Clusters = 3
                 };
                 kMeans.Run();
@@ -340,7 +345,7 @@ namespace BrodUITests.KMeansTests
                 KMeans kMeans = new()
                 {
                     Iterations = 100,
-                    Dataset = data,
+                    DataSet = data,
                     Clusters = 3
                 };
                 kMeans.Run();
@@ -409,7 +414,7 @@ namespace BrodUITests.KMeansTests
                 KMeans kMeans = new()
                 {
                     Iterations = 100,
-                    Dataset = data,
+                    DataSet = data,
                     Clusters = 3
                 };
                 kMeans.Run();
@@ -422,9 +427,9 @@ namespace BrodUITests.KMeansTests
             MethodInfo AssignDataset = typeof(KMeans).GetMethod("AssignDataset", BindingFlags.NonPublic | BindingFlags.Instance);
             AssignDataset.Invoke(lowest, new object[] { });
 
-            GenericVector cen1 = lowest.Centroids[lowest.Dataset[1].Cluster];
-            GenericVector cen2 = lowest.Centroids[lowest.Dataset[2].Cluster];
-            GenericVector cen3 = lowest.Centroids[lowest.Dataset[0].Cluster];
+            GenericVector cen1 = lowest.Centroids[lowest.DataSet[1].Cluster];
+            GenericVector cen2 = lowest.Centroids[lowest.DataSet[2].Cluster];
+            GenericVector cen3 = lowest.Centroids[lowest.DataSet[0].Cluster];
             Assert.True(cen1.Points[0] > 200 && cen1.Points[0] < 255 && cen1.Points[1] == 0 && cen1.Points[2] == 0);
             Assert.True(cen2.Points[1] > 200 && cen2.Points[1] < 255 && cen2.Points[0] == 0 && cen2.Points[2] == 0);
             Assert.True(cen3.Points[2] > 200 && cen1.Points[2] < 255 && cen3.Points[1] == 0 && cen3.Points[0] == 0);

@@ -22,7 +22,7 @@ namespace BrodUI.ViewModels
         /// List of color models displayed in the UI.
         /// </summary>
         [ObservableProperty]
-        private string[] _colorModels = new string[] { "RGB", "HSL" };
+        private string[] _colorModels = { "RGB", "HSL" };
 
         /// <summary>
         /// Ratio of the image
@@ -37,7 +37,7 @@ namespace BrodUI.ViewModels
         /// <summary>
         /// bool to know if an image is loaded
         /// </summary>
-        private bool _isImageLoaded = false;
+        private bool _isImageLoaded;
 
         /// <summary>
         /// Width of the image
@@ -72,7 +72,7 @@ namespace BrodUI.ViewModels
         /// <summary>
         /// Loaded image
         /// </summary>
-        private BitmapImage? _loadedImage = null;
+        private BitmapImage? _loadedImage;
 
         /// <summary>
         /// Image management class to manage the image

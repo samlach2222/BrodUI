@@ -9,18 +9,9 @@ namespace BrodUI.Models
     public static class LogManagement
     {
         /// <summary>
-        /// Path of the log file
-        /// </summary>
-        private static string? _logPath;
-
-        /// <summary>
         /// Getter and setter of the log file path
         /// </summary>
-        public static string? LogPath
-        {
-            get => _logPath;
-            set => _logPath = value;
-        }
+        public static string? LogPath { get; set; }
 
         /// <summary>
         /// Create the log file if it doesn't exist
@@ -34,7 +25,7 @@ namespace BrodUI.Models
                 Directory.CreateDirectory(appData + "\\BrodUI");
             }
             // path combine with the file name
-            LogPath = System.IO.Path.Combine(appData + "\\BrodUI", "terminal.log");
+            LogPath = Path.Combine(appData + "\\BrodUI", "terminal.log");
             if (File.Exists(LogPath)) return;
             // Create the file
             FileStream newFile = File.Create(LogPath);

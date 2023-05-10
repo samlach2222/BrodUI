@@ -157,8 +157,8 @@ public class ImageManagementTests
     public void LoadCurrentImageTest()
     {
         // delete image if exists
-        string appdata = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-        string path = Path.Combine(appdata, "BrodUI", "current image.png");
+        string appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+        string path = Path.Combine(appData, "BrodUI", "current image.png");
 
         if (File.Exists(path))
         {
@@ -225,8 +225,8 @@ public class ImageManagementTests
     public void ResizeImageTest()
     {
         ImageManagement im = new(new Win32OpenFileDialogAdapter());
-        string appdata = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-        string path = Path.Combine(appdata, "BrodUI", "current image.png");
+        string appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+        string path = Path.Combine(appData, "BrodUI", "current image.png");
         string pathImage = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\BrodUI\Assets\applicationIcon-1024.png");
         // copy image to AppData
         File.Delete(path);

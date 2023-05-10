@@ -5,6 +5,8 @@ using System.Linq;
 
 namespace BrodUI.KMeans
 {
+    // TODO : MISSING DOCUMENTATION
+
     public class GenericVector
     {
         //integer to display the cluster it is in.
@@ -13,7 +15,7 @@ namespace BrodUI.KMeans
         //list of floats that's creating the GenericVector
         public List<float> Points = new();
 
-        //Creates a new GeneriVector with the points as long as the size given
+        //Creates a new GenericVector with the points as long as the size given
         public GenericVector(int size)
         {
             for (int i = 0; i < size; i++)
@@ -62,7 +64,7 @@ namespace BrodUI.KMeans
         {
             for (int i = 0; i < Size; i++)
             {
-                Points[i] = Points[i] / divider;
+                Points[i] /= divider;
             }
             return this;
         }
@@ -76,16 +78,16 @@ namespace BrodUI.KMeans
         {
             if (vectorA.Size != vectorB.Size)
                 throw new Exception("GenericVector a size of dotProduct not equal to GenericVector b size");
-            List<float> aTimesBpoints = vectorA.Points.Select((t, i) => t * vectorB.Points[i]).ToList();
+            List<float> aTimesBPoints = vectorA.Points.Select((t, i) => t * vectorB.Points[i]).ToList();
 
-            return aTimesBpoints.Sum();
+            return aTimesBPoints.Sum();
         }
 
         public static double Distance(GenericVector a, GenericVector b)
         {
-            List<float> aMinusBpoints = a.Points.Select((t, i) => t - b.Points[i]).ToList();
+            List<float> aMinusBPoints = a.Points.Select((t, i) => t - b.Points[i]).ToList();
 
-            return Math.Sqrt(aMinusBpoints.Sum(item => Math.Pow(item, 2)));
+            return Math.Sqrt(aMinusBPoints.Sum(item => Math.Pow(item, 2)));
         }
     }
 }

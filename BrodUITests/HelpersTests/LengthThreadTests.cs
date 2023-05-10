@@ -8,7 +8,7 @@ namespace BrodUITests.HelpersTests
         [Fact]
         public void WireSizeTest()
         {
-            int[,] imageTest = new int[,] { { 3, 4, 3 }, { 3, 3, 5 }, { 5, 4, 3 }, { 4, 3, 3 } };
+            int[,] imageTest = { { 3, 4, 3 }, { 3, 3, 5 }, { 5, 4, 3 }, { 4, 3, 3 } };
             LengthThread l = new(3, imageTest);
             double actual = l.TotalLength;
             double expected = 27 + (7 * Math.Sqrt(2));

@@ -7,12 +7,12 @@ using System.Windows.Media;
 namespace BrodUI.Helpers
 {
     /// <summary>
-    /// class to convert 2D Array of Brush to Dictionnary containing the colors
+    /// class to convert 2D Array of Brush to Dictionary containing the colors
     /// </summary>
     public static class Brush2DtoColorDict
     {
         /// <summary>
-        /// convert DMC 2D Array of Brush to Dictionnary containing the colors
+        /// convert DMC 2D Array of Brush to Dictionary containing the colors
         /// </summary>
         public static Dictionary<int, GenericVector> BrushToDict(Brush[,] image)
         {
@@ -36,7 +36,7 @@ namespace BrodUI.Helpers
         }
 
         /// <summary>
-        /// convert Dictionnary containing the colors to DMC 2D Array of Brush
+        /// convert Dictionary containing the colors to DMC 2D Array of Brush
         /// </summary>
         public static Brush[,] DictToBrush2D(Dictionary<int, GenericVector> dict, Dictionary<int, GenericVector> centroids, int sizeX, int sizeY)
         {
@@ -46,11 +46,11 @@ namespace BrodUI.Helpers
                 for (int j = 0; j < sizeY; j++)
                 {
                     GenericVector gv = dict[i + j * sizeX];
-                    int centroidid = centroids
+                    int centroidId = centroids
                         .OrderBy(v => GenericVector.Distance(gv, v.Value))
                         .Select(v => v.Key)
                         .FirstOrDefault();
-                    GenericVector centroid = centroids[centroidid];
+                    GenericVector centroid = centroids[centroidId];
                     res[i, j] = new SolidColorBrush(Color.FromRgb((byte)Math.Round(centroid.Points[0]), (byte)Math.Round(centroid.Points[1]), (byte)Math.Round(centroid.Points[2])));
                 }
             }

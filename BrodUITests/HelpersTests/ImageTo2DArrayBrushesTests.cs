@@ -57,19 +57,17 @@ namespace BrodUITests.HelpersTests
             BitmapImage actual = ImageTo2DArrayBrushes.ConvertToBitmapImage(brushes);
 
 
-            byte[] dataExpected = { };
             BmpBitmapEncoder encoderExpected = new();
             encoderExpected.Frames.Add(BitmapFrame.Create(expected));
             using MemoryStream msExpected = new();
             encoderExpected.Save(msExpected);
-            dataExpected = msExpected.ToArray();
+            var dataExpected = msExpected.ToArray();
 
-            byte[] dataActual = { };
             BmpBitmapEncoder encoderActual = new();
             encoderActual.Frames.Add(BitmapFrame.Create(actual));
             using MemoryStream msActual = new();
             encoderActual.Save(msActual);
-            dataActual = msActual.ToArray();
+            var dataActual = msActual.ToArray();
 
 
             // Actual

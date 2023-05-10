@@ -3,14 +3,14 @@ using Xunit;
 
 namespace BrodUITests.HelpersTests
 {
-    public class DMCtoStringTests
+    public class DmcToStringTests
     {
         [Fact]
         public void GetNameDmcTests()
         {
             DmcToString d = new();
             string actual = d.GetNameDmc(517);
-            string expected = "Dark Wedgwood";
+            const string expected = "Dark Wedgwood";
             Assert.Equal(expected, actual);
         }
     }

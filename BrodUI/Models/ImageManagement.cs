@@ -74,12 +74,12 @@ namespace BrodUI.Models
             /// <summary>
             /// Name of the files
             /// </summary>
-            string[] FileNames { get; }
+            string[]? FileNames { get; }
 
             /// <summary>
             /// Filters for the dialog (image filter)
             /// </summary>
-            string Filter { get; set; }
+            string? Filter { get; set; }
         }
 
 

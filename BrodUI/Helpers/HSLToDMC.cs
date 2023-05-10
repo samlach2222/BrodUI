@@ -8,8 +8,14 @@ namespace BrodUI.Helpers
     /// </summary>
     public class HslToDmc
     {
-        //array for DMC colors 0 = H, 1 = S, 2 = L, 3 = DMC
+        /// <summary>
+        /// array for DMC colors 0 = H, 1 = S, 2 = L, 3 = DMC
+        /// </summary>
         private readonly int[,] _dmc = new int[500, 4];
+
+        /// <summary>
+        /// dmc number
+        /// </summary>
         private int _nbDmc;
 
         /// <summary>

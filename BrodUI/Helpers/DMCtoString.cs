@@ -8,8 +8,14 @@ namespace BrodUI.Helpers
     /// </summary>
     public class DmcToString
     {
-        ///array for DMC colors 0 = DMC, 1 = name of the DMC
+        /// <summary>
+        /// array for DMC colors 0 = DMC, 1 = name of the DMC
+        /// </summary>
         private readonly string[,] _dmcString = new string[500, 2];
+
+        /// <summary>
+        /// dmc number
+        /// </summary>
         private int _nbDmc;
 
         /// <summary>
@@ -17,7 +23,7 @@ namespace BrodUI.Helpers
         /// </summary>
         private void Initialization()
         {
-            StreamReader sr = new("./Assets/DMCtoString.txt");
+            StreamReader sr = new("./Assets/DmcToString.txt");
             int comp = 0;
             string? line = sr.ReadLine();
 

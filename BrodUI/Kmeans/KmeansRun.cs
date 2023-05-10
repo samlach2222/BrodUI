@@ -5,6 +5,8 @@ using System.Windows.Media;
 
 namespace BrodUI.KMeans
 {
+    // TODO : MISSING DOCUMENTATION
+
     public static class KMeansRun
     {
         public static Brush[,] StartKMeans(Brush[,] image, int nbClusters, int nbKMeans)
@@ -16,7 +18,7 @@ namespace BrodUI.KMeans
                 KMeans kMeans = new()
                 {
                     Iterations = 100,
-                    Dataset = dict.Values.ToList(),
+                    DataSet = dict.Values.ToList(),
                     Clusters = nbClusters
                 };
                 kMeans.Run();

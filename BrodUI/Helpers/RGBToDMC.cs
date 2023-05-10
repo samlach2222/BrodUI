@@ -8,8 +8,14 @@ namespace BrodUI.Helpers
     /// </summary>
     public class RgbToDmc
     {
-        //array for DMC colors 0 = R, 1 = G, 2 = B, 3 = DMC
+        /// <summary>
+        /// array for DMC colors 0 = R, 1 = G, 2 = B, 3 = DMC
+        /// </summary>
         private readonly int[,] _dmc = new int[500, 4];
+
+        /// <summary>
+        /// dmc number
+        /// </summary>
         private int _nbDmc;
 
         /// <summary>

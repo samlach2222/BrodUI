@@ -228,7 +228,7 @@ namespace BrodUI.Models
             {
                 // create a temp copy of the image with specified width and height
                 // Get the image from the path
-                Image = new(new Uri(imgPath));
+                Image = new BitmapImage(new Uri(imgPath));
                 // Create a new image with the specified width and height
                 double minWidth = Document.GetDefaultPageSize().GetWidth() / 2;
                 double minHeight = Document.GetDefaultPageSize().GetHeight() / 2;

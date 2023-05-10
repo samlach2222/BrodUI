@@ -291,13 +291,13 @@ namespace BrodUI.ViewModels
             GridImage?.RowDefinitions.Clear();
             GridImage?.ColumnDefinitions.Clear();
             LoadedImage = null;
-            WireArray = new();
+            WireArray = new List<Wire>();
         }
 
         [RelayCommand]
         private void ExportToPdf()
         {
-            PdfManagement pdf = new(WireArray);
+            _ = new PdfManagement(WireArray);
         }
     }
 }

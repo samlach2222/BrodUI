@@ -17,13 +17,13 @@ namespace BrodUI.ViewModels
         /// <summary>
         /// bool to check if the viewmodel is initialized
         /// </summary>
-        private bool _isInitialized = false;
+        private bool _isInitialized;
 
         /// <summary>
         /// Possible themes of the application
         /// </summary>
         [ObservableProperty]
-        private string[] _themes = new string[] { "System", "Light", "Dark" };
+        private string[] _themes = { "System", "Light", "Dark" };
 
         /// <summary>
         /// Current theme of the application
@@ -142,12 +142,12 @@ namespace BrodUI.ViewModels
         /// <summary>
         /// Size of the embroidery point
         /// </summary>
-        private string _curEmbroiderySize;
+        private string? _curEmbroiderySize;
 
         /// <summary>
         /// Get or set the embroidery size
         /// </summary>
-        public string CurEmbroiderySize
+        public string? CurEmbroiderySize
         {
             get => _curEmbroiderySize;
             set
