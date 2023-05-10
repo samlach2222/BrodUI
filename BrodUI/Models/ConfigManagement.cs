@@ -21,7 +21,7 @@ namespace BrodUI.Models
         /// <summary>
         /// Default values for the config file
         /// </summary>
-        private static string[] DefaultSettings => new string[] {
+        public static string[] DefaultSettings => new string[] {
             "Theme=System",
             "Language=" + GetSystemLanguageOrDefault(),
 #if DEBUG

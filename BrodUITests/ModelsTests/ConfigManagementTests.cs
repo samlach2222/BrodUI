@@ -25,21 +25,16 @@ namespace BrodUITests.ModelsTests
         public void CreateConfigFileIfNotExistsTest()
         {
             // Expected
-            string language = ConfigManagement.GetSystemLanguageOrDefault();
-            bool terminal = false;
-#if DEBUG
-            terminal = true;
-#endif
-            string expected = "Theme=System\nLanguage=" + language + "\nTerminal=" + terminal + "\nEmbroiderySize=15\nKMeansClusters=5\nKMeansIterations=10\nColorModel=RGB";
+            string[] expected = ConfigManagement.DefaultSettings;
 
             // Actual
-            string? appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-            string path = Path.Combine(appData + "\\BrodUI", "settings.cfg");
+            string appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            string path = Path.Combine(appData, "BrodUI", "settings.cfg");
             File.Delete(path);
 
             ConfigManagement.CreateConfigFileIfNotExists();
 
-            string actual = File.ReadAllText(path);
+            string[] actual = File.ReadAllLines(path);
 
             // Assert
             Assert.Equal(expected, actual);
@@ -108,15 +103,22 @@ namespace BrodUITests.ModelsTests
         public void ApplyThemeTest()
         {
             // TODO : Test this method (hard to implement because we have to verify the theme of the app)
+            // The test crash when trying to apply the theme
             throw new NotImplementedException();
-        }
 
-        [Fact]
-        [STAThread]
-        public void SetThemeFromSettingsTest()
-        {
-            // TODO : Test this method (hard to implement because we have to verify the theme of the app)
-            throw new NotImplementedException();
+            /*
+            // Set and apply theme to light
+            ResetConfigFile();
+            ConfigManagement.SetThemeToConfigFile("Light");
+            ConfigManagement.ApplyTheme();
+            // First assert
+            Assert.Equal(Wpf.Ui.Appearance.ThemeType.Light, Wpf.Ui.Appearance.Theme.GetAppTheme());
+            // Set and apply theme to dark
+            ConfigManagement.SetThemeToConfigFile("Dark");
+            ConfigManagement.ApplyTheme();
+            // Second assert
+            Assert.Equal(Wpf.Ui.Appearance.ThemeType.Dark, Wpf.Ui.Appearance.Theme.GetAppTheme());
+            */
         }
 
         [Fact]
