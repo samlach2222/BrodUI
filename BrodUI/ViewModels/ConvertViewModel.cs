@@ -18,7 +18,7 @@ namespace BrodUI.ViewModels
     /// <summary>
     /// ViewModel for the ConvertPage
     /// </summary>
-    public partial class ConvertViewModel : ObservableObject, INavigationAware
+    public partial class ConvertViewModel : ObservableObject, INavigationAware // TODO : (POSSIBLY) COLOR NUMBER CANNOT EXCEED NUMBER OF COLOR IN IMAGE
     {
         /// <summary>
         /// List of color models displayed in the UI.
@@ -84,12 +84,17 @@ namespace BrodUI.ViewModels
         /// <summary>
         /// Percentage show next to the progress bar
         /// </summary>
-        private string _progressTb;
+        private string _progressTb = "0%";
 
         /// <summary>
         /// Visibility of the progress grid
         /// </summary>
-        private string _progressVisibility;
+        private string _progressVisibility = "Hidden";
+
+        /// <summary>
+        /// Visibility of the global grid
+        /// </summary>
+        private bool _globalGridVisibility = true;
 
         /// <summary>
         /// Image management class to manage the image
@@ -165,6 +170,19 @@ namespace BrodUI.ViewModels
             set
             {
                 _progressVisibility = value;
+                OnPropertyChanged();
+            }
+        }
+
+        /// <summary>
+        /// Getter and Setter for the visibility of the global grid
+        /// </summary>
+        public bool GlobalGridVisibility
+        {
+            get => _globalGridVisibility;
+            set
+            {
+                _globalGridVisibility = value;
                 OnPropertyChanged();
             }
         }
@@ -320,10 +338,6 @@ namespace BrodUI.ViewModels
         public void OnNavigatedTo()
         {
             LogManagement.WriteToLog("[" + DateTime.Now + "] " + Assets.Languages.Resource.Terminal_ConvertPage);
-            // ProgressBar Percentage
-            ProgressTb = "0%";
-            ProgressConvert = 0;
-            ProgressVisibility = "Hidden";
 
             // Set the default value for the kmeans algorithm
             IsImageLoaded = true;
@@ -388,9 +402,13 @@ namespace BrodUI.ViewModels
         /// Function called when user click on the button to convert the image. It also navigate to the Export page
         /// </summary>
         [RelayCommand]
-        private void ConvertImage() // TODO : ADD IMG TOO BIG MESSAGE AND EVENT
+        private void ConvertImage() 
         {
+            // TODO : ADD IMG TOO BIG MESSAGE AND EVENT
+            // TODO : DO WIRE THINGS INSIDE WORKER TOO AND GO TO PAGE EXPORT ONLY AFTER
+            // TODO : VERIFY IF WE CAN DEACTIVATE NAVIGATION MENU WHILE CONVERTING
             // Change grid visibility
+            GlobalGridVisibility = false;
             ProgressVisibility = "Visible";
 
             // create new BackgroundWorker
@@ -418,6 +436,11 @@ namespace BrodUI.ViewModels
 
             worker.RunWorkerCompleted += (sender, args) =>
             {
+                GlobalGridVisibility = true;
+                // ProgressBar Percentage
+                ProgressTb = "0%";
+                ProgressConvert = 0;
+                ProgressVisibility = "Hidden";
                 LogManagement.WriteToLog("[" + DateTime.Now + "] " + Assets.Languages.Resource.Terminal_ImageConvertedOk);
                 INavigation? navigationService = (Application.Current.MainWindow as INavigationWindow)?.GetNavigation(); // Get the navigation service from the window.
                 if (navigationService != null)
