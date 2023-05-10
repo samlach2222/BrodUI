@@ -109,13 +109,13 @@ namespace BrodUI.Models
                 case "System":
                     SystemThemeType theme = Theme.GetSystemTheme();
                     // Apply it
-                    Theme.Apply(theme == SystemThemeType.Light ? ThemeType.Light : ThemeType.Dark);
+                    Theme.Apply(theme == SystemThemeType.Light ? ThemeType.Light : ThemeType.Dark, BackgroundType.None);
                     break;
                 case "Light":
-                    Theme.Apply(ThemeType.Light);
+                    Theme.Apply(ThemeType.Light, BackgroundType.None);
                     break;
                 case "Dark":
-                    Theme.Apply(ThemeType.Dark);
+                    Theme.Apply(ThemeType.Dark, BackgroundType.None);
                     break;
             }
         }
@@ -286,32 +286,6 @@ namespace BrodUI.Models
             string[] settings = File.ReadAllLines(_path);
             settings[6] = $"ColorModel={colorModel}";
             File.WriteAllLines(_path, settings);
-        }
-
-        /// <summary>
-        /// Set the theme from the settings
-        /// </summary>
-        /// <param name="theme">theme you want to apply in the app</param>
-        public static void SetThemeFromSettings(string? theme)
-        {
-            switch (theme)
-            {
-                case "Light":
-                    Theme.Apply(ThemeType.Light, BackgroundType.None);
-                    break;
-                case "Dark":
-                    Theme.Apply(ThemeType.Dark, BackgroundType.None);
-                    break;
-                default:
-                    // Get current theme from Windows 11
-                    SystemThemeType sysTheme = Theme.GetSystemTheme();
-                    // Apply it
-                    Theme.Apply(
-                        sysTheme == SystemThemeType.Light
-                            ? ThemeType.Light
-                            : ThemeType.Dark, BackgroundType.None);
-                    break;
-            }
         }
     }
 }

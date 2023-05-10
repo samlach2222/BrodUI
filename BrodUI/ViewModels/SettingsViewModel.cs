@@ -54,10 +54,11 @@ namespace BrodUI.ViewModels
         /// <param name="theme">new theme of the application</param>
         private static void ChangeTheme(string? theme)
         {
-            ConfigManagement.SetThemeFromSettings(theme);
-
-            // save the language in the file "settings.cfg" in the first row
+            // save the theme in the file "settings.cfg" in the first row
             ConfigManagement.SetThemeToConfigFile(theme);
+
+            // apply the new theme
+            ConfigManagement.SetTheme();
         }
 
         /// <summary>
