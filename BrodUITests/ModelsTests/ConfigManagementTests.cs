@@ -105,7 +105,7 @@ namespace BrodUITests.ModelsTests
 
         [Fact]
         [STAThread]
-        public void SetThemeTest()
+        public void ApplyThemeTest()
         {
             // TODO : Test this method (hard to implement because we have to verify the theme of the app)
             throw new NotImplementedException();
@@ -146,14 +146,14 @@ namespace BrodUITests.ModelsTests
         }
 
         [Fact]
-        public void SetLanguageTest()
+        public void ApplyLanguageTest()
         {
             // Expected
             ResetConfigFile();
             const string expected = "en";
             ConfigManagement.SetLanguageToConfigFile("English");
             // Actual
-            ConfigManagement.SetLanguage();
+            ConfigManagement.ApplyLanguage();
             // get actual language of the app
             string actual = CultureInfo.CurrentUICulture.Name;
             // Assert

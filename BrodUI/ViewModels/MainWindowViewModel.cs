@@ -60,7 +60,7 @@ namespace BrodUI.ViewModels
             ApplicationTitle = "BrodUI";
 
             ConfigManagement.CreateConfigFileIfNotExists();
-            ConfigManagement.SetLanguage();
+            ConfigManagement.ApplyLanguage();
 
             NavigationItems = new ObservableCollection<INavigationControl>
             {

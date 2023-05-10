@@ -104,9 +104,9 @@ namespace BrodUI
             // Create settings.cfg file if it doesn't exist with lines for each setting
             ConfigManagement.CreateConfigFileIfNotExists();
             // Load settings.cfg file
-            ConfigManagement.SetTheme();
+            ConfigManagement.ApplyTheme();
             // Set language
-            ConfigManagement.SetLanguage();
+            ConfigManagement.ApplyLanguage();
         }
 
         /// <summary>

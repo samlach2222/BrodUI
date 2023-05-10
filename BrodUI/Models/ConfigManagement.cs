@@ -100,7 +100,7 @@ namespace BrodUI.Models
         /// Dark
         /// System (Light or Dark depending on the system theme)
         /// </summary>
-        public static void SetTheme()
+        public static void ApplyTheme()
         {
             string[] settings = File.ReadAllLines(_path);
             // Set theme
@@ -125,7 +125,7 @@ namespace BrodUI.Models
         /// French
         /// English
         /// </summary>
-        public static void SetLanguage()
+        public static void ApplyLanguage()
         {
             string[] settings = File.ReadAllLines(_path);
             // Set language

@@ -24,7 +24,7 @@ namespace BrodUI.Views.Pages
         /// <param name="viewModel">viewModel</param>
         public SettingsPage(ViewModels.SettingsViewModel viewModel)
         {
-            ConfigManagement.SetLanguage();
+            ConfigManagement.ApplyLanguage();
 
             ViewModel = viewModel;
 

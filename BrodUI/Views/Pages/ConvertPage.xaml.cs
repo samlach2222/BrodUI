@@ -18,7 +18,7 @@ namespace BrodUI.Views.Pages
 
         public ConvertPage(ViewModels.ConvertViewModel viewModel)
         {
-            ConfigManagement.SetLanguage();
+            ConfigManagement.ApplyLanguage();
 
             ViewModel = viewModel;
 

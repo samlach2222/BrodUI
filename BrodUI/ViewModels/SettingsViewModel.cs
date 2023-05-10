@@ -58,7 +58,7 @@ namespace BrodUI.ViewModels
             ConfigManagement.SetThemeToConfigFile(theme);
 
             // apply the new theme
-            ConfigManagement.SetTheme();
+            ConfigManagement.ApplyTheme();
         }
 
         /// <summary>

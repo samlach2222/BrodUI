@@ -22,7 +22,7 @@ namespace BrodUI.Views.Pages
         /// <param name="viewModel">viewModel</param>
         public ExportPage(ViewModels.ExportViewModel viewModel)
         {
-            ConfigManagement.SetLanguage();
+            ConfigManagement.ApplyLanguage();
 
             ViewModel = viewModel;
 
