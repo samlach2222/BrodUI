@@ -19,33 +19,42 @@ namespace BrodUI.Models
         private static string _path;
 
         /// <summary>
-        /// Create the config file if it doesn't exist and set the default values who are :
-        /// Theme=System
-        /// Language=English
-        /// Terminal=false
+        /// Default values for the config file
+        /// </summary>
+        private static string[] DefaultSettings => new string[] {
+            "Theme=System",
+            "Language=" + GetSystemLanguageOrDefault(),
+#if DEBUG
+            "Terminal=" + true,
+#else
+            "Terminal=" + false,
+#endif
+            "EmbroiderySize=15",
+            "KMeansClusters=5",
+            "KMeansIterations=10",
+            "ColorModel=RGB"
+        };
+
+        /// <summary>
+        /// Create the config file if it doesn't exist with its default values
         /// </summary>
         public static void CreateConfigFileIfNotExists()
         {
             // get AppData Roaming folder in a string
-            string? appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            string appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            string folderPath = Path.Combine(appData, "BrodUI");
             // create the folder "BrodUI" in AppData if it doesn't exist
-            if (!Directory.Exists(appData + "\\BrodUI"))
+            if (!Directory.Exists(folderPath))
             {
-                Directory.CreateDirectory(appData + "\\BrodUI");
+                Directory.CreateDirectory(folderPath);
             }
             // path combine with the file name
-            _path = Path.Combine(appData + "\\BrodUI", "settings.cfg");
-            if (File.Exists(_path)) return;
-            // Get the language to use by default
-            string language = GetSystemLanguageOrDefault();
+            _path = Path.Combine(folderPath, "settings.cfg");
 
-            // Get whether we should activate the terminal by default
-            bool terminal = false;
-#if DEBUG
-            terminal = true;
-#endif
+            // if the file already exists, check if we have the correct number of lines
+            if (File.Exists(_path) && File.ReadAllLines(_path).Length == DefaultSettings.Length) return;
 
-            File.WriteAllText(_path, "Theme=System\nLanguage=" + language + "\nTerminal=" + terminal + "\nEmbroiderySize=15\nKMeansClusters=5\nKMeansIterations=10\nColorModel=RGB");
+            File.WriteAllLines(_path, DefaultSettings);
         }
 
         /// <summary>
