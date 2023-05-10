@@ -1,4 +1,5 @@
 ﻿using BrodUI.Helpers;
+using BrodUI.Models;
 using Xunit;
 
 namespace BrodUITests.HelpersTests
@@ -8,7 +9,16 @@ namespace BrodUITests.HelpersTests
         [Fact]
         public void InitializationTests()
         {
-
+            // Expected
+            const string expected = "0 252 251 248";
+            // Actual
+            RgbToDmc rgbToDmc = new();
+            rgbToDmc.Initialization();
+            int d=rgbToDmc.GetValDmc(252, 251, 248);
+            string actual = d.ToString();
+            actual=actual+" "+rgbToDmc.getRed(d).ToString()+" "+rgbToDmc.getGreen(d).ToString()+" "+rgbToDmc.getBlue(d).ToString();
+            // Assert
+            Assert.Equal(expected, actual);
         }
         [Fact]
         public void GetValDmcTests()
@@ -20,6 +30,33 @@ namespace BrodUITests.HelpersTests
             RgbToDmc rgbToDmc = new();
             int dmc2 = rgbToDmc.GetValDmc(red, green, blue);
             Assert.Equal(dmc1, dmc2);
+        }
+        [Fact]
+        public void GetBlueTests()
+        {
+            const int blue = 226;
+            const int dmc1 = 3713;
+            RgbToDmc rgbToDmc = new();
+            int blue2 = rgbToDmc.getBlue(dmc1);
+            Assert.Equal(blue, blue2);
+        }
+        [Fact]
+        public void GetGreenTests()
+        {
+            const int green = 226;
+            const int dmc1 = 3713;
+            RgbToDmc rgbToDmc = new();
+            int g = rgbToDmc.getGreen(dmc1);
+            Assert.Equal(green, g);
+        }
+        [Fact]
+        public void GetRedTests()
+        {
+            const int red = 255;
+            const int dmc1 = 3713;
+            RgbToDmc rgbToDmc = new();
+            int red2 = rgbToDmc.getRed(dmc1);
+            Assert.Equal(red, red2);
         }
     }
 }

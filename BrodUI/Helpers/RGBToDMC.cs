@@ -21,7 +21,7 @@ namespace BrodUI.Helpers
         /// <summary>
         /// Initialize the array with the DMC colors
         /// </summary>
-        private void Initialization()
+        public void Initialization()
         {
             StreamReader sr = new("./Assets/DmcToRgb.txt");
             int comp = 0;
@@ -69,7 +69,48 @@ namespace BrodUI.Helpers
             }
             sr.Close();
         }
-
+        /// <summary>
+        /// Get the red value of a DMC color
+        /// </summary>
+        /// <param name="d">DMC color</param>
+        /// <returns></returns>
+        public int getRed(int d)
+        {
+            int r = 0;
+            for (int i = 0; i < _nbDmc; i++)
+            {
+                if (_dmc[i, 3] == d) r=_dmc[i,0];
+            }
+            return r;
+        }
+        /// <summary>
+        /// Get the green value of a DMC color
+        /// </summary>
+        /// <param name="d">DMC color</param>
+        /// <returns></returns>
+        public int getGreen(int d)
+        {
+            int g = 0;
+            for (int i = 0; i < _nbDmc; i++)
+            {
+                if (_dmc[i, 3] == d) g = _dmc[i, 1];
+            }
+            return g;
+        }
+        /// <summary>
+        /// Get the blue value of a DMC color
+        /// </summary>
+        /// <param name="d">DMC color</param>
+        /// <returns></returns>
+        public int getBlue(int d)
+        {
+            int b = 0;
+            for (int i = 0; i < _nbDmc; i++)
+            {
+                if (_dmc[i, 3] == d) b = _dmc[i, 2];
+            }
+            return b;
+        }
         /// <summary>
         /// constructor of the class
         /// </summary>

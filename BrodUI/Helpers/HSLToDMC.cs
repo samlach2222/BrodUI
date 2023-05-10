@@ -21,7 +21,7 @@ namespace BrodUI.Helpers
         /// <summary>
         /// Initialize the array with the DMC colors
         /// </summary>
-        private void Initialization()
+        public void Initialization()
         {
             StreamReader sr = new("./Assets/DmcToHsl.txt");
             int comp = 0;
@@ -77,7 +77,48 @@ namespace BrodUI.Helpers
         {
             Initialization();
         }
-
+        /// <summary>
+        /// Get the hue value of a DMC color
+        /// </summary>
+        /// <param name="d">DMC color</param>
+        /// <returns></returns>
+        public int getHue(int d)
+        {
+            int h = 0;
+            for (int i = 0; i < _nbDmc; i++)
+            {
+                if (_dmc[i, 3] == d) h= _dmc[i, 0];
+            }
+            return h;
+        }
+        /// <summary>
+        /// Get the saturation value of a DMC color
+        /// </summary>
+        /// <param name="d">DMC color</param>
+        /// <returns></returns>
+        public int getSaturation(int d)
+        {
+            int s = 0;
+            for (int i = 0; i < _nbDmc; i++)
+            {
+                if (_dmc[i, 3] == d) s = _dmc[i, 1];
+            }
+            return s;
+        }
+        /// <summary>
+        /// Get the lightness value of a DMC color
+        /// </summary>
+        /// <param name="d">DMC color</param>
+        /// <returns></returns>
+        public int getLightness(int d)
+        {
+            int l = 0;
+            for (int i = 0; i < _nbDmc; i++)
+            {
+                if (_dmc[i, 3] == d) l = _dmc[i, 2];
+            }
+            return l;
+        }
         /// <summary>
         /// Get the DMC value of a color in HSL
         /// </summary>
