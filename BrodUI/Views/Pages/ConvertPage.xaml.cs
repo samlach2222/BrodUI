@@ -9,7 +9,7 @@ namespace BrodUI.Views.Pages
     /// <summary>
     /// Interaction logic for DataView.xaml
     /// </summary>
-    public partial class ConvertPage : INavigableView<ViewModels.ConvertViewModel>
+    public partial class ConvertPage : INavigableView<ViewModels.ConvertViewModel> // TODO : ADD SCROLLBAR TO THE PAGE
     {
         public ViewModels.ConvertViewModel ViewModel
         {

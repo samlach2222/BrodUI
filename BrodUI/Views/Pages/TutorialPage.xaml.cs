@@ -8,7 +8,7 @@ namespace BrodUI.Views.Pages
     /// <summary>
     /// Interaction logic for TutorialPage.xaml
     /// </summary>
-    public partial class TutorialPage : INavigableView<ViewModels.TutorialViewModel>
+    public partial class TutorialPage : INavigableView<ViewModels.TutorialViewModel> // TODO : ADD SCROLLBAR TO THE PAGE
     {
         /// <summary>
         /// Getter of the view model

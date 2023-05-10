@@ -6,7 +6,7 @@ namespace BrodUI.Views.Pages
     /// <summary>
     /// Interaction logic for ExportView.xaml
     /// </summary>
-    public partial class ExportPage : INavigableView<ViewModels.ExportViewModel>
+    public partial class ExportPage : INavigableView<ViewModels.ExportViewModel> // TODO : ADD SCROLLBAR TO THE PAGE
     {
         /// <summary>
         /// Getter of the view model

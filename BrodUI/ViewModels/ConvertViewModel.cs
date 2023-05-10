@@ -326,8 +326,8 @@ namespace BrodUI.ViewModels
         /// Function called when user click on the button to convert the image. It also navigate to the Export page
         /// </summary>
         [RelayCommand]
-        private void ConvertImage()
-        {
+        private void ConvertImage() // TODO : ADD IMG TOO BIG MESSAGE AND EVENT
+        { // TODO : LOADING ANIMATION USING PROGRESSRING OR PROGRESBAR (BETTER) AND TASKBARPROGRESS 
             Im?.ResizeImage(KMeansColorNumber, KMeansIterationNumber);
             INavigation? navigationService = (Application.Current.MainWindow as INavigationWindow)?.GetNavigation(); // Get the navigation service from the window.
             if (navigationService != null)

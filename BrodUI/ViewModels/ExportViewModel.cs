@@ -91,7 +91,7 @@ namespace BrodUI.ViewModels
         /// Function called when the user navigates to the page
         /// Load the image from the temp folder and convert it to a grid
         /// </summary>
-        public void OnNavigatedTo()
+        public void OnNavigatedTo() // TODO : LOADING ANIMATION USING PROGRESSRING OR PROGRESBAR (BETTER) AND TASKBARPROGRESS 
         {
             LogManagement.WriteToLog("[" + DateTime.Now + "] " + Assets.Languages.Resource.Terminal_ExportPage);
             Im ??= new ImageManagement(new Win32OpenFileDialogAdapter());
@@ -161,14 +161,13 @@ namespace BrodUI.ViewModels
                 {
                     SolidColorBrush scbColor = new(color.Key);
 
-                    int dmc = 0;
+                    int dmc;
                     switch (ConfigManagement.GetColorModelFromConfigFile())
                     {
                         case "HSL":
                             (float hue, float saturation, float lightness) = color.Key.ToHsl();
                             dmc = colorToDmc.GetValDmc((((int)hue) % 360), ((int)saturation), ((int)lightness));
                             break;
-                        case "RGB":
                         default:
                             dmc = colorToDmc.GetValDmc(color.Key.R, color.Key.G, color.Key.B);
                             break;
@@ -268,23 +267,22 @@ namespace BrodUI.ViewModels
             {
                 _lastPercentage = -1;
             }
-            if (percentage > _lastPercentage)
+
+            if (percentage <= _lastPercentage) return;
+            _lastPercentage = (sbyte)percentage;
+            string bar = "";
+            for (int i = 0; i < 10; i++)
             {
-                _lastPercentage = (sbyte)percentage;
-                string bar = "";
-                for (int i = 0; i < 10; i++)
+                if (percentage / 10 > i)
                 {
-                    if (percentage / 10 > i)
-                    {
-                        bar += '*';
-                    }
-                    else
-                    {
-                        bar += ' ';
-                    }
+                    bar += '*';
                 }
-                Console.Write("\r[" + bar + "] " + percentage + '%');
+                else
+                {
+                    bar += ' ';
+                }
             }
+            Console.Write("\r[" + bar + "] " + percentage + '%');
         }
 
         /// <summary>
@@ -301,7 +299,7 @@ namespace BrodUI.ViewModels
         }
 
         [RelayCommand]
-        private void ExportToPdf()
+        private void ExportToPdf() // TODO : LOADING ANIMATION USING PROGRESSRING OR PROGRESBAR (BETTER) AND TASKBARPROGRESS 
         {
             _ = new PdfManagement(WireArray);
         }
