@@ -337,4 +337,48 @@
     <value>Model</value>
     <comment>Label for the model of color used</comment>
   </data>
+  <data name="Tutorial_Title1Text" xml:space="preserve">
+    <value>Welcome in BrodUI:</value>
+    <comment>Welcome message in tutorial page</comment>
+  </data>
+  <data name="Tutorial_Part1Text" xml:space="preserve">
+    <value>    This application aims to offer to embroiderers, to generate an embroidery pattern from an image, then to export it in PDF.</value>
+    <comment>Aim of the app message in tutoral page</comment>
+  </data>
+  <data name="Tutorial_Part2Text" xml:space="preserve">
+    <value>    For this, BrodUI uses the K-Means algorithm. This one allows to reduce efficiently the number of colors of your image to avoid having hundreds of different thread colors.</value>
+    <comment>K-Means message in tutorial page</comment>
+  </data>
+  <data name="Tutorial_Title2Text" xml:space="preserve">
+    <value>How to use BrodUI:</value>
+    <comment>HTU message in tutorial page</comment>
+  </data>
+  <data name="Tutorial_Part3aText" xml:space="preserve">
+    <value>    To begin, click on</value>
+    <comment>Part a of the 3rd text in tutorial page</comment>
+  </data>
+  <data name="Tutorial_Part3cText" xml:space="preserve">
+    <value>in the sidebar. You will then be able to choose your image, its dimensions, the number of thread colors you want and the number of iterations of the algorithm (the more iterations, the longer the process takes, but the more accurate it is). Then finally you can convert your image.</value>
+    <comment>Part c of the 3rd text in tutorial page</comment>
+  </data>
+  <data name="Tutorial_Part4aText" xml:space="preserve">
+    <value>    The export page is now in front of you. You can see the transformed image, the list of threads and their quantities and the associated embroidery pattern. With a simple click on the</value>
+    <comment>Part a of the 4th text in tutorial page</comment>
+  </data>
+  <data name="Tutorial_Part4cText" xml:space="preserve">
+    <value>button, you will be able to obtain a PDF file with your embroidery pattern.</value>
+    <comment>Part c of the 4th text in tutorial page</comment>
+  </data>
+  <data name="Tutorial_Part5aText" xml:space="preserve">
+    <value>    If the size of your pattern is too small, then you can change in the</value>
+    <comment>Part a of the 5th text in tutorial page</comment>
+  </data>
+  <data name="Tutorial_Part5cText" xml:space="preserve">
+    <value>If the size of your pattern is too small, then you can change in the "Settings", the size of an embroidery stitch. In this page you can also change the language and theme of the application, get additional information using the terminal or visit the GitHub page of the project.</value>
+    <comment>Part c of the 5th text in tutorial page</comment>
+  </data>
+  <data name="Tutorial_BeginButtonLabel" xml:space="preserve">
+    <value>Let's go!</value>
+    <comment>Label of the button to begin usage of BrodUI</comment>
+  </data>
 </root>

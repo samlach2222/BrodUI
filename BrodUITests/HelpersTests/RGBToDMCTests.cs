@@ -1,5 +1,4 @@
 ﻿using BrodUI.Helpers;
-using BrodUI.Models;
 using Xunit;
 
 namespace BrodUITests.HelpersTests
@@ -14,9 +13,9 @@ namespace BrodUITests.HelpersTests
             // Actual
             RgbToDmc rgbToDmc = new();
             rgbToDmc.Initialization();
-            int d=rgbToDmc.GetValDmc(252, 251, 248);
+            int d = rgbToDmc.GetValDmc(252, 251, 248);
             string actual = d.ToString();
-            actual=actual+" "+rgbToDmc.getRed(d).ToString()+" "+rgbToDmc.getGreen(d).ToString()+" "+rgbToDmc.getBlue(d).ToString();
+            actual = actual + " " + rgbToDmc.getRed(d).ToString() + " " + rgbToDmc.getGreen(d).ToString() + " " + rgbToDmc.getBlue(d).ToString();
             // Assert
             Assert.Equal(expected, actual);
         }

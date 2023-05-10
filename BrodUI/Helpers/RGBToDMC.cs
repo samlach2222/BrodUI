@@ -79,7 +79,7 @@ namespace BrodUI.Helpers
             int r = 0;
             for (int i = 0; i < _nbDmc; i++)
             {
-                if (_dmc[i, 3] == d) r=_dmc[i,0];
+                if (_dmc[i, 3] == d) r = _dmc[i, 0];
             }
             return r;
         }

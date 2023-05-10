@@ -15,14 +15,6 @@ namespace BrodUI.ViewModels
     /// </summary>
     public partial class TutorialViewModel : ObservableObject, INavigationAware
     {
-        // TODO : Add a tutorial page to explain how to use the application.
-
-        /// <summary>
-        /// Tutorial text of the app.
-        /// </summary>
-        [ObservableProperty]
-        private string _tutorialText = "Coucou";
-
         /// <summary>
         /// Function called when the page is navigated to.
         /// </summary>
@@ -51,5 +43,6 @@ namespace BrodUI.ViewModels
                 _ = navigationService.Navigate(typeof(ConvertPage)); // Navigate to the Convert page.
             }
         }
+
     }
 }

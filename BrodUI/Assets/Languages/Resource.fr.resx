@@ -282,4 +282,37 @@
   <data name="ConvertLabelModel" xml:space="preserve">
     <value>Modèle</value>
   </data>
+  <data name="Tutorial_Title1Text" xml:space="preserve">
+    <value>Bienvenue dans BrodUI :</value>
+  </data>
+  <data name="Tutorial_Part1Text" xml:space="preserve">
+    <value>    Cette application a pour but de proposer à des brodeuses et brodeurs, de générer un patron de broderie à partir d’une image, puis de pouvoir l’exporter en PDF.</value>
+  </data>
+  <data name="Tutorial_Part2Text" xml:space="preserve">
+    <value>    Pour cela, BrodUI utilise l’algorithme K-Means. Celui-ci permet de réduire efficacement le nombre de couleur de votre image pour ainsi ne pas avoir des centaines de couleurs de fils différentes.</value>
+  </data>
+  <data name="Tutorial_Title2Text" xml:space="preserve">
+    <value>Comment utiliser BrodUI :</value>
+  </data>
+  <data name="Tutorial_Part3aText" xml:space="preserve">
+    <value>    Pour commencer, cliquez sur</value>
+  </data>
+  <data name="Tutorial_Part3cText" xml:space="preserve">
+    <value>dans la barre latérale. Vous pourrez alors choisir votre image, ses dimensions, le nombre de couleurs de fil souhaité ainsi que le nombre d’itération de l’algorithme (plus il y en as, plus le procédé prends de temps, mais plus il est précis). Puis enfin vous pourrez convertir votre image.</value>
+  </data>
+  <data name="Tutorial_Part4aText" xml:space="preserve">
+    <value>    La page d’export est maintenant devant vous. Vous pouvez ainsi voir l’image transformée, la liste des fils ainsi que leurs quantités et le patron de broderie associé. D’un simple clic sur le bouton</value>
+  </data>
+  <data name="Tutorial_Part4cText" xml:space="preserve">
+    <value>vous pourrez alors obtenir un fichier PDF avec votre patron de broderie.</value>
+  </data>
+  <data name="Tutorial_Part5aText" xml:space="preserve">
+    <value>    Si la taille de votre patron est trop petite, vous pouvez alors changer dans les</value>
+  </data>
+  <data name="Tutorial_Part5cText" xml:space="preserve">
+    <value>la taille d’un point de broderie. Dans cette page vous pouvez également changer la langue et le thème de l’application, obtenir des informations supplémentaires à l’aide du terminal ou visiter la page GitHub du projet.</value>
+  </data>
+  <data name="Tutorial_BeginButtonLabel" xml:space="preserve">
+    <value>C'est parti !</value>
+  </data>
 </root>

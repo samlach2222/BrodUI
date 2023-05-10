@@ -282,4 +282,37 @@
   <data name="ConvertLabelModel" xml:space="preserve">
     <value>Model</value>
   </data>
+  <data name="Tutorial_Title1Text" xml:space="preserve">
+    <value>Welcome in BrodUI:</value>
+  </data>
+  <data name="Tutorial_Part1Text" xml:space="preserve">
+    <value>    This application aims to offer to embroiderers, to generate an embroidery pattern from an image, then to export it in PDF.</value>
+  </data>
+  <data name="Tutorial_Part2Text" xml:space="preserve">
+    <value>    For this, BrodUI uses the K-Means algorithm. This one allows to reduce efficiently the number of colors of your image to avoid having hundreds of different thread colors.</value>
+  </data>
+  <data name="Tutorial_Title2Text" xml:space="preserve">
+    <value>How to use BrodUI:</value>
+  </data>
+  <data name="Tutorial_Part3aText" xml:space="preserve">
+    <value>    To begin, click on</value>
+  </data>
+  <data name="Tutorial_Part3cText" xml:space="preserve">
+    <value>in the sidebar. You will then be able to choose your image, its dimensions, the number of thread colors you want and the number of iterations of the algorithm (the more iterations, the longer the process takes, but the more accurate it is). Then finally you can convert your image.</value>
+  </data>
+  <data name="Tutorial_Part4aText" xml:space="preserve">
+    <value>    The export page is now in front of you. You can see the transformed image, the list of threads and their quantities and the associated embroidery pattern. With a simple click on the</value>
+  </data>
+  <data name="Tutorial_Part4cText" xml:space="preserve">
+    <value>button, you will be able to obtain a PDF file with your embroidery pattern.</value>
+  </data>
+  <data name="Tutorial_Part5aText" xml:space="preserve">
+    <value>    If the size of your pattern is too small, then you can change in the</value>
+  </data>
+  <data name="Tutorial_Part5cText" xml:space="preserve">
+    <value>If the size of your pattern is too small, then you can change in the "Settings", the size of an embroidery stitch. In this page you can also change the language and theme of the application, get additional information using the terminal or visit the GitHub page of the project.</value>
+  </data>
+  <data name="Tutorial_BeginButtonLabel" xml:space="preserve">
+    <value>Let's go!</value>
+  </data>
 </root>

@@ -5,6 +5,8 @@
     xmlns:local="clr-namespace:BrodUI.Views.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+    xmlns:p="clr-namespace:BrodUI.Assets.Languages"
+    xmlns:appearance="clr-namespace:Wpf.Ui.Appearance;assembly=Wpf.Ui"
     Title="TutorialPage"
     d:DataContext="{d:DesignInstance local:TutorialPage, IsDesignTimeCreatable=False}"
     d:DesignHeight="450"
@@ -18,10 +20,86 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="5*" />
-            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <TextBlock Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" Text="{Binding ViewModel.TutorialText, Mode=OneWay}" />
-        <ui:Button Grid.Column="0" Grid.Row="1" Command="{Binding ViewModel.GoConvertPageCommand, Mode=OneWay}" Content="Okay !" HorizontalAlignment="Center" />
+        <TextBlock Grid.Column="0" Grid.Row="0" FontSize="20" Margin="0, 10, 0, 10" TextWrapping="Wrap" VerticalAlignment="Center" FontWeight="Bold" Text="{x:Static p:Resource.Tutorial_Title1Text}" />
+        <TextBlock Grid.Column="0" Grid.Row="1" FontSize="14" Margin="0, 10, 0, 10" TextWrapping="Wrap" VerticalAlignment="Center" Text="{x:Static p:Resource.Tutorial_Part1Text}" TextAlignment="Justify"/>
+        <TextBlock Grid.Column="0" Grid.Row="2" FontSize="14" Margin="0, 10, 0, 10" TextWrapping="Wrap" VerticalAlignment="Center" Text="{x:Static p:Resource.Tutorial_Part2Text}" TextAlignment="Justify" />
+        <TextBlock Grid.Column="0" Grid.Row="3" FontSize="20" Margin="0, 10, 0, 10" TextWrapping="Wrap" VerticalAlignment="Center" FontWeight="Bold" Text="{x:Static p:Resource.Tutorial_Title2Text}" />
+        <TextBlock Grid.Column="0" Grid.Row="4" FontSize="14" Margin="0, 10, 0, 10" TextWrapping="Wrap" VerticalAlignment="Center" TextAlignment="Justify" >
+            <Run Text="{x:Static p:Resource.Tutorial_Part3aText}"/>
+            <Hyperlink Click="GoConvertPageFromText">
+                <Hyperlink.Style>
+                    <Style TargetType="Hyperlink"
+                           BasedOn="{StaticResource {x:Type Hyperlink}}">
+                        <Setter Property="TextBlock.TextDecorations" Value="Underline" />
+                        <Setter Property="FontWeight" Value="Bold"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="LightGray" />
+                                <Setter Property="FontWeight" Value="Bold"/>
+                                <Setter Property="TextBlock.TextDecorations" Value="Underline" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Hyperlink.Style>
+                <Run Text="{x:Static p:Resource.PageName_Convert}"/>
+            </Hyperlink>
+            <Run Text="{x:Static p:Resource.Tutorial_Part3cText}"/>
+        </TextBlock>
+        <TextBlock Grid.Column="0" Grid.Row="5" FontSize="14" Margin="0, 10, 0, 10" TextWrapping="Wrap" VerticalAlignment="Center" TextAlignment="Justify" >
+            <Run Text="{x:Static p:Resource.Tutorial_Part4aText}"/>
+            <Hyperlink Click="GoExportPageFromText">
+                <Hyperlink.Style>
+                    <Style TargetType="Hyperlink"
+                           BasedOn="{StaticResource {x:Type Hyperlink}}">
+                        <Setter Property="TextBlock.TextDecorations" Value="Underline" />
+                        <Setter Property="FontWeight" Value="Bold"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="LightGray" />
+                                <Setter Property="FontWeight" Value="Bold"/>
+                                <Setter Property="TextBlock.TextDecorations" Value="Underline" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Hyperlink.Style>
+                <Run Text="{x:Static p:Resource.PageName_Export}"/>
+            </Hyperlink>
+            <Run Text="{x:Static p:Resource.Tutorial_Part4cText}"/>
+        </TextBlock>
+        <TextBlock Grid.Column="0" Grid.Row="6" FontSize="14" Margin="0, 10, 0, 10" TextWrapping="Wrap" VerticalAlignment="Center" TextAlignment="Justify" >
+            <Run Text="{x:Static p:Resource.Tutorial_Part5aText}"/>
+            <Hyperlink Click="GoSettingsPageFromText">
+                <Hyperlink.Style>
+                    <Style TargetType="Hyperlink"
+                           BasedOn="{StaticResource {x:Type Hyperlink}}">
+                        <Setter Property="TextBlock.TextDecorations" Value="Underline" />
+                        <Setter Property="FontWeight" Value="Bold"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="LightGray" />
+                                <Setter Property="FontWeight" Value="Bold"/>
+                                <Setter Property="TextBlock.TextDecorations" Value="Underline" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Hyperlink.Style>
+                <Run Text="{x:Static p:Resource.PageName_Settings}"/>
+            </Hyperlink>
+            <Run Text="{x:Static p:Resource.Tutorial_Part5cText}"/>
+        </TextBlock>
+
+        <ui:Button Grid.Column="0" Grid.Row="7" Command="{Binding ViewModel.GoConvertPageCommand, Mode=OneWay}" Content="{x:Static p:Resource.Tutorial_BeginButtonLabel}" HorizontalAlignment="Center" />
     </Grid>
 </ui:UiPage>

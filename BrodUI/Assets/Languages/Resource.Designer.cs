@@ -554,5 +554,104 @@ namespace BrodUI.Assets.Languages {
                 return ResourceManager.GetString("Terminal_WidthChanged", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Let&apos;s go!.
+        /// </summary>
+        public static string Tutorial_BeginButtonLabel {
+            get {
+                return ResourceManager.GetString("Tutorial_BeginButtonLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à     This application aims to offer to embroiderers, to generate an embroidery pattern from an image, then to export it in PDF..
+        /// </summary>
+        public static string Tutorial_Part1Text {
+            get {
+                return ResourceManager.GetString("Tutorial_Part1Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à     For this, BrodUI uses the K-Means algorithm. This one allows to reduce efficiently the number of colors of your image to avoid having hundreds of different thread colors..
+        /// </summary>
+        public static string Tutorial_Part2Text {
+            get {
+                return ResourceManager.GetString("Tutorial_Part2Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à     To begin, click on.
+        /// </summary>
+        public static string Tutorial_Part3aText {
+            get {
+                return ResourceManager.GetString("Tutorial_Part3aText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à in the sidebar. You will then be able to choose your image, its dimensions, the number of thread colors you want and the number of iterations of the algorithm (the more iterations, the longer the process takes, but the more accurate it is). Then finally you can convert your image..
+        /// </summary>
+        public static string Tutorial_Part3cText {
+            get {
+                return ResourceManager.GetString("Tutorial_Part3cText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à     The export page is now in front of you. You can see the transformed image, the list of threads and their quantities and the associated embroidery pattern. With a simple click on the.
+        /// </summary>
+        public static string Tutorial_Part4aText {
+            get {
+                return ResourceManager.GetString("Tutorial_Part4aText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à button, you will be able to obtain a PDF file with your embroidery pattern..
+        /// </summary>
+        public static string Tutorial_Part4cText {
+            get {
+                return ResourceManager.GetString("Tutorial_Part4cText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à     If the size of your pattern is too small, then you can change in the.
+        /// </summary>
+        public static string Tutorial_Part5aText {
+            get {
+                return ResourceManager.GetString("Tutorial_Part5aText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à If the size of your pattern is too small, then you can change in the &quot;Settings&quot;, the size of an embroidery stitch. In this page you can also change the language and theme of the application, get additional information using the terminal or visit the GitHub page of the project..
+        /// </summary>
+        public static string Tutorial_Part5cText {
+            get {
+                return ResourceManager.GetString("Tutorial_Part5cText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Welcome in BrodUI:.
+        /// </summary>
+        public static string Tutorial_Title1Text {
+            get {
+                return ResourceManager.GetString("Tutorial_Title1Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à How to use BrodUI:.
+        /// </summary>
+        public static string Tutorial_Title2Text {
+            get {
+                return ResourceManager.GetString("Tutorial_Title2Text", resourceCulture);
+            }
+        }
     }
 }

@@ -22,25 +22,25 @@ namespace BrodUI.ViewModels
         /// Gets or sets the application title.
         /// </summary>
         [ObservableProperty]
-        private string _applicationTitle = string.Empty;
+        private readonly string _applicationTitle = string.Empty;
 
         /// <summary>
         /// Gets or sets the navigation items.
         /// </summary>
         [ObservableProperty]
-        private ObservableCollection<INavigationControl> _navigationItems = new();
+        private readonly ObservableCollection<INavigationControl> _navigationItems = new();
 
         /// <summary>
         /// Gets or sets the navigation footer.
         /// </summary>
         [ObservableProperty]
-        private ObservableCollection<INavigationControl> _navigationFooter = new();
+        private readonly ObservableCollection<INavigationControl> _navigationFooter = new();
 
         /// <summary>
         /// Gets or sets the tray menu items.
         /// </summary>
         [ObservableProperty]
-        private ObservableCollection<MenuItem> _trayMenuItems = new();
+        private readonly ObservableCollection<MenuItem> _trayMenuItems = new();
 
         /// <summary>
         /// Gets or sets the selected navigation item.

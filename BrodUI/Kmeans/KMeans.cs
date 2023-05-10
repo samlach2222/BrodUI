@@ -58,11 +58,11 @@ namespace BrodUI.KMeans
                 //assign data set
                 AssignDataSet();
 
-                Console.WriteLine("Iterations n°"+_i);
-                foreach(var cid in Centroids.Keys)
+                Console.WriteLine("Iterations n°" + _i);
+                foreach (var cid in Centroids.Keys)
                 {
-                    var nb = DataSet.Where(i=>i.Cluster==cid).Count();
-                    Console.WriteLine("\tCluster n°"+cid+" has "+Centroids[cid]+" as centroid. This cluster contains "+nb+" data vectors");
+                    var nb = DataSet.Where(i => i.Cluster == cid).Count();
+                    Console.WriteLine("\tCluster n°" + cid + " has " + Centroids[cid] + " as centroid. This cluster contains " + nb + " data vectors");
                 }
 
                 //recalculate clusters
@@ -161,80 +161,6 @@ namespace BrodUI.KMeans
                 else
                     return genericVector;
             }
-        }
-
-        //print the clusters to the console.
-        public void PrintClusters()
-        {
-            if (DataSet == null) return;
-            IOrderedEnumerable<IGrouping<int, GenericVector>> clusters = DataSet.GroupBy(v => v.Cluster).ToList().OrderBy(v => v.Key);
-            foreach (IGrouping<int, GenericVector> cluster in clusters)
-            {
-                // TODO : Change strings to use Assets
-                Console.WriteLine("Cluster " + cluster.ElementAt(0).Cluster + " has " + cluster.Count());
-            }
-        }
-
-        public void PrintClustersInLine()
-        {
-            if (DataSet != null)
-            {
-                IOrderedEnumerable<IGrouping<int, GenericVector>> clusters = DataSet.GroupBy(v => v.Cluster).ToList().OrderBy(v => v.Key);
-                foreach (IGrouping<int, GenericVector> cluster in clusters)
-                {
-                    Console.Write(cluster.ElementAt(0).Cluster + " -> " + cluster.Count() + " || ");
-                }
-            }
-
-            Console.WriteLine();
-        }
-
-        public void PrintClusterInfo()
-        {
-            // TODO : Change strings to use Assets
-            Console.WriteLine("KMEANS COMPLETED");
-            Console.WriteLine("SSE = \t\t\t\t" + Sse);
-            Console.WriteLine("amount of clusters: \t\t" + Clusters);
-            Console.WriteLine("amount of max iterations: \t" + Iterations);
-            Console.WriteLine("amount of actual iterations: \t" + _i);
-            Console.WriteLine();
-
-            if (DataSet != null)
-            {
-                List<IGrouping<int, GenericVector>> clusters = DataSet.GroupBy(v => v.Cluster).ToList().OrderBy(v => v.Key).ToList();
-
-                foreach (IGrouping<int, GenericVector> cluster in clusters)
-                {
-                    // TODO : Change strings to use Assets
-                    Console.WriteLine("***************************************************");
-                    Console.WriteLine("cluster " + cluster.Key + " has " + cluster.Count() + " items");
-                    Console.WriteLine("***************************************************");
-                    Dictionary<int, int> offersBoughtXTimes = new();
-                    List<GenericVector> clusterpoints = cluster.ToList();
-                    foreach (GenericVector clusterpoint in clusterpoints)
-                    {
-                        for (int j = 0; j < clusterpoint.Size; j++)
-                        {
-                            if (!(Math.Abs(clusterpoint.Points[j] - 1) < 0.001)) continue;
-                            if (offersBoughtXTimes.ContainsKey(j))
-                                offersBoughtXTimes[j]++;
-                            else
-                                offersBoughtXTimes.Add(j, 1);
-                        }
-                    }
-                    offersBoughtXTimes =
-                        (from entry in offersBoughtXTimes orderby entry.Value descending select entry).ToDictionary(
-                            v => v.Key,
-                            v => v.Value);
-                    foreach (KeyValuePair<int, int> offerBought in offersBoughtXTimes.Where(offerBought => offerBought.Value >= 3))
-                    {
-                        // TODO : Change strings to use Assets
-                        Console.WriteLine("Offer " + (offerBought.Key + 1) + " \t-> bought " + offerBought.Value + " times ");
-                    }
-                }
-            }
-
-            Console.WriteLine();
         }
 
         /// <summary>

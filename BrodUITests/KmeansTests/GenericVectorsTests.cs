@@ -32,9 +32,9 @@ namespace BrodUITests.KMeansTests
             GenericVector actual = vec1.Sum(vec2);
             Assert.Equal(expected.Points[0], actual.Points[0]);
             Assert.Equal(expected.Points[1], actual.Points[1]);
-            GenericVector vec3  = new();
+            GenericVector vec3 = new();
             vec3.Add(0);
-            Assert.Throws<Exception>(()=>vec1.Sum(vec3));
+            Assert.Throws<Exception>(() => vec1.Sum(vec3));
         }
 
         [Fact]
@@ -90,10 +90,10 @@ namespace BrodUITests.KMeansTests
             vec2.Add(2);
             float expected = vec1.Points[0] * vec2.Points[0] + vec1.Points[1] * vec2.Points[1] + vec1.Points[2] * vec2.Points[2];
             float actual = GenericVector.DotProduct(vec1, vec2);
-            Assert.Equal(expected, actual);  
-            GenericVector vec3  = new();
+            Assert.Equal(expected, actual);
+            GenericVector vec3 = new();
             vec3.Add(0);
-            Assert.Throws<Exception>(()=>GenericVector.DotProduct(vec1,vec3));
+            Assert.Throws<Exception>(() => GenericVector.DotProduct(vec1, vec3));
         }
 
         [Fact]
@@ -121,7 +121,7 @@ namespace BrodUITests.KMeansTests
             vec1.Add(2);
             String actual = vec1.ToString();
             String expected = "1\t1\t2";
-            Assert.Equal(expected,actual);
+            Assert.Equal(expected, actual);
         }
     }
 }

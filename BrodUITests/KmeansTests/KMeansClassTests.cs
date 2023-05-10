@@ -116,7 +116,7 @@ namespace BrodUITests.KMeansTests
             Assert.Equal(val1.Points[0], actual.Points[0]);
             Assert.Equal(val1.Points[1], actual.Points[1]);
             Assert.Equal(val1.Points[2], actual.Points[2]);
-            km.Centroids.Add(0,actual);
+            km.Centroids.Add(0, actual);
             GenericVector val2 = new();
             val2.Add(0);
             val2.Add(200);
