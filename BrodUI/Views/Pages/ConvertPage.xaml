@@ -23,9 +23,10 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="4*" />
+            <RowDefinition Height="6*" />
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
+            <RowDefinition Height="1.2*" />
+            <RowDefinition Height="0.5*" />
         </Grid.RowDefinitions>
 
         <!-- IMAGE LINE -->
@@ -158,6 +159,20 @@
                    IsEnabled="{Binding Path=ViewModel.IsImageLoaded}"
                    Icon="ConvertRange24"
         />
+
+        <Grid Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Center" Margin="20, 0, 20, 0" Visibility="{Binding ViewModel.ProgressVisibility}" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <ProgressBar Grid.Row="0" Grid.Column="0" IsIndeterminate="False" Value="{Binding ViewModel.ProgressConvert}" />
+            <TextBlock Grid.Row="0" Grid.Column="1" FontSize="16" Margin="10,0,0,0" Text="{Binding ViewModel.ProgressTb}"></TextBlock>
+        </Grid>
+
     </Grid>
 
 </ui:UiPage>

@@ -4,6 +4,8 @@ using BrodUI.Views.Pages;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System;
+using System.ComponentModel;
+using System.Threading;
 using System.Windows;
 using System.Windows.Media.Imaging;
 using Wpf.Ui.Common.Interfaces;
@@ -75,6 +77,21 @@ namespace BrodUI.ViewModels
         private BitmapImage? _loadedImage;
 
         /// <summary>
+        /// Percentage of the progress bar
+        /// </summary>
+        private int _progressConvert;
+
+        /// <summary>
+        /// Percentage show next to the progress bar
+        /// </summary>
+        private string _progressTb;
+
+        /// <summary>
+        /// Visibility of the progress grid
+        /// </summary>
+        private string _progressVisibility;
+
+        /// <summary>
         /// Image management class to manage the image
         /// </summary>
         private ImageManagement? Im { get; set; }
@@ -109,6 +126,45 @@ namespace BrodUI.ViewModels
                 {
                     Im.Image = value;
                 }
+                OnPropertyChanged();
+            }
+        }
+
+        /// <summary>
+        /// Getter and Setter for the value of the progress bar
+        /// </summary>
+        public int ProgressConvert
+        {
+            get => _progressConvert;
+            set
+            {
+                _progressConvert = value;
+                OnPropertyChanged();
+            }
+        }
+
+        /// <summary>
+        /// Getter and Setter for the value of the progress text block
+        /// </summary>
+        public string ProgressTb
+        {
+            get => _progressTb;
+            set
+            {
+                _progressTb = value;
+                OnPropertyChanged();
+            }
+        }
+
+        /// <summary>
+        /// Getter and Setter for the visibility of the progress grid
+        /// </summary>
+        public string ProgressVisibility
+        {
+            get => _progressVisibility;
+            set
+            {
+                _progressVisibility = value;
                 OnPropertyChanged();
             }
         }
@@ -264,6 +320,11 @@ namespace BrodUI.ViewModels
         public void OnNavigatedTo()
         {
             LogManagement.WriteToLog("[" + DateTime.Now + "] " + Assets.Languages.Resource.Terminal_ConvertPage);
+            // ProgressBar Percentage
+            ProgressTb = "0%";
+            ProgressConvert = 0;
+            ProgressVisibility = "Hidden";
+
             // Set the default value for the kmeans algorithm
             IsImageLoaded = true;
             KMeansColorNumber = ConfigManagement.GetKMeansClustersFromConfigFile();
@@ -322,19 +383,52 @@ namespace BrodUI.ViewModels
 
         }
 
+
         /// <summary>
         /// Function called when user click on the button to convert the image. It also navigate to the Export page
         /// </summary>
         [RelayCommand]
         private void ConvertImage() // TODO : ADD IMG TOO BIG MESSAGE AND EVENT
-        { // TODO : LOADING ANIMATION USING PROGRESSRING OR PROGRESBAR (BETTER) AND TASKBARPROGRESS 
-            Im?.ResizeImage(KMeansColorNumber, KMeansIterationNumber);
-            INavigation? navigationService = (Application.Current.MainWindow as INavigationWindow)?.GetNavigation(); // Get the navigation service from the window.
-            if (navigationService != null)
+        {
+            // Change grid visibility
+            ProgressVisibility = "Visible";
+
+            // create new BackgroundWorker
+            BackgroundWorker worker = new()
             {
-                _ = navigationService.Navigate(typeof(ExportPage)); // Navigate to the Convert page.
-            }
-            LogManagement.WriteToLog("[" + DateTime.Now + "] " + Assets.Languages.Resource.Terminal_ImageConvertedOk);
+                Site = null,
+                WorkerReportsProgress = false,
+                WorkerSupportsCancellation = false
+            };
+            worker.WorkerReportsProgress = true;
+
+            worker.DoWork += (sender, args) =>
+            {
+                // Check if the object was successfully passed
+                if (args.Argument is not ImageManagement imageManagement) return;
+                imageManagement.ResizeImage(KMeansColorNumber, KMeansIterationNumber, worker);
+
+            };
+
+            worker.ProgressChanged += (sender, args) =>
+            {
+                ProgressConvert = args.ProgressPercentage;
+                ProgressTb = args.ProgressPercentage + "%";
+            };
+
+            worker.RunWorkerCompleted += (sender, args) =>
+            {
+                LogManagement.WriteToLog("[" + DateTime.Now + "] " + Assets.Languages.Resource.Terminal_ImageConvertedOk);
+                INavigation? navigationService = (Application.Current.MainWindow as INavigationWindow)?.GetNavigation(); // Get the navigation service from the window.
+                if (navigationService != null)
+                {
+                    _ = navigationService.Navigate(typeof(ExportPage)); // Navigate to the Convert page.
+                }
+            };
+
+            // start worker
+            worker.RunWorkerAsync(Im);
+
         }
 
         [RelayCommand]

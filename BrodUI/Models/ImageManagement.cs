@@ -1,9 +1,11 @@
 ﻿using BrodUI.Helpers;
 using BrodUI.KMeans;
 using System;
+using System.ComponentModel;
 using System.IO;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using Wpf.Ui.Appearance;
 using Wpf.Ui.TaskBar;
 using MessageBox = System.Windows.MessageBox;
 
@@ -168,14 +170,18 @@ namespace BrodUI.Models
         /// <summary>
         /// Resize the image to ImageWidth and ImageHeight and save it
         /// </summary>
-        public void ResizeImage(int kMeansColorNumber, int kmeansIterationNumber)
+        public void ResizeImage(int kMeansColorNumber, int kmeansIterationNumber, BackgroundWorker bw)
         {
             // Set taskbar progress to indeterminate (we can't know the progress of the resize)
             LogManagement.UpdateProgression(TaskBarProgressState.Indeterminate);
 
-            BitmapImage? old = Image;
+            BitmapImage? old;
+            lock (this)
+            {
+                old = Image;
+                Image = new BitmapImage();
+            }
 
-            Image = new BitmapImage();
             Image.BeginInit();
             Image.StreamSource = new MemoryStream();
             PngBitmapEncoder resizedImage = new();
@@ -190,7 +196,7 @@ namespace BrodUI.Models
 
             // We only support images in Bgr32 or Bgra32 format (see Helpers/ImageTo2DArrayBrushes)
             // Convert to Bgra32 if needed
-            if (Image.Format != PixelFormats.Bgr32 || Image.Format != PixelFormats.Bgra32)
+            if (Image.Format != PixelFormats.Bgr32 && Image.Format != PixelFormats.Bgra32)
             {
                 FormatConvertedBitmap imageBgra = new(Image, PixelFormats.Bgra32, null, 0);
                 Image = new BitmapImage();
@@ -202,10 +208,17 @@ namespace BrodUI.Models
                 Image.EndInit();
             }
 
-            Brush[,] kMeansArray = ImageTo2DArrayBrushes.ConvertTo2dArray(Image);
+            Brush[,] kMeansArray;
+            lock (this)
+            {
+                kMeansArray = ImageTo2DArrayBrushes.ConvertTo2dArray(Image);
+            }
             // TODO : Save image before KMeans and after to different names.
-            kMeansArray = KMeansRun.StartKMeans(kMeansArray, kMeansColorNumber, kmeansIterationNumber);
-            Image = ImageTo2DArrayBrushes.ConvertToBitmapImage(kMeansArray);
+            kMeansArray = KMeansRun.StartKMeans(kMeansArray, kMeansColorNumber, kmeansIterationNumber, bw);
+            lock (this)
+            {
+                Image = ImageTo2DArrayBrushes.ConvertToBitmapImage(kMeansArray);
+            }
 
             // Save resized image
             GC.Collect();

@@ -86,7 +86,7 @@ namespace BrodUI.ViewModels
         /// Function called when the user navigates to the page
         /// Load the image from the temp folder and convert it to a grid
         /// </summary>
-        public void OnNavigatedTo() // TODO : LOADING ANIMATION USING PROGRESSRING OR PROGRESBAR (BETTER) AND TASKBARPROGRESS 
+        public void OnNavigatedTo()
         {
             LogManagement.WriteToLog("[" + DateTime.Now + "] " + Assets.Languages.Resource.Terminal_ExportPage);
             Im ??= new ImageManagement(new Win32OpenFileDialogAdapter());
