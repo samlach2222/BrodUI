@@ -76,11 +76,6 @@ namespace BrodUI.Helpers
         public HslToDmc()
         {
             Initialization();
-            for (int i = 0; i < _nbDmc; i++)
-            {
-                string s = "DMC:" + _dmc[i, 3] + " H:" + _dmc[i, 0] + " S:" + _dmc[i, 1] + " L:" + _dmc[i, 2];
-                Console.WriteLine(s);
-            }
         }
 
         /// <summary>
@@ -102,6 +97,18 @@ namespace BrodUI.Helpers
                 val = _dmc[i, 3];
             }
             return val;
+        }
+
+        /// <summary>
+        /// Print all DMC in the format "DMC:01 H:240 S:6 L:90"
+        /// </summary>
+        public void PrintFileContent()
+        {
+            for (int i = 0; i < _nbDmc; i++)
+            {
+                string s = "DMC:" + _dmc[i, 3] + " H:" + _dmc[i, 0] + " S:" + _dmc[i, 1] + " L:" + _dmc[i, 2];
+                Console.WriteLine(s);
+            }
         }
     }
 }

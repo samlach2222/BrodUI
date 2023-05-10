@@ -76,11 +76,6 @@ namespace BrodUI.Helpers
         public RgbToDmc()
         {
             Initialization();
-            for (int i = 0; i < _nbDmc; i++)
-            {
-                string s = "DMC:" + _dmc[i, 3] + " R:" + _dmc[i, 0] + " G:" + _dmc[i, 1] + " B:" + _dmc[i, 2];
-                Console.WriteLine(s);
-            }
         }
 
         /// <summary>
@@ -104,5 +99,16 @@ namespace BrodUI.Helpers
             return val;
         }
 
+        /// <summary>
+        /// Print all DMC in the format "DMC:01 R:227 G:227 B:230"
+        /// </summary>
+        public void PrintFileContent()
+        {
+            for (int i = 0; i < _nbDmc; i++)
+            {
+                string s = "DMC:" + _dmc[i, 3] + " R:" + _dmc[i, 0] + " G:" + _dmc[i, 1] + " B:" + _dmc[i, 2];
+                Console.WriteLine(s);
+            }
+        }
     }
 }

@@ -45,11 +45,6 @@ namespace BrodUI.Helpers
         public DmcToString()
         {
             Initialization();
-            for (int i = 0; i < _nbDmc; i++)
-            {
-                string s = "DMC:" + _dmcString[i, 0] + " Name:" + _dmcString[i, 1];
-                Console.WriteLine(s);
-            }
         }
 
         /// <summary>
@@ -68,5 +63,16 @@ namespace BrodUI.Helpers
             return val;
         }
 
+        /// <summary>
+        /// Print all DMC in the format "DMC:01 Name:White Tin"
+        /// </summary>
+        public void PrintFileContent()
+        {
+            for (int i = 0; i < _nbDmc; i++)
+            {
+                string s = "DMC:" + _dmcString[i, 0] + " Name:" + _dmcString[i, 1];
+                Console.WriteLine(s);
+            }
+        }
     }
 }

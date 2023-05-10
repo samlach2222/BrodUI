@@ -146,27 +146,33 @@ namespace BrodUI.ViewModels
                     }
                 }
 
-                // Add the wires to the WireArray
+                // Initialise variables for the colors to DMC conversion
+                dynamic colorToDmc = ConfigManagement.GetColorModelFromConfigFile() switch
+                {
+                    "HSL" => new HslToDmc(),
+                    "RGB" or _ => new RgbToDmc(),
+                };
+                colorToDmc.PrintFileContent();
+                DmcToString dmcToString = new();
+                dmcToString.PrintFileContent();
+
+                // Convert colors to DMC and add the wires to the WireArray
                 foreach (KeyValuePair<Color, int> color in colorQuantity)
                 {
-                    // TODO Check and fix if bug : The colors and quantities are different on RGB/HSL despite only checking RGB or HSL here
                     SolidColorBrush scbColor = new(color.Key);
 
                     int dmc = 0;
                     switch (ConfigManagement.GetColorModelFromConfigFile())
                     {
                         case "HSL":
-                            HslToDmc hslToDmc = new();
                             (float hue, float saturation, float lightness) = color.Key.ToHsl();
-                            dmc = hslToDmc.GetValDmc((((int)hue) % 360), ((int)saturation), ((int)lightness));
+                            dmc = colorToDmc.GetValDmc((((int)hue) % 360), ((int)saturation), ((int)lightness));
                             break;
                         case "RGB":
                         default:
-                            RgbToDmc rgbToDmc = new();
-                            dmc = rgbToDmc.GetValDmc(color.Key.R, color.Key.G, color.Key.B);
+                            dmc = colorToDmc.GetValDmc(color.Key.R, color.Key.G, color.Key.B);
                             break;
                     }
-                    DmcToString dmcToString = new();
                     string colorName = dmcToString.GetNameDmc(dmc);
 
                     WireArray.Add(new Wire(scbColor, dmc, "DMC", colorName, color.Value));
