@@ -5,10 +5,15 @@ using System.Windows.Media;
 
 namespace BrodUI.KMeans
 {
-    // TODO : MISSING DOCUMENTATION
 
     public static class KMeansRun
     {
+        /// <summary>
+        /// Reduction of the number of color and recoloration with the new colors
+        /// </summary>
+        /// <param name="image"> is array containing the color of each pixel in a Brush object </param>
+        /// <param name="nbClusters"> nbClusters is the number of color at the end of the reduction </param>
+        /// <param name="nbKmeans"> nbKmeans is the number of times we execute Kmeans algorithm to get the best result, higher value means longer execution times but better result </param>
         public static Brush[,] StartKMeans(Brush[,] image, int nbClusters, int nbKMeans)
         {
             Dictionary<int, GenericVector> dict = Brush2DtoColorDict.BrushToDict(image);

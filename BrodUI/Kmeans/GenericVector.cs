@@ -5,7 +5,6 @@ using System.Linq;
 
 namespace BrodUI.KMeans
 {
-    // TODO : MISSING DOCUMENTATION
 
     public class GenericVector
     {

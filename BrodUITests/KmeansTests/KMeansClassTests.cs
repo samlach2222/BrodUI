@@ -105,6 +105,8 @@ namespace BrodUITests.KMeansTests
         {
             KMeans km = new();
             MethodInfo? randomVector = typeof(KMeans).GetMethod("RandomVector", BindingFlags.NonPublic | BindingFlags.Instance);
+            //GenericVector? actual = (GenericVector)randomVector!.Invoke(km, new object[] { })!;
+            //Assert.Null(actual);
             GenericVector val1 = new();
             val1.Add(0);
             val1.Add(0);
@@ -114,18 +116,15 @@ namespace BrodUITests.KMeansTests
             Assert.Equal(val1.Points[0], actual.Points[0]);
             Assert.Equal(val1.Points[1], actual.Points[1]);
             Assert.Equal(val1.Points[2], actual.Points[2]);
+            km.Centroids.Add(0,actual);
             GenericVector val2 = new();
             val2.Add(0);
             val2.Add(200);
             val2.Add(0);
             km.DataSet.Add(val2);
             bool check = false;
-            int n = 0;
-            while (n < 10 && !check)
-            {
-                actual = (GenericVector)randomVector.Invoke(km, new object[] { })!;
-                check = check || (val2.Points[0] == actual.Points[0] && val2.Points[1] == actual.Points[1] && val2.Points[2] == actual.Points[2]);
-            }
+            actual = (GenericVector)randomVector.Invoke(km, new object[] { })!;
+            check = check || (val2.Points[0] == actual.Points[0] && val2.Points[1] == actual.Points[1] && val2.Points[2] == actual.Points[2]);
             Assert.True(check);
         }
 
@@ -198,6 +197,8 @@ namespace BrodUITests.KMeansTests
         {
             KMeans km = new();
             MethodInfo RecalculateCentroids = typeof(KMeans).GetMethod("RecalculateCentroids", BindingFlags.NonPublic | BindingFlags.Instance);
+            RecalculateCentroids.Invoke(km, new object[] { });
+            Assert.Null(km.Centroids);
             Dictionary<int, GenericVector> dict = new();
             GenericVector cen1 = new();
             cen1.Add(0);
@@ -210,6 +211,9 @@ namespace BrodUITests.KMeansTests
             cen2.Add(0);
             dict.Add(1, cen2);
             km.Centroids = dict;
+            RecalculateCentroids.Invoke(km, new object[] { });
+            Assert.False(GenericVector.NotEqual(cen1, km.Centroids[0]));
+            Assert.False(GenericVector.NotEqual(cen2, km.Centroids[1]));
             km.DataSet = new();
             GenericVector val1_1 = new();
             val1_1.Add(0);

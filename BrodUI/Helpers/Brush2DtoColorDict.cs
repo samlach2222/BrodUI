@@ -14,6 +14,7 @@ namespace BrodUI.Helpers
         /// <summary>
         /// convert DMC 2D Array of Brush to Dictionary containing the colors
         /// </summary>
+        /// <param name="image"> 2D array of Brush object containing the color of each pixel of the picture </param>
         public static Dictionary<int, GenericVector> BrushToDict(Brush[,] image)
         {
             Dictionary<int, GenericVector> dict = new();
@@ -38,6 +39,10 @@ namespace BrodUI.Helpers
         /// <summary>
         /// convert Dictionary containing the colors to DMC 2D Array of Brush
         /// </summary>
+        /// <param name="dict"> Dictionnary containing the color of each pixel in the original picture </param>
+        /// <param name="centroids"> Dictionnary containing the new color of the pictures </param>
+        /// <param name="sizeX"> height of picture </param>
+        /// <param name="sizeY"> width of picture </param>
         public static Brush[,] DictToBrush2D(Dictionary<int, GenericVector> dict, Dictionary<int, GenericVector> centroids, int sizeX, int sizeY)
         {
             Brush[,] res = new Brush[sizeX, sizeY];
