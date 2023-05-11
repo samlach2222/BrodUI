@@ -31,7 +31,7 @@ namespace BrodUI.Views.Pages
         /// </summary>
         /// <param name="sender">TextBox for the Y resolution</param>
         /// <param name="e">Routed event args</param>
-        private void YRes_OnDecremented(object sender, RoutedEventArgs e)
+        private void YRes_OnDecremented(object sender, RoutedEventArgs e) // TODO : CHANGE VALUES CHECK, TOO MANY UNUSUAL MESSAGEBOX
         {
             ViewModel.ImageHeight -= 1;
         }

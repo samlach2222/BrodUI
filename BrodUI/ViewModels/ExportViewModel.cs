@@ -152,7 +152,7 @@ namespace BrodUI.ViewModels
                 dmcToString.PrintFileContent();
 
                 // Convert colors to DMC and add the wires to the WireArray
-                foreach (KeyValuePair<Color, int> color in colorQuantity)
+                foreach (KeyValuePair<Color, int> color in colorQuantity) // TODO : ERROR WHEN COLOR IS "6" (RGB TESTED) 
                 {
                     SolidColorBrush scbColor = new(color.Key);
 
