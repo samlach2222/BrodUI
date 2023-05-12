@@ -315,4 +315,31 @@
   <data name="Tutorial_BeginButtonLabel" xml:space="preserve">
     <value>Let's go!</value>
   </data>
+  <data name="Convert_ToolTipLoadImage" xml:space="preserve">
+    <value>Load an image from your PC to convert it</value>
+  </data>
+  <data name="Convert_ToolTipRemoveImage" xml:space="preserve">
+    <value>Delete the currently loaded image</value>
+  </data>
+  <data name="Convert_ToolTipImageWidth" xml:space="preserve">
+    <value>Change the width of the loaded image</value>
+  </data>
+  <data name="Convert_ToolTipImageHeight" xml:space="preserve">
+    <value>Change the height of the loaded image</value>
+  </data>
+  <data name="Convert_ToolTipNbColor" xml:space="preserve">
+    <value>Choose the number of colors of the converted image</value>
+  </data>
+  <data name="Convert_ToolTipNbIterations" xml:space="preserve">
+    <value>Choose the number of iterations of the algorithm (the higher the value, the longer but more accurate)</value>
+  </data>
+  <data name="Convert_ToolTipModel" xml:space="preserve">
+    <value>Choose the color scheme (results may differ)</value>
+  </data>
+  <data name="Convert_ToolTipConvertButton" xml:space="preserve">
+    <value>Convert the currently loaded image</value>
+  </data>
+  <data name="Export_ToolTipConvertButton" xml:space="preserve">
+    <value>Convert the pattern to PDF (the name of the document will be the name of the pattern)</value>
+  </data>
 </root>

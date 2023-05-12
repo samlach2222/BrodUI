@@ -381,4 +381,41 @@
     <value>Let's go!</value>
     <comment>Label of the button to begin usage of BrodUI</comment>
   </data>
+  <data name="Convert_ToolTipLoadImage" xml:space="preserve">
+    <value>Load an image from your PC to convert it</value>
+    <comment>ToolTip of Load Image button</comment>
+  </data>
+  <data name="Convert_ToolTipRemoveImage" xml:space="preserve">
+    <value>Delete the currently loaded image</value>
+    
+    <comment>ToolTip of Remove Image button</comment>
+  </data>
+  <data name="Convert_ToolTipImageWidth" xml:space="preserve">
+    <value>Change the width of the loaded image</value>
+    <comment>ToolTip of image Width</comment>
+  </data>
+  <data name="Convert_ToolTipImageHeight" xml:space="preserve">
+    <value>Change the height of the loaded image</value>
+    <comment>ToolTip of image Height</comment>
+  </data>
+  <data name="Convert_ToolTipNbColor" xml:space="preserve">
+    <value>Choose the number of colors of the converted image</value>
+    <comment>ToolTip of number of Color for K-Means Algorithm</comment>
+  </data>
+  <data name="Convert_ToolTipNbIterations" xml:space="preserve">
+    <value>Choose the number of iterations of the algorithm (the higher the value, the longer but more accurate)</value>
+    <comment>ToolTip of number of Iterations for K-Means Algorithm</comment>
+  </data>
+  <data name="Convert_ToolTipModel" xml:space="preserve">
+    <value>Choose the color scheme (results may differ)</value>
+    <comment>ToolTip of color Model for K-Means Algorithm</comment>
+  </data>
+  <data name="Convert_ToolTipConvertButton" xml:space="preserve">
+    <value>Convert the currently loaded image</value>
+    <comment>ToolTip of Convert button</comment>
+  </data>
+  <data name="Export_ToolTipConvertButton" xml:space="preserve">
+    <value>Convert the pattern to PDF (the name of the document will be the name of the pattern)</value>
+    <comment>ToolTip of Convert button</comment>
+  </data>
 </root>

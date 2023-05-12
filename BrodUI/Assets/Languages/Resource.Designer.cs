@@ -160,6 +160,78 @@ namespace BrodUI.Assets.Languages {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Convert the currently loaded image.
+        /// </summary>
+        public static string Convert_ToolTipConvertButton {
+            get {
+                return ResourceManager.GetString("Convert_ToolTipConvertButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Change the height of the loaded image.
+        /// </summary>
+        public static string Convert_ToolTipImageHeight {
+            get {
+                return ResourceManager.GetString("Convert_ToolTipImageHeight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Change the width of the loaded image.
+        /// </summary>
+        public static string Convert_ToolTipImageWidth {
+            get {
+                return ResourceManager.GetString("Convert_ToolTipImageWidth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Load an image from your PC to convert it.
+        /// </summary>
+        public static string Convert_ToolTipLoadImage {
+            get {
+                return ResourceManager.GetString("Convert_ToolTipLoadImage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Choose the color scheme (results may differ).
+        /// </summary>
+        public static string Convert_ToolTipModel {
+            get {
+                return ResourceManager.GetString("Convert_ToolTipModel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Choose the number of colors of the converted image.
+        /// </summary>
+        public static string Convert_ToolTipNbColor {
+            get {
+                return ResourceManager.GetString("Convert_ToolTipNbColor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Choose the number of iterations of the algorithm (the higher the value, the longer but more accurate).
+        /// </summary>
+        public static string Convert_ToolTipNbIterations {
+            get {
+                return ResourceManager.GetString("Convert_ToolTipNbIterations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Delete the currently loaded image.
+        /// </summary>
+        public static string Convert_ToolTipRemoveImage {
+            get {
+                return ResourceManager.GetString("Convert_ToolTipRemoveImage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Model.
         /// </summary>
         public static string ConvertLabelModel {
@@ -237,6 +309,15 @@ namespace BrodUI.Assets.Languages {
         public static string Export_QuantityLabel {
             get {
                 return ResourceManager.GetString("Export_QuantityLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Convert the pattern to PDF (the name of the document will be the name of the pattern).
+        /// </summary>
+        public static string Export_ToolTipConvertButton {
+            get {
+                return ResourceManager.GetString("Export_ToolTipConvertButton", resourceCulture);
             }
         }
         

@@ -88,6 +88,7 @@
                        Content="{x:Static p:Resource.Export_ExportToPdfButton}"
                        Command="{Binding ViewModel.ExportToPdfCommand}"
                        Icon="ArrowExportLtr24"
+                       ToolTip="{x:Static p:Resource.Export_ToolTipConvertButton}"
                        />
     </Grid>
 </ui:UiPage>

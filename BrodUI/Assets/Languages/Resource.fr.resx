@@ -315,4 +315,31 @@
   <data name="Tutorial_BeginButtonLabel" xml:space="preserve">
     <value>C'est parti !</value>
   </data>
+  <data name="Convert_ToolTipLoadImage" xml:space="preserve">
+    <value>Charger une image depuis votre PC pour la convertir</value>
+  </data>
+  <data name="Convert_ToolTipRemoveImage" xml:space="preserve">
+    <value>Supprimer l'image actuellement chargée</value>
+  </data>
+  <data name="Convert_ToolTipImageWidth" xml:space="preserve">
+    <value>Changer la largeur de l'image chargée</value>
+  </data>
+  <data name="Convert_ToolTipImageHeight" xml:space="preserve">
+    <value>Changer la hauteur de l'image chargée</value>
+  </data>
+  <data name="Convert_ToolTipNbColor" xml:space="preserve">
+    <value>Choisir le nombre de couleurs de l'image convertie</value>
+  </data>
+  <data name="Convert_ToolTipNbIterations" xml:space="preserve">
+    <value>Choisir le nombre d'itérations de l'algorithme (plus la valeur est élevée, plus c'est long, mais précis)</value>
+  </data>
+  <data name="Convert_ToolTipModel" xml:space="preserve">
+    <value>Choisir le modèle de couleur (les résultats peuvent différer)</value>
+  </data>
+  <data name="Convert_ToolTipConvertButton" xml:space="preserve">
+    <value>Convertir l'image actuellement chargée</value>
+  </data>
+  <data name="Export_ToolTipConvertButton" xml:space="preserve">
+    <value>Convertir le patron en PDF (le nom du document sera le nom du patron)</value>
+  </data>
 </root>
