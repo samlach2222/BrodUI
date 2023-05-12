@@ -3,15 +3,22 @@ using BrodUI.Models;
 using BrodUI.Views.Pages;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using SweetAlertSharp.Enums;
+using SweetAlertSharp;
 using System;
 using System.ComponentModel;
 using System.Threading;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using Wpf.Ui.Common.Interfaces;
 using Wpf.Ui.Controls.Interfaces;
 using Wpf.Ui.Mvvm.Contracts;
 using MessageBox = System.Windows.MessageBox;
+using System.Windows.Data;
+using System.Windows.Controls.Primitives;
+using BrodUI.Services;
 
 namespace BrodUI.ViewModels
 {
@@ -233,7 +240,7 @@ namespace BrodUI.ViewModels
         /// <summary>
         /// Getter and setter for the Width of the image that also manage the ratio and the min value for width and height
         /// </summary>
-        public int ImageWidth
+        public int ImageWidth // TODO : REPLACE ALL MESSAGEBOX WITH WPFMessageBox
         {
             get => _imageWidth;
             set
@@ -252,17 +259,18 @@ namespace BrodUI.ViewModels
                             _ratioNotOk = true;
                         }
                         Im.ImageWidth = value;
+
                         OnPropertyChanged();
                     }
                     else
                     {
                         string badValue = ((int)(value / _ratio)).ToString();
-                        MessageBox.Show(string.Format(Assets.Languages.Resource.Convert_MinimumWidth_WithValue, badValue) + MinimumWidthHeight);
+                        WPFMessageBox.Show("", string.Format(Assets.Languages.Resource.Convert_MinimumWidth_WithValue, badValue) + MinimumWidthHeight);
                     }
                 }
                 else
                 {
-                    MessageBox.Show(Assets.Languages.Resource.Convert_MinimumWidth + MinimumWidthHeight);
+                    WPFMessageBox.Show("", Assets.Languages.Resource.Convert_MinimumWidth + MinimumWidthHeight);
 
                 }
             }

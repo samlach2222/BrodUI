@@ -13,7 +13,7 @@ namespace BrodUI.ViewModels
     /// <summary>
     /// Class TutorialViewModel
     /// </summary>
-    public partial class TutorialViewModel : ObservableObject, INavigationAware
+    public partial class TutorialViewModel : ObservableObject, INavigationAware  // TODO : CHANGE COLOR OF LINKS IN THIS PAGE WITH THE THEME COLOR
     {
         /// <summary>
         /// Function called when the page is navigated to.
