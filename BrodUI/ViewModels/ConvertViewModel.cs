@@ -1,24 +1,17 @@
 ﻿using BrodUI.Helpers;
 using BrodUI.Models;
+using BrodUI.Services;
 using BrodUI.Views.Pages;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using SweetAlertSharp.Enums;
-using SweetAlertSharp;
 using System;
 using System.ComponentModel;
-using System.Threading;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using Wpf.Ui.Common.Interfaces;
 using Wpf.Ui.Controls.Interfaces;
 using Wpf.Ui.Mvvm.Contracts;
 using MessageBox = System.Windows.MessageBox;
-using System.Windows.Data;
-using System.Windows.Controls.Primitives;
-using BrodUI.Services;
 
 namespace BrodUI.ViewModels
 {
@@ -410,7 +403,7 @@ namespace BrodUI.ViewModels
         /// Function called when user click on the button to convert the image. It also navigate to the Export page
         /// </summary>
         [RelayCommand]
-        private void ConvertImage() 
+        private void ConvertImage()
         {
             // TODO : ADD IMG TOO BIG MESSAGE AND EVENT
             // TODO : DO WIRE THINGS INSIDE WORKER TOO AND GO TO PAGE EXPORT ONLY AFTER

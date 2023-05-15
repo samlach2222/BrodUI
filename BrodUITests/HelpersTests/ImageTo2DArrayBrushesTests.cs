@@ -61,13 +61,13 @@ namespace BrodUITests.HelpersTests
             encoderExpected.Frames.Add(BitmapFrame.Create(expected));
             using MemoryStream msExpected = new();
             encoderExpected.Save(msExpected);
-            var dataExpected = msExpected.ToArray();
+            byte[] dataExpected = msExpected.ToArray();
 
             BmpBitmapEncoder encoderActual = new();
             encoderActual.Frames.Add(BitmapFrame.Create(actual));
             using MemoryStream msActual = new();
             encoderActual.Save(msActual);
-            var dataActual = msActual.ToArray();
+            byte[] dataActual = msActual.ToArray();
 
 
             // Actual
