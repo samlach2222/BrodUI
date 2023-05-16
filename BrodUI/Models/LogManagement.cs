@@ -11,9 +11,9 @@ namespace BrodUI.Models
     public static class LogManagement
     {
         /// <summary>
-        /// Getter and setter of the log file path
+        /// Path to the log file
         /// </summary>
-        public static string? LogPath { get; set; }
+        public static string LogPath => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "BrodUI", "terminal.log");
 
         /// <summary>
         /// Last known percentage of the progression
@@ -26,13 +26,13 @@ namespace BrodUI.Models
         public static void CreateLogFileIfNotExists()
         {
             string appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            string folderPath = Path.Combine(appData, "BrodUI");
             // create the folder "BrodUI" in AppData if it doesn't exist
-            if (!Directory.Exists(appData + "\\BrodUI"))
+            if (!Directory.Exists(folderPath))
             {
-                Directory.CreateDirectory(appData + "\\BrodUI");
+                Directory.CreateDirectory(folderPath);
             }
-            // path combine with the file name
-            LogPath = Path.Combine(appData + "\\BrodUI", "terminal.log");
+
             if (File.Exists(LogPath)) return;
             // Create the file
             FileStream newFile = File.Create(LogPath);

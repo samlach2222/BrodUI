@@ -14,9 +14,9 @@ namespace BrodUI.Models
     public static class ConfigManagement
     {
         /// <summary>
-        /// Path of the config file
+        /// Path to the config file
         /// </summary>
-        private static string _path;
+        public static string ConfigPath => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "BrodUI", "settings.cfg");
 
         /// <summary>
         /// Default values for the config file
@@ -48,13 +48,11 @@ namespace BrodUI.Models
             {
                 Directory.CreateDirectory(folderPath);
             }
-            // path combine with the file name
-            _path = Path.Combine(folderPath, "settings.cfg");
 
             // if the file already exists, check if we have the correct number of lines
-            if (File.Exists(_path) && File.ReadAllLines(_path).Length == DefaultSettings.Length) return;
+            if (File.Exists(ConfigPath) && File.ReadAllLines(ConfigPath).Length == DefaultSettings.Length) return;
 
-            File.WriteAllLines(_path, DefaultSettings);
+            File.WriteAllLines(ConfigPath, DefaultSettings);
         }
 
         /// <summary>
@@ -91,7 +89,7 @@ namespace BrodUI.Models
         /// </summary>
         public static void DeleteConfigFile()
         {
-            File.Delete(_path);
+            File.Delete(ConfigPath);
         }
 
         /// <summary>
@@ -102,7 +100,7 @@ namespace BrodUI.Models
         /// </summary>
         public static void ApplyTheme()
         {
-            string[] settings = File.ReadAllLines(_path);
+            string[] settings = File.ReadAllLines(ConfigPath);
             // Set theme
             switch (settings[0].Split('=')[1])
             {
@@ -127,7 +125,7 @@ namespace BrodUI.Models
         /// </summary>
         public static void ApplyLanguage()
         {
-            string[] settings = File.ReadAllLines(_path);
+            string[] settings = File.ReadAllLines(ConfigPath);
             // Set language
             switch (settings[1].Split('=')[1])
             {
@@ -146,7 +144,7 @@ namespace BrodUI.Models
         /// <returns>string with the name of the theme in the config file</returns>
         public static string? GetThemeFromConfigFile()
         {
-            string[] settings = File.ReadAllLines(_path);
+            string[] settings = File.ReadAllLines(ConfigPath);
             return settings[0].Split('=')[1];
         }
 
@@ -156,7 +154,7 @@ namespace BrodUI.Models
         /// <returns>string with the name of the language in the config file</returns>
         public static string? GetLanguageFromConfigFile()
         {
-            string[] settings = File.ReadAllLines(_path);
+            string[] settings = File.ReadAllLines(ConfigPath);
             return settings[1].Split('=')[1];
         }
 
@@ -166,7 +164,7 @@ namespace BrodUI.Models
         /// <returns>bool which is true if the terminal is active, or false if not active in the config file</returns>
         public static bool GetTerminalFromConfigFile()
         {
-            string[] settings = File.ReadAllLines(_path);
+            string[] settings = File.ReadAllLines(ConfigPath);
             return Convert.ToBoolean(settings[2].Split('=')[1]);
         }
 
@@ -176,7 +174,7 @@ namespace BrodUI.Models
         /// <returns>embroidery size</returns>
         public static string? GetEmbroiderySizeFromConfigFile()
         {
-            string[] settings = File.ReadAllLines(_path);
+            string[] settings = File.ReadAllLines(ConfigPath);
             return settings[3].Split('=')[1];
         }
 
@@ -186,7 +184,7 @@ namespace BrodUI.Models
         /// <returns>number of clusters for KMeans</returns>
         public static int GetKMeansClustersFromConfigFile()
         {
-            string[] settings = File.ReadAllLines(_path);
+            string[] settings = File.ReadAllLines(ConfigPath);
             return Convert.ToInt32(settings[4].Split('=')[1]);
         }
 
@@ -196,7 +194,7 @@ namespace BrodUI.Models
         /// <returns>number of iterations for KMeans</returns>
         public static int GetKMeansIterationsFromConfigFile()
         {
-            string[] settings = File.ReadAllLines(_path);
+            string[] settings = File.ReadAllLines(ConfigPath);
             return Convert.ToInt32(settings[5].Split('=')[1]);
         }
 
@@ -206,7 +204,7 @@ namespace BrodUI.Models
         /// <returns>color model (RGB, HSL, etc.) in uppercase</returns>
         public static string GetColorModelFromConfigFile()
         {
-            string[] settings = File.ReadAllLines(_path);
+            string[] settings = File.ReadAllLines(ConfigPath);
             return (settings[6].Split('=')[1]).ToUpperInvariant(); // Convert to uppercase
         }
 
@@ -216,9 +214,9 @@ namespace BrodUI.Models
         /// <param name="theme">theme you want to put in the config file</param>
         public static void SetThemeToConfigFile(string? theme)
         {
-            string[] settings = File.ReadAllLines(_path);
+            string[] settings = File.ReadAllLines(ConfigPath);
             settings[0] = $"Theme={theme}";
-            File.WriteAllLines(_path, settings);
+            File.WriteAllLines(ConfigPath, settings);
         }
 
         /// <summary>
@@ -227,9 +225,9 @@ namespace BrodUI.Models
         /// <param name="language">language you want to put in the config file</param>
         public static void SetLanguageToConfigFile(string? language)
         {
-            string[] settings = File.ReadAllLines(_path);
+            string[] settings = File.ReadAllLines(ConfigPath);
             settings[1] = $"Language={language}";
-            File.WriteAllLines(_path, settings);
+            File.WriteAllLines(ConfigPath, settings);
         }
 
         /// <summary>
@@ -238,9 +236,9 @@ namespace BrodUI.Models
         /// <param name="terminal">bool you want to put in the config file (true if terminal is activated)</param>
         public static void SetTerminalToConfigFile(bool terminal)
         {
-            string[] settings = File.ReadAllLines(_path);
+            string[] settings = File.ReadAllLines(ConfigPath);
             settings[2] = $"Terminal={terminal}";
-            File.WriteAllLines(_path, settings);
+            File.WriteAllLines(ConfigPath, settings);
         }
 
         /// <summary>
@@ -249,9 +247,9 @@ namespace BrodUI.Models
         /// <param name="embroiderySize">string you want to put in the config file</param>
         public static void SetEmbroiderySizeToConfigFile(string embroiderySize)
         {
-            string[] settings = File.ReadAllLines(_path);
+            string[] settings = File.ReadAllLines(ConfigPath);
             settings[3] = $"EmbroiderySize={embroiderySize}";
-            File.WriteAllLines(_path, settings);
+            File.WriteAllLines(ConfigPath, settings);
         }
 
         /// <summary>
@@ -260,9 +258,9 @@ namespace BrodUI.Models
         /// <param name="kmeansClusters">number of clusters for KMeans</param>
         public static void SetKMeansClustersToConfigFile(int kmeansClusters)
         {
-            string[] settings = File.ReadAllLines(_path);
+            string[] settings = File.ReadAllLines(ConfigPath);
             settings[4] = $"KMeansClusters={kmeansClusters}";
-            File.WriteAllLines(_path, settings);
+            File.WriteAllLines(ConfigPath, settings);
         }
 
         /// <summary>
@@ -271,9 +269,9 @@ namespace BrodUI.Models
         /// <param name="kmeansIterations">number of iterations for KMeans</param>
         public static void SetKMeansIterationsToConfigFile(int kmeansIterations)
         {
-            string[] settings = File.ReadAllLines(_path);
+            string[] settings = File.ReadAllLines(ConfigPath);
             settings[5] = $"KMeansIterations={kmeansIterations}";
-            File.WriteAllLines(_path, settings);
+            File.WriteAllLines(ConfigPath, settings);
         }
 
         /// <summary>
@@ -283,9 +281,9 @@ namespace BrodUI.Models
         public static void SetColorModelToConfigFile(string colorModel)
         {
             colorModel = colorModel.ToUpperInvariant(); // Convert to uppercase
-            string[] settings = File.ReadAllLines(_path);
+            string[] settings = File.ReadAllLines(ConfigPath);
             settings[6] = $"ColorModel={colorModel}";
-            File.WriteAllLines(_path, settings);
+            File.WriteAllLines(ConfigPath, settings);
         }
     }
 }

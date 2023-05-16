@@ -6,13 +6,6 @@ namespace BrodUITests.ModelsTests
     public class LogManagementTests
     {
         [Fact]
-        public void LogPathTest()
-        {
-            LogManagement.LogPath = "test";
-            Assert.Equal("test", LogManagement.LogPath);
-        }
-
-        [Fact]
         public void CreateLogFileIfNotExistsTest()
         {
             // Delete log file in path if exists
