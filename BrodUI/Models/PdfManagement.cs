@@ -449,7 +449,7 @@ namespace BrodUI.Models
 
             Brush[,] wireTable = ImageTo2DArrayBrushes.ConvertTo2dArray(Image!);
 
-            int cellSize = int.Parse(ConfigManagement.GetEmbroiderySizeFromConfigFile()!);
+            int cellSize = int.Parse(ConfigManagement.GetEmbroiderySizeFromConfigFile());
 
             Table table = new(imgWidth);
             table.SetWidth(cellSize * imgWidth);

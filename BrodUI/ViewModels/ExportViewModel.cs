@@ -217,7 +217,7 @@ namespace BrodUI.ViewModels
                 GridImage!.RowDefinitions.Clear();
                 GridImage!.ColumnDefinitions.Clear();
 
-                int cellSize = int.Parse(ConfigManagement.GetEmbroiderySizeFromConfigFile()!);
+                int cellSize = int.Parse(ConfigManagement.GetEmbroiderySizeFromConfigFile());
 
                 // create rows and columns for GridImage
                 for (int i = 0; i < height; i++)

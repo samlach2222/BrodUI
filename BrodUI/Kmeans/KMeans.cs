@@ -61,7 +61,7 @@ namespace BrodUI.KMeans
                 Console.WriteLine("Iterations n°" + _i);
                 foreach (int cid in Centroids.Keys)
                 {
-                    int nb = DataSet.Where(i => i.Cluster == cid).Count();
+                    int nb = DataSet!.Where(i => i.Cluster == cid).Count();
                     Console.WriteLine("\tCluster n°" + cid + " has " + Centroids[cid] + " as centroid. This cluster contains " + nb + " data vectors");
                 }
 
@@ -80,7 +80,7 @@ namespace BrodUI.KMeans
         /// </summary>
         private void AssignDataSet()
         {
-            DataSet?.ForEach(vector => vector.Cluster = GetNearestCluster(vector));
+            DataSet!.ForEach(vector => vector.Cluster = GetNearestCluster(vector));
         }
 
         /// <summary>
@@ -125,16 +125,18 @@ namespace BrodUI.KMeans
         private void RecalculateCentroids()
         {
             if (Centroids == null) return;
-            foreach (int centroidKey in Centroids.Keys.ToList())
+            if (DataSet != null)
             {
-                if (DataSet == null) continue;
-                List<GenericVector> cluster = DataSet.Where(v => v.Cluster == centroidKey).ToList();
+                foreach (int centroidKey in Centroids.Keys.ToList())
+                {
+                    List<GenericVector> cluster = DataSet.Where(v => v.Cluster == centroidKey).ToList();
 
-                //generating a new genericVector with the mean of the existing vectors
-                Centroids[centroidKey] = cluster
-                    .Aggregate(new GenericVector(DataSet.First().Size),
-                        (current, y) => current.Sum(y))
-                    .Divide(cluster.Count);
+                    //generating a new genericVector with the mean of the existing vectors
+                    Centroids[centroidKey] = cluster
+                        .Aggregate(new GenericVector(DataSet.First().Size),
+                            (current, y) => current.Sum(y))
+                        .Divide(cluster.Count);
+                }
             }
         }
 
@@ -145,8 +147,7 @@ namespace BrodUI.KMeans
         {
             while (true)
             {
-                if (DataSet == null) continue;
-                GenericVector genericVector = DataSet[_random.Next(DataSet.Count)];
+                GenericVector genericVector = DataSet![_random.Next(DataSet.Count)];
                 bool found = false;
                 if (Centroids != null)
                 {
@@ -170,7 +171,7 @@ namespace BrodUI.KMeans
         {
             List<IGrouping<int, GenericVector>> orderedClusters = DataSet!.GroupBy(v => v.Cluster).OrderBy(v => v.Key).ToList();
             double sse = (from cluster in orderedClusters
-                          let clusterCenter = Centroids[cluster.Key]
+                          let clusterCenter = Centroids![cluster.Key]
                           from point in cluster
                           select Math.Pow(GenericVector.Distance(clusterCenter, point), 2)).Sum();
             return sse;

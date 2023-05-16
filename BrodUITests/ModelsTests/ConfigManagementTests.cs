@@ -10,7 +10,7 @@ namespace BrodUITests.ModelsTests
         {
             // Check if config file exists
             string? appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-            string path = Path.Combine(appData + "\\BrodUI", "settings.cfg");
+            string path = Path.Combine(appData, "BrodUI", "settings.cfg");
             ConfigManagement.CreateConfigFileIfNotExists();
             if (File.Exists(path))
             {
@@ -61,7 +61,7 @@ namespace BrodUITests.ModelsTests
             // -----------------------------------
             ConfigManagement.CreateConfigFileIfNotExists();
             string? appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-            string path = Path.Combine(appData + "\\BrodUI", "settings.cfg");
+            string path = Path.Combine(appData, "BrodUI", "settings.cfg");
             FileInfo file = new(path);
             Assert.True(file.Exists);
 
@@ -80,7 +80,7 @@ namespace BrodUITests.ModelsTests
             ResetConfigFile();
             const string expected = "System";
             // Actual
-            string? actual = ConfigManagement.GetThemeFromConfigFile();
+            string actual = ConfigManagement.GetThemeFromConfigFile();
             // Assert
             Assert.Equal(expected, actual);
         }
@@ -93,7 +93,7 @@ namespace BrodUITests.ModelsTests
             const string expected = "Light";
             // Actual
             ConfigManagement.SetThemeToConfigFile(expected);
-            string? actual = ConfigManagement.GetThemeFromConfigFile();
+            string actual = ConfigManagement.GetThemeFromConfigFile();
             // Assert
             Assert.Equal(expected, actual);
         }
@@ -129,7 +129,7 @@ namespace BrodUITests.ModelsTests
             string expected = CultureInfo.CurrentUICulture.NativeName;
             expected = expected[..(expected.IndexOf('(') - 1)].ToLower();
             // Actual
-            string actual = ConfigManagement.GetLanguageFromConfigFile()!.ToLower();
+            string actual = ConfigManagement.GetLanguageFromConfigFile().ToLower();
             // Assert
             Assert.Equal(expected, actual);
         }
@@ -142,7 +142,7 @@ namespace BrodUITests.ModelsTests
             const string expected = "Spanish";
             // Actual
             ConfigManagement.SetLanguageToConfigFile(expected);
-            string? actual = ConfigManagement.GetLanguageFromConfigFile();
+            string actual = ConfigManagement.GetLanguageFromConfigFile();
             // Assert
             Assert.Equal(expected, actual);
         }
@@ -197,7 +197,7 @@ namespace BrodUITests.ModelsTests
             ResetConfigFile();
             const int expected = 15;
             // Actual
-            int actual = int.Parse(ConfigManagement.GetEmbroiderySizeFromConfigFile() ?? string.Empty);
+            int actual = int.Parse(ConfigManagement.GetEmbroiderySizeFromConfigFile());
             // Assert
             Assert.Equal(expected, actual);
         }
@@ -210,7 +210,7 @@ namespace BrodUITests.ModelsTests
             const int expected = 20;
             // Actual
             ConfigManagement.SetEmbroiderySizeToConfigFile(expected.ToString());
-            int actual = int.Parse(ConfigManagement.GetEmbroiderySizeFromConfigFile() ?? string.Empty);
+            int actual = int.Parse(ConfigManagement.GetEmbroiderySizeFromConfigFile());
             // Assert
             Assert.Equal(expected, actual);
         }

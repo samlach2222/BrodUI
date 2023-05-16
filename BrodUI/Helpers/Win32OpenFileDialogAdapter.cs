@@ -22,12 +22,12 @@ namespace BrodUI.Helpers
         /// <summary>
         /// Name of the files
         /// </summary>
-        public string[] FileNames { get; }
+        public string[]? FileNames { get; }
 
         /// <summary>
         /// Filter for the dialog (image filter)
         /// </summary>
-        public string Filter { get; set; }
+        public string? Filter { get; set; }
 
         /// <summary>
         /// Function to show the dialog

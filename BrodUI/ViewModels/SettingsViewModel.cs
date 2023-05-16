@@ -41,7 +41,7 @@ namespace BrodUI.ViewModels
                 // Get current time and date
                 LogManagement.WriteToLog("[" + DateTime.Now + "] " + Assets.Languages.Resource.Terminal_ThemeChanged + _curTheme + Assets.Languages.Resource.Terminal_To + value);
                 SetProperty(ref _curTheme, value);
-                if (_curTheme != null)
+                if (value != null)
                 {
                     ChangeTheme(value);
                 }
@@ -52,7 +52,7 @@ namespace BrodUI.ViewModels
         /// Change the theme of the application
         /// </summary>
         /// <param name="theme">new theme of the application</param>
-        private static void ChangeTheme(string? theme)
+        private static void ChangeTheme(string theme)
         {
             // save the theme in the file "settings.cfg" in the first row
             ConfigManagement.SetThemeToConfigFile(theme);
@@ -81,7 +81,7 @@ namespace BrodUI.ViewModels
             set
             {
                 LogManagement.WriteToLog("[" + DateTime.Now + "] " + Assets.Languages.Resource.Terminal_LanguageChanged + _curLanguage + Assets.Languages.Resource.Terminal_To + value);
-                if (_curLanguage != null && value != _curLanguage)
+                if (value != null && value != _curLanguage)
                 {
                     ChangeLanguage(value);
                 }
@@ -93,7 +93,7 @@ namespace BrodUI.ViewModels
         /// Change the language of the application
         /// </summary>
         /// <param name="curLanguage">new language of the application</param>
-        private static void ChangeLanguage(string? curLanguage)
+        private static void ChangeLanguage(string curLanguage)
         {
             // save the language in the file "settings.cfg" in the second row
             ConfigManagement.SetLanguageToConfigFile(curLanguage);

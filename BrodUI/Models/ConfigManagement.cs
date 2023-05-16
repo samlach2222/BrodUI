@@ -142,7 +142,7 @@ namespace BrodUI.Models
         /// Get the theme from the config file
         /// </summary>
         /// <returns>string with the name of the theme in the config file</returns>
-        public static string? GetThemeFromConfigFile()
+        public static string GetThemeFromConfigFile()
         {
             string[] settings = File.ReadAllLines(ConfigPath);
             return settings[0].Split('=')[1];
@@ -152,7 +152,7 @@ namespace BrodUI.Models
         /// Get the language from the config file
         /// </summary>
         /// <returns>string with the name of the language in the config file</returns>
-        public static string? GetLanguageFromConfigFile()
+        public static string GetLanguageFromConfigFile()
         {
             string[] settings = File.ReadAllLines(ConfigPath);
             return settings[1].Split('=')[1];
@@ -172,7 +172,7 @@ namespace BrodUI.Models
         /// Get the embroidery point size from the config file
         /// </summary>
         /// <returns>embroidery size</returns>
-        public static string? GetEmbroiderySizeFromConfigFile()
+        public static string GetEmbroiderySizeFromConfigFile()
         {
             string[] settings = File.ReadAllLines(ConfigPath);
             return settings[3].Split('=')[1];
@@ -212,7 +212,7 @@ namespace BrodUI.Models
         /// Set the theme in the config file
         /// </summary>
         /// <param name="theme">theme you want to put in the config file</param>
-        public static void SetThemeToConfigFile(string? theme)
+        public static void SetThemeToConfigFile(string theme)
         {
             string[] settings = File.ReadAllLines(ConfigPath);
             settings[0] = $"Theme={theme}";
@@ -223,7 +223,7 @@ namespace BrodUI.Models
         /// Set the language in the config file
         /// </summary>
         /// <param name="language">language you want to put in the config file</param>
-        public static void SetLanguageToConfigFile(string? language)
+        public static void SetLanguageToConfigFile(string language)
         {
             string[] settings = File.ReadAllLines(ConfigPath);
             settings[1] = $"Language={language}";

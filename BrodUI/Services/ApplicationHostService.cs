@@ -14,7 +14,6 @@ namespace BrodUI.Services
     public class ApplicationHostService : IHostedService
     {
         private readonly IServiceProvider _serviceProvider;
-        private INavigationWindow _navigationWindow;
 
         public ApplicationHostService(IServiceProvider serviceProvider)
         {
@@ -48,10 +47,10 @@ namespace BrodUI.Services
 
             if (!Application.Current.Windows.OfType<Views.Windows.MainWindow>().Any())
             {
-                _navigationWindow = (_serviceProvider.GetService(typeof(INavigationWindow)) as INavigationWindow)!;
-                _navigationWindow!.ShowWindow();
+                INavigationWindow navigationWindow = (_serviceProvider.GetService(typeof(INavigationWindow)) as INavigationWindow)!;
+                navigationWindow.ShowWindow();
 
-                _navigationWindow.Navigate(typeof(Views.Pages.TutorialPage));
+                navigationWindow.Navigate(typeof(Views.Pages.TutorialPage));
             }
 
             await Task.CompletedTask;

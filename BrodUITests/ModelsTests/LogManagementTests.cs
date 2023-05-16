@@ -10,7 +10,7 @@ namespace BrodUITests.ModelsTests
         {
             // Delete log file in path if exists
             string? appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-            string path = Path.Combine(appData + "\\BrodUI", "terminal.log");
+            string path = Path.Combine(appData, "BrodUI", "terminal.log");
             if (File.Exists(path))
             {
                 File.Delete(path);
@@ -29,7 +29,7 @@ namespace BrodUITests.ModelsTests
         {
             // Delete log file in path if exists
             string? appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-            string path = Path.Combine(appData + "\\BrodUI", "terminal.log");
+            string path = Path.Combine(appData, "BrodUI", "terminal.log");
             if (File.Exists(path))
             {
                 File.Delete(path);
@@ -54,7 +54,7 @@ namespace BrodUITests.ModelsTests
         {
             // Delete log file in path if exists
             string? appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-            string path = Path.Combine(appData + "\\BrodUI", "terminal.log");
+            string path = Path.Combine(appData, "BrodUI", "terminal.log");
             if (File.Exists(path))
             {
                 File.Delete(path);
