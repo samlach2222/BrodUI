@@ -1,5 +1,6 @@
 using BrodUI.Helpers;
 using BrodUI.Models;
+using BrodUI.Services;
 using BrodUI.Views.Pages;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -13,7 +14,6 @@ using Wpf.Ui.Common.Interfaces;
 using Wpf.Ui.Controls.Interfaces;
 using Wpf.Ui.Extensions;
 using Wpf.Ui.Mvvm.Contracts;
-using MessageBox = System.Windows.MessageBox;
 
 namespace BrodUI.ViewModels
 {
@@ -96,7 +96,7 @@ namespace BrodUI.ViewModels
             // If no converted image found, redirect to the convert page
             if (LoadedImage == null)
             {
-                MessageBox.Show(Assets.Languages.Resource.Export_NoImageMessage);
+                WPFMessageBox.Show("", Assets.Languages.Resource.Export_NoImageMessage);
                 INavigation? navigationService = (Application.Current.MainWindow as INavigationWindow)?.GetNavigation(); // Get the navigation service from the window.
                 if (navigationService != null)
                 {

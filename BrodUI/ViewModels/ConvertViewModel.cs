@@ -1,4 +1,4 @@
-﻿using BrodUI.Helpers;
+using BrodUI.Helpers;
 using BrodUI.Models;
 using BrodUI.Services;
 using BrodUI.Views.Pages;
@@ -11,7 +11,6 @@ using System.Windows.Media.Imaging;
 using Wpf.Ui.Common.Interfaces;
 using Wpf.Ui.Controls.Interfaces;
 using Wpf.Ui.Mvvm.Contracts;
-using MessageBox = System.Windows.MessageBox;
 
 namespace BrodUI.ViewModels
 {
@@ -233,7 +232,7 @@ namespace BrodUI.ViewModels
         /// <summary>
         /// Getter and setter for the Width of the image that also manage the ratio and the min value for width and height
         /// </summary>
-        public int ImageWidth // TODO : REPLACE ALL MESSAGEBOX WITH WPFMessageBox
+        public int ImageWidth
         {
             get => _imageWidth;
             set
@@ -322,13 +321,13 @@ namespace BrodUI.ViewModels
                     else
                     {
                         string badValue = ((int)(value * _ratio)).ToString();
-                        MessageBox.Show(string.Format(Assets.Languages.Resource.Convert_MinimumHeight_WithValue, badValue) + MinimumWidthHeight);
+                        WPFMessageBox.Show("", string.Format(Assets.Languages.Resource.Convert_MinimumHeight_WithValue, badValue) + MinimumWidthHeight);
                     }
 
                 }
                 else
                 {
-                    MessageBox.Show(Assets.Languages.Resource.Convert_MinimumHeight + MinimumWidthHeight);
+                    WPFMessageBox.Show("", Assets.Languages.Resource.Convert_MinimumHeight + MinimumWidthHeight);
                 }
             }
         }
@@ -407,7 +406,6 @@ namespace BrodUI.ViewModels
         {
             // TODO : ADD IMG TOO BIG MESSAGE AND EVENT
             // TODO : DO WIRE THINGS INSIDE WORKER TOO AND GO TO PAGE EXPORT ONLY AFTER
-            // TODO : VERIFY IF WE CAN DEACTIVATE NAVIGATION MENU WHILE CONVERTING
             // Change grid visibility
             GlobalGridVisibility = false;
             ProgressVisibility = "Visible";

@@ -1,12 +1,12 @@
 ﻿using BrodUI.Helpers;
 using BrodUI.KMeans;
+using BrodUI.Services;
 using System;
 using System.ComponentModel;
 using System.IO;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using Wpf.Ui.TaskBar;
-using MessageBox = System.Windows.MessageBox;
 
 namespace BrodUI.Models
 {
@@ -110,7 +110,7 @@ namespace BrodUI.Models
             }
             else
             {
-                MessageBox.Show(Assets.Languages.Resource.ImageManagement_InvalidImageFile);
+                WPFMessageBox.Show("", Assets.Languages.Resource.ImageManagement_InvalidImageFile);
             }
         }
 

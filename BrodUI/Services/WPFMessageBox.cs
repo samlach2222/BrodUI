@@ -16,10 +16,12 @@ public static class WPFMessageBox
         mb.Content = content;
 
         // add button in footer
-        Button btn = new();
-        btn.Content = "Ok";
-        btn.HorizontalAlignment = HorizontalAlignment.Center;
-        btn.HorizontalContentAlignment = HorizontalAlignment.Center;
+        Button btn = new()
+        {
+            Content = "Ok",
+            HorizontalAlignment = HorizontalAlignment.Center,
+            HorizontalContentAlignment = HorizontalAlignment.Center
+        };
         btn.Click += (sender, args) => { mb.Close(); };
         mb.Footer = btn;
         mb.Show();
