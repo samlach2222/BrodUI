@@ -109,6 +109,7 @@ namespace BrodUI.ViewModels
                 int height = Im.ImageHeight;
                 BitmapImage? img = Im.Image;
                 Brush[,] wireTable = ImageTo2DArrayBrushes.ConvertTo2dArray(img!);
+
                 // add Wires to WireArray from wireTable for each color
 
                 // LOADING COUNT
@@ -142,6 +143,8 @@ namespace BrodUI.ViewModels
                 }
 
                 // Initialise variables for the colors to DMC conversion
+                List<Wire> TempWireArray = new();
+                Dictionary<Color, SolidColorBrush> colorToDmcBrush = new(colorQuantity.Count); // Used to convert colors at the grid creation
                 dynamic colorToDmc = ConfigManagement.GetColorModelFromConfigFile() switch
                 {
                     "HSL" => new HslToDmc(),
@@ -151,25 +154,61 @@ namespace BrodUI.ViewModels
                 DmcToString dmcToString = new();
                 dmcToString.PrintFileContent();
 
-                // Convert colors to DMC and add the wires to the WireArray
+                // Convert colors to DMC and add the wires to TempWireArray (to later merge the wires with same colors)
                 foreach (KeyValuePair<Color, int> color in colorQuantity) // TODO : ERROR WHEN COLOR IS "6" (RGB TESTED) 
                 {
-                    SolidColorBrush scbColor = new(color.Key);
-
+                    SolidColorBrush scbColor;
                     int dmc;
                     switch (ConfigManagement.GetColorModelFromConfigFile())
                     {
                         case "HSL":
+                            HslToDmc hslToDmc = (HslToDmc)colorToDmc;
+
+                            // Get DMC number
                             (float hue, float saturation, float lightness) = color.Key.ToHsl();
-                            dmc = colorToDmc.GetValDmc((((int)hue) % 360), ((int)saturation), ((int)lightness));
+                            dmc = hslToDmc.GetValDmc((((int)hue) % 360), ((int)saturation), ((int)lightness));
+
+                            // Get color from DMC number
+                            (int RHslInt, int GHslInt, int BHslInt) = ColorExtensions.FromHslToRgb(hslToDmc.getHue(dmc), hslToDmc.getSaturation(dmc), hslToDmc.getLightness(dmc));
+                            (byte RHsl, byte GHsl, byte BHsl) = ((byte)RHslInt, (byte)GHslInt, (byte)BHslInt);
+                            scbColor = new(Color.FromRgb(RHsl, GHsl, BHsl));
                             break;
                         default:
-                            dmc = colorToDmc.GetValDmc(color.Key.R, color.Key.G, color.Key.B);
+                            RgbToDmc rgbToDmc = (RgbToDmc)colorToDmc;
+
+                            // Get DMC number
+                            dmc = rgbToDmc.GetValDmc(color.Key.R, color.Key.G, color.Key.B);
+
+                            // Get color from DMC number
+                            (byte RRgb, byte GRgb, byte BRgb) = ((byte)rgbToDmc.getRed(dmc), (byte)rgbToDmc.getGreen(dmc), (byte)rgbToDmc.getBlue(dmc));
+                            scbColor = new(Color.FromRgb(RRgb, GRgb, BRgb));
                             break;
                     }
                     string colorName = dmcToString.GetNameDmc(dmc);
 
-                    WireArray.Add(new Wire(scbColor, dmc, "DMC", colorName, color.Value));
+                    // Add the old color and new DMC color (as brush) to the color conversion dictionary
+                    colorToDmcBrush.Add(color.Key, scbColor);
+
+                    TempWireArray.Add(new Wire(scbColor, dmc, "DMC", colorName, color.Value));
+                }
+
+                // Add the wires to WireArray, by merging the wires with same colors
+                foreach (Wire tempWire in TempWireArray)
+                {
+                    // If the color is already in WireArray, add the quantity to the existing wire
+                    foreach (Wire wire in WireArray)
+                    {
+                        // We have to compare the colors (comparing the brushes don't work) 
+                        if (((SolidColorBrush)wire.Color).Color == ((SolidColorBrush)tempWire.Color).Color)
+                        {
+                            wire.Quantity += tempWire.Quantity;
+                            goto NextWire; // Skip to next TempWireArray wire
+                        }
+                    }
+                    // The color was not in WireArray, so we add it
+                    WireArray.Add(tempWire);
+
+                NextWire:;
                 }
 
                 // GridImage creation part
@@ -236,7 +275,7 @@ namespace BrodUI.ViewModels
                         {
                             BorderBrush = new SolidColorBrush(Colors.Black),
                             BorderThickness = new Thickness(borderLeft, borderTop, borderRight, borderBottom),
-                            Background = wireTable[i, j]
+                            Background = colorToDmcBrush[((SolidColorBrush)wireTable[i, j]).Color]
                         };
 
                         Grid.SetRow(border, j);
