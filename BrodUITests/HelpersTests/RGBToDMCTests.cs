@@ -12,7 +12,6 @@ namespace BrodUITests.HelpersTests
             const string expected = "0 252 251 248";
             // Actual
             RgbToDmc rgbToDmc = new();
-            rgbToDmc.Initialization();
             int d = rgbToDmc.GetValDmc(252, 251, 248);
             string actual = d.ToString();
             actual = actual + " " + rgbToDmc.getRed(d).ToString() + " " + rgbToDmc.getGreen(d).ToString() + " " + rgbToDmc.getBlue(d).ToString();

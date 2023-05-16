@@ -12,7 +12,6 @@ namespace BrodUITests.HelpersTests
             const string expected = "0 45 40 98";
             // Actual
             HslToDmc hslToDmc = new();
-            hslToDmc.Initialization();
             int d = hslToDmc.GetValDmc(45, 40, 98);
             string actual = d.ToString();
             actual = actual + " " + hslToDmc.getHue(d).ToString() + " " + hslToDmc.getSaturation(d).ToString() + " " + hslToDmc.getLightness(d).ToString();

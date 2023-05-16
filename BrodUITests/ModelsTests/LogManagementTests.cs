@@ -72,7 +72,7 @@ namespace BrodUITests.ModelsTests
         [Fact]
         public void WriteAllLogsInTerminalTest()
         {
-            // clear log file
+            // Clear log file
             LogManagement.CreateLogFileIfNotExists();
             LogManagement.ClearLog();
             LogManagement.CreateLogFileIfNotExists();
@@ -91,6 +91,9 @@ namespace BrodUITests.ModelsTests
             // Assert
             const string expectedOutput = "test1\r\ntest2\r\n";
             Assert.Equal(expectedOutput, sw.ToString());
+
+            // Clear log file
+            LogManagement.ClearLog();
         }
     }
 }

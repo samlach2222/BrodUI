@@ -21,7 +21,7 @@ namespace BrodUI.Helpers
         /// <summary>
         /// Initialize the array with the DMC colors
         /// </summary>
-        public void Initialization()
+        private void Initialization()
         {
             StreamReader sr = new("./Assets/DmcToHsl.txt");
             int comp = 0;

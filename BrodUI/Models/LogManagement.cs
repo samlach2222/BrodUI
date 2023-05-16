@@ -108,6 +108,7 @@ namespace BrodUI.Models
         /// <param name="taskBarProgressState">Taskbar progression state</param>
         public static void UpdateProgression(TaskBarProgressState taskBarProgressState)
         {
+            if (Application.Current == null) return;
             Application.Current.Dispatcher.Invoke(() =>
             {
                 TaskBarProgress.SetState(Application.Current.MainWindow, taskBarProgressState);
