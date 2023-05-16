@@ -169,7 +169,7 @@ namespace BrodUI.Models
         /// <summary>
         /// Resize the image to ImageWidth and ImageHeight and save it
         /// </summary>
-        public void ResizeImage(int kMeansColorNumber, int kmeansIterationNumber, BackgroundWorker bw)
+        public void ResizeImage(int kMeansColorNumber, int kmeansIterationNumber, BackgroundWorker? bw = null)
         {
             // Set taskbar progress to indeterminate (we can't know the progress of the resize)
             LogManagement.UpdateProgression(TaskBarProgressState.Indeterminate);
