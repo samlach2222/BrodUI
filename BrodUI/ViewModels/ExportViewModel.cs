@@ -1,4 +1,4 @@
-using BrodUI.Helpers;
+﻿using BrodUI.Helpers;
 using BrodUI.Models;
 using BrodUI.Services;
 using BrodUI.Views.Pages;
@@ -6,6 +6,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -150,13 +151,12 @@ namespace BrodUI.ViewModels
                     "HSL" => new HslToDmc(),
                     "RGB" or _ => new RgbToDmc(),
                 };
-                colorToDmc.PrintFileContent();
                 DmcToString dmcToString = new();
-                dmcToString.PrintFileContent();
 
                 // Convert colors to DMC and add the wires to TempWireArray (to later merge the wires with same colors)
                 foreach (KeyValuePair<Color, int> color in colorQuantity) // TODO : ERROR WHEN COLOR IS "6" (RGB TESTED) 
                 {
+                    StringBuilder terminalOutput = new();
                     SolidColorBrush scbColor;
                     int dmc;
                     switch (ConfigManagement.GetColorModelFromConfigFile())
@@ -166,12 +166,16 @@ namespace BrodUI.ViewModels
 
                             // Get DMC number
                             (float hue, float saturation, float lightness) = color.Key.ToHsl();
-                            dmc = hslToDmc.GetValDmc((((int)hue) % 360), ((int)saturation), ((int)lightness));
+                            (int hueInt, int saturationInt, int lightnessInt) = ((int)hue % 360, (int)saturation, (int)lightness);
+                            dmc = hslToDmc.GetValDmc(hueInt, saturationInt, lightnessInt);
 
                             // Get color from DMC number
-                            (int RHslInt, int GHslInt, int BHslInt) = ColorExtensions.FromHslToRgb(hslToDmc.getHue(dmc), hslToDmc.getSaturation(dmc), hslToDmc.getLightness(dmc));
-                            (byte RHsl, byte GHsl, byte BHsl) = ((byte)RHslInt, (byte)GHslInt, (byte)BHslInt);
-                            scbColor = new(Color.FromRgb(RHsl, GHsl, BHsl));
+                            (int hueHsl, int saturationHsl, int lightnessHSL) = (hslToDmc.getHue(dmc), hslToDmc.getSaturation(dmc), hslToDmc.getLightness(dmc));
+                            (int RHslInt, int GHslInt, int BHslInt) = ColorExtensions.FromHslToRgb(hueHsl, saturationHsl, lightnessHSL);
+                            scbColor = new(Color.FromRgb((byte)RHslInt, (byte)GHslInt, (byte)BHslInt));
+
+                            // Construct terminal output (spaces needed before → to have the arrow at the same position everytime)
+                            terminalOutput.Append("H:" + hueInt + " S:" + saturationInt + " L:" + lightnessInt + "     \t→\tDMC:" + dmc + " H:" + hueHsl + " S:" + saturationHsl + " L:" + lightnessHSL);
                             break;
                         default:
                             RgbToDmc rgbToDmc = (RgbToDmc)colorToDmc;
@@ -182,14 +186,20 @@ namespace BrodUI.ViewModels
                             // Get color from DMC number
                             (byte RRgb, byte GRgb, byte BRgb) = ((byte)rgbToDmc.getRed(dmc), (byte)rgbToDmc.getGreen(dmc), (byte)rgbToDmc.getBlue(dmc));
                             scbColor = new(Color.FromRgb(RRgb, GRgb, BRgb));
+
+                            // Construct terminal output (spaces needed before → to have the arrow at the same position everytime)
+                            terminalOutput.Append("R:" + color.Key.R + " G:" + color.Key.G + " B:" + color.Key.B + "     \t→\tDMC:" + dmc + " R:" + RRgb + " G:" + GRgb + " B:" + BRgb);
                             break;
                     }
                     string colorName = dmcToString.GetNameDmc(dmc);
+                    terminalOutput.Append(" Name:" + colorName); // Add name to terminal output
 
                     // Add the old color and new DMC color (as brush) to the color conversion dictionary
                     colorToDmcBrush.Add(color.Key, scbColor);
 
+                    // Add to temp wires and output the color conversion to the terminal
                     TempWireArray.Add(new Wire(scbColor, dmc, "DMC", colorName, color.Value));
+                    Console.WriteLine(terminalOutput.ToString());
                 }
 
                 // Add the wires to WireArray, by merging the wires with same colors

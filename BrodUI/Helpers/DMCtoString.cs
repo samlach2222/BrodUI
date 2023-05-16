@@ -25,6 +25,7 @@ namespace BrodUI.Helpers
         {
             StreamReader sr = new("./Assets/DmcToString.txt");
             int comp = 0;
+            sr.ReadLine(); // skip first line
             string? line = sr.ReadLine();
 
             while (line != null)
@@ -58,21 +59,12 @@ namespace BrodUI.Helpers
             for (int i = 0; i < _nbDmc; i++)
             {
                 if (_dmcString[i, 0] == dmc.ToString())
+                {
                     val = _dmcString[i, 1];
+                    break; // Exit the for loop
+                }
             }
             return val;
-        }
-
-        /// <summary>
-        /// Print all DMC in the format "DMC:01 Name:White Tin"
-        /// </summary>
-        public void PrintFileContent()
-        {
-            for (int i = 0; i < _nbDmc; i++)
-            {
-                string s = "DMC:" + _dmcString[i, 0] + " Name:" + _dmcString[i, 1];
-                Console.WriteLine(s);
-            }
         }
     }
 }
