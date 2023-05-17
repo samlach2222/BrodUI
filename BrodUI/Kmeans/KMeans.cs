@@ -89,10 +89,26 @@ namespace BrodUI.KMeans
         /// <param name="vector"> the vector for which we search the nearest cluster </param>
         private int GetNearestCluster(GenericVector vector)
         {
+            int clusterId = -1;
+            double smallestDistance = double.MaxValue;
+
+            // Get the clusterId that has the smallestDistance with vector
+            foreach (KeyValuePair<int, GenericVector> v in Centroids!)
+            {
+                double tempDistance = GenericVector.Distance(vector, v.Value);
+                if (tempDistance < smallestDistance)
+                {
+                    clusterId = v.Key;
+                    smallestDistance = tempDistance;
+                }
+            }
+
+            /*
             int clusterId = Centroids!
                 .OrderBy(v => GenericVector.Distance(vector, v.Value))
                 .Select(v => v.Key)
                 .FirstOrDefault();
+            */
             return clusterId;
         }
 

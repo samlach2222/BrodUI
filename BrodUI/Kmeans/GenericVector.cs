@@ -84,9 +84,22 @@ namespace BrodUI.KMeans
 
         public static double Distance(GenericVector a, GenericVector b)
         {
-            List<float> aMinusBPoints = a.Points.Select((t, i) => t - b.Points[i]).ToList();
+            int size = a.Size;
+            double sum = 0;
+            for (int i = 0; i < size; i++)
+            {
+                double aMinusBPoint = a.Points[i] - b.Points[i];
 
+                sum += aMinusBPoint * aMinusBPoint;
+            }
+
+            return Math.Sqrt(sum);
+
+            /*
+            List<float> aMinusBPoints = a.Points.Select((t, i) => t - b.Points[i]).ToList();
+            
             return Math.Sqrt(aMinusBPoints.Sum(item => Math.Pow(item, 2)));
+            */
         }
     }
 }
