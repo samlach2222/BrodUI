@@ -70,7 +70,16 @@ namespace BrodUI.KMeans
 
         public static bool NotEqual(GenericVector a, GenericVector b)
         {
-            return a.Points.Where((value, index) => value != b.Points[index]).Any();
+            // return true if two points are not equals
+            for (int i = 0; i < a.Size; i++)
+            {
+                // "NaN != NaN" returns true so we check NaN explicitly
+                if (a.Points[i] != b.Points[i] && !(float.IsNaN(a.Points[i]) && float.IsNaN(b.Points[i])))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         public static float DotProduct(GenericVector vectorA, GenericVector vectorB)

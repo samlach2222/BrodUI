@@ -129,9 +129,17 @@ namespace BrodUI.KMeans
         /// </summary>
         /// <param name="a"> The previous centroids </param>
         /// <param name="b"> The current centroids </param>
-        private static bool CentroidsChanged(IEnumerable<GenericVector> a, IReadOnlyList<GenericVector> b)
+        private static bool CentroidsChanged(IReadOnlyList<GenericVector> a, IReadOnlyList<GenericVector> b)
         {
-            return a.Where((item, index) => GenericVector.NotEqual(item, b[index])).Any();
+            // return true if two vectors are not equals
+            for (int i = 0; i < a.Count; i++)
+            {
+                if (GenericVector.NotEqual(a[i], b[i]))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
 
@@ -151,7 +159,7 @@ namespace BrodUI.KMeans
                     Centroids[centroidKey] = cluster
                         .Aggregate(new GenericVector(DataSet.First().Size),
                             (current, y) => current.Sum(y))
-                        .Divide(cluster.Count);
+                        .Divide(cluster.Count); // TODO (REMOVE TODO IF NOT A BUG) : cluster can sometimes be empty, which causes a division by 0 here
                 }
             }
         }
