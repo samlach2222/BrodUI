@@ -448,7 +448,7 @@ namespace BrodUI.ViewModels
                 ProgressConvert = 0;
                 ProgressVisibility = "Hidden";
                 LogManagement.WriteToLog("[" + DateTime.Now + "] " + Assets.Languages.Resource.Terminal_ImageConvertedOk + "- " + sw.ElapsedMilliseconds + "ms");
-                INavigation ? navigationService = (Application.Current.MainWindow as INavigationWindow)?.GetNavigation(); // Get the navigation service from the window.
+                INavigation? navigationService = (Application.Current.MainWindow as INavigationWindow)?.GetNavigation(); // Get the navigation service from the window.
                 if (navigationService != null)
                 {
                     _ = navigationService.Navigate(typeof(ExportPage)); // Navigate to the Convert page.

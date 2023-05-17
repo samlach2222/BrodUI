@@ -106,5 +106,7 @@ namespace BrodUI.Views.Pages
                 ViewModel.ImageWidth = int.Parse(textBox.Text);
             }
         }
+
+        // TODO : Support image drop (has to be implemented here because it doesn't work in ConvertViewModel)
     }
 }
