@@ -6,6 +6,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Media.Imaging;
 using Wpf.Ui.Common.Interfaces;
@@ -419,6 +420,10 @@ namespace BrodUI.ViewModels
             };
             worker.WorkerReportsProgress = true;
 
+            // Create Timer here
+            Stopwatch sw = new();
+            sw.Start();
+
             worker.DoWork += (sender, args) =>
             {
                 // Check if the object was successfully passed
@@ -435,13 +440,15 @@ namespace BrodUI.ViewModels
 
             worker.RunWorkerCompleted += (sender, args) =>
             {
+                sw.Stop();
+
                 GlobalGridVisibility = true;
                 // ProgressBar Percentage
                 ProgressTb = "0%";
                 ProgressConvert = 0;
                 ProgressVisibility = "Hidden";
-                LogManagement.WriteToLog("[" + DateTime.Now + "] " + Assets.Languages.Resource.Terminal_ImageConvertedOk);
-                INavigation? navigationService = (Application.Current.MainWindow as INavigationWindow)?.GetNavigation(); // Get the navigation service from the window.
+                LogManagement.WriteToLog("[" + DateTime.Now + "] " + Assets.Languages.Resource.Terminal_ImageConvertedOk + "- " + sw.ElapsedMilliseconds + "ms");
+                INavigation ? navigationService = (Application.Current.MainWindow as INavigationWindow)?.GetNavigation(); // Get the navigation service from the window.
                 if (navigationService != null)
                 {
                     _ = navigationService.Navigate(typeof(ExportPage)); // Navigate to the Convert page.
