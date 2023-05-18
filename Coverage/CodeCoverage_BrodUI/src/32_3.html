@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>D:\WINDOWS\Documents\GitHub\BrodUI\BrodUI\Views\Windows\MainWindow.xaml.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Windows;
+using System.Windows.Controls;
+using Wpf.Ui.Controls.Interfaces;
+using Wpf.Ui.Mvvm.Contracts;
+
+namespace BrodUI.Views.Windows
+{
+    /// &lt;summary&gt;
+    /// Interaction logic for MainWindow.xaml
+    /// &lt;/summary&gt;
+    public partial class MainWindow : INavigationWindow
+    {
+        /// &lt;summary&gt;
+        /// Getter for the view model.
+        /// &lt;/summary&gt;
+        public ViewModels.MainWindowViewModel ViewModel
+        {
+            get;
+        }
+
+        /// &lt;summary&gt;
+        /// Creates new instance of the &lt;see cref=&quot;MainWindow&quot;/&gt;.
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;viewModel&quot;&gt;viewModel of the window&lt;/param&gt;
+        /// &lt;param name=&quot;pageService&quot;&gt;pageService of the window&lt;/param&gt;
+        /// &lt;param name=&quot;navigationService&quot;&gt;navigationService of the window&lt;/param&gt;
+        public MainWindow(ViewModels.MainWindowViewModel viewModel, IPageService pageService, INavigationService navigationService)
+        {
+            ViewModel = viewModel;
+            DataContext = this;
+
+            InitializeComponent();
+            SetPageService(pageService);
+
+            navigationService.SetNavigationControl(RootNavigation);
+        }
+
+        #region INavigationWindow methods
+
+        public Frame GetFrame()
+            =&gt; RootFrame;
+
+        public INavigation GetNavigation()
+            =&gt; RootNavigation;
+
+        public bool Navigate(Type pageType)
+            =&gt; RootNavigation.Navigate(pageType);
+
+        public void SetPageService(IPageService pageService)
+            =&gt; RootNavigation.PageService = pageService;
+
+        public void ShowWindow()
+            =&gt; Show();
+
+        public void CloseWindow()
+            =&gt; Close();
+
+        #endregion INavigationWindow methods
+
+        /// &lt;summary&gt;
+        /// Raises the closed event.
+        /// &lt;/summary&gt;
+        protected override void OnClosed(EventArgs e)
+        {
+            base.OnClosed(e);
+
+            // Make sure that closing this window will begin the process of closing the application.
+            Application.Current.Shutdown();
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[19,13,19,17,0],[28,9,28,132,0],[29,9,29,10,0],[30,13,30,35,0],[31,13,31,32,0],[33,13,33,35,0],[34,13,34,41,0],[36,13,36,68,0],[37,9,37,10,0],[42,16,42,25,0],[45,16,45,30,0],[48,16,48,49,0],[51,16,51,56,0],[54,16,54,22,0],[57,16,57,23,0],[65,9,65,10,0],[66,13,66,30,0],[69,13,69,44,0],[70,9,70,10,0]]);
+    </script>
+  </body>
+</html>

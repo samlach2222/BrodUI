@@ -1,0 +1,925 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QtHelpProject version="1.0">
+<namespace>org.doxygen.BrodUI</namespace>
+<virtualFolder>doc</virtualFolder>
+<filterSection>
+<filterAttribute>doxygen</filterAttribute>
+<toc>
+<section title="BrodUI 1.0" ref="index.html">
+<section title="Namespaces" ref="namespaces.html">
+<section title="Namespace List" ref="namespaces.html">
+<section title="BrodUI" ref="namespace_brod_u_i.html">
+<section title="Assets" ref="namespace_brod_u_i_1_1_assets.html">
+<section title="Languages" ref="namespace_brod_u_i_1_1_assets_1_1_languages.html">
+<section title="Resource" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html">
+</section>
+<section title="Resource_en" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource__en.html">
+</section>
+<section title="Resource_fr" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource__fr.html">
+</section>
+</section>
+</section>
+<section title="Helpers" ref="namespace_brod_u_i_1_1_helpers.html">
+<section title="DmcToString" ref="class_brod_u_i_1_1_helpers_1_1_dmc_to_string.html">
+<section title="DmcToString" ref="class_brod_u_i_1_1_helpers_1_1_dmc_to_string.html#a72dcdd58ad02e9bbe178d09f3b5b6c9c"/>
+<section title="GetNameDmc" ref="class_brod_u_i_1_1_helpers_1_1_dmc_to_string.html#a33c3e31037ac903f43541bb7dc405f26"/>
+</section>
+<section title="HslToDmc" ref="class_brod_u_i_1_1_helpers_1_1_hsl_to_dmc.html">
+<section title="HslToDmc" ref="class_brod_u_i_1_1_helpers_1_1_hsl_to_dmc.html#a9adca742d27e72d081aca7bf1a05aab4"/>
+<section title="getHue" ref="class_brod_u_i_1_1_helpers_1_1_hsl_to_dmc.html#a71c6df7058ab52f354ce8eb89fc2bdf8"/>
+<section title="getLightness" ref="class_brod_u_i_1_1_helpers_1_1_hsl_to_dmc.html#abdc695460013409c3db6b21b620bdfc5"/>
+<section title="getSaturation" ref="class_brod_u_i_1_1_helpers_1_1_hsl_to_dmc.html#a7885e43124c0c3b17f1eaa490c12cc15"/>
+<section title="GetValDmc" ref="class_brod_u_i_1_1_helpers_1_1_hsl_to_dmc.html#a6411bc29b6c0563c287f836588793623"/>
+</section>
+<section title="ImageTo2DArrayBrushes" ref="class_brod_u_i_1_1_helpers_1_1_image_to2_d_array_brushes.html">
+</section>
+<section title="LengthThread" ref="class_brod_u_i_1_1_helpers_1_1_length_thread.html">
+<section title="LengthThread" ref="class_brod_u_i_1_1_helpers_1_1_length_thread.html#af806902ae19489e7757d58d39fbdea45"/>
+<section title="WireSize" ref="class_brod_u_i_1_1_helpers_1_1_length_thread.html#a7ccaf6367bbc82e2e9c5753ef63dfc0e"/>
+<section title="Cross" ref="class_brod_u_i_1_1_helpers_1_1_length_thread.html#ad330e4f10cfc591f3776c35f5acd45c9"/>
+<section title="TotalLength" ref="class_brod_u_i_1_1_helpers_1_1_length_thread.html#acc73631401738f4b42122713ff0edb06"/>
+</section>
+<section title="RgbToDmc" ref="class_brod_u_i_1_1_helpers_1_1_rgb_to_dmc.html">
+<section title="RgbToDmc" ref="class_brod_u_i_1_1_helpers_1_1_rgb_to_dmc.html#a0691a8f16c95cb3fdb2449a5fa0a1b15"/>
+<section title="getBlue" ref="class_brod_u_i_1_1_helpers_1_1_rgb_to_dmc.html#ae1bfb7516d442b3d7f2669ffe657babb"/>
+<section title="getGreen" ref="class_brod_u_i_1_1_helpers_1_1_rgb_to_dmc.html#ad0e462c61c9ee03097a3be299ee85a68"/>
+<section title="getRed" ref="class_brod_u_i_1_1_helpers_1_1_rgb_to_dmc.html#acf35563a56a8a514d485dc8ef74a7400"/>
+<section title="GetValDmc" ref="class_brod_u_i_1_1_helpers_1_1_rgb_to_dmc.html#aac18f77a9b1e7fb778fdc32219e9acb1"/>
+</section>
+<section title="Win32OpenFileDialogAdapter" ref="class_brod_u_i_1_1_helpers_1_1_win32_open_file_dialog_adapter.html">
+<section title="ShowDialog" ref="class_brod_u_i_1_1_helpers_1_1_win32_open_file_dialog_adapter.html#adaa11f586cd02b16c07956358fcd530a"/>
+<section title="FileName" ref="class_brod_u_i_1_1_helpers_1_1_win32_open_file_dialog_adapter.html#a60d8003dc07381587814b5700a3582a3"/>
+<section title="FileNames" ref="class_brod_u_i_1_1_helpers_1_1_win32_open_file_dialog_adapter.html#a13a4f8502b4690bc64d242b7951fd742"/>
+<section title="Filter" ref="class_brod_u_i_1_1_helpers_1_1_win32_open_file_dialog_adapter.html#a958d52ce36ae33a8cf17009ee594d4a3"/>
+<section title="Result" ref="class_brod_u_i_1_1_helpers_1_1_win32_open_file_dialog_adapter.html#ab68611f2a3c753a9f21308d996941539"/>
+</section>
+</section>
+<section title="KMeans" ref="namespace_brod_u_i_1_1_k_means.html">
+<section title="GenericVector" ref="class_brod_u_i_1_1_k_means_1_1_generic_vector.html">
+</section>
+<section title="KMeans" ref="class_brod_u_i_1_1_k_means_1_1_k_means.html">
+<section title="CalculateSumOfSquaredErrors" ref="class_brod_u_i_1_1_k_means_1_1_k_means.html#a74e88c86f45b505ea4934fb042e188e0"/>
+<section title="Run" ref="class_brod_u_i_1_1_k_means_1_1_k_means.html#a8f52af91e6d1ee9e7ab91522af8a60db"/>
+<section title="Centroids" ref="class_brod_u_i_1_1_k_means_1_1_k_means.html#a1ffe44ba19639af241c604ecfa01755c"/>
+<section title="Clusters" ref="class_brod_u_i_1_1_k_means_1_1_k_means.html#a5ddfdcaac8ea66556ef30578dd15c3a3"/>
+<section title="DataSet" ref="class_brod_u_i_1_1_k_means_1_1_k_means.html#a275c3b23b1ce8fbdfaf9f81b909614db"/>
+<section title="Iterations" ref="class_brod_u_i_1_1_k_means_1_1_k_means.html#a42731ed146fbd82c23adfbef5cd1c2ae"/>
+<section title="Sse" ref="class_brod_u_i_1_1_k_means_1_1_k_means.html#af7d4a6f022eb5b5d13308c8aeb9d475e"/>
+</section>
+</section>
+<section title="Models" ref="namespace_brod_u_i_1_1_models.html">
+<section title="ImageManagement" ref="class_brod_u_i_1_1_models_1_1_image_management.html">
+<section title="IOpenFileDialog" ref="interface_brod_u_i_1_1_models_1_1_image_management_1_1_i_open_file_dialog.html">
+<section title="ShowDialog" ref="interface_brod_u_i_1_1_models_1_1_image_management_1_1_i_open_file_dialog.html#a5c9ccc86643e5009559da383fcf795c7"/>
+<section title="FileName" ref="interface_brod_u_i_1_1_models_1_1_image_management_1_1_i_open_file_dialog.html#aeed289f646640277f62b7972fc08d1e5"/>
+<section title="FileNames" ref="interface_brod_u_i_1_1_models_1_1_image_management_1_1_i_open_file_dialog.html#a3545a9fd437828f4a5088809cccf69a5"/>
+<section title="Filter" ref="interface_brod_u_i_1_1_models_1_1_image_management_1_1_i_open_file_dialog.html#ab22807b1ba29b4f7b0cbd7623d6dff9a"/>
+</section>
+<section title="ImageManagement" ref="class_brod_u_i_1_1_models_1_1_image_management.html#a87ae6e3b82e74c94b0eddbaddd664430"/>
+<section title="LoadCurrentImage" ref="class_brod_u_i_1_1_models_1_1_image_management.html#a0e0ee6f2087cc37f532e25ac2831e4b1"/>
+<section title="LoadImageDialog" ref="class_brod_u_i_1_1_models_1_1_image_management.html#abeeea92d259a153cbba89b6dc9a23ceb"/>
+<section title="ResizeImage" ref="class_brod_u_i_1_1_models_1_1_image_management.html#af076aab5dc4a7b909da94dc7c63c70ac"/>
+<section title="UnloadImage" ref="class_brod_u_i_1_1_models_1_1_image_management.html#a5f2d4c403105d4303d4b519754dd63db"/>
+<section title="Image" ref="class_brod_u_i_1_1_models_1_1_image_management.html#ada505410172e47f0b08c2d9f33a07a7f"/>
+<section title="ImageHeight" ref="class_brod_u_i_1_1_models_1_1_image_management.html#a983ea92d14807e82c3c24536340dcd1c"/>
+<section title="ImageWidth" ref="class_brod_u_i_1_1_models_1_1_image_management.html#a178feb4a4995b5fef2603c42ea38e271"/>
+<section title="Ratio" ref="class_brod_u_i_1_1_models_1_1_image_management.html#ad20be6181cb34e10d0d82a6bcb2ee4be"/>
+</section>
+<section title="PdfManagement" ref="class_brod_u_i_1_1_models_1_1_pdf_management.html">
+<section title="PdfManagement" ref="class_brod_u_i_1_1_models_1_1_pdf_management.html#a22cf02dc9772f36b9bd7ac63ea3a1fc2"/>
+<section title="OpenPdfInDefaultApplication" ref="class_brod_u_i_1_1_models_1_1_pdf_management.html#a53d70029c43cbeb2a0de3816fba30853"/>
+</section>
+<section title="Wire" ref="class_brod_u_i_1_1_models_1_1_wire.html">
+<section title="Wire" ref="class_brod_u_i_1_1_models_1_1_wire.html#a41001a32841ee067db9cdbcf1bc8340d"/>
+<section title="Color" ref="class_brod_u_i_1_1_models_1_1_wire.html#a5829b2f2a4d068d6f93c7987c3f32500"/>
+<section title="Name" ref="class_brod_u_i_1_1_models_1_1_wire.html#a41d38ff223e7867d1022b236344d6e40"/>
+<section title="Number" ref="class_brod_u_i_1_1_models_1_1_wire.html#a55d7032d966c6075873cfc26c8b6650c"/>
+<section title="Quantity" ref="class_brod_u_i_1_1_models_1_1_wire.html#aad25d12c01a84187833cf37f80526181"/>
+<section title="Type" ref="class_brod_u_i_1_1_models_1_1_wire.html#a7ca7d6d4334a51611b460810bd24b294"/>
+</section>
+</section>
+<section title="Services" ref="namespace_brod_u_i_1_1_services.html">
+<section title="ApplicationHostService" ref="class_brod_u_i_1_1_services_1_1_application_host_service.html">
+<section title="StartAsync" ref="class_brod_u_i_1_1_services_1_1_application_host_service.html#a8769c8d8c7e8ae107af06fed062289c9"/>
+<section title="StopAsync" ref="class_brod_u_i_1_1_services_1_1_application_host_service.html#aed4ef71c9d9dca0261eabe3527eb192d"/>
+</section>
+<section title="PageService" ref="class_brod_u_i_1_1_services_1_1_page_service.html">
+<section title="PageService" ref="class_brod_u_i_1_1_services_1_1_page_service.html#a8288337c14a5301666d1aa9affda6370"/>
+<section title="GetPage" ref="class_brod_u_i_1_1_services_1_1_page_service.html#ad4a549ae90ebc32a33123401574ec12f"/>
+<section title="GetPage&lt; T &gt;" ref="class_brod_u_i_1_1_services_1_1_page_service.html#a1cf16a82b85425fc121a5b8f0593f8d7"/>
+</section>
+</section>
+<section title="ViewModels" ref="namespace_brod_u_i_1_1_view_models.html">
+<section title="ConvertViewModel" ref="class_brod_u_i_1_1_view_models_1_1_convert_view_model.html">
+<section title="OnNavigatedFrom" ref="class_brod_u_i_1_1_view_models_1_1_convert_view_model.html#aa7b2f21f2388fb6db9612f88866523f3"/>
+<section title="OnNavigatedTo" ref="class_brod_u_i_1_1_view_models_1_1_convert_view_model.html#a6680c6d84aecb9fe2c2f4191077e66d9"/>
+<section title="CurColorModel" ref="class_brod_u_i_1_1_view_models_1_1_convert_view_model.html#a2fec4d0d60aa953c96dc83ae0fa42f5b"/>
+<section title="GlobalGridVisibility" ref="class_brod_u_i_1_1_view_models_1_1_convert_view_model.html#a673a534dc130a51f6f7b39ce9dcf98be"/>
+<section title="ImageHeight" ref="class_brod_u_i_1_1_view_models_1_1_convert_view_model.html#ac3be4558734903c4e49846a7b7a5535f"/>
+<section title="ImageWidth" ref="class_brod_u_i_1_1_view_models_1_1_convert_view_model.html#addbb0c96ee2b4004a1a7b3e99d2c555b"/>
+<section title="IsChooseImageButtonEnabled" ref="class_brod_u_i_1_1_view_models_1_1_convert_view_model.html#a24133a67c96df7bb8c9ac27d99796677"/>
+<section title="IsImageLoaded" ref="class_brod_u_i_1_1_view_models_1_1_convert_view_model.html#a29f5c5a9aa4105e60f0977527d855341"/>
+<section title="KMeansColorNumber" ref="class_brod_u_i_1_1_view_models_1_1_convert_view_model.html#a619dca27b0457a59ea132a65de5be479"/>
+<section title="KMeansIterationNumber" ref="class_brod_u_i_1_1_view_models_1_1_convert_view_model.html#ada41f61be01f3acc6f85f8c4db51b8b2"/>
+<section title="LoadedImage" ref="class_brod_u_i_1_1_view_models_1_1_convert_view_model.html#acebcba6549733e63c5bfa4507f6968c1"/>
+<section title="ProgressConvert" ref="class_brod_u_i_1_1_view_models_1_1_convert_view_model.html#a4ff959aba1fe7f3426b09814e706c249"/>
+<section title="ProgressTb" ref="class_brod_u_i_1_1_view_models_1_1_convert_view_model.html#acea2d90ac2484cffe5b9b9e24858e127"/>
+<section title="ProgressVisibility" ref="class_brod_u_i_1_1_view_models_1_1_convert_view_model.html#a972eaa5ef4f4a216b6153b8fa35db188"/>
+</section>
+<section title="ExportViewModel" ref="class_brod_u_i_1_1_view_models_1_1_export_view_model.html">
+<section title="OnNavigatedFrom" ref="class_brod_u_i_1_1_view_models_1_1_export_view_model.html#a6b399994156dec3628e4ab2d355b8d9b"/>
+<section title="OnNavigatedTo" ref="class_brod_u_i_1_1_view_models_1_1_export_view_model.html#a706b43f1434fa954382b398597fc17d1"/>
+<section title="GridImage" ref="class_brod_u_i_1_1_view_models_1_1_export_view_model.html#a41e9ebdd0ee0cba339652486f5ffb11b"/>
+<section title="LoadedImage" ref="class_brod_u_i_1_1_view_models_1_1_export_view_model.html#a15e0b21e0e8fc6dd266db79adaf06a99"/>
+<section title="WireArray" ref="class_brod_u_i_1_1_view_models_1_1_export_view_model.html#aeb8c4143964a4ab94244dc029071fcd3"/>
+</section>
+<section title="MainWindowViewModel" ref="class_brod_u_i_1_1_view_models_1_1_main_window_view_model.html">
+<section title="MainWindowViewModel" ref="class_brod_u_i_1_1_view_models_1_1_main_window_view_model.html#aa10271e7c27007c5617463890de063db"/>
+</section>
+<section title="SettingsViewModel" ref="class_brod_u_i_1_1_view_models_1_1_settings_view_model.html">
+<section title="OnNavigatedFrom" ref="class_brod_u_i_1_1_view_models_1_1_settings_view_model.html#a951dcff58c59ab53767046efd91eef44"/>
+<section title="OnNavigatedTo" ref="class_brod_u_i_1_1_view_models_1_1_settings_view_model.html#a9248493ff3499f9ef4b7d63cb4e83469"/>
+<section title="CurEmbroiderySize" ref="class_brod_u_i_1_1_view_models_1_1_settings_view_model.html#aa7ab4dca962e61410802a9a26a9f6eac"/>
+<section title="CurLanguage" ref="class_brod_u_i_1_1_view_models_1_1_settings_view_model.html#ad15976bc7d22f30a5949c24bbc943767"/>
+<section title="CurTerminal" ref="class_brod_u_i_1_1_view_models_1_1_settings_view_model.html#aec9a6458f094f4580b925bab06f749f2"/>
+<section title="CurTheme" ref="class_brod_u_i_1_1_view_models_1_1_settings_view_model.html#abfbd5b6b8408344181f407e4141a316a"/>
+</section>
+<section title="TutorialViewModel" ref="class_brod_u_i_1_1_view_models_1_1_tutorial_view_model.html">
+<section title="OnNavigatedFrom" ref="class_brod_u_i_1_1_view_models_1_1_tutorial_view_model.html#a12fb5ac91577f99044065ad7d4bf56ea"/>
+<section title="OnNavigatedTo" ref="class_brod_u_i_1_1_view_models_1_1_tutorial_view_model.html#a51a0668d331c24c5fab6cd1d59f5cf15"/>
+</section>
+</section>
+<section title="Views" ref="namespace_brod_u_i_1_1_views.html">
+<section title="Pages" ref="namespace_brod_u_i_1_1_views_1_1_pages.html">
+<section title="ConvertPage" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_convert_page.html">
+<section title="InitializeComponent" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_convert_page.html#a08efd4b121e9f9be9f1b47e3da6b1c75"/>
+<section title="InitializeComponent" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_convert_page.html#a08efd4b121e9f9be9f1b47e3da6b1c75"/>
+<section title="InitializeComponent" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_convert_page.html#a08efd4b121e9f9be9f1b47e3da6b1c75"/>
+</section>
+<section title="ExportPage" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_export_page.html">
+<section title="ExportPage" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_export_page.html#ae56096b5087f0f20436ac542c5918ec2"/>
+<section title="InitializeComponent" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_export_page.html#a1b01719938899b50c2a6087ca11d9f07"/>
+<section title="InitializeComponent" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_export_page.html#a1b01719938899b50c2a6087ca11d9f07"/>
+<section title="InitializeComponent" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_export_page.html#a1b01719938899b50c2a6087ca11d9f07"/>
+<section title="ViewModel" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_export_page.html#aaa2a7c9e153a1ecb9ffb061648bb6ab3"/>
+</section>
+<section title="SettingsPage" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_settings_page.html">
+<section title="SettingsPage" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_settings_page.html#a991afb1e7467a4ddca81506c9e51a20d"/>
+<section title="InitializeComponent" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_settings_page.html#aa0d45189ba2169f373160ceea69a381e"/>
+<section title="InitializeComponent" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_settings_page.html#aa0d45189ba2169f373160ceea69a381e"/>
+<section title="InitializeComponent" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_settings_page.html#aa0d45189ba2169f373160ceea69a381e"/>
+<section title="ViewModel" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_settings_page.html#a44efbead67f8e357fc46581d339a010f"/>
+</section>
+<section title="TutorialPage" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_tutorial_page.html">
+<section title="TutorialPage" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_tutorial_page.html#a7cef8c0a503b722cb33347f717d04f55"/>
+<section title="InitializeComponent" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_tutorial_page.html#a270e21fc464a2af1246ddad15060b9eb"/>
+<section title="InitializeComponent" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_tutorial_page.html#a270e21fc464a2af1246ddad15060b9eb"/>
+<section title="InitializeComponent" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_tutorial_page.html#a270e21fc464a2af1246ddad15060b9eb"/>
+<section title="ViewModel" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_tutorial_page.html#a9c9d82f17d5b3fad68df8f03bd12481b"/>
+</section>
+</section>
+<section title="Windows" ref="namespace_brod_u_i_1_1_views_1_1_windows.html">
+<section title="MainWindow" ref="class_brod_u_i_1_1_views_1_1_windows_1_1_main_window.html">
+<section title="MainWindow" ref="class_brod_u_i_1_1_views_1_1_windows_1_1_main_window.html#acd07abe06dd58dc43162fc6c0196e6ed"/>
+<section title="InitializeComponent" ref="class_brod_u_i_1_1_views_1_1_windows_1_1_main_window.html#a011cedc0fbfe200eee43d48c89647719"/>
+<section title="InitializeComponent" ref="class_brod_u_i_1_1_views_1_1_windows_1_1_main_window.html#a011cedc0fbfe200eee43d48c89647719"/>
+<section title="InitializeComponent" ref="class_brod_u_i_1_1_views_1_1_windows_1_1_main_window.html#a011cedc0fbfe200eee43d48c89647719"/>
+<section title="OnClosed" ref="class_brod_u_i_1_1_views_1_1_windows_1_1_main_window.html#a5190f3399f09c66a6959511ed1477912"/>
+<section title="ViewModel" ref="class_brod_u_i_1_1_views_1_1_windows_1_1_main_window.html#a0fe245076c2261f58aca577ba52f46f5"/>
+</section>
+</section>
+</section>
+<section title="App" ref="class_brod_u_i_1_1_app.html">
+<section title="InitializeComponent" ref="class_brod_u_i_1_1_app.html#a1af29c446be9337cdab85c86596f7cb0"/>
+<section title="InitializeComponent" ref="class_brod_u_i_1_1_app.html#a1af29c446be9337cdab85c86596f7cb0"/>
+<section title="InitializeComponent" ref="class_brod_u_i_1_1_app.html#a1af29c446be9337cdab85c86596f7cb0"/>
+</section>
+</section>
+</section>
+</section>
+<section title="Classes" ref="annotated.html">
+<section title="Class List" ref="annotated.html">
+<section title="BrodUI" ref="namespace_brod_u_i.html">
+<section title="Assets" ref="namespace_brod_u_i_1_1_assets.html">
+<section title="Languages" ref="namespace_brod_u_i_1_1_assets_1_1_languages.html">
+<section title="Resource" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html">
+</section>
+<section title="Resource_en" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource__en.html">
+</section>
+<section title="Resource_fr" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource__fr.html">
+</section>
+</section>
+</section>
+<section title="Helpers" ref="namespace_brod_u_i_1_1_helpers.html">
+<section title="DmcToString" ref="class_brod_u_i_1_1_helpers_1_1_dmc_to_string.html">
+<section title="DmcToString" ref="class_brod_u_i_1_1_helpers_1_1_dmc_to_string.html#a72dcdd58ad02e9bbe178d09f3b5b6c9c"/>
+<section title="GetNameDmc" ref="class_brod_u_i_1_1_helpers_1_1_dmc_to_string.html#a33c3e31037ac903f43541bb7dc405f26"/>
+</section>
+<section title="HslToDmc" ref="class_brod_u_i_1_1_helpers_1_1_hsl_to_dmc.html">
+<section title="HslToDmc" ref="class_brod_u_i_1_1_helpers_1_1_hsl_to_dmc.html#a9adca742d27e72d081aca7bf1a05aab4"/>
+<section title="getHue" ref="class_brod_u_i_1_1_helpers_1_1_hsl_to_dmc.html#a71c6df7058ab52f354ce8eb89fc2bdf8"/>
+<section title="getLightness" ref="class_brod_u_i_1_1_helpers_1_1_hsl_to_dmc.html#abdc695460013409c3db6b21b620bdfc5"/>
+<section title="getSaturation" ref="class_brod_u_i_1_1_helpers_1_1_hsl_to_dmc.html#a7885e43124c0c3b17f1eaa490c12cc15"/>
+<section title="GetValDmc" ref="class_brod_u_i_1_1_helpers_1_1_hsl_to_dmc.html#a6411bc29b6c0563c287f836588793623"/>
+</section>
+<section title="ImageTo2DArrayBrushes" ref="class_brod_u_i_1_1_helpers_1_1_image_to2_d_array_brushes.html">
+</section>
+<section title="LengthThread" ref="class_brod_u_i_1_1_helpers_1_1_length_thread.html">
+<section title="LengthThread" ref="class_brod_u_i_1_1_helpers_1_1_length_thread.html#af806902ae19489e7757d58d39fbdea45"/>
+<section title="WireSize" ref="class_brod_u_i_1_1_helpers_1_1_length_thread.html#a7ccaf6367bbc82e2e9c5753ef63dfc0e"/>
+<section title="Cross" ref="class_brod_u_i_1_1_helpers_1_1_length_thread.html#ad330e4f10cfc591f3776c35f5acd45c9"/>
+<section title="TotalLength" ref="class_brod_u_i_1_1_helpers_1_1_length_thread.html#acc73631401738f4b42122713ff0edb06"/>
+</section>
+<section title="RgbToDmc" ref="class_brod_u_i_1_1_helpers_1_1_rgb_to_dmc.html">
+<section title="RgbToDmc" ref="class_brod_u_i_1_1_helpers_1_1_rgb_to_dmc.html#a0691a8f16c95cb3fdb2449a5fa0a1b15"/>
+<section title="getBlue" ref="class_brod_u_i_1_1_helpers_1_1_rgb_to_dmc.html#ae1bfb7516d442b3d7f2669ffe657babb"/>
+<section title="getGreen" ref="class_brod_u_i_1_1_helpers_1_1_rgb_to_dmc.html#ad0e462c61c9ee03097a3be299ee85a68"/>
+<section title="getRed" ref="class_brod_u_i_1_1_helpers_1_1_rgb_to_dmc.html#acf35563a56a8a514d485dc8ef74a7400"/>
+<section title="GetValDmc" ref="class_brod_u_i_1_1_helpers_1_1_rgb_to_dmc.html#aac18f77a9b1e7fb778fdc32219e9acb1"/>
+</section>
+<section title="Win32OpenFileDialogAdapter" ref="class_brod_u_i_1_1_helpers_1_1_win32_open_file_dialog_adapter.html">
+<section title="ShowDialog" ref="class_brod_u_i_1_1_helpers_1_1_win32_open_file_dialog_adapter.html#adaa11f586cd02b16c07956358fcd530a"/>
+<section title="FileName" ref="class_brod_u_i_1_1_helpers_1_1_win32_open_file_dialog_adapter.html#a60d8003dc07381587814b5700a3582a3"/>
+<section title="FileNames" ref="class_brod_u_i_1_1_helpers_1_1_win32_open_file_dialog_adapter.html#a13a4f8502b4690bc64d242b7951fd742"/>
+<section title="Filter" ref="class_brod_u_i_1_1_helpers_1_1_win32_open_file_dialog_adapter.html#a958d52ce36ae33a8cf17009ee594d4a3"/>
+<section title="Result" ref="class_brod_u_i_1_1_helpers_1_1_win32_open_file_dialog_adapter.html#ab68611f2a3c753a9f21308d996941539"/>
+</section>
+</section>
+<section title="KMeans" ref="namespace_brod_u_i_1_1_k_means.html">
+<section title="GenericVector" ref="class_brod_u_i_1_1_k_means_1_1_generic_vector.html">
+</section>
+<section title="KMeans" ref="class_brod_u_i_1_1_k_means_1_1_k_means.html">
+<section title="CalculateSumOfSquaredErrors" ref="class_brod_u_i_1_1_k_means_1_1_k_means.html#a74e88c86f45b505ea4934fb042e188e0"/>
+<section title="Run" ref="class_brod_u_i_1_1_k_means_1_1_k_means.html#a8f52af91e6d1ee9e7ab91522af8a60db"/>
+<section title="Centroids" ref="class_brod_u_i_1_1_k_means_1_1_k_means.html#a1ffe44ba19639af241c604ecfa01755c"/>
+<section title="Clusters" ref="class_brod_u_i_1_1_k_means_1_1_k_means.html#a5ddfdcaac8ea66556ef30578dd15c3a3"/>
+<section title="DataSet" ref="class_brod_u_i_1_1_k_means_1_1_k_means.html#a275c3b23b1ce8fbdfaf9f81b909614db"/>
+<section title="Iterations" ref="class_brod_u_i_1_1_k_means_1_1_k_means.html#a42731ed146fbd82c23adfbef5cd1c2ae"/>
+<section title="Sse" ref="class_brod_u_i_1_1_k_means_1_1_k_means.html#af7d4a6f022eb5b5d13308c8aeb9d475e"/>
+</section>
+</section>
+<section title="Models" ref="namespace_brod_u_i_1_1_models.html">
+<section title="ImageManagement" ref="class_brod_u_i_1_1_models_1_1_image_management.html">
+<section title="IOpenFileDialog" ref="interface_brod_u_i_1_1_models_1_1_image_management_1_1_i_open_file_dialog.html">
+<section title="ShowDialog" ref="interface_brod_u_i_1_1_models_1_1_image_management_1_1_i_open_file_dialog.html#a5c9ccc86643e5009559da383fcf795c7"/>
+<section title="FileName" ref="interface_brod_u_i_1_1_models_1_1_image_management_1_1_i_open_file_dialog.html#aeed289f646640277f62b7972fc08d1e5"/>
+<section title="FileNames" ref="interface_brod_u_i_1_1_models_1_1_image_management_1_1_i_open_file_dialog.html#a3545a9fd437828f4a5088809cccf69a5"/>
+<section title="Filter" ref="interface_brod_u_i_1_1_models_1_1_image_management_1_1_i_open_file_dialog.html#ab22807b1ba29b4f7b0cbd7623d6dff9a"/>
+</section>
+<section title="ImageManagement" ref="class_brod_u_i_1_1_models_1_1_image_management.html#a87ae6e3b82e74c94b0eddbaddd664430"/>
+<section title="LoadCurrentImage" ref="class_brod_u_i_1_1_models_1_1_image_management.html#a0e0ee6f2087cc37f532e25ac2831e4b1"/>
+<section title="LoadImageDialog" ref="class_brod_u_i_1_1_models_1_1_image_management.html#abeeea92d259a153cbba89b6dc9a23ceb"/>
+<section title="ResizeImage" ref="class_brod_u_i_1_1_models_1_1_image_management.html#af076aab5dc4a7b909da94dc7c63c70ac"/>
+<section title="UnloadImage" ref="class_brod_u_i_1_1_models_1_1_image_management.html#a5f2d4c403105d4303d4b519754dd63db"/>
+<section title="Image" ref="class_brod_u_i_1_1_models_1_1_image_management.html#ada505410172e47f0b08c2d9f33a07a7f"/>
+<section title="ImageHeight" ref="class_brod_u_i_1_1_models_1_1_image_management.html#a983ea92d14807e82c3c24536340dcd1c"/>
+<section title="ImageWidth" ref="class_brod_u_i_1_1_models_1_1_image_management.html#a178feb4a4995b5fef2603c42ea38e271"/>
+<section title="Ratio" ref="class_brod_u_i_1_1_models_1_1_image_management.html#ad20be6181cb34e10d0d82a6bcb2ee4be"/>
+</section>
+<section title="PdfManagement" ref="class_brod_u_i_1_1_models_1_1_pdf_management.html">
+<section title="PdfManagement" ref="class_brod_u_i_1_1_models_1_1_pdf_management.html#a22cf02dc9772f36b9bd7ac63ea3a1fc2"/>
+<section title="OpenPdfInDefaultApplication" ref="class_brod_u_i_1_1_models_1_1_pdf_management.html#a53d70029c43cbeb2a0de3816fba30853"/>
+</section>
+<section title="Wire" ref="class_brod_u_i_1_1_models_1_1_wire.html">
+<section title="Wire" ref="class_brod_u_i_1_1_models_1_1_wire.html#a41001a32841ee067db9cdbcf1bc8340d"/>
+<section title="Color" ref="class_brod_u_i_1_1_models_1_1_wire.html#a5829b2f2a4d068d6f93c7987c3f32500"/>
+<section title="Name" ref="class_brod_u_i_1_1_models_1_1_wire.html#a41d38ff223e7867d1022b236344d6e40"/>
+<section title="Number" ref="class_brod_u_i_1_1_models_1_1_wire.html#a55d7032d966c6075873cfc26c8b6650c"/>
+<section title="Quantity" ref="class_brod_u_i_1_1_models_1_1_wire.html#aad25d12c01a84187833cf37f80526181"/>
+<section title="Type" ref="class_brod_u_i_1_1_models_1_1_wire.html#a7ca7d6d4334a51611b460810bd24b294"/>
+</section>
+</section>
+<section title="Services" ref="namespace_brod_u_i_1_1_services.html">
+<section title="ApplicationHostService" ref="class_brod_u_i_1_1_services_1_1_application_host_service.html">
+<section title="StartAsync" ref="class_brod_u_i_1_1_services_1_1_application_host_service.html#a8769c8d8c7e8ae107af06fed062289c9"/>
+<section title="StopAsync" ref="class_brod_u_i_1_1_services_1_1_application_host_service.html#aed4ef71c9d9dca0261eabe3527eb192d"/>
+</section>
+<section title="PageService" ref="class_brod_u_i_1_1_services_1_1_page_service.html">
+<section title="PageService" ref="class_brod_u_i_1_1_services_1_1_page_service.html#a8288337c14a5301666d1aa9affda6370"/>
+<section title="GetPage" ref="class_brod_u_i_1_1_services_1_1_page_service.html#ad4a549ae90ebc32a33123401574ec12f"/>
+<section title="GetPage&lt; T &gt;" ref="class_brod_u_i_1_1_services_1_1_page_service.html#a1cf16a82b85425fc121a5b8f0593f8d7"/>
+</section>
+</section>
+<section title="ViewModels" ref="namespace_brod_u_i_1_1_view_models.html">
+<section title="ConvertViewModel" ref="class_brod_u_i_1_1_view_models_1_1_convert_view_model.html">
+<section title="OnNavigatedFrom" ref="class_brod_u_i_1_1_view_models_1_1_convert_view_model.html#aa7b2f21f2388fb6db9612f88866523f3"/>
+<section title="OnNavigatedTo" ref="class_brod_u_i_1_1_view_models_1_1_convert_view_model.html#a6680c6d84aecb9fe2c2f4191077e66d9"/>
+<section title="CurColorModel" ref="class_brod_u_i_1_1_view_models_1_1_convert_view_model.html#a2fec4d0d60aa953c96dc83ae0fa42f5b"/>
+<section title="GlobalGridVisibility" ref="class_brod_u_i_1_1_view_models_1_1_convert_view_model.html#a673a534dc130a51f6f7b39ce9dcf98be"/>
+<section title="ImageHeight" ref="class_brod_u_i_1_1_view_models_1_1_convert_view_model.html#ac3be4558734903c4e49846a7b7a5535f"/>
+<section title="ImageWidth" ref="class_brod_u_i_1_1_view_models_1_1_convert_view_model.html#addbb0c96ee2b4004a1a7b3e99d2c555b"/>
+<section title="IsChooseImageButtonEnabled" ref="class_brod_u_i_1_1_view_models_1_1_convert_view_model.html#a24133a67c96df7bb8c9ac27d99796677"/>
+<section title="IsImageLoaded" ref="class_brod_u_i_1_1_view_models_1_1_convert_view_model.html#a29f5c5a9aa4105e60f0977527d855341"/>
+<section title="KMeansColorNumber" ref="class_brod_u_i_1_1_view_models_1_1_convert_view_model.html#a619dca27b0457a59ea132a65de5be479"/>
+<section title="KMeansIterationNumber" ref="class_brod_u_i_1_1_view_models_1_1_convert_view_model.html#ada41f61be01f3acc6f85f8c4db51b8b2"/>
+<section title="LoadedImage" ref="class_brod_u_i_1_1_view_models_1_1_convert_view_model.html#acebcba6549733e63c5bfa4507f6968c1"/>
+<section title="ProgressConvert" ref="class_brod_u_i_1_1_view_models_1_1_convert_view_model.html#a4ff959aba1fe7f3426b09814e706c249"/>
+<section title="ProgressTb" ref="class_brod_u_i_1_1_view_models_1_1_convert_view_model.html#acea2d90ac2484cffe5b9b9e24858e127"/>
+<section title="ProgressVisibility" ref="class_brod_u_i_1_1_view_models_1_1_convert_view_model.html#a972eaa5ef4f4a216b6153b8fa35db188"/>
+</section>
+<section title="ExportViewModel" ref="class_brod_u_i_1_1_view_models_1_1_export_view_model.html">
+<section title="OnNavigatedFrom" ref="class_brod_u_i_1_1_view_models_1_1_export_view_model.html#a6b399994156dec3628e4ab2d355b8d9b"/>
+<section title="OnNavigatedTo" ref="class_brod_u_i_1_1_view_models_1_1_export_view_model.html#a706b43f1434fa954382b398597fc17d1"/>
+<section title="GridImage" ref="class_brod_u_i_1_1_view_models_1_1_export_view_model.html#a41e9ebdd0ee0cba339652486f5ffb11b"/>
+<section title="LoadedImage" ref="class_brod_u_i_1_1_view_models_1_1_export_view_model.html#a15e0b21e0e8fc6dd266db79adaf06a99"/>
+<section title="WireArray" ref="class_brod_u_i_1_1_view_models_1_1_export_view_model.html#aeb8c4143964a4ab94244dc029071fcd3"/>
+</section>
+<section title="MainWindowViewModel" ref="class_brod_u_i_1_1_view_models_1_1_main_window_view_model.html">
+<section title="MainWindowViewModel" ref="class_brod_u_i_1_1_view_models_1_1_main_window_view_model.html#aa10271e7c27007c5617463890de063db"/>
+</section>
+<section title="SettingsViewModel" ref="class_brod_u_i_1_1_view_models_1_1_settings_view_model.html">
+<section title="OnNavigatedFrom" ref="class_brod_u_i_1_1_view_models_1_1_settings_view_model.html#a951dcff58c59ab53767046efd91eef44"/>
+<section title="OnNavigatedTo" ref="class_brod_u_i_1_1_view_models_1_1_settings_view_model.html#a9248493ff3499f9ef4b7d63cb4e83469"/>
+<section title="CurEmbroiderySize" ref="class_brod_u_i_1_1_view_models_1_1_settings_view_model.html#aa7ab4dca962e61410802a9a26a9f6eac"/>
+<section title="CurLanguage" ref="class_brod_u_i_1_1_view_models_1_1_settings_view_model.html#ad15976bc7d22f30a5949c24bbc943767"/>
+<section title="CurTerminal" ref="class_brod_u_i_1_1_view_models_1_1_settings_view_model.html#aec9a6458f094f4580b925bab06f749f2"/>
+<section title="CurTheme" ref="class_brod_u_i_1_1_view_models_1_1_settings_view_model.html#abfbd5b6b8408344181f407e4141a316a"/>
+</section>
+<section title="TutorialViewModel" ref="class_brod_u_i_1_1_view_models_1_1_tutorial_view_model.html">
+<section title="OnNavigatedFrom" ref="class_brod_u_i_1_1_view_models_1_1_tutorial_view_model.html#a12fb5ac91577f99044065ad7d4bf56ea"/>
+<section title="OnNavigatedTo" ref="class_brod_u_i_1_1_view_models_1_1_tutorial_view_model.html#a51a0668d331c24c5fab6cd1d59f5cf15"/>
+</section>
+</section>
+<section title="Views" ref="namespace_brod_u_i_1_1_views.html">
+<section title="Pages" ref="namespace_brod_u_i_1_1_views_1_1_pages.html">
+<section title="ConvertPage" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_convert_page.html">
+<section title="InitializeComponent" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_convert_page.html#a08efd4b121e9f9be9f1b47e3da6b1c75"/>
+<section title="InitializeComponent" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_convert_page.html#a08efd4b121e9f9be9f1b47e3da6b1c75"/>
+<section title="InitializeComponent" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_convert_page.html#a08efd4b121e9f9be9f1b47e3da6b1c75"/>
+</section>
+<section title="ExportPage" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_export_page.html">
+<section title="ExportPage" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_export_page.html#ae56096b5087f0f20436ac542c5918ec2"/>
+<section title="InitializeComponent" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_export_page.html#a1b01719938899b50c2a6087ca11d9f07"/>
+<section title="InitializeComponent" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_export_page.html#a1b01719938899b50c2a6087ca11d9f07"/>
+<section title="InitializeComponent" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_export_page.html#a1b01719938899b50c2a6087ca11d9f07"/>
+<section title="ViewModel" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_export_page.html#aaa2a7c9e153a1ecb9ffb061648bb6ab3"/>
+</section>
+<section title="SettingsPage" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_settings_page.html">
+<section title="SettingsPage" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_settings_page.html#a991afb1e7467a4ddca81506c9e51a20d"/>
+<section title="InitializeComponent" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_settings_page.html#aa0d45189ba2169f373160ceea69a381e"/>
+<section title="InitializeComponent" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_settings_page.html#aa0d45189ba2169f373160ceea69a381e"/>
+<section title="InitializeComponent" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_settings_page.html#aa0d45189ba2169f373160ceea69a381e"/>
+<section title="ViewModel" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_settings_page.html#a44efbead67f8e357fc46581d339a010f"/>
+</section>
+<section title="TutorialPage" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_tutorial_page.html">
+<section title="TutorialPage" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_tutorial_page.html#a7cef8c0a503b722cb33347f717d04f55"/>
+<section title="InitializeComponent" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_tutorial_page.html#a270e21fc464a2af1246ddad15060b9eb"/>
+<section title="InitializeComponent" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_tutorial_page.html#a270e21fc464a2af1246ddad15060b9eb"/>
+<section title="InitializeComponent" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_tutorial_page.html#a270e21fc464a2af1246ddad15060b9eb"/>
+<section title="ViewModel" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_tutorial_page.html#a9c9d82f17d5b3fad68df8f03bd12481b"/>
+</section>
+</section>
+<section title="Windows" ref="namespace_brod_u_i_1_1_views_1_1_windows.html">
+<section title="MainWindow" ref="class_brod_u_i_1_1_views_1_1_windows_1_1_main_window.html">
+<section title="MainWindow" ref="class_brod_u_i_1_1_views_1_1_windows_1_1_main_window.html#acd07abe06dd58dc43162fc6c0196e6ed"/>
+<section title="InitializeComponent" ref="class_brod_u_i_1_1_views_1_1_windows_1_1_main_window.html#a011cedc0fbfe200eee43d48c89647719"/>
+<section title="InitializeComponent" ref="class_brod_u_i_1_1_views_1_1_windows_1_1_main_window.html#a011cedc0fbfe200eee43d48c89647719"/>
+<section title="InitializeComponent" ref="class_brod_u_i_1_1_views_1_1_windows_1_1_main_window.html#a011cedc0fbfe200eee43d48c89647719"/>
+<section title="OnClosed" ref="class_brod_u_i_1_1_views_1_1_windows_1_1_main_window.html#a5190f3399f09c66a6959511ed1477912"/>
+<section title="ViewModel" ref="class_brod_u_i_1_1_views_1_1_windows_1_1_main_window.html#a0fe245076c2261f58aca577ba52f46f5"/>
+</section>
+</section>
+</section>
+<section title="App" ref="class_brod_u_i_1_1_app.html">
+<section title="InitializeComponent" ref="class_brod_u_i_1_1_app.html#a1af29c446be9337cdab85c86596f7cb0"/>
+<section title="InitializeComponent" ref="class_brod_u_i_1_1_app.html#a1af29c446be9337cdab85c86596f7cb0"/>
+<section title="InitializeComponent" ref="class_brod_u_i_1_1_app.html#a1af29c446be9337cdab85c86596f7cb0"/>
+</section>
+</section>
+</section>
+<section title="Class Index" ref="classes.html"/>
+<section title="Class Hierarchy" ref="hierarchy.html">
+<section title="System.Windows.Application" ref="">
+<section title="BrodUI.App" ref="class_brod_u_i_1_1_app.html"/>
+<section title="BrodUI.App" ref="class_brod_u_i_1_1_app.html"/>
+<section title="BrodUI.App" ref="class_brod_u_i_1_1_app.html"/>
+</section>
+<section title="BrodUI.Helpers.DmcToString" ref="class_brod_u_i_1_1_helpers_1_1_dmc_to_string.html"/>
+<section title="BrodUI.KMeans.GenericVector" ref="class_brod_u_i_1_1_k_means_1_1_generic_vector.html"/>
+<section title="BrodUI.Helpers.HslToDmc" ref="class_brod_u_i_1_1_helpers_1_1_hsl_to_dmc.html"/>
+<section title="System.Windows.Markup.IComponentConnector" ref="">
+<section title="BrodUI.Views.Pages.ConvertPage" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_convert_page.html"/>
+<section title="BrodUI.Views.Pages.ConvertPage" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_convert_page.html"/>
+<section title="BrodUI.Views.Pages.ConvertPage" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_convert_page.html"/>
+<section title="BrodUI.Views.Pages.ExportPage" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_export_page.html"/>
+<section title="BrodUI.Views.Pages.ExportPage" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_export_page.html"/>
+<section title="BrodUI.Views.Pages.ExportPage" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_export_page.html"/>
+<section title="BrodUI.Views.Pages.SettingsPage" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_settings_page.html"/>
+<section title="BrodUI.Views.Pages.SettingsPage" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_settings_page.html"/>
+<section title="BrodUI.Views.Pages.SettingsPage" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_settings_page.html"/>
+<section title="BrodUI.Views.Pages.TutorialPage" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_tutorial_page.html"/>
+<section title="BrodUI.Views.Pages.TutorialPage" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_tutorial_page.html"/>
+<section title="BrodUI.Views.Pages.TutorialPage" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_tutorial_page.html"/>
+<section title="BrodUI.Views.Windows.MainWindow" ref="class_brod_u_i_1_1_views_1_1_windows_1_1_main_window.html"/>
+<section title="BrodUI.Views.Windows.MainWindow" ref="class_brod_u_i_1_1_views_1_1_windows_1_1_main_window.html"/>
+<section title="BrodUI.Views.Windows.MainWindow" ref="class_brod_u_i_1_1_views_1_1_windows_1_1_main_window.html"/>
+</section>
+<section title="IHostedService" ref="">
+<section title="BrodUI.Services.ApplicationHostService" ref="class_brod_u_i_1_1_services_1_1_application_host_service.html"/>
+</section>
+<section title="BrodUI.Models.ImageManagement" ref="class_brod_u_i_1_1_models_1_1_image_management.html"/>
+<section title="BrodUI.Helpers.ImageTo2DArrayBrushes" ref="class_brod_u_i_1_1_helpers_1_1_image_to2_d_array_brushes.html"/>
+<section title="INavigableView" ref="">
+<section title="BrodUI.Views.Pages.ConvertPage" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_convert_page.html"/>
+<section title="BrodUI.Views.Pages.ExportPage" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_export_page.html"/>
+<section title="BrodUI.Views.Pages.SettingsPage" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_settings_page.html"/>
+<section title="BrodUI.Views.Pages.TutorialPage" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_tutorial_page.html"/>
+</section>
+<section title="INavigationAware" ref="">
+<section title="BrodUI.ViewModels.ConvertViewModel" ref="class_brod_u_i_1_1_view_models_1_1_convert_view_model.html"/>
+<section title="BrodUI.ViewModels.ExportViewModel" ref="class_brod_u_i_1_1_view_models_1_1_export_view_model.html"/>
+<section title="BrodUI.ViewModels.SettingsViewModel" ref="class_brod_u_i_1_1_view_models_1_1_settings_view_model.html"/>
+<section title="BrodUI.ViewModels.TutorialViewModel" ref="class_brod_u_i_1_1_view_models_1_1_tutorial_view_model.html"/>
+</section>
+<section title="INavigationWindow" ref="">
+<section title="BrodUI.Views.Windows.MainWindow" ref="class_brod_u_i_1_1_views_1_1_windows_1_1_main_window.html"/>
+</section>
+<section title="BrodUI.Models.ImageManagement.IOpenFileDialog" ref="interface_brod_u_i_1_1_models_1_1_image_management_1_1_i_open_file_dialog.html"/>
+<section title="IOpenFileDialog" ref="">
+<section title="BrodUI.Helpers.Win32OpenFileDialogAdapter" ref="class_brod_u_i_1_1_helpers_1_1_win32_open_file_dialog_adapter.html"/>
+</section>
+<section title="IPageService" ref="">
+<section title="BrodUI.Services.PageService" ref="class_brod_u_i_1_1_services_1_1_page_service.html"/>
+</section>
+<section title="BrodUI.KMeans.KMeans" ref="class_brod_u_i_1_1_k_means_1_1_k_means.html"/>
+<section title="BrodUI.Helpers.LengthThread" ref="class_brod_u_i_1_1_helpers_1_1_length_thread.html"/>
+<section title="ObservableObject" ref="">
+<section title="BrodUI.ViewModels.ConvertViewModel" ref="class_brod_u_i_1_1_view_models_1_1_convert_view_model.html"/>
+<section title="BrodUI.ViewModels.ExportViewModel" ref="class_brod_u_i_1_1_view_models_1_1_export_view_model.html"/>
+<section title="BrodUI.ViewModels.MainWindowViewModel" ref="class_brod_u_i_1_1_view_models_1_1_main_window_view_model.html"/>
+<section title="BrodUI.ViewModels.SettingsViewModel" ref="class_brod_u_i_1_1_view_models_1_1_settings_view_model.html"/>
+<section title="BrodUI.ViewModels.TutorialViewModel" ref="class_brod_u_i_1_1_view_models_1_1_tutorial_view_model.html"/>
+</section>
+<section title="BrodUI.Models.PdfManagement" ref="class_brod_u_i_1_1_models_1_1_pdf_management.html"/>
+<section title="BrodUI.Assets.Languages.Resource" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html"/>
+<section title="BrodUI.Assets.Languages.Resource_en" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource__en.html"/>
+<section title="BrodUI.Assets.Languages.Resource_fr" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource__fr.html"/>
+<section title="BrodUI.Helpers.RgbToDmc" ref="class_brod_u_i_1_1_helpers_1_1_rgb_to_dmc.html"/>
+<section title="Wpf.Ui.Controls.UiPage" ref="">
+<section title="BrodUI.Views.Pages.ConvertPage" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_convert_page.html"/>
+<section title="BrodUI.Views.Pages.ConvertPage" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_convert_page.html"/>
+<section title="BrodUI.Views.Pages.ConvertPage" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_convert_page.html"/>
+<section title="BrodUI.Views.Pages.ExportPage" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_export_page.html"/>
+<section title="BrodUI.Views.Pages.ExportPage" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_export_page.html"/>
+<section title="BrodUI.Views.Pages.ExportPage" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_export_page.html"/>
+<section title="BrodUI.Views.Pages.SettingsPage" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_settings_page.html"/>
+<section title="BrodUI.Views.Pages.SettingsPage" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_settings_page.html"/>
+<section title="BrodUI.Views.Pages.SettingsPage" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_settings_page.html"/>
+<section title="BrodUI.Views.Pages.TutorialPage" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_tutorial_page.html"/>
+<section title="BrodUI.Views.Pages.TutorialPage" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_tutorial_page.html"/>
+<section title="BrodUI.Views.Pages.TutorialPage" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_tutorial_page.html"/>
+</section>
+<section title="Wpf.Ui.Controls.UiWindow" ref="">
+<section title="BrodUI.Views.Windows.MainWindow" ref="class_brod_u_i_1_1_views_1_1_windows_1_1_main_window.html"/>
+<section title="BrodUI.Views.Windows.MainWindow" ref="class_brod_u_i_1_1_views_1_1_windows_1_1_main_window.html"/>
+<section title="BrodUI.Views.Windows.MainWindow" ref="class_brod_u_i_1_1_views_1_1_windows_1_1_main_window.html"/>
+</section>
+<section title="BrodUI.Models.Wire" ref="class_brod_u_i_1_1_models_1_1_wire.html"/>
+</section>
+<section title="Class Members" ref="functions.html">
+<section title="All" ref="functions.html">
+<section title="c" ref="functions.html"/>
+<section title="d" ref="functions_d.html"/>
+<section title="e" ref="functions_e.html"/>
+<section title="f" ref="functions_f.html"/>
+<section title="g" ref="functions_g.html"/>
+<section title="h" ref="functions_h.html"/>
+<section title="i" ref="functions_i.html"/>
+<section title="k" ref="functions_k.html"/>
+<section title="l" ref="functions_l.html"/>
+<section title="m" ref="functions_m.html"/>
+<section title="n" ref="functions_n.html"/>
+<section title="o" ref="functions_o.html"/>
+<section title="p" ref="functions_p.html"/>
+<section title="q" ref="functions_q.html"/>
+<section title="r" ref="functions_r.html"/>
+<section title="s" ref="functions_s.html"/>
+<section title="t" ref="functions_t.html"/>
+<section title="u" ref="functions_u.html"/>
+<section title="v" ref="functions_v.html"/>
+<section title="w" ref="functions_w.html"/>
+</section>
+<section title="Functions" ref="functions_func.html"/>
+<section title="Variables" ref="functions_vars.html"/>
+<section title="Properties" ref="functions_prop.html"/>
+</section>
+</section>
+</section>
+</toc>
+<keywords>
+<keyword name="BrodUI::App" id="BrodUI::App_" ref="class_brod_u_i_1_1_app.html"/>
+<keyword name="BrodUI::Services::ApplicationHostService" id="BrodUI::Services::ApplicationHostService_" ref="class_brod_u_i_1_1_services_1_1_application_host_service.html"/>
+<keyword name="BrodUI::Views::Pages::ConvertPage" id="BrodUI::Views::Pages::ConvertPage_" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_convert_page.html"/>
+<keyword name="BrodUI::ViewModels::ConvertViewModel" id="BrodUI::ViewModels::ConvertViewModel_" ref="class_brod_u_i_1_1_view_models_1_1_convert_view_model.html"/>
+<keyword name="BrodUI::Helpers::DmcToString" id="BrodUI::Helpers::DmcToString_" ref="class_brod_u_i_1_1_helpers_1_1_dmc_to_string.html"/>
+<keyword name="BrodUI::Views::Pages::ExportPage" id="BrodUI::Views::Pages::ExportPage_" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_export_page.html"/>
+<keyword name="BrodUI::ViewModels::ExportViewModel" id="BrodUI::ViewModels::ExportViewModel_" ref="class_brod_u_i_1_1_view_models_1_1_export_view_model.html"/>
+<keyword name="BrodUI::KMeans::GenericVector" id="BrodUI::KMeans::GenericVector_" ref="class_brod_u_i_1_1_k_means_1_1_generic_vector.html"/>
+<keyword name="BrodUI::Helpers::HslToDmc" id="BrodUI::Helpers::HslToDmc_" ref="class_brod_u_i_1_1_helpers_1_1_hsl_to_dmc.html"/>
+<keyword name="BrodUI::Models::ImageManagement" id="BrodUI::Models::ImageManagement_" ref="class_brod_u_i_1_1_models_1_1_image_management.html"/>
+<keyword name="BrodUI::Helpers::ImageTo2DArrayBrushes" id="BrodUI::Helpers::ImageTo2DArrayBrushes_" ref="class_brod_u_i_1_1_helpers_1_1_image_to2_d_array_brushes.html"/>
+<keyword name="BrodUI::Models::ImageManagement::IOpenFileDialog" id="BrodUI::Models::ImageManagement::IOpenFileDialog_" ref="interface_brod_u_i_1_1_models_1_1_image_management_1_1_i_open_file_dialog.html"/>
+<keyword name="BrodUI::KMeans::KMeans" id="BrodUI::KMeans::KMeans_" ref="class_brod_u_i_1_1_k_means_1_1_k_means.html"/>
+<keyword name="BrodUI::Helpers::LengthThread" id="BrodUI::Helpers::LengthThread_" ref="class_brod_u_i_1_1_helpers_1_1_length_thread.html"/>
+<keyword name="BrodUI::Views::Windows::MainWindow" id="BrodUI::Views::Windows::MainWindow_" ref="class_brod_u_i_1_1_views_1_1_windows_1_1_main_window.html"/>
+<keyword name="BrodUI::ViewModels::MainWindowViewModel" id="BrodUI::ViewModels::MainWindowViewModel_" ref="class_brod_u_i_1_1_view_models_1_1_main_window_view_model.html"/>
+<keyword name="BrodUI::Services::PageService" id="BrodUI::Services::PageService_" ref="class_brod_u_i_1_1_services_1_1_page_service.html"/>
+<keyword name="BrodUI::Models::PdfManagement" id="BrodUI::Models::PdfManagement_" ref="class_brod_u_i_1_1_models_1_1_pdf_management.html"/>
+<keyword name="BrodUI::Assets::Languages::Resource" id="BrodUI::Assets::Languages::Resource_" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html"/>
+<keyword name="BrodUI::Assets::Languages::Resource_en" id="BrodUI::Assets::Languages::Resource_en_" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource__en.html"/>
+<keyword name="BrodUI::Assets::Languages::Resource_fr" id="BrodUI::Assets::Languages::Resource_fr_" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource__fr.html"/>
+<keyword name="BrodUI::Helpers::RgbToDmc" id="BrodUI::Helpers::RgbToDmc_" ref="class_brod_u_i_1_1_helpers_1_1_rgb_to_dmc.html"/>
+<keyword name="BrodUI::Views::Pages::SettingsPage" id="BrodUI::Views::Pages::SettingsPage_" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_settings_page.html"/>
+<keyword name="BrodUI::ViewModels::SettingsViewModel" id="BrodUI::ViewModels::SettingsViewModel_" ref="class_brod_u_i_1_1_view_models_1_1_settings_view_model.html"/>
+<keyword name="BrodUI::Views::Pages::TutorialPage" id="BrodUI::Views::Pages::TutorialPage_" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_tutorial_page.html"/>
+<keyword name="BrodUI::ViewModels::TutorialViewModel" id="BrodUI::ViewModels::TutorialViewModel_" ref="class_brod_u_i_1_1_view_models_1_1_tutorial_view_model.html"/>
+<keyword name="BrodUI::Helpers::Win32OpenFileDialogAdapter" id="BrodUI::Helpers::Win32OpenFileDialogAdapter_" ref="class_brod_u_i_1_1_helpers_1_1_win32_open_file_dialog_adapter.html"/>
+<keyword name="BrodUI::Models::Wire" id="BrodUI::Models::Wire_" ref="class_brod_u_i_1_1_models_1_1_wire.html"/>
+<keyword name="BrodUI" id="BrodUI_" ref="namespace_brod_u_i.html"/>
+<keyword name="BrodUI::Assets" id="BrodUI::Assets_" ref="namespace_brod_u_i_1_1_assets.html"/>
+<keyword name="BrodUI::Assets::Languages" id="BrodUI::Assets::Languages_" ref="namespace_brod_u_i_1_1_assets_1_1_languages.html"/>
+<keyword name="BrodUI::Helpers" id="BrodUI::Helpers_" ref="namespace_brod_u_i_1_1_helpers.html"/>
+<keyword name="BrodUI::KMeans" id="BrodUI::KMeans_" ref="namespace_brod_u_i_1_1_k_means.html"/>
+<keyword name="BrodUI::Models" id="BrodUI::Models_" ref="namespace_brod_u_i_1_1_models.html"/>
+<keyword name="BrodUI::Services" id="BrodUI::Services_" ref="namespace_brod_u_i_1_1_services.html"/>
+<keyword name="BrodUI::ViewModels" id="BrodUI::ViewModels_" ref="namespace_brod_u_i_1_1_view_models.html"/>
+<keyword name="BrodUI::Views" id="BrodUI::Views_" ref="namespace_brod_u_i_1_1_views.html"/>
+<keyword name="BrodUI::Views::Pages" id="BrodUI::Views::Pages_" ref="namespace_brod_u_i_1_1_views_1_1_pages.html"/>
+<keyword name="BrodUI::Views::Windows" id="BrodUI::Views::Windows_" ref="namespace_brod_u_i_1_1_views_1_1_windows.html"/>
+<keyword name="CalculateSumOfSquaredErrors()" id="BrodUI::KMeans::KMeans::CalculateSumOfSquaredErrors_a74e88c86f45b505ea4934fb042e188e0" ref="class_brod_u_i_1_1_k_means_1_1_k_means.html#a74e88c86f45b505ea4934fb042e188e0"/>
+<keyword name="Centroids" id="BrodUI::KMeans::KMeans::Centroids_a1ffe44ba19639af241c604ecfa01755c" ref="class_brod_u_i_1_1_k_means_1_1_k_means.html#a1ffe44ba19639af241c604ecfa01755c"/>
+<keyword name="Clusters" id="BrodUI::KMeans::KMeans::Clusters_a5ddfdcaac8ea66556ef30578dd15c3a3" ref="class_brod_u_i_1_1_k_means_1_1_k_means.html#a5ddfdcaac8ea66556ef30578dd15c3a3"/>
+<keyword name="Color" id="BrodUI::Models::Wire::Color_a5829b2f2a4d068d6f93c7987c3f32500" ref="class_brod_u_i_1_1_models_1_1_wire.html#a5829b2f2a4d068d6f93c7987c3f32500"/>
+<keyword name="Convert_LabelButtonConvert" id="BrodUI::Assets::Languages::Resource::Convert_LabelButtonConvert_a16ae7ab9522194b2f912cfbce047d6aa" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#a16ae7ab9522194b2f912cfbce047d6aa"/>
+<keyword name="Convert_LabelButtonDeleteImage" id="BrodUI::Assets::Languages::Resource::Convert_LabelButtonDeleteImage_a736836397a282c2aa7ff2bc3b8eacca5" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#a736836397a282c2aa7ff2bc3b8eacca5"/>
+<keyword name="Convert_LabelButtonLoadImage" id="BrodUI::Assets::Languages::Resource::Convert_LabelButtonLoadImage_acd6fe24e300234ebb818d092c0443da2" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#acd6fe24e300234ebb818d092c0443da2"/>
+<keyword name="Convert_LabelImageHeight" id="BrodUI::Assets::Languages::Resource::Convert_LabelImageHeight_aa7fbf7f322a1ff4ea40b5acb66912552" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#aa7fbf7f322a1ff4ea40b5acb66912552"/>
+<keyword name="Convert_LabelImageWidth" id="BrodUI::Assets::Languages::Resource::Convert_LabelImageWidth_a229f421269e2996d8e2608cd5f6a4767" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#a229f421269e2996d8e2608cd5f6a4767"/>
+<keyword name="Convert_LabelNbColors" id="BrodUI::Assets::Languages::Resource::Convert_LabelNbColors_abfc6f3fd98b8caceff11cc875d88284d" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#abfc6f3fd98b8caceff11cc875d88284d"/>
+<keyword name="Convert_LabelNbIteration" id="BrodUI::Assets::Languages::Resource::Convert_LabelNbIteration_a2078d420687b516375b54464b5f4b498" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#a2078d420687b516375b54464b5f4b498"/>
+<keyword name="Convert_MinimumHeight" id="BrodUI::Assets::Languages::Resource::Convert_MinimumHeight_a1ba4f893d98c77320201d9653640a189" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#a1ba4f893d98c77320201d9653640a189"/>
+<keyword name="Convert_MinimumHeight_WithValue" id="BrodUI::Assets::Languages::Resource::Convert_MinimumHeight_WithValue_a50b56152c76c928dfd270700e2a6e2a2" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#a50b56152c76c928dfd270700e2a6e2a2"/>
+<keyword name="Convert_MinimumWidth" id="BrodUI::Assets::Languages::Resource::Convert_MinimumWidth_ac1e56f98b5eb933aa46e3d4adf02920d" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#ac1e56f98b5eb933aa46e3d4adf02920d"/>
+<keyword name="Convert_MinimumWidth_WithValue" id="BrodUI::Assets::Languages::Resource::Convert_MinimumWidth_WithValue_a50e71a978c5d54f99fd78b2280f47019" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#a50e71a978c5d54f99fd78b2280f47019"/>
+<keyword name="Convert_ToolTipConvertButton" id="BrodUI::Assets::Languages::Resource::Convert_ToolTipConvertButton_a9df72232fd7742581f7abfe9fea57167" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#a9df72232fd7742581f7abfe9fea57167"/>
+<keyword name="Convert_ToolTipImageHeight" id="BrodUI::Assets::Languages::Resource::Convert_ToolTipImageHeight_a93ae98530bfe2da62e75da2cfaa54c01" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#a93ae98530bfe2da62e75da2cfaa54c01"/>
+<keyword name="Convert_ToolTipImageWidth" id="BrodUI::Assets::Languages::Resource::Convert_ToolTipImageWidth_a1203c46933c97ec11650be4d10b2cdcf" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#a1203c46933c97ec11650be4d10b2cdcf"/>
+<keyword name="Convert_ToolTipLoadImage" id="BrodUI::Assets::Languages::Resource::Convert_ToolTipLoadImage_ab991f610512138ab39bbacf0fa0fd335" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#ab991f610512138ab39bbacf0fa0fd335"/>
+<keyword name="Convert_ToolTipModel" id="BrodUI::Assets::Languages::Resource::Convert_ToolTipModel_a316cc877b9a8cff85eb20e9fd280fbb5" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#a316cc877b9a8cff85eb20e9fd280fbb5"/>
+<keyword name="Convert_ToolTipNbColor" id="BrodUI::Assets::Languages::Resource::Convert_ToolTipNbColor_a6e54e435893d8dbba2f8595a01fb9aef" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#a6e54e435893d8dbba2f8595a01fb9aef"/>
+<keyword name="Convert_ToolTipNbIterations" id="BrodUI::Assets::Languages::Resource::Convert_ToolTipNbIterations_ad320e90f6295f82d86b6c73432e231fc" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#ad320e90f6295f82d86b6c73432e231fc"/>
+<keyword name="Convert_ToolTipRemoveImage" id="BrodUI::Assets::Languages::Resource::Convert_ToolTipRemoveImage_a1b8a24e39c7539df805719474ba6f9dd" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#a1b8a24e39c7539df805719474ba6f9dd"/>
+<keyword name="ConvertLabelModel" id="BrodUI::Assets::Languages::Resource::ConvertLabelModel_abfdae6c03520a0810af6dde6caaa7b64" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#abfdae6c03520a0810af6dde6caaa7b64"/>
+<keyword name="ConvertTo2dArray(BitmapSource bitmapSource)" id="BrodUI::Helpers::ImageTo2DArrayBrushes::ConvertTo2dArray_affd0a131f7ca4e93fc2564712198252c" ref="class_brod_u_i_1_1_helpers_1_1_image_to2_d_array_brushes.html#affd0a131f7ca4e93fc2564712198252c"/>
+<keyword name="ConvertToBitmapImage(Brush[,] brushes)" id="BrodUI::Helpers::ImageTo2DArrayBrushes::ConvertToBitmapImage_ae1dec38698693f346426c35855a383b0" ref="class_brod_u_i_1_1_helpers_1_1_image_to2_d_array_brushes.html#ae1dec38698693f346426c35855a383b0"/>
+<keyword name="Cross" id="BrodUI::Helpers::LengthThread::Cross_ad330e4f10cfc591f3776c35f5acd45c9" ref="class_brod_u_i_1_1_helpers_1_1_length_thread.html#ad330e4f10cfc591f3776c35f5acd45c9"/>
+<keyword name="Culture" id="BrodUI::Assets::Languages::Resource::Culture_a26a4865347533a978d225c6fc8d9aaa1" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#a26a4865347533a978d225c6fc8d9aaa1"/>
+<keyword name="Culture" id="BrodUI::Assets::Languages::Resource_en::Culture_a058e15f763f0eef8de422ad65b0a5418" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource__en.html#a058e15f763f0eef8de422ad65b0a5418"/>
+<keyword name="Culture" id="BrodUI::Assets::Languages::Resource_fr::Culture_aeb759ee9bb5299c04bb77d5e851ab8ee" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource__fr.html#aeb759ee9bb5299c04bb77d5e851ab8ee"/>
+<keyword name="CurColorModel" id="BrodUI::ViewModels::ConvertViewModel::CurColorModel_a2fec4d0d60aa953c96dc83ae0fa42f5b" ref="class_brod_u_i_1_1_view_models_1_1_convert_view_model.html#a2fec4d0d60aa953c96dc83ae0fa42f5b"/>
+<keyword name="CurEmbroiderySize" id="BrodUI::ViewModels::SettingsViewModel::CurEmbroiderySize_aa7ab4dca962e61410802a9a26a9f6eac" ref="class_brod_u_i_1_1_view_models_1_1_settings_view_model.html#aa7ab4dca962e61410802a9a26a9f6eac"/>
+<keyword name="CurLanguage" id="BrodUI::ViewModels::SettingsViewModel::CurLanguage_ad15976bc7d22f30a5949c24bbc943767" ref="class_brod_u_i_1_1_view_models_1_1_settings_view_model.html#ad15976bc7d22f30a5949c24bbc943767"/>
+<keyword name="CurTerminal" id="BrodUI::ViewModels::SettingsViewModel::CurTerminal_aec9a6458f094f4580b925bab06f749f2" ref="class_brod_u_i_1_1_view_models_1_1_settings_view_model.html#aec9a6458f094f4580b925bab06f749f2"/>
+<keyword name="CurTheme" id="BrodUI::ViewModels::SettingsViewModel::CurTheme_abfbd5b6b8408344181f407e4141a316a" ref="class_brod_u_i_1_1_view_models_1_1_settings_view_model.html#abfbd5b6b8408344181f407e4141a316a"/>
+<keyword name="DataSet" id="BrodUI::KMeans::KMeans::DataSet_a275c3b23b1ce8fbdfaf9f81b909614db" ref="class_brod_u_i_1_1_k_means_1_1_k_means.html#a275c3b23b1ce8fbdfaf9f81b909614db"/>
+<keyword name="DmcToString()" id="BrodUI::Helpers::DmcToString::DmcToString_a72dcdd58ad02e9bbe178d09f3b5b6c9c" ref="class_brod_u_i_1_1_helpers_1_1_dmc_to_string.html#a72dcdd58ad02e9bbe178d09f3b5b6c9c"/>
+<keyword name="Export_ColorLabel" id="BrodUI::Assets::Languages::Resource::Export_ColorLabel_a6e76f221b14153a91f2729c9820e2adb" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#a6e76f221b14153a91f2729c9820e2adb"/>
+<keyword name="Export_ConvertToCrossStitchEmbroidery" id="BrodUI::Assets::Languages::Resource::Export_ConvertToCrossStitchEmbroidery_aa2ab3cf4fcfa21f36f907fb038c7d4da" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#aa2ab3cf4fcfa21f36f907fb038c7d4da"/>
+<keyword name="Export_ConvertToCrossStitchEmbroideryDone" id="BrodUI::Assets::Languages::Resource::Export_ConvertToCrossStitchEmbroideryDone_af4c8d8c17c2af7fed46f2c0a3a491f27" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#af4c8d8c17c2af7fed46f2c0a3a491f27"/>
+<keyword name="Export_ExportToPdfButton" id="BrodUI::Assets::Languages::Resource::Export_ExportToPdfButton_a48b9067c22e112db63e449538e0dae69" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#a48b9067c22e112db63e449538e0dae69"/>
+<keyword name="Export_NameLabel" id="BrodUI::Assets::Languages::Resource::Export_NameLabel_a8d32d2185a2d98a2af1b6134420b792d" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#a8d32d2185a2d98a2af1b6134420b792d"/>
+<keyword name="Export_NoImageMessage" id="BrodUI::Assets::Languages::Resource::Export_NoImageMessage_a5e4fcb31f3595f7470db87ab4f5934af" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#a5e4fcb31f3595f7470db87ab4f5934af"/>
+<keyword name="Export_NumberLabel" id="BrodUI::Assets::Languages::Resource::Export_NumberLabel_a6ea1ee20795a03d76ee3a4442d66b77a" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#a6ea1ee20795a03d76ee3a4442d66b77a"/>
+<keyword name="Export_QuantityLabel" id="BrodUI::Assets::Languages::Resource::Export_QuantityLabel_a9fbcfff7bb4676ade3a996000d13cc39" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#a9fbcfff7bb4676ade3a996000d13cc39"/>
+<keyword name="Export_ToolTipConvertButton" id="BrodUI::Assets::Languages::Resource::Export_ToolTipConvertButton_a12a1bdd71b2c3803f53ba42a8928c54c" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#a12a1bdd71b2c3803f53ba42a8928c54c"/>
+<keyword name="Export_TypeLabel" id="BrodUI::Assets::Languages::Resource::Export_TypeLabel_ac553c45885f4d0a252039f43bf0db6c9" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#ac553c45885f4d0a252039f43bf0db6c9"/>
+<keyword name="ExportPage(ViewModels.ExportViewModel viewModel)" id="BrodUI::Views::Pages::ExportPage::ExportPage_ae56096b5087f0f20436ac542c5918ec2" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_export_page.html#ae56096b5087f0f20436ac542c5918ec2"/>
+<keyword name="FileName" id="BrodUI::Helpers::Win32OpenFileDialogAdapter::FileName_a60d8003dc07381587814b5700a3582a3" ref="class_brod_u_i_1_1_helpers_1_1_win32_open_file_dialog_adapter.html#a60d8003dc07381587814b5700a3582a3"/>
+<keyword name="FileName" id="BrodUI::Models::ImageManagement::IOpenFileDialog::FileName_aeed289f646640277f62b7972fc08d1e5" ref="interface_brod_u_i_1_1_models_1_1_image_management_1_1_i_open_file_dialog.html#aeed289f646640277f62b7972fc08d1e5"/>
+<keyword name="FileNames" id="BrodUI::Helpers::Win32OpenFileDialogAdapter::FileNames_a13a4f8502b4690bc64d242b7951fd742" ref="class_brod_u_i_1_1_helpers_1_1_win32_open_file_dialog_adapter.html#a13a4f8502b4690bc64d242b7951fd742"/>
+<keyword name="FileNames" id="BrodUI::Models::ImageManagement::IOpenFileDialog::FileNames_a3545a9fd437828f4a5088809cccf69a5" ref="interface_brod_u_i_1_1_models_1_1_image_management_1_1_i_open_file_dialog.html#a3545a9fd437828f4a5088809cccf69a5"/>
+<keyword name="Filter" id="BrodUI::Helpers::Win32OpenFileDialogAdapter::Filter_a958d52ce36ae33a8cf17009ee594d4a3" ref="class_brod_u_i_1_1_helpers_1_1_win32_open_file_dialog_adapter.html#a958d52ce36ae33a8cf17009ee594d4a3"/>
+<keyword name="Filter" id="BrodUI::Models::ImageManagement::IOpenFileDialog::Filter_ab22807b1ba29b4f7b0cbd7623d6dff9a" ref="interface_brod_u_i_1_1_models_1_1_image_management_1_1_i_open_file_dialog.html#ab22807b1ba29b4f7b0cbd7623d6dff9a"/>
+<keyword name="getBlue(int d)" id="BrodUI::Helpers::RgbToDmc::getBlue_ae1bfb7516d442b3d7f2669ffe657babb" ref="class_brod_u_i_1_1_helpers_1_1_rgb_to_dmc.html#ae1bfb7516d442b3d7f2669ffe657babb"/>
+<keyword name="getGreen(int d)" id="BrodUI::Helpers::RgbToDmc::getGreen_ad0e462c61c9ee03097a3be299ee85a68" ref="class_brod_u_i_1_1_helpers_1_1_rgb_to_dmc.html#ad0e462c61c9ee03097a3be299ee85a68"/>
+<keyword name="getHue(int d)" id="BrodUI::Helpers::HslToDmc::getHue_a71c6df7058ab52f354ce8eb89fc2bdf8" ref="class_brod_u_i_1_1_helpers_1_1_hsl_to_dmc.html#a71c6df7058ab52f354ce8eb89fc2bdf8"/>
+<keyword name="getLightness(int d)" id="BrodUI::Helpers::HslToDmc::getLightness_abdc695460013409c3db6b21b620bdfc5" ref="class_brod_u_i_1_1_helpers_1_1_hsl_to_dmc.html#abdc695460013409c3db6b21b620bdfc5"/>
+<keyword name="GetNameDmc(int dmc)" id="BrodUI::Helpers::DmcToString::GetNameDmc_a33c3e31037ac903f43541bb7dc405f26" ref="class_brod_u_i_1_1_helpers_1_1_dmc_to_string.html#a33c3e31037ac903f43541bb7dc405f26"/>
+<keyword name="GetPage(Type pageType)" id="BrodUI::Services::PageService::GetPage_ad4a549ae90ebc32a33123401574ec12f" ref="class_brod_u_i_1_1_services_1_1_page_service.html#ad4a549ae90ebc32a33123401574ec12f"/>
+<keyword name="GetPage&lt; T &gt;()" id="BrodUI::Services::PageService::GetPage&lt; T &gt;_a1cf16a82b85425fc121a5b8f0593f8d7" ref="class_brod_u_i_1_1_services_1_1_page_service.html#a1cf16a82b85425fc121a5b8f0593f8d7"/>
+<keyword name="getRed(int d)" id="BrodUI::Helpers::RgbToDmc::getRed_acf35563a56a8a514d485dc8ef74a7400" ref="class_brod_u_i_1_1_helpers_1_1_rgb_to_dmc.html#acf35563a56a8a514d485dc8ef74a7400"/>
+<keyword name="getSaturation(int d)" id="BrodUI::Helpers::HslToDmc::getSaturation_a7885e43124c0c3b17f1eaa490c12cc15" ref="class_brod_u_i_1_1_helpers_1_1_hsl_to_dmc.html#a7885e43124c0c3b17f1eaa490c12cc15"/>
+<keyword name="GetService&lt; T &gt;()" id="BrodUI::App::GetService&lt; T &gt;_ac46eac545d4504f31704e80e32756153" ref="class_brod_u_i_1_1_app.html#ac46eac545d4504f31704e80e32756153"/>
+<keyword name="GetValDmc(int h, int s, int l)" id="BrodUI::Helpers::HslToDmc::GetValDmc_a6411bc29b6c0563c287f836588793623" ref="class_brod_u_i_1_1_helpers_1_1_hsl_to_dmc.html#a6411bc29b6c0563c287f836588793623"/>
+<keyword name="GetValDmc(int r, int g, int b)" id="BrodUI::Helpers::RgbToDmc::GetValDmc_aac18f77a9b1e7fb778fdc32219e9acb1" ref="class_brod_u_i_1_1_helpers_1_1_rgb_to_dmc.html#aac18f77a9b1e7fb778fdc32219e9acb1"/>
+<keyword name="GlobalGridVisibility" id="BrodUI::ViewModels::ConvertViewModel::GlobalGridVisibility_a673a534dc130a51f6f7b39ce9dcf98be" ref="class_brod_u_i_1_1_view_models_1_1_convert_view_model.html#a673a534dc130a51f6f7b39ce9dcf98be"/>
+<keyword name="GoConvertPage()" id="BrodUI::ViewModels::TutorialViewModel::GoConvertPage_a99d603c4d1ae41143fec5f52fe05810a" ref="class_brod_u_i_1_1_view_models_1_1_tutorial_view_model.html#a99d603c4d1ae41143fec5f52fe05810a"/>
+<keyword name="GridImage" id="BrodUI::ViewModels::ExportViewModel::GridImage_a41e9ebdd0ee0cba339652486f5ffb11b" ref="class_brod_u_i_1_1_view_models_1_1_export_view_model.html#a41e9ebdd0ee0cba339652486f5ffb11b"/>
+<keyword name="HslToDmc()" id="BrodUI::Helpers::HslToDmc::HslToDmc_a9adca742d27e72d081aca7bf1a05aab4" ref="class_brod_u_i_1_1_helpers_1_1_hsl_to_dmc.html#a9adca742d27e72d081aca7bf1a05aab4"/>
+<keyword name="Image" id="BrodUI::Models::ImageManagement::Image_ada505410172e47f0b08c2d9f33a07a7f" ref="class_brod_u_i_1_1_models_1_1_image_management.html#ada505410172e47f0b08c2d9f33a07a7f"/>
+<keyword name="ImageHeight" id="BrodUI::Models::ImageManagement::ImageHeight_a983ea92d14807e82c3c24536340dcd1c" ref="class_brod_u_i_1_1_models_1_1_image_management.html#a983ea92d14807e82c3c24536340dcd1c"/>
+<keyword name="ImageHeight" id="BrodUI::ViewModels::ConvertViewModel::ImageHeight_ac3be4558734903c4e49846a7b7a5535f" ref="class_brod_u_i_1_1_view_models_1_1_convert_view_model.html#ac3be4558734903c4e49846a7b7a5535f"/>
+<keyword name="ImageManagement(IOpenFileDialog openFileDialog)" id="BrodUI::Models::ImageManagement::ImageManagement_a87ae6e3b82e74c94b0eddbaddd664430" ref="class_brod_u_i_1_1_models_1_1_image_management.html#a87ae6e3b82e74c94b0eddbaddd664430"/>
+<keyword name="ImageManagement_InvalidImageFile" id="BrodUI::Assets::Languages::Resource::ImageManagement_InvalidImageFile_a0c64e34db4b3606c9020ba0a2d9598b6" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#a0c64e34db4b3606c9020ba0a2d9598b6"/>
+<keyword name="ImagePath" id="BrodUI::Models::ImageManagement::ImagePath_a26f2e3423841c27b12b7779159e6c580" ref="class_brod_u_i_1_1_models_1_1_image_management.html#a26f2e3423841c27b12b7779159e6c580"/>
+<keyword name="ImageWidth" id="BrodUI::Models::ImageManagement::ImageWidth_a178feb4a4995b5fef2603c42ea38e271" ref="class_brod_u_i_1_1_models_1_1_image_management.html#a178feb4a4995b5fef2603c42ea38e271"/>
+<keyword name="ImageWidth" id="BrodUI::ViewModels::ConvertViewModel::ImageWidth_addbb0c96ee2b4004a1a7b3e99d2c555b" ref="class_brod_u_i_1_1_view_models_1_1_convert_view_model.html#addbb0c96ee2b4004a1a7b3e99d2c555b"/>
+<keyword name="InitializeComponent()" id="BrodUI::App::InitializeComponent_a1af29c446be9337cdab85c86596f7cb0" ref="class_brod_u_i_1_1_app.html#a1af29c446be9337cdab85c86596f7cb0"/>
+<keyword name="InitializeComponent()" id="BrodUI::App::InitializeComponent_a1af29c446be9337cdab85c86596f7cb0" ref="class_brod_u_i_1_1_app.html#a1af29c446be9337cdab85c86596f7cb0"/>
+<keyword name="InitializeComponent()" id="BrodUI::Views::Pages::ConvertPage::InitializeComponent_a08efd4b121e9f9be9f1b47e3da6b1c75" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_convert_page.html#a08efd4b121e9f9be9f1b47e3da6b1c75"/>
+<keyword name="InitializeComponent()" id="BrodUI::Views::Pages::ConvertPage::InitializeComponent_a08efd4b121e9f9be9f1b47e3da6b1c75" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_convert_page.html#a08efd4b121e9f9be9f1b47e3da6b1c75"/>
+<keyword name="InitializeComponent()" id="BrodUI::Views::Pages::ExportPage::InitializeComponent_a1b01719938899b50c2a6087ca11d9f07" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_export_page.html#a1b01719938899b50c2a6087ca11d9f07"/>
+<keyword name="InitializeComponent()" id="BrodUI::Views::Pages::ExportPage::InitializeComponent_a1b01719938899b50c2a6087ca11d9f07" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_export_page.html#a1b01719938899b50c2a6087ca11d9f07"/>
+<keyword name="InitializeComponent()" id="BrodUI::Views::Pages::SettingsPage::InitializeComponent_aa0d45189ba2169f373160ceea69a381e" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_settings_page.html#aa0d45189ba2169f373160ceea69a381e"/>
+<keyword name="InitializeComponent()" id="BrodUI::Views::Pages::SettingsPage::InitializeComponent_aa0d45189ba2169f373160ceea69a381e" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_settings_page.html#aa0d45189ba2169f373160ceea69a381e"/>
+<keyword name="InitializeComponent()" id="BrodUI::Views::Pages::TutorialPage::InitializeComponent_a270e21fc464a2af1246ddad15060b9eb" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_tutorial_page.html#a270e21fc464a2af1246ddad15060b9eb"/>
+<keyword name="InitializeComponent()" id="BrodUI::Views::Pages::TutorialPage::InitializeComponent_a270e21fc464a2af1246ddad15060b9eb" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_tutorial_page.html#a270e21fc464a2af1246ddad15060b9eb"/>
+<keyword name="InitializeComponent()" id="BrodUI::Views::Windows::MainWindow::InitializeComponent_a011cedc0fbfe200eee43d48c89647719" ref="class_brod_u_i_1_1_views_1_1_windows_1_1_main_window.html#a011cedc0fbfe200eee43d48c89647719"/>
+<keyword name="InitializeComponent()" id="BrodUI::Views::Windows::MainWindow::InitializeComponent_a011cedc0fbfe200eee43d48c89647719" ref="class_brod_u_i_1_1_views_1_1_windows_1_1_main_window.html#a011cedc0fbfe200eee43d48c89647719"/>
+<keyword name="InitializeComponent()" id="BrodUI::App::InitializeComponent_a1af29c446be9337cdab85c86596f7cb0" ref="class_brod_u_i_1_1_app.html#a1af29c446be9337cdab85c86596f7cb0"/>
+<keyword name="InitializeComponent()" id="BrodUI::Views::Pages::ConvertPage::InitializeComponent_a08efd4b121e9f9be9f1b47e3da6b1c75" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_convert_page.html#a08efd4b121e9f9be9f1b47e3da6b1c75"/>
+<keyword name="InitializeComponent()" id="BrodUI::Views::Pages::ExportPage::InitializeComponent_a1b01719938899b50c2a6087ca11d9f07" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_export_page.html#a1b01719938899b50c2a6087ca11d9f07"/>
+<keyword name="InitializeComponent()" id="BrodUI::Views::Pages::SettingsPage::InitializeComponent_aa0d45189ba2169f373160ceea69a381e" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_settings_page.html#aa0d45189ba2169f373160ceea69a381e"/>
+<keyword name="InitializeComponent()" id="BrodUI::Views::Pages::TutorialPage::InitializeComponent_a270e21fc464a2af1246ddad15060b9eb" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_tutorial_page.html#a270e21fc464a2af1246ddad15060b9eb"/>
+<keyword name="InitializeComponent()" id="BrodUI::Views::Windows::MainWindow::InitializeComponent_a011cedc0fbfe200eee43d48c89647719" ref="class_brod_u_i_1_1_views_1_1_windows_1_1_main_window.html#a011cedc0fbfe200eee43d48c89647719"/>
+<keyword name="IsChooseImageButtonEnabled" id="BrodUI::ViewModels::ConvertViewModel::IsChooseImageButtonEnabled_a24133a67c96df7bb8c9ac27d99796677" ref="class_brod_u_i_1_1_view_models_1_1_convert_view_model.html#a24133a67c96df7bb8c9ac27d99796677"/>
+<keyword name="IsImageLoaded" id="BrodUI::ViewModels::ConvertViewModel::IsImageLoaded_a29f5c5a9aa4105e60f0977527d855341" ref="class_brod_u_i_1_1_view_models_1_1_convert_view_model.html#a29f5c5a9aa4105e60f0977527d855341"/>
+<keyword name="Iterations" id="BrodUI::KMeans::KMeans::Iterations_a42731ed146fbd82c23adfbef5cd1c2ae" ref="class_brod_u_i_1_1_k_means_1_1_k_means.html#a42731ed146fbd82c23adfbef5cd1c2ae"/>
+<keyword name="KMeansColorNumber" id="BrodUI::ViewModels::ConvertViewModel::KMeansColorNumber_a619dca27b0457a59ea132a65de5be479" ref="class_brod_u_i_1_1_view_models_1_1_convert_view_model.html#a619dca27b0457a59ea132a65de5be479"/>
+<keyword name="KMeansIterationNumber" id="BrodUI::ViewModels::ConvertViewModel::KMeansIterationNumber_ada41f61be01f3acc6f85f8c4db51b8b2" ref="class_brod_u_i_1_1_view_models_1_1_convert_view_model.html#ada41f61be01f3acc6f85f8c4db51b8b2"/>
+<keyword name="LengthThread(int color, int[,] image)" id="BrodUI::Helpers::LengthThread::LengthThread_af806902ae19489e7757d58d39fbdea45" ref="class_brod_u_i_1_1_helpers_1_1_length_thread.html#af806902ae19489e7757d58d39fbdea45"/>
+<keyword name="LoadCurrentImage()" id="BrodUI::Models::ImageManagement::LoadCurrentImage_a0e0ee6f2087cc37f532e25ac2831e4b1" ref="class_brod_u_i_1_1_models_1_1_image_management.html#a0e0ee6f2087cc37f532e25ac2831e4b1"/>
+<keyword name="LoadedImage" id="BrodUI::ViewModels::ConvertViewModel::LoadedImage_acebcba6549733e63c5bfa4507f6968c1" ref="class_brod_u_i_1_1_view_models_1_1_convert_view_model.html#acebcba6549733e63c5bfa4507f6968c1"/>
+<keyword name="LoadedImage" id="BrodUI::ViewModels::ExportViewModel::LoadedImage_a15e0b21e0e8fc6dd266db79adaf06a99" ref="class_brod_u_i_1_1_view_models_1_1_export_view_model.html#a15e0b21e0e8fc6dd266db79adaf06a99"/>
+<keyword name="LoadImageDialog()" id="BrodUI::Models::ImageManagement::LoadImageDialog_abeeea92d259a153cbba89b6dc9a23ceb" ref="class_brod_u_i_1_1_models_1_1_image_management.html#abeeea92d259a153cbba89b6dc9a23ceb"/>
+<keyword name="Main()" id="BrodUI::App::Main_a053154e2920e16825909e88362f9355b" ref="class_brod_u_i_1_1_app.html#a053154e2920e16825909e88362f9355b"/>
+<keyword name="Main()" id="BrodUI::App::Main_a053154e2920e16825909e88362f9355b" ref="class_brod_u_i_1_1_app.html#a053154e2920e16825909e88362f9355b"/>
+<keyword name="Main()" id="BrodUI::App::Main_a053154e2920e16825909e88362f9355b" ref="class_brod_u_i_1_1_app.html#a053154e2920e16825909e88362f9355b"/>
+<keyword name="MainWindow(ViewModels.MainWindowViewModel viewModel, IPageService pageService, INavigationService navigationService)" id="BrodUI::Views::Windows::MainWindow::MainWindow_acd07abe06dd58dc43162fc6c0196e6ed" ref="class_brod_u_i_1_1_views_1_1_windows_1_1_main_window.html#acd07abe06dd58dc43162fc6c0196e6ed"/>
+<keyword name="MainWindowViewModel(INavigationService navigationService)" id="BrodUI::ViewModels::MainWindowViewModel::MainWindowViewModel_aa10271e7c27007c5617463890de063db" ref="class_brod_u_i_1_1_view_models_1_1_main_window_view_model.html#aa10271e7c27007c5617463890de063db"/>
+<keyword name="Name" id="BrodUI::Models::Wire::Name_a41d38ff223e7867d1022b236344d6e40" ref="class_brod_u_i_1_1_models_1_1_wire.html#a41d38ff223e7867d1022b236344d6e40"/>
+<keyword name="Number" id="BrodUI::Models::Wire::Number_a55d7032d966c6075873cfc26c8b6650c" ref="class_brod_u_i_1_1_models_1_1_wire.html#a55d7032d966c6075873cfc26c8b6650c"/>
+<keyword name="OnClosed(EventArgs e)" id="BrodUI::Views::Windows::MainWindow::OnClosed_a5190f3399f09c66a6959511ed1477912" ref="class_brod_u_i_1_1_views_1_1_windows_1_1_main_window.html#a5190f3399f09c66a6959511ed1477912"/>
+<keyword name="OnNavigatedFrom()" id="BrodUI::ViewModels::ConvertViewModel::OnNavigatedFrom_aa7b2f21f2388fb6db9612f88866523f3" ref="class_brod_u_i_1_1_view_models_1_1_convert_view_model.html#aa7b2f21f2388fb6db9612f88866523f3"/>
+<keyword name="OnNavigatedFrom()" id="BrodUI::ViewModels::ExportViewModel::OnNavigatedFrom_a6b399994156dec3628e4ab2d355b8d9b" ref="class_brod_u_i_1_1_view_models_1_1_export_view_model.html#a6b399994156dec3628e4ab2d355b8d9b"/>
+<keyword name="OnNavigatedFrom()" id="BrodUI::ViewModels::SettingsViewModel::OnNavigatedFrom_a951dcff58c59ab53767046efd91eef44" ref="class_brod_u_i_1_1_view_models_1_1_settings_view_model.html#a951dcff58c59ab53767046efd91eef44"/>
+<keyword name="OnNavigatedFrom()" id="BrodUI::ViewModels::TutorialViewModel::OnNavigatedFrom_a12fb5ac91577f99044065ad7d4bf56ea" ref="class_brod_u_i_1_1_view_models_1_1_tutorial_view_model.html#a12fb5ac91577f99044065ad7d4bf56ea"/>
+<keyword name="OnNavigatedTo()" id="BrodUI::ViewModels::ConvertViewModel::OnNavigatedTo_a6680c6d84aecb9fe2c2f4191077e66d9" ref="class_brod_u_i_1_1_view_models_1_1_convert_view_model.html#a6680c6d84aecb9fe2c2f4191077e66d9"/>
+<keyword name="OnNavigatedTo()" id="BrodUI::ViewModels::ExportViewModel::OnNavigatedTo_a706b43f1434fa954382b398597fc17d1" ref="class_brod_u_i_1_1_view_models_1_1_export_view_model.html#a706b43f1434fa954382b398597fc17d1"/>
+<keyword name="OnNavigatedTo()" id="BrodUI::ViewModels::SettingsViewModel::OnNavigatedTo_a9248493ff3499f9ef4b7d63cb4e83469" ref="class_brod_u_i_1_1_view_models_1_1_settings_view_model.html#a9248493ff3499f9ef4b7d63cb4e83469"/>
+<keyword name="OnNavigatedTo()" id="BrodUI::ViewModels::TutorialViewModel::OnNavigatedTo_a51a0668d331c24c5fab6cd1d59f5cf15" ref="class_brod_u_i_1_1_view_models_1_1_tutorial_view_model.html#a51a0668d331c24c5fab6cd1d59f5cf15"/>
+<keyword name="OpenPdfInDefaultApplication()" id="BrodUI::Models::PdfManagement::OpenPdfInDefaultApplication_a53d70029c43cbeb2a0de3816fba30853" ref="class_brod_u_i_1_1_models_1_1_pdf_management.html#a53d70029c43cbeb2a0de3816fba30853"/>
+<keyword name="PageName_Convert" id="BrodUI::Assets::Languages::Resource::PageName_Convert_a1ade5877a050636314427e36ee4ad5a7" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#a1ade5877a050636314427e36ee4ad5a7"/>
+<keyword name="PageName_Export" id="BrodUI::Assets::Languages::Resource::PageName_Export_af45f326373533f7abd29b45567a53da3" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#af45f326373533f7abd29b45567a53da3"/>
+<keyword name="PageName_Settings" id="BrodUI::Assets::Languages::Resource::PageName_Settings_af4abeb1725b616785babc9eaba744ae8" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#af4abeb1725b616785babc9eaba744ae8"/>
+<keyword name="PageName_Tutorial" id="BrodUI::Assets::Languages::Resource::PageName_Tutorial_a65d5c36e5e35612e191cdfee6d29dd58" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#a65d5c36e5e35612e191cdfee6d29dd58"/>
+<keyword name="PageService(IServiceProvider serviceProvider)" id="BrodUI::Services::PageService::PageService_a8288337c14a5301666d1aa9affda6370" ref="class_brod_u_i_1_1_services_1_1_page_service.html#a8288337c14a5301666d1aa9affda6370"/>
+<keyword name="PdfManagement(List&lt; Wire &gt; wiresList)" id="BrodUI::Models::PdfManagement::PdfManagement_a22cf02dc9772f36b9bd7ac63ea3a1fc2" ref="class_brod_u_i_1_1_models_1_1_pdf_management.html#a22cf02dc9772f36b9bd7ac63ea3a1fc2"/>
+<keyword name="ProgressConvert" id="BrodUI::ViewModels::ConvertViewModel::ProgressConvert_a4ff959aba1fe7f3426b09814e706c249" ref="class_brod_u_i_1_1_view_models_1_1_convert_view_model.html#a4ff959aba1fe7f3426b09814e706c249"/>
+<keyword name="ProgressTb" id="BrodUI::ViewModels::ConvertViewModel::ProgressTb_acea2d90ac2484cffe5b9b9e24858e127" ref="class_brod_u_i_1_1_view_models_1_1_convert_view_model.html#acea2d90ac2484cffe5b9b9e24858e127"/>
+<keyword name="ProgressVisibility" id="BrodUI::ViewModels::ConvertViewModel::ProgressVisibility_a972eaa5ef4f4a216b6153b8fa35db188" ref="class_brod_u_i_1_1_view_models_1_1_convert_view_model.html#a972eaa5ef4f4a216b6153b8fa35db188"/>
+<keyword name="Quantity" id="BrodUI::Models::Wire::Quantity_aad25d12c01a84187833cf37f80526181" ref="class_brod_u_i_1_1_models_1_1_wire.html#aad25d12c01a84187833cf37f80526181"/>
+<keyword name="Ratio" id="BrodUI::Models::ImageManagement::Ratio_ad20be6181cb34e10d0d82a6bcb2ee4be" ref="class_brod_u_i_1_1_models_1_1_image_management.html#ad20be6181cb34e10d0d82a6bcb2ee4be"/>
+<keyword name="ResizeImage(int kMeansColorNumber, int kmeansIterationNumber, BackgroundWorker? bw=null)" id="BrodUI::Models::ImageManagement::ResizeImage_af076aab5dc4a7b909da94dc7c63c70ac" ref="class_brod_u_i_1_1_models_1_1_image_management.html#af076aab5dc4a7b909da94dc7c63c70ac"/>
+<keyword name="ResourceManager" id="BrodUI::Assets::Languages::Resource::ResourceManager_a83692d0e8f2741876a775ef4fa55c37f" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#a83692d0e8f2741876a775ef4fa55c37f"/>
+<keyword name="ResourceManager" id="BrodUI::Assets::Languages::Resource_en::ResourceManager_a4a6eb6865ebed61770890c5870b7c2a1" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource__en.html#a4a6eb6865ebed61770890c5870b7c2a1"/>
+<keyword name="ResourceManager" id="BrodUI::Assets::Languages::Resource_fr::ResourceManager_a03b23a5cd8f7d642f3ce9cbbd66fcaad" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource__fr.html#a03b23a5cd8f7d642f3ce9cbbd66fcaad"/>
+<keyword name="Result" id="BrodUI::Helpers::Win32OpenFileDialogAdapter::Result_ab68611f2a3c753a9f21308d996941539" ref="class_brod_u_i_1_1_helpers_1_1_win32_open_file_dialog_adapter.html#ab68611f2a3c753a9f21308d996941539"/>
+<keyword name="RgbToDmc()" id="BrodUI::Helpers::RgbToDmc::RgbToDmc_a0691a8f16c95cb3fdb2449a5fa0a1b15" ref="class_brod_u_i_1_1_helpers_1_1_rgb_to_dmc.html#a0691a8f16c95cb3fdb2449a5fa0a1b15"/>
+<keyword name="Run()" id="BrodUI::KMeans::KMeans::Run_a8f52af91e6d1ee9e7ab91522af8a60db" ref="class_brod_u_i_1_1_k_means_1_1_k_means.html#a8f52af91e6d1ee9e7ab91522af8a60db"/>
+<keyword name="Settings_LabelAbout" id="BrodUI::Assets::Languages::Resource::Settings_LabelAbout_a27c06e721524aba15fd2597a9e10b38e" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#a27c06e721524aba15fd2597a9e10b38e"/>
+<keyword name="Settings_LabelAbout" id="BrodUI::Assets::Languages::Resource_en::Settings_LabelAbout_aa8d0f2968c71ad59e29e28ae84dca0d5" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource__en.html#aa8d0f2968c71ad59e29e28ae84dca0d5"/>
+<keyword name="Settings_LabelAbout" id="BrodUI::Assets::Languages::Resource_fr::Settings_LabelAbout_af1201edc9454e92e44f60cf162c17872" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource__fr.html#af1201edc9454e92e44f60cf162c17872"/>
+<keyword name="Settings_LabelDeleteLogs" id="BrodUI::Assets::Languages::Resource::Settings_LabelDeleteLogs_a92aa551539505382697ac0d198441636" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#a92aa551539505382697ac0d198441636"/>
+<keyword name="Settings_LabelEmbroiderySize" id="BrodUI::Assets::Languages::Resource::Settings_LabelEmbroiderySize_a5e313fcaa4c66838a0a3a12f4707cd96" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#a5e313fcaa4c66838a0a3a12f4707cd96"/>
+<keyword name="Settings_LabelGitHubLinks" id="BrodUI::Assets::Languages::Resource::Settings_LabelGitHubLinks_aeb20124ef48442ee16ea3f0844136324" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#aeb20124ef48442ee16ea3f0844136324"/>
+<keyword name="Settings_LabelLanguage" id="BrodUI::Assets::Languages::Resource::Settings_LabelLanguage_a8d3261cce85c6baf4adbbecb3fa4a6db" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#a8d3261cce85c6baf4adbbecb3fa4a6db"/>
+<keyword name="Settings_LabelResetSettings" id="BrodUI::Assets::Languages::Resource::Settings_LabelResetSettings_ab5f67286369fb09e3a4728bc3cbb7266" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#ab5f67286369fb09e3a4728bc3cbb7266"/>
+<keyword name="Settings_LabelTerminal" id="BrodUI::Assets::Languages::Resource::Settings_LabelTerminal_a4d432ebc7b52a0e969a1473cde9c4f1e" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#a4d432ebc7b52a0e969a1473cde9c4f1e"/>
+<keyword name="Settings_LabelTheme" id="BrodUI::Assets::Languages::Resource::Settings_LabelTheme_aee9af8c92c1626eabb8e61d58720c147" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#aee9af8c92c1626eabb8e61d58720c147"/>
+<keyword name="Settings_LabelThirdPartyLibraries" id="BrodUI::Assets::Languages::Resource::Settings_LabelThirdPartyLibraries_a88d1a9c17bf08c69c62b95136f21939f" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#a88d1a9c17bf08c69c62b95136f21939f"/>
+<keyword name="Settings_LinkLatestReleaseOnGithub" id="BrodUI::Assets::Languages::Resource::Settings_LinkLatestReleaseOnGithub_ac7b0c923c3309459ee4378a6c76e71e0" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#ac7b0c923c3309459ee4378a6c76e71e0"/>
+<keyword name="Settings_LinkOriginalIcon" id="BrodUI::Assets::Languages::Resource::Settings_LinkOriginalIcon_aa1649715e2ab1d1f5443a9d3720a4b90" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#aa1649715e2ab1d1f5443a9d3720a4b90"/>
+<keyword name="Settings_LinkProjectWebsiteOnGitHub" id="BrodUI::Assets::Languages::Resource::Settings_LinkProjectWebsiteOnGitHub_a2197bf39623aa98c33559e114cb48058" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#a2197bf39623aa98c33559e114cb48058"/>
+<keyword name="Settings_VersionNumber" id="BrodUI::Assets::Languages::Resource::Settings_VersionNumber_aae3a72f5c8faa0c1eab11c25fceafc56" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#aae3a72f5c8faa0c1eab11c25fceafc56"/>
+<keyword name="SettingsPage(ViewModels.SettingsViewModel viewModel)" id="BrodUI::Views::Pages::SettingsPage::SettingsPage_a991afb1e7467a4ddca81506c9e51a20d" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_settings_page.html#a991afb1e7467a4ddca81506c9e51a20d"/>
+<keyword name="ShowConsole()" id="BrodUI::App::ShowConsole_ae3969ab6c5ebb942a94c0edb56d07cd1" ref="class_brod_u_i_1_1_app.html#ae3969ab6c5ebb942a94c0edb56d07cd1"/>
+<keyword name="ShowDialog()" id="BrodUI::Helpers::Win32OpenFileDialogAdapter::ShowDialog_adaa11f586cd02b16c07956358fcd530a" ref="class_brod_u_i_1_1_helpers_1_1_win32_open_file_dialog_adapter.html#adaa11f586cd02b16c07956358fcd530a"/>
+<keyword name="ShowDialog()" id="BrodUI::Models::ImageManagement::IOpenFileDialog::ShowDialog_a5c9ccc86643e5009559da383fcf795c7" ref="interface_brod_u_i_1_1_models_1_1_image_management_1_1_i_open_file_dialog.html#a5c9ccc86643e5009559da383fcf795c7"/>
+<keyword name="Sse" id="BrodUI::KMeans::KMeans::Sse_af7d4a6f022eb5b5d13308c8aeb9d475e" ref="class_brod_u_i_1_1_k_means_1_1_k_means.html#af7d4a6f022eb5b5d13308c8aeb9d475e"/>
+<keyword name="StartAsync(CancellationToken cancellationToken)" id="BrodUI::Services::ApplicationHostService::StartAsync_a8769c8d8c7e8ae107af06fed062289c9" ref="class_brod_u_i_1_1_services_1_1_application_host_service.html#a8769c8d8c7e8ae107af06fed062289c9"/>
+<keyword name="StopAsync(CancellationToken cancellationToken)" id="BrodUI::Services::ApplicationHostService::StopAsync_aed4ef71c9d9dca0261eabe3527eb192d" ref="class_brod_u_i_1_1_services_1_1_application_host_service.html#aed4ef71c9d9dca0261eabe3527eb192d"/>
+<keyword name="Terminal_ConvertPage" id="BrodUI::Assets::Languages::Resource::Terminal_ConvertPage_a757a4d9665aecc7628f2d146388cf17b" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#a757a4d9665aecc7628f2d146388cf17b"/>
+<keyword name="Terminal_ExportPage" id="BrodUI::Assets::Languages::Resource::Terminal_ExportPage_a199210a8b3dad87d7e91f842b8c665ad" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#a199210a8b3dad87d7e91f842b8c665ad"/>
+<keyword name="Terminal_HeightChanged" id="BrodUI::Assets::Languages::Resource::Terminal_HeightChanged_aea921f7de65f00226cca30e54bb6ad9a" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#aea921f7de65f00226cca30e54bb6ad9a"/>
+<keyword name="Terminal_ImageConvertedOk" id="BrodUI::Assets::Languages::Resource::Terminal_ImageConvertedOk_a9f77fc5b9e9209bb5d957a98f0b59a38" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#a9f77fc5b9e9209bb5d957a98f0b59a38"/>
+<keyword name="Terminal_ImageLinkChanged" id="BrodUI::Assets::Languages::Resource::Terminal_ImageLinkChanged_a954cd0f673f213213598a64e8ae6d15e" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#a954cd0f673f213213598a64e8ae6d15e"/>
+<keyword name="Terminal_ImageSaveIn" id="BrodUI::Assets::Languages::Resource::Terminal_ImageSaveIn_a4ca8e3f01c9b5aeb39367108e547339b" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#a4ca8e3f01c9b5aeb39367108e547339b"/>
+<keyword name="Terminal_ImageWidthAndHeight" id="BrodUI::Assets::Languages::Resource::Terminal_ImageWidthAndHeight_a43d3dd8ad64361f808306f759658c468" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#a43d3dd8ad64361f808306f759658c468"/>
+<keyword name="Terminal_ImportLog" id="BrodUI::Assets::Languages::Resource::Terminal_ImportLog_a93b7a6d10228f8b8c7a1873c025fbf97" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#a93b7a6d10228f8b8c7a1873c025fbf97"/>
+<keyword name="Terminal_ImportLogOk" id="BrodUI::Assets::Languages::Resource::Terminal_ImportLogOk_afa7d4f4d6abb9cb8821df0868d9677fe" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#afa7d4f4d6abb9cb8821df0868d9677fe"/>
+<keyword name="Terminal_LanguageChanged" id="BrodUI::Assets::Languages::Resource::Terminal_LanguageChanged_a6555dbe60ffa2a56f8cd2d2895116042" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#a6555dbe60ffa2a56f8cd2d2895116042"/>
+<keyword name="Terminal_SettingsPage" id="BrodUI::Assets::Languages::Resource::Terminal_SettingsPage_a9277690780cbc24ce7898a65145094e5" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#a9277690780cbc24ce7898a65145094e5"/>
+<keyword name="Terminal_TerminalChanged" id="BrodUI::Assets::Languages::Resource::Terminal_TerminalChanged_ab5d80e97b82f420eb1ec1ea5c8e734a2" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#ab5d80e97b82f420eb1ec1ea5c8e734a2"/>
+<keyword name="Terminal_ThemeChanged" id="BrodUI::Assets::Languages::Resource::Terminal_ThemeChanged_af76f982bbb1e3bc38f24bf3a4204ca65" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#af76f982bbb1e3bc38f24bf3a4204ca65"/>
+<keyword name="Terminal_To" id="BrodUI::Assets::Languages::Resource::Terminal_To_a8a39bbedc4bccc40f41515b01445a43b" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#a8a39bbedc4bccc40f41515b01445a43b"/>
+<keyword name="Terminal_TutorialPage" id="BrodUI::Assets::Languages::Resource::Terminal_TutorialPage_a411138f731abdd0951c4e8dd5e0bb24b" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#a411138f731abdd0951c4e8dd5e0bb24b"/>
+<keyword name="Terminal_WidthChanged" id="BrodUI::Assets::Languages::Resource::Terminal_WidthChanged_a4d6934560573def52bf0a3cfed5fca0b" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#a4d6934560573def52bf0a3cfed5fca0b"/>
+<keyword name="TotalLength" id="BrodUI::Helpers::LengthThread::TotalLength_acc73631401738f4b42122713ff0edb06" ref="class_brod_u_i_1_1_helpers_1_1_length_thread.html#acc73631401738f4b42122713ff0edb06"/>
+<keyword name="Tutorial_BeginButtonLabel" id="BrodUI::Assets::Languages::Resource::Tutorial_BeginButtonLabel_a242eb088c285c4d41c4fc6d851fa6623" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#a242eb088c285c4d41c4fc6d851fa6623"/>
+<keyword name="Tutorial_Part1Text" id="BrodUI::Assets::Languages::Resource::Tutorial_Part1Text_a393d90f2a566824f0c2fd9441b2bd32f" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#a393d90f2a566824f0c2fd9441b2bd32f"/>
+<keyword name="Tutorial_Part2Text" id="BrodUI::Assets::Languages::Resource::Tutorial_Part2Text_ae969d69663c09584d2b3936eef76e2e9" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#ae969d69663c09584d2b3936eef76e2e9"/>
+<keyword name="Tutorial_Part3aText" id="BrodUI::Assets::Languages::Resource::Tutorial_Part3aText_a15e6376e91b0faf47601288125b2b0db" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#a15e6376e91b0faf47601288125b2b0db"/>
+<keyword name="Tutorial_Part3cText" id="BrodUI::Assets::Languages::Resource::Tutorial_Part3cText_a4e055de0848fadf461fbf779a1d6706b" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#a4e055de0848fadf461fbf779a1d6706b"/>
+<keyword name="Tutorial_Part4aText" id="BrodUI::Assets::Languages::Resource::Tutorial_Part4aText_a73692e03d4a49adf903186b3475b5b2d" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#a73692e03d4a49adf903186b3475b5b2d"/>
+<keyword name="Tutorial_Part4cText" id="BrodUI::Assets::Languages::Resource::Tutorial_Part4cText_ac26a04d76484e9b124364132609ec2e1" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#ac26a04d76484e9b124364132609ec2e1"/>
+<keyword name="Tutorial_Part5aText" id="BrodUI::Assets::Languages::Resource::Tutorial_Part5aText_acda0d140ece8a10b42ab22ee8cccd9b1" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#acda0d140ece8a10b42ab22ee8cccd9b1"/>
+<keyword name="Tutorial_Part5cText" id="BrodUI::Assets::Languages::Resource::Tutorial_Part5cText_ab0bc7c823f221b3a85cebd3bfbd6445f" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#ab0bc7c823f221b3a85cebd3bfbd6445f"/>
+<keyword name="Tutorial_Title1Text" id="BrodUI::Assets::Languages::Resource::Tutorial_Title1Text_a9892d05b51bbc2450ea93813ad72a5e8" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#a9892d05b51bbc2450ea93813ad72a5e8"/>
+<keyword name="Tutorial_Title2Text" id="BrodUI::Assets::Languages::Resource::Tutorial_Title2Text_a00e30ae545d4e993e8e8e39a733c40e0" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#a00e30ae545d4e993e8e8e39a733c40e0"/>
+<keyword name="TutorialPage(ViewModels.TutorialViewModel viewModel)" id="BrodUI::Views::Pages::TutorialPage::TutorialPage_a7cef8c0a503b722cb33347f717d04f55" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_tutorial_page.html#a7cef8c0a503b722cb33347f717d04f55"/>
+<keyword name="Type" id="BrodUI::Models::Wire::Type_a7ca7d6d4334a51611b460810bd24b294" ref="class_brod_u_i_1_1_models_1_1_wire.html#a7ca7d6d4334a51611b460810bd24b294"/>
+<keyword name="UnloadImage()" id="BrodUI::Models::ImageManagement::UnloadImage_a5f2d4c403105d4303d4b519754dd63db" ref="class_brod_u_i_1_1_models_1_1_image_management.html#a5f2d4c403105d4303d4b519754dd63db"/>
+<keyword name="ViewModel" id="BrodUI::Views::Pages::ExportPage::ViewModel_aaa2a7c9e153a1ecb9ffb061648bb6ab3" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_export_page.html#aaa2a7c9e153a1ecb9ffb061648bb6ab3"/>
+<keyword name="ViewModel" id="BrodUI::Views::Pages::SettingsPage::ViewModel_a44efbead67f8e357fc46581d339a010f" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_settings_page.html#a44efbead67f8e357fc46581d339a010f"/>
+<keyword name="ViewModel" id="BrodUI::Views::Pages::TutorialPage::ViewModel_a9c9d82f17d5b3fad68df8f03bd12481b" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_tutorial_page.html#a9c9d82f17d5b3fad68df8f03bd12481b"/>
+<keyword name="ViewModel" id="BrodUI::Views::Windows::MainWindow::ViewModel_a0fe245076c2261f58aca577ba52f46f5" ref="class_brod_u_i_1_1_views_1_1_windows_1_1_main_window.html#a0fe245076c2261f58aca577ba52f46f5"/>
+<keyword name="Wire(Brush color, int number, string type, string name, int quantity)" id="BrodUI::Models::Wire::Wire_a41001a32841ee067db9cdbcf1bc8340d" ref="class_brod_u_i_1_1_models_1_1_wire.html#a41001a32841ee067db9cdbcf1bc8340d"/>
+<keyword name="WireArray" id="BrodUI::ViewModels::ExportViewModel::WireArray_aeb8c4143964a4ab94244dc029071fcd3" ref="class_brod_u_i_1_1_view_models_1_1_export_view_model.html#aeb8c4143964a4ab94244dc029071fcd3"/>
+<keyword name="WireSize(int color, int[,] image)" id="BrodUI::Helpers::LengthThread::WireSize_a7ccaf6367bbc82e2e9c5753ef63dfc0e" ref="class_brod_u_i_1_1_helpers_1_1_length_thread.html#a7ccaf6367bbc82e2e9c5753ef63dfc0e"/>
+</keywords>
+<files>
+<file>annotated.html</file>
+<file>bc_s.png</file>
+<file>bc_sd.png</file>
+<file>bdwn.png</file>
+<file>class_brod_u_i_1_1_app-members.html</file>
+<file>class_brod_u_i_1_1_app.html</file>
+<file>class_brod_u_i_1_1_app.png</file>
+<file>class_brod_u_i_1_1_assets_1_1_languages_1_1_resource-members.html</file>
+<file>class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html</file>
+<file>class_brod_u_i_1_1_assets_1_1_languages_1_1_resource__en-members.html</file>
+<file>class_brod_u_i_1_1_assets_1_1_languages_1_1_resource__en.html</file>
+<file>class_brod_u_i_1_1_assets_1_1_languages_1_1_resource__fr-members.html</file>
+<file>class_brod_u_i_1_1_assets_1_1_languages_1_1_resource__fr.html</file>
+<file>class_brod_u_i_1_1_helpers_1_1_dmc_to_string-members.html</file>
+<file>class_brod_u_i_1_1_helpers_1_1_dmc_to_string.html</file>
+<file>class_brod_u_i_1_1_helpers_1_1_hsl_to_dmc-members.html</file>
+<file>class_brod_u_i_1_1_helpers_1_1_hsl_to_dmc.html</file>
+<file>class_brod_u_i_1_1_helpers_1_1_image_to2_d_array_brushes-members.html</file>
+<file>class_brod_u_i_1_1_helpers_1_1_image_to2_d_array_brushes.html</file>
+<file>class_brod_u_i_1_1_helpers_1_1_length_thread-members.html</file>
+<file>class_brod_u_i_1_1_helpers_1_1_length_thread.html</file>
+<file>class_brod_u_i_1_1_helpers_1_1_rgb_to_dmc-members.html</file>
+<file>class_brod_u_i_1_1_helpers_1_1_rgb_to_dmc.html</file>
+<file>class_brod_u_i_1_1_helpers_1_1_win32_open_file_dialog_adapter-members.html</file>
+<file>class_brod_u_i_1_1_helpers_1_1_win32_open_file_dialog_adapter.html</file>
+<file>class_brod_u_i_1_1_helpers_1_1_win32_open_file_dialog_adapter.png</file>
+<file>class_brod_u_i_1_1_k_means_1_1_generic_vector-members.html</file>
+<file>class_brod_u_i_1_1_k_means_1_1_generic_vector.html</file>
+<file>class_brod_u_i_1_1_k_means_1_1_k_means-members.html</file>
+<file>class_brod_u_i_1_1_k_means_1_1_k_means.html</file>
+<file>class_brod_u_i_1_1_models_1_1_image_management-members.html</file>
+<file>class_brod_u_i_1_1_models_1_1_image_management.html</file>
+<file>class_brod_u_i_1_1_models_1_1_pdf_management-members.html</file>
+<file>class_brod_u_i_1_1_models_1_1_pdf_management.html</file>
+<file>class_brod_u_i_1_1_models_1_1_wire-members.html</file>
+<file>class_brod_u_i_1_1_models_1_1_wire.html</file>
+<file>class_brod_u_i_1_1_services_1_1_application_host_service-members.html</file>
+<file>class_brod_u_i_1_1_services_1_1_application_host_service.html</file>
+<file>class_brod_u_i_1_1_services_1_1_application_host_service.png</file>
+<file>class_brod_u_i_1_1_services_1_1_page_service-members.html</file>
+<file>class_brod_u_i_1_1_services_1_1_page_service.html</file>
+<file>class_brod_u_i_1_1_services_1_1_page_service.png</file>
+<file>class_brod_u_i_1_1_view_models_1_1_convert_view_model-members.html</file>
+<file>class_brod_u_i_1_1_view_models_1_1_convert_view_model.html</file>
+<file>class_brod_u_i_1_1_view_models_1_1_convert_view_model.png</file>
+<file>class_brod_u_i_1_1_view_models_1_1_export_view_model-members.html</file>
+<file>class_brod_u_i_1_1_view_models_1_1_export_view_model.html</file>
+<file>class_brod_u_i_1_1_view_models_1_1_export_view_model.png</file>
+<file>class_brod_u_i_1_1_view_models_1_1_main_window_view_model-members.html</file>
+<file>class_brod_u_i_1_1_view_models_1_1_main_window_view_model.html</file>
+<file>class_brod_u_i_1_1_view_models_1_1_main_window_view_model.png</file>
+<file>class_brod_u_i_1_1_view_models_1_1_settings_view_model-members.html</file>
+<file>class_brod_u_i_1_1_view_models_1_1_settings_view_model.html</file>
+<file>class_brod_u_i_1_1_view_models_1_1_settings_view_model.png</file>
+<file>class_brod_u_i_1_1_view_models_1_1_tutorial_view_model-members.html</file>
+<file>class_brod_u_i_1_1_view_models_1_1_tutorial_view_model.html</file>
+<file>class_brod_u_i_1_1_view_models_1_1_tutorial_view_model.png</file>
+<file>class_brod_u_i_1_1_views_1_1_pages_1_1_convert_page-members.html</file>
+<file>class_brod_u_i_1_1_views_1_1_pages_1_1_convert_page.html</file>
+<file>class_brod_u_i_1_1_views_1_1_pages_1_1_convert_page.png</file>
+<file>class_brod_u_i_1_1_views_1_1_pages_1_1_export_page-members.html</file>
+<file>class_brod_u_i_1_1_views_1_1_pages_1_1_export_page.html</file>
+<file>class_brod_u_i_1_1_views_1_1_pages_1_1_export_page.png</file>
+<file>class_brod_u_i_1_1_views_1_1_pages_1_1_settings_page-members.html</file>
+<file>class_brod_u_i_1_1_views_1_1_pages_1_1_settings_page.html</file>
+<file>class_brod_u_i_1_1_views_1_1_pages_1_1_settings_page.png</file>
+<file>class_brod_u_i_1_1_views_1_1_pages_1_1_tutorial_page-members.html</file>
+<file>class_brod_u_i_1_1_views_1_1_pages_1_1_tutorial_page.html</file>
+<file>class_brod_u_i_1_1_views_1_1_pages_1_1_tutorial_page.png</file>
+<file>class_brod_u_i_1_1_views_1_1_windows_1_1_main_window-members.html</file>
+<file>class_brod_u_i_1_1_views_1_1_windows_1_1_main_window.html</file>
+<file>class_brod_u_i_1_1_views_1_1_windows_1_1_main_window.png</file>
+<file>classes.html</file>
+<file>closed.png</file>
+<file>dir_034079e16470629fedd4f235052192e9.html</file>
+<file>dir_11c5e0926d7eb7935f79fc8254a2733e.html</file>
+<file>dir_22305cb0964bbe63c21991dd2265ce48.html</file>
+<file>dir_30bb6763ff7aa37bec51dfd63672e942.html</file>
+<file>dir_31d546a7220d2d0f2290ebc917bc5425.html</file>
+<file>dir_43724e81dd40e09f32417973865cdd64.html</file>
+<file>dir_4420d73c69a2c526ef49029c2c794112.html</file>
+<file>dir_74f934fab3573e6ea7b3bef239f5fff0.html</file>
+<file>dir_78a62e1f40d5176b7a93f8e4463cc5b5.html</file>
+<file>dir_84bbf7b3c7f28a5a18725745e1505219.html</file>
+<file>dir_9589234009df629558fcdc1c496de76e.html</file>
+<file>dir_962399bb13ba93e56692b3255d3df85d.html</file>
+<file>dir_9fe5cc214b8578ee5b8e153089aca810.html</file>
+<file>dir_a71c3b2ad23b9ff58220dd012d201987.html</file>
+<file>dir_a828b03de59b4c4c4ea2dc314693d848.html</file>
+<file>dir_ba262fc08cc173e800721160247391b9.html</file>
+<file>dir_cdfdfe62f02ec1fb5ebc9bd38e3ee438.html</file>
+<file>dir_d69fddb65e10ed1e1aad5b4f2a8c0135.html</file>
+<file>dir_e47e4de72e0320db55f81376ac4f26ec.html</file>
+<file>dir_e48767bf636af9dacf816c34b1120f9f.html</file>
+<file>dir_f71aa72990aa8b5fb4b71f132b2527f3.html</file>
+<file>doc.png</file>
+<file>docd.png</file>
+<file>doxygen.css</file>
+<file>doxygen.svg</file>
+<file>dynsections.js</file>
+<file>folderclosed.png</file>
+<file>folderopen.png</file>
+<file>functions.html</file>
+<file>functions_d.html</file>
+<file>functions_e.html</file>
+<file>functions_f.html</file>
+<file>functions_func.html</file>
+<file>functions_g.html</file>
+<file>functions_h.html</file>
+<file>functions_i.html</file>
+<file>functions_k.html</file>
+<file>functions_l.html</file>
+<file>functions_m.html</file>
+<file>functions_n.html</file>
+<file>functions_o.html</file>
+<file>functions_p.html</file>
+<file>functions_prop.html</file>
+<file>functions_q.html</file>
+<file>functions_r.html</file>
+<file>functions_s.html</file>
+<file>functions_t.html</file>
+<file>functions_u.html</file>
+<file>functions_v.html</file>
+<file>functions_vars.html</file>
+<file>functions_w.html</file>
+<file>hierarchy.html</file>
+<file>index.html</file>
+<file>interface_brod_u_i_1_1_models_1_1_image_management_1_1_i_open_file_dialog-members.html</file>
+<file>interface_brod_u_i_1_1_models_1_1_image_management_1_1_i_open_file_dialog.html</file>
+<file>jquery.js</file>
+<file>logo.png</file>
+<file>menu.js</file>
+<file>menudata.js</file>
+<file>namespace_brod_u_i.html</file>
+<file>namespace_brod_u_i_1_1_assets.html</file>
+<file>namespace_brod_u_i_1_1_assets_1_1_languages.html</file>
+<file>namespace_brod_u_i_1_1_helpers.html</file>
+<file>namespace_brod_u_i_1_1_k_means.html</file>
+<file>namespace_brod_u_i_1_1_models.html</file>
+<file>namespace_brod_u_i_1_1_services.html</file>
+<file>namespace_brod_u_i_1_1_view_models.html</file>
+<file>namespace_brod_u_i_1_1_views.html</file>
+<file>namespace_brod_u_i_1_1_views_1_1_pages.html</file>
+<file>namespace_brod_u_i_1_1_views_1_1_windows.html</file>
+<file>namespaces.html</file>
+<file>nav_f.png</file>
+<file>nav_fd.png</file>
+<file>nav_g.png</file>
+<file>nav_h.png</file>
+<file>nav_hd.png</file>
+<file>open.png</file>
+<file>search/close.svg</file>
+<file>search/mag.svg</file>
+<file>search/mag_d.svg</file>
+<file>search/mag_sel.svg</file>
+<file>search/mag_seld.svg</file>
+<file>search/search.css</file>
+<file>search/search.js</file>
+<file>splitbar.png</file>
+<file>splitbard.png</file>
+<file>sync_off.png</file>
+<file>sync_on.png</file>
+<file>tab_a.png</file>
+<file>tab_ad.png</file>
+<file>tab_b.png</file>
+<file>tab_bd.png</file>
+<file>tab_h.png</file>
+<file>tab_hd.png</file>
+<file>tab_s.png</file>
+<file>tab_sd.png</file>
+<file>tabs.css</file>
+</files>
+</filterSection>
+</QtHelpProject>

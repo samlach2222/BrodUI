@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>D:\WINDOWS\Documents\GitHub\BrodUI\BrodUI\App.xaml.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using BrodUI.Models;
+using BrodUI.Services;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using System;
+using System.IO;
+using System.Reflection;
+using System.Runtime.InteropServices;
+using System.Windows;
+using System.Windows.Threading;
+using Wpf.Ui.Mvvm.Contracts;
+using Wpf.Ui.Mvvm.Services;
+
+namespace BrodUI
+{
+    /// &lt;summary&gt;
+    /// Interaction logic for App.xaml
+    /// &lt;/summary&gt;
+    public partial class App
+    {
+        // CONSOLE DISPLAY VARIABLES
+        [DllImport(&quot;kernel32.dll&quot;)]
+        private static extern IntPtr GetConsoleWindow();
+        [DllImport(&quot;user32.dll&quot;)]
+        private static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
+        [DllImport(&quot;user32.dll&quot;)]
+        private static extern bool SetForegroundWindow(IntPtr hWnd);
+        [DllImport(&quot;user32.dll&quot;)]
+        private static extern IntPtr GetForegroundWindow();
+        [DllImport(&quot;user32.dll&quot;)]
+        private static extern IntPtr SendMessage(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam);
+
+        private const uint WmClose = 0x10;
+        private const int SwHide = 0;
+        private static bool _showConsole = false;
+        private static IntPtr _consoleWindow;
+
+        // The.NET Generic Host provides dependency injection, configuration, logging, and other services.
+        // https://docs.microsoft.com/dotnet/core/extensions/generic-host
+        // https://docs.microsoft.com/dotnet/core/extensions/dependency-injection
+        // https://docs.microsoft.com/dotnet/core/extensions/configuration
+        // https://docs.microsoft.com/dotnet/core/extensions/logging
+        private static readonly IHost Host = Microsoft.Extensions.Hosting.Host
+            .CreateDefaultBuilder()
+            .ConfigureAppConfiguration(c =&gt; { c.SetBasePath(Path.GetDirectoryName(Assembly.GetEntryAssembly()!.Location)!); })
+            .ConfigureServices((context, services) =&gt;
+            {
+                // App Host
+                services.AddHostedService&lt;ApplicationHostService&gt;();
+
+                // Page resolver service
+                services.AddSingleton&lt;IPageService, PageService&gt;();
+
+                // Theme manipulation
+                services.AddSingleton&lt;IThemeService, ThemeService&gt;();
+
+                // TaskBar manipulation
+                services.AddSingleton&lt;ITaskBarService, TaskBarService&gt;();
+
+                // Service containing navigation, same as INavigationWindow... but without window
+                services.AddSingleton&lt;INavigationService, NavigationService&gt;();
+
+                // Main window with navigation
+                services.AddScoped&lt;INavigationWindow, Views.Windows.MainWindow&gt;();
+                services.AddScoped&lt;ViewModels.MainWindowViewModel&gt;();
+
+                // Views and ViewModels
+                services.AddScoped&lt;Views.Pages.TutorialPage&gt;();
+                services.AddScoped&lt;ViewModels.TutorialViewModel&gt;();
+                services.AddScoped&lt;Views.Pages.ConvertPage&gt;();
+                services.AddScoped&lt;ViewModels.ConvertViewModel&gt;();
+                services.AddScoped&lt;Views.Pages.ExportPage&gt;();
+                services.AddScoped&lt;ViewModels.ExportViewModel&gt;();
+                services.AddScoped&lt;Views.Pages.SettingsPage&gt;();
+                services.AddScoped&lt;ViewModels.SettingsViewModel&gt;();
+            }).Build();
+
+        /// &lt;summary&gt;
+        /// Gets registered service.
+        /// &lt;/summary&gt;
+        /// &lt;typeparam name=&quot;T&quot;&gt;Type of the service to get.&lt;/typeparam&gt;
+        /// &lt;returns&gt;Instance of the service or &lt;see langword=&quot;null&quot;/&gt;.&lt;/returns&gt;
+        public static T? GetService&lt;T&gt;()
+            where T : class
+        {
+            return Host.Services.GetService(typeof(T)) as T;
+        }
+
+        /// &lt;summary&gt;
+        /// Occurs when the application is loading.
+        /// &lt;/summary&gt;
+        private async void OnStartup(object sender, StartupEventArgs e)
+        {
+            ShowConsole(); // Show console if needed
+            LogManagement.CreateLogFileIfNotExists(); // Create log file if it doesn&#39;t exist
+            Console.WriteLine(Assets.Languages.Resource.Terminal_ImportLog);
+            LogManagement.WriteAllLogsInTerminal(); // Write all logs in console
+            Console.WriteLine(Assets.Languages.Resource.Terminal_ImportLogOk);
+            Console.WriteLine(&quot;-------------------------------------------------------&quot;);
+
+            await Host.StartAsync();
+
+            // Create settings.cfg file if it doesn&#39;t exist with lines for each setting
+            ConfigManagement.CreateConfigFileIfNotExists();
+            // Load settings.cfg file
+            ConfigManagement.ApplyTheme();
+            // Set language
+            ConfigManagement.ApplyLanguage();
+        }
+
+        /// &lt;summary&gt;
+        /// Create console if needed (to display infos to power users).
+        /// &lt;/summary&gt;
+        public static void ShowConsole()
+        {
+            ConfigManagement.CreateConfigFileIfNotExists();
+            _showConsole = ConfigManagement.GetTerminalFromConfigFile();
+
+            // Because &quot;Windows Terminal&quot; have tabs, hiding the console directly doesn&#39;t work
+            // Instead we set the console to the foreground, get the foreground window and hide it
+            SetForegroundWindow(GetConsoleWindow());
+            _consoleWindow = GetForegroundWindow(); // consoleWindow is needed when exiting the app
+            if (!_showConsole)
+            {
+                // Hide the console window, but don&#39;t close it (closing it would close the app)
+                ShowWindow(_consoleWindow, SwHide);
+            }
+        }
+
+        /// &lt;summary&gt;
+        /// Occurs when the application is closing.
+        /// &lt;/summary&gt;
+        private async void OnExit(object sender, ExitEventArgs e)
+        {
+            // Close the console window
+            SendMessage(_consoleWindow, WmClose, IntPtr.Zero, IntPtr.Zero);
+
+            await Host.StopAsync();
+
+            Host.Dispose();
+        }
+
+        /// &lt;summary&gt;
+        /// Occurs when an exception is thrown by an application but not handled.
+        /// &lt;/summary&gt;
+        private void OnDispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
+        {
+            // For more info see https://docs.microsoft.com/en-us/dotnet/api/system.windows.application.dispatcherunhandledexception?view=windowsdesktop-6.0
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[36,9,36,50,0],[44,9,46,45,0],[46,45,46,46,0],[46,46,46,47,0],[46,47,46,124,0],[46,124,46,125,0],[46,125,46,126,0],[46,126,48,13,0],[48,13,48,14,0],[48,14,50,17,0],[50,17,50,69,0],[50,69,53,17,0],[53,17,53,68,0],[53,68,56,17,0],[56,17,56,70,0],[56,70,59,17,0],[59,17,59,74,0],[59,74,62,17,0],[62,17,62,80,0],[62,80,65,17,0],[65,17,65,83,0],[65,83,66,17,0],[66,17,66,70,0],[66,70,69,17,0],[69,17,69,64,0],[69,64,70,17,0],[70,17,70,68,0],[70,68,71,17,0],[71,17,71,63,0],[71,63,72,17,0],[72,17,72,67,0],[72,67,73,17,0],[73,17,73,62,0],[73,62,74,17,0],[74,17,74,66,0],[74,66,75,17,0],[75,17,75,64,0],[75,64,76,17,0],[76,17,76,68,0],[76,68,77,13,0],[77,13,77,14,0],[77,14,77,24,0],[86,9,86,10,0],[87,13,87,61,0],[88,9,88,10,0],[94,9,94,10,0],[95,13,95,27,0],[96,13,96,54,0],[97,13,97,77,0],[98,13,98,52,0],[99,13,99,79,0],[100,13,100,90,0],[102,13,102,37,0],[105,13,105,60,0],[107,13,107,43,0],[109,13,109,46,0],[110,9,110,10,0],[116,9,116,10,0],[117,13,117,60,0],[118,13,118,73,0],[122,13,122,53,0],[123,13,123,52,0],[124,13,124,31,0],[125,13,125,14,0],[127,17,127,52,0],[128,13,128,14,0],[129,9,129,10,0],[135,9,135,10,0],[137,13,137,76,0],[139,13,139,36,0],[141,13,141,28,0],[142,9,142,10,0],[148,9,148,10,0],[150,9,150,10,0]]);
+    </script>
+  </body>
+</html>

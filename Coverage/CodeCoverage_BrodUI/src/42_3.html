@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>D:\WINDOWS\Documents\GitHub\BrodUI\BrodUI\Services\WPFMessageBox.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System.Windows;
+using Wpf.Ui.Controls;
+
+namespace BrodUI.Services;
+
+/// &lt;summary&gt;
+/// Redefinition of the WPF UI message box to have only one button
+/// &lt;/summary&gt;
+public static class WPFMessageBox
+{
+    public static void Show(string title, string content)
+    {
+        Wpf.Ui.Controls.MessageBox mb = new();
+
+        mb.Title = title;
+        mb.Content = content;
+
+        // add button in footer
+        Button btn = new()
+        {
+            Content = &quot;Ok&quot;,
+            HorizontalAlignment = HorizontalAlignment.Center,
+            HorizontalContentAlignment = HorizontalAlignment.Center
+        };
+        btn.Click += (sender, args) =&gt; { mb.Close(); };
+        mb.Footer = btn;
+        mb.Show();
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[12,5,12,6,1],[13,9,13,47,1],[15,9,15,26,0],[16,9,16,30,0],[19,9,24,11,0],[25,9,25,40,0],[25,40,25,41,0],[25,41,25,42,0],[25,42,25,53,0],[25,53,25,54,0],[25,54,25,55,0],[25,55,25,56,0],[26,9,26,25,0],[27,9,27,19,0],[28,5,28,6,0]]);
+    </script>
+  </body>
+</html>

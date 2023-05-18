@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>D:\WINDOWS\Documents\GitHub\BrodUI\BrodUI\Helpers\Win32OpenFileDialogAdapter.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using Microsoft.Win32;
+using System.Collections.Generic;
+using static BrodUI.Models.ImageManagement;
+
+namespace BrodUI.Helpers
+{
+    /// &lt;summary&gt;
+    /// Adapter for the Win32 OpenFileDialog
+    /// &lt;/summary&gt;
+    public class Win32OpenFileDialogAdapter : IOpenFileDialog
+    {
+        /// &lt;summary&gt;
+        /// Name of the file
+        /// &lt;/summary&gt;
+        public string? FileName { get; set; }
+
+        /// &lt;summary&gt;
+        /// If the dialog result is true or false
+        /// &lt;/summary&gt;
+        public bool? Result { get; set; }
+
+        /// &lt;summary&gt;
+        /// Name of the files
+        /// &lt;/summary&gt;
+        public string[]? FileNames { get; }
+
+        /// &lt;summary&gt;
+        /// Filter for the dialog (image filter)
+        /// &lt;/summary&gt;
+        public string? Filter { get; set; }
+
+        /// &lt;summary&gt;
+        /// Function to show the dialog
+        /// &lt;/summary&gt;
+        /// &lt;returns&gt;if it&#39;s ok or not&lt;/returns&gt;
+        public bool? ShowDialog()
+        {
+            OpenFileDialog dialog = new()
+            {
+                Filter = Filter
+            };
+
+            if (Result != null)
+            {
+                dialog.CustomPlaces = new List&lt;FileDialogCustomPlace&gt;
+                {
+                    new(FileName)
+                };
+            }
+
+            bool? dialogResult = dialog.ShowDialog();
+            if (dialogResult == true)
+            {
+                FileName = dialog.FileName;
+                return true;
+            }
+            else
+            {
+                FileName = null;
+                return false;
+            }
+        }
+    }
+}
+
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[15,35,15,39,0],[15,40,15,44,0],[20,31,20,35,0],[20,36,20,40,0],[25,38,25,42,0],[30,33,30,37,0],[30,38,30,42,0],[37,9,37,10,0],[38,13,41,15,0],[43,13,43,32,0],[44,13,44,14,0],[45,17,48,19,0],[49,13,49,14,0],[51,13,51,54,0],[52,13,52,38,0],[53,13,53,14,0],[54,17,54,44,0],[55,17,55,29,0],[58,13,58,14,0],[59,17,59,33,0],[60,17,60,30,0],[62,9,62,10,0]]);
+    </script>
+  </body>
+</html>

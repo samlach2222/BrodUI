@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>D:\WINDOWS\Documents\GitHub\BrodUI\BrodUI\Services\PageService.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Windows;
+using Wpf.Ui.Mvvm.Contracts;
+
+namespace BrodUI.Services
+{
+    /// &lt;summary&gt;
+    /// Service that provides pages for navigation.
+    /// &lt;/summary&gt;
+    public class PageService : IPageService
+    {
+        /// &lt;summary&gt;
+        /// Service which provides the instances of pages.
+        /// &lt;/summary&gt;
+        private readonly IServiceProvider _serviceProvider;
+
+        /// &lt;summary&gt;
+        /// Creates new instance and attaches the &lt;see cref=&quot;IServiceProvider&quot;/&gt;.
+        /// &lt;/summary&gt;
+        public PageService(IServiceProvider serviceProvider)
+        {
+            _serviceProvider = serviceProvider;
+        }
+
+        /// &lt;inheritdoc /&gt;
+        public T? GetPage&lt;T&gt;() where T : class
+        {
+            if (!typeof(FrameworkElement).IsAssignableFrom(typeof(T)))
+                throw new InvalidOperationException(&quot;The page should be a WPF control.&quot;);
+
+            return (T?)_serviceProvider.GetService(typeof(T));
+        }
+
+        /// &lt;inheritdoc /&gt;
+        public FrameworkElement? GetPage(Type pageType)
+        {
+            if (!typeof(FrameworkElement).IsAssignableFrom(pageType))
+                throw new InvalidOperationException(&quot;The page should be a WPF control.&quot;);
+
+            return _serviceProvider.GetService(pageType) as FrameworkElement;
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[20,9,20,61,0],[21,9,21,10,0],[22,13,22,48,0],[23,9,23,10,0],[27,9,27,10,0],[28,13,28,71,0],[29,17,29,90,0],[31,13,31,63,0],[32,9,32,10,0],[36,9,36,10,0],[37,13,37,70,0],[38,17,38,90,0],[40,13,40,78,0],[41,9,41,10,0]]);
+    </script>
+  </body>
+</html>

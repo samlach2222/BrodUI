@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>D:\WINDOWS\Documents\GitHub\BrodUI\BrodUI\Kmeans\KmeansRun.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using BrodUI.Helpers;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Windows.Media;
+
+namespace BrodUI.KMeans
+{
+
+    public static class KMeansRun
+    {
+        /// &lt;summary&gt;
+        /// Reduction of the number of color and recoloration with the new colors
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;image&quot;&gt; is array containing the color of each pixel in a Brush object &lt;/param&gt;
+        /// &lt;param name=&quot;nbClusters&quot;&gt; nbClusters is the number of color at the end of the reduction &lt;/param&gt;
+        /// &lt;param name=&quot;nbKmeans&quot;&gt; nbKmeans is the number of times we execute Kmeans algorithm to get the best result, higher value means longer execution times but better result &lt;/param&gt;
+        public static Brush[,] StartKMeans(Brush[,] image, int nbClusters, int nbKMeans, BackgroundWorker? bw = null)
+        {
+            Dictionary&lt;int, GenericVector&gt; dict = Brush2DtoColorDict.BrushToDict(image);
+            List&lt;KMeans&gt; kMeansList = new();
+            for (int i = 0; i &lt; nbKMeans; i++)
+            {
+                Console.WriteLine(&quot;KMeans execution n&#176;&quot; + i + &quot;\n&quot;);
+                KMeans kMeans = new()
+                {
+                    Iterations = 100,
+                    DataSet = dict.Values.ToList(),
+                    Clusters = nbClusters
+                };
+                kMeans.Run();
+                Console.WriteLine(&quot;Sum of squared errors : &quot; + kMeans.Sse + &quot;\n\n&quot;);
+                kMeansList.Add(kMeans);
+                if (bw != null &amp;&amp; bw.IsBusy)
+                {
+                    bw.ReportProgress((int)((double)i / nbKMeans * 100));
+                }
+            }
+            // We keep the lowest SSE
+            KMeans lowestKMeans = kMeansList.Aggregate((minItem, nextItem) =&gt; minItem.Sse &lt; nextItem.Sse ? minItem : nextItem);
+            return Brush2DtoColorDict.DictToBrush2D(dict, lowestKMeans.Centroids!, image.GetLength(0), image.GetLength(1));
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[20,9,20,10,1],[21,13,21,89,1],[22,13,22,45,1],[23,18,23,27,1],[23,29,23,41,1],[23,43,23,46,1],[24,13,24,14,1],[25,17,25,69,1],[26,17,31,19,1],[32,17,32,30,1],[33,17,33,85,1],[34,17,34,40,1],[35,17,35,45,1],[36,17,36,18,0],[37,21,37,74,0],[38,17,38,18,0],[39,13,39,14,1],[41,13,41,79,1],[41,79,41,126,0],[41,126,41,128,1],[42,13,42,124,1],[43,9,43,10,1]]);
+    </script>
+  </body>
+</html>

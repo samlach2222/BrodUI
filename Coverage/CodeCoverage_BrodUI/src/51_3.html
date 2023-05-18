@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>D:\WINDOWS\Documents\GitHub\BrodUI\BrodUI\Kmeans\KMeans.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace BrodUI.KMeans
+{
+
+    public class KMeans
+    {
+        /// &lt;summary&gt;
+        /// Maximal number of iterations for the execution of the algorithm
+        /// &lt;/summary&gt;
+        public int Iterations;
+
+        /// &lt;summary&gt;
+        /// Number of clusters
+        /// &lt;/summary&gt;
+        public int Clusters;
+
+        /// &lt;summary&gt;
+        /// Sum of Squared Errors
+        /// &lt;/summary&gt;
+        public double Sse;
+
+        /// &lt;summary&gt;
+        /// List of Vector containing the data
+        /// &lt;/summary&gt;
+        public List&lt;GenericVector&gt;? DataSet;
+
+        /// &lt;summary&gt;
+        /// Dictionnary containing the centroid of each cluster indexing by the cluster id (just a number to link the data vectors to the centroid of its cluster)
+        /// &lt;/summary&gt;
+        public Dictionary&lt;int, GenericVector&gt;? Centroids;
+
+        /// &lt;summary&gt;
+        /// Random object for random generation (used to select a random vector among dataset)
+        /// &lt;/summary&gt;
+        private readonly Random _random = new();
+
+        /// &lt;summary&gt;
+        /// Number of iterations used during the algorithm (increase during execution)
+        /// &lt;/summary&gt;
+        private int _i;
+
+        /// &lt;summary&gt;
+        /// Start the Kmeans algorithm with the information in the attributes of the object
+        /// &lt;/summary&gt;
+        public void Run()
+        {
+            Centroids = GenerateRandomCentroids(Clusters);
+
+            //for loop Iterations
+            for (_i = 0; _i &lt; Iterations; _i++)
+            {
+                //storing the old centroids to compare it later on.
+                List&lt;GenericVector&gt; oldCentroids = Centroids.Values.ToList();
+
+                //assign data set
+                AssignDataSet();
+
+                Console.WriteLine(&quot;Iterations n&#176;&quot; + _i);
+                foreach (int cid in Centroids.Keys)
+                {
+                    int nb = DataSet!.Where(i =&gt; i.Cluster == cid).Count();
+                    Console.WriteLine(&quot;\tCluster n&#176;&quot; + cid + &quot; has &quot; + Centroids[cid] + &quot; as centroid. This cluster contains &quot; + nb + &quot; data vectors&quot;);
+                }
+
+                //recalculate clusters
+                RecalculateCentroids();
+
+                //check if the centroids are still changing
+                if (!CentroidsChanged(oldCentroids, Centroids.Values.ToList()))
+                    break;
+            }
+            Sse = CalculateSumOfSquaredErrors();
+        }
+
+        /// &lt;summary&gt;
+        /// Assign each data vector to its nearest cluster
+        /// &lt;/summary&gt;
+        private void AssignDataSet()
+        {
+            DataSet!.ForEach(vector =&gt; vector.Cluster = GetNearestCluster(vector));
+        }
+
+        /// &lt;summary&gt;
+        /// Find the nearest cluster to the vector parameter
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;vector&quot;&gt; the vector for which we search the nearest cluster &lt;/param&gt;
+        private int GetNearestCluster(GenericVector vector)
+        {
+            int clusterId = -1;
+            double smallestDistance = double.MaxValue;
+
+            // Get the clusterId that has the smallestDistance with vector
+            foreach (KeyValuePair&lt;int, GenericVector&gt; v in Centroids!)
+            {
+                double tempDistance = GenericVector.Distance(vector, v.Value);
+                if (tempDistance &lt; smallestDistance)
+                {
+                    clusterId = v.Key;
+                    smallestDistance = tempDistance;
+                }
+            }
+
+            /*
+            int clusterId = Centroids!
+                .OrderBy(v =&gt; GenericVector.Distance(vector, v.Value))
+                .Select(v =&gt; v.Key)
+                .FirstOrDefault();
+            */
+            return clusterId;
+        }
+
+        /// &lt;summary&gt;
+        /// Generate a number of random centroids
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;clusters&quot;&gt; the number of centroids we want &lt;/param&gt;
+        private Dictionary&lt;int, GenericVector&gt; GenerateRandomCentroids(int clusters)
+        {
+            Dictionary&lt;int, GenericVector&gt; centroids = new();
+            int index = 0;
+            clusters.Times(() =&gt; centroids.Add(index++, RandomVector()));
+            return centroids;
+        }
+
+        /// &lt;summary&gt;
+        /// Verify if the centroids have changed (for use in between iterations of the kmeans algorithm)
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;a&quot;&gt; The previous centroids &lt;/param&gt;
+        /// &lt;param name=&quot;b&quot;&gt; The current centroids &lt;/param&gt;
+        private static bool CentroidsChanged(IReadOnlyList&lt;GenericVector&gt; a, IReadOnlyList&lt;GenericVector&gt; b)
+        {
+            // return true if two vectors are not equals
+            for (int i = 0; i &lt; a.Count; i++)
+            {
+                if (GenericVector.NotEqual(a[i], b[i]))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+
+        /// &lt;summary&gt;
+        /// Recalculate the centroids as the mean of all vectors in its cluster
+        /// &lt;/summary&gt;
+        private void RecalculateCentroids()
+        {
+            if (Centroids == null) return;
+            if (DataSet != null)
+            {
+                foreach (int centroidKey in Centroids.Keys.ToList())
+                {
+                    List&lt;GenericVector&gt; cluster = DataSet.Where(v =&gt; v.Cluster == centroidKey).ToList();
+
+                    //generating a new genericVector with the mean of the existing vectors
+                    Centroids[centroidKey] = cluster
+                        .Aggregate(new GenericVector(DataSet.First().Size),
+                            (current, y) =&gt; current.Sum(y))
+                        .Divide(cluster.Count); // TODO (REMOVE TODO IF NOT A BUG) : cluster can sometimes be empty, which causes a division by 0 here
+                }
+            }
+        }
+
+        /// &lt;summary&gt;
+        /// Get a random data vector that is not already use as centroid
+        /// &lt;/summary&gt;
+        private GenericVector RandomVector()
+        {
+            while (true)
+            {
+                GenericVector genericVector = DataSet![_random.Next(DataSet.Count)];
+                bool found = false;
+                if (Centroids != null)
+                {
+                    for (int i = 0; i &lt; Centroids.Values.ToList().Count; i++)
+                    {
+                        if (Centroids.Values.ToList()[i] == genericVector)
+                            found = true;
+                    }
+                    if (!found)
+                        return genericVector;
+                }
+                else
+                    return genericVector;
+            }
+        }
+
+        /// &lt;summary&gt;
+        /// The sum of the squared distance of each centroids with all points of its cluster (for result comparison)
+        /// &lt;/summary&gt;
+        public double CalculateSumOfSquaredErrors()
+        {
+            List&lt;IGrouping&lt;int, GenericVector&gt;&gt; orderedClusters = DataSet!.GroupBy(v =&gt; v.Cluster).OrderBy(v =&gt; v.Key).ToList();
+            double sse = (from cluster in orderedClusters
+                          let clusterCenter = Centroids![cluster.Key]
+                          from point in cluster
+                          select Math.Pow(GenericVector.Distance(clusterCenter, point), 2)).Sum();
+            return sse;
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[38,9,38,49,1],[49,9,49,10,1],[50,13,50,59,1],[53,18,53,24,1],[53,26,53,41,1],[53,43,53,47,1],[54,13,54,14,1],[56,17,56,78,1],[59,17,59,33,1],[61,17,61,57,1],[62,17,62,24,1],[62,26,62,33,1],[62,34,62,36,1],[62,37,62,51,1],[63,17,63,18,1],[64,21,64,50,1],[64,50,64,66,1],[64,66,64,76,1],[65,21,65,152,1],[66,17,66,18,1],[69,17,69,40,1],[72,17,72,80,1],[73,21,73,27,1],[74,13,74,14,1],[75,13,75,49,1],[76,9,76,10,1],[82,9,82,10,1],[83,13,83,40,1],[83,40,83,82,1],[83,82,83,84,1],[84,9,84,10,1],[91,9,91,10,1],[92,13,92,32,1],[93,13,93,55,1],[96,13,96,20,1],[96,22,96,56,1],[96,57,96,59,1],[96,60,96,70,1],[97,13,97,14,1],[98,17,98,79,1],[99,17,99,53,1],[100,17,100,18,1],[101,21,101,39,1],[102,21,102,53,1],[103,17,103,18,1],[104,13,104,14,1],[112,13,112,30,1],[113,9,113,10,1],[120,9,120,10,1],[121,13,121,62,1],[122,13,122,27,1],[123,13,123,34,1],[123,34,123,72,1],[123,72,123,74,1],[124,13,124,30,1],[125,9,125,10,1],[133,9,133,10,1],[135,18,135,27,1],[135,29,135,40,1],[135,42,135,45,1],[136,13,136,14,1],[137,17,137,56,1],[138,17,138,18,1],[139,21,139,33,1],[141,13,141,14,1],[142,13,142,26,1],[143,9,143,10,1],[150,9,150,10,1],[151,13,151,35,1],[151,36,151,43,1],[152,13,152,33,1],[153,13,153,14,1],[154,17,154,24,1],[154,26,154,41,1],[154,42,154,44,1],[154,45,154,68,1],[155,17,155,18,1],[156,21,156,70,1],[156,70,156,94,1],[156,94,156,105,1],[159,21,161,45,1],[161,45,161,59,1],[161,59,162,48,1],[163,17,163,18,1],[164,13,164,14,1],[165,9,165,10,1],[171,9,171,10,1],[172,13,172,25,1],[173,13,173,14,1],[174,17,174,85,1],[175,17,175,36,1],[176,17,176,39,1],[177,17,177,18,0],[178,26,178,35,0],[178,37,178,72,0],[178,74,178,77,0],[179,21,179,22,0],[180,25,180,75,0],[181,29,181,42,0],[182,21,182,22,0],[183,21,183,32,0],[184,25,184,46,0],[185,17,185,18,0],[187,21,187,42,1],[188,13,188,14,0],[189,9,189,10,1],[195,9,195,10,1],[196,13,196,89,1],[196,89,196,98,1],[196,98,196,113,1],[196,113,196,118,1],[196,118,196,129,1],[197,13,198,47,1],[198,47,198,70,1],[198,70,199,41,1],[199,41,199,48,1],[199,48,200,34,1],[200,34,200,91,1],[200,91,200,99,1],[201,13,201,24,1],[202,9,202,10,1]]);
+    </script>
+  </body>
+</html>

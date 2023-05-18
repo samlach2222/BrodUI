@@ -1,0 +1,4 @@
+var searchData=
+[
+  ['viewmodel_0',['ViewModel',['../class_brod_u_i_1_1_views_1_1_pages_1_1_export_page.html#aaa2a7c9e153a1ecb9ffb061648bb6ab3',1,'BrodUI.Views.Pages.ExportPage.ViewModel()'],['../class_brod_u_i_1_1_views_1_1_pages_1_1_settings_page.html#a44efbead67f8e357fc46581d339a010f',1,'BrodUI.Views.Pages.SettingsPage.ViewModel()'],['../class_brod_u_i_1_1_views_1_1_pages_1_1_tutorial_page.html#a9c9d82f17d5b3fad68df8f03bd12481b',1,'BrodUI.Views.Pages.TutorialPage.ViewModel()'],['../class_brod_u_i_1_1_views_1_1_windows_1_1_main_window.html#a0fe245076c2261f58aca577ba52f46f5',1,'BrodUI.Views.Windows.MainWindow.ViewModel()']]]
+];

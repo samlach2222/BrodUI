@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>D:\WINDOWS\Documents\GitHub\BrodUI\BrodUI\Views\Pages\TutorialPage.xaml.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System.Windows;
+using Wpf.Ui.Common.Interfaces;
+using Wpf.Ui.Controls.Interfaces;
+using Wpf.Ui.Mvvm.Contracts;
+
+namespace BrodUI.Views.Pages
+{
+    /// &lt;summary&gt;
+    /// Interaction logic for TutorialPage.xaml
+    /// &lt;/summary&gt;
+    public partial class TutorialPage : INavigableView&lt;ViewModels.TutorialViewModel&gt; // TODO : ADD SCROLLBAR TO THE PAGE
+    {
+        /// &lt;summary&gt;
+        /// Getter of the view model
+        /// &lt;/summary&gt;
+        public ViewModels.TutorialViewModel ViewModel
+        {
+            get;
+        }
+
+        /// &lt;summary&gt;
+        /// Constructor of the class
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;viewModel&quot;&gt;viewModel&lt;/param&gt;
+        public TutorialPage(ViewModels.TutorialViewModel viewModel)
+        {
+            ViewModel = viewModel;
+            InitializeComponent();
+        }
+
+        /// &lt;summary&gt;
+        /// Event handler to go to the Convert page
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;sender&quot;&gt;Sender&lt;/param&gt;
+        /// &lt;param name=&quot;e&quot;&gt;Routed event args&lt;/param&gt;
+        private void GoConvertPageFromText(object sender, RoutedEventArgs e)
+        {
+            INavigation? navigationService = (Application.Current.MainWindow as INavigationWindow)?.GetNavigation(); // Get the navigation service from the window.
+            if (navigationService != null)
+            {
+                _ = navigationService.Navigate(typeof(ConvertPage)); // Navigate to the Convert page.
+            }
+        }
+
+        /// &lt;summary&gt;
+        /// Event handler to go to the Export page
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;sender&quot;&gt;Sender&lt;/param&gt;
+        /// &lt;param name=&quot;e&quot;&gt;Routed event args&lt;/param&gt;
+        private void GoExportPageFromText(object sender, RoutedEventArgs e)
+        {
+            INavigation? navigationService = (Application.Current.MainWindow as INavigationWindow)?.GetNavigation(); // Get the navigation service from the window.
+            if (navigationService != null)
+            {
+                _ = navigationService.Navigate(typeof(ExportPage)); // Navigate to the Export page.
+            }
+        }
+
+        /// &lt;summary&gt;
+        /// Event handler to go to the Settings page
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;sender&quot;&gt;Sender&lt;/param&gt;
+        /// &lt;param name=&quot;e&quot;&gt;Routed event args&lt;/param&gt;
+        private void GoSettingsPageFromText(object sender, RoutedEventArgs e)
+        {
+            INavigation? navigationService = (Application.Current.MainWindow as INavigationWindow)?.GetNavigation(); // Get the navigation service from the window.
+            if (navigationService != null)
+            {
+                _ = navigationService.Navigate(typeof(SettingsPage)); // Navigate to the Settings page.
+            }
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[18,13,18,17,0],[25,9,25,68,0],[26,9,26,10,0],[27,13,27,35,0],[28,13,28,35,0],[29,9,29,10,0],[37,9,37,10,0],[38,13,38,117,0],[39,13,39,43,0],[40,13,40,14,0],[41,17,41,69,0],[42,13,42,14,0],[43,9,43,10,0],[51,9,51,10,0],[52,13,52,117,0],[53,13,53,43,0],[54,13,54,14,0],[55,17,55,68,0],[56,13,56,14,0],[57,9,57,10,0],[65,9,65,10,0],[66,13,66,117,0],[67,13,67,43,0],[68,13,68,14,0],[69,17,69,70,0],[70,13,70,14,0],[71,9,71,10,0]]);
+    </script>
+  </body>
+</html>

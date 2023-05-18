@@ -1,0 +1,36 @@
+D:/WINDOWS/Documents/GitHub/BrodUI/BrodUI/Kmeans/GenericVector.cs:9: warning: Compound BrodUI::KMeans::GenericVector is not documented.
+D:/WINDOWS/Documents/GitHub/BrodUI/BrodUI/Kmeans/KMeans.cs:8: warning: Compound BrodUI::KMeans::KMeans is not documented.
+D:/WINDOWS/Documents/GitHub/BrodUI/BrodUI/Kmeans/KmeansRun.cs:11: warning: Compound BrodUI::KMeans::KMeansRun is not documented.
+D:/WINDOWS/Documents/GitHub/BrodUI/BrodUI/Services/WPFMessageBox.cs:1: warning: documented symbol 'namespace BrodUI::Services' was not declared or defined.
+D:/WINDOWS/Documents/GitHub/BrodUI/BrodUI/Helpers/LengthThread.cs:49: warning: return type of member BrodUI.Helpers.LengthThread.WireSize is not documented
+D:/WINDOWS/Documents/GitHub/BrodUI/BrodUI/Kmeans/GenericVector.cs:18: warning: Member GenericVector(int size) (function) of class BrodUI::KMeans::GenericVector is not documented.
+D:/WINDOWS/Documents/GitHub/BrodUI/BrodUI/Kmeans/GenericVector.cs:31: warning: Member Add(float point) (function) of class BrodUI::KMeans::GenericVector is not documented.
+D:/WINDOWS/Documents/GitHub/BrodUI/BrodUI/Kmeans/GenericVector.cs:38: warning: Member Sum(GenericVector vectorToSum) (function) of class BrodUI::KMeans::GenericVector is not documented.
+D:/WINDOWS/Documents/GitHub/BrodUI/BrodUI/Kmeans/GenericVector.cs:51: warning: Member VectorLength() (function) of class BrodUI::KMeans::GenericVector is not documented.
+D:/WINDOWS/Documents/GitHub/BrodUI/BrodUI/Kmeans/GenericVector.cs:57: warning: Member ToString() (function) of class BrodUI::KMeans::GenericVector is not documented.
+D:/WINDOWS/Documents/GitHub/BrodUI/BrodUI/Kmeans/GenericVector.cs:62: warning: Member Divide(int divider) (function) of class BrodUI::KMeans::GenericVector is not documented.
+D:/WINDOWS/Documents/GitHub/BrodUI/BrodUI/Kmeans/GenericVector.cs:71: warning: Member NotEqual(GenericVector a, GenericVector b) (function) of class BrodUI::KMeans::GenericVector is not documented.
+D:/WINDOWS/Documents/GitHub/BrodUI/BrodUI/Kmeans/GenericVector.cs:85: warning: Member DotProduct(GenericVector vectorA, GenericVector vectorB) (function) of class BrodUI::KMeans::GenericVector is not documented.
+D:/WINDOWS/Documents/GitHub/BrodUI/BrodUI/Kmeans/GenericVector.cs:94: warning: Member Distance(GenericVector a, GenericVector b) (function) of class BrodUI::KMeans::GenericVector is not documented.
+D:/WINDOWS/Documents/GitHub/BrodUI/BrodUI/Kmeans/GenericVector.cs:12: warning: Member Cluster (variable) of class BrodUI::KMeans::GenericVector is not documented.
+D:/WINDOWS/Documents/GitHub/BrodUI/BrodUI/Kmeans/GenericVector.cs:15: warning: Member Points (variable) of class BrodUI::KMeans::GenericVector is not documented.
+D:/WINDOWS/Documents/GitHub/BrodUI/BrodUI/Kmeans/GenericVector.cs:36: warning: Member Size (property) of class BrodUI::KMeans::GenericVector is not documented.
+D:/WINDOWS/Documents/GitHub/BrodUI/BrodUI/Kmeans/KMeans.cs:191: warning: return type of member BrodUI.KMeans.KMeans.CalculateSumOfSquaredErrors is not documented
+D:/WINDOWS/Documents/GitHub/BrodUI/BrodUI/Models/ImageManagement.cs:48: warning: parameters of member BrodUI.Models.ImageManagement.ImageManagement are not documented
+D:/WINDOWS/Documents/GitHub/BrodUI/BrodUI/Models/ImageManagement.cs:169: warning: parameters of member BrodUI.Models.ImageManagement.ResizeImage are not documented
+D:/WINDOWS/Documents/GitHub/BrodUI/BrodUI/Services/ApplicationHostService.cs:18: warning: Member ApplicationHostService(IServiceProvider serviceProvider) (function) of class BrodUI::Services::ApplicationHostService is not documented.
+D:/WINDOWS/Documents/GitHub/BrodUI/BrodUI/Services/ApplicationHostService.cs:26: warning: return type of member BrodUI.Services.ApplicationHostService.StartAsync is not documented
+D:/WINDOWS/Documents/GitHub/BrodUI/BrodUI/Services/ApplicationHostService.cs:35: warning: return type of member BrodUI.Services.ApplicationHostService.StopAsync is not documented
+D:/WINDOWS/Documents/GitHub/BrodUI/BrodUI/Services/PageService.cs:17: warning: parameters of member BrodUI.Services.PageService.PageService are not documented
+D:/WINDOWS/Documents/GitHub/BrodUI/BrodUI/Services/PageService.cs:34: warning: parameters of member BrodUI.Services.PageService.GetPage are not documented
+D:/WINDOWS/Documents/GitHub/BrodUI/BrodUI/Services/PageService.cs:34: warning: return type of member BrodUI.Services.PageService.GetPage is not documented
+D:/WINDOWS/Documents/GitHub/BrodUI/BrodUI/Services/PageService.cs:25: warning: return type of member BrodUI.Services.PageService.GetPage< T > is not documented
+D:/WINDOWS/Documents/GitHub/BrodUI/BrodUI/Views/Pages/ConvertPage.xaml.cs:19: warning: Member ConvertPage(ViewModels.ConvertViewModel viewModel) (function) of class BrodUI::Views::Pages::ConvertPage is not documented.
+D:/WINDOWS/Documents/GitHub/BrodUI/BrodUI/Views/Pages/ConvertPage.xaml.cs:14: warning: Member ViewModel (property) of class BrodUI::Views::Pages::ConvertPage is not documented.
+D:/WINDOWS/Documents/GitHub/BrodUI/BrodUI/Views/Windows/MainWindow.xaml.cs:41: warning: Member GetFrame() (function) of class BrodUI::Views::Windows::MainWindow is not documented.
+D:/WINDOWS/Documents/GitHub/BrodUI/BrodUI/Views/Windows/MainWindow.xaml.cs:44: warning: Member GetNavigation() (function) of class BrodUI::Views::Windows::MainWindow is not documented.
+D:/WINDOWS/Documents/GitHub/BrodUI/BrodUI/Views/Windows/MainWindow.xaml.cs:47: warning: Member Navigate(Type pageType) (function) of class BrodUI::Views::Windows::MainWindow is not documented.
+D:/WINDOWS/Documents/GitHub/BrodUI/BrodUI/Views/Windows/MainWindow.xaml.cs:50: warning: Member SetPageService(IPageService pageService) (function) of class BrodUI::Views::Windows::MainWindow is not documented.
+D:/WINDOWS/Documents/GitHub/BrodUI/BrodUI/Views/Windows/MainWindow.xaml.cs:53: warning: Member ShowWindow() (function) of class BrodUI::Views::Windows::MainWindow is not documented.
+D:/WINDOWS/Documents/GitHub/BrodUI/BrodUI/Views/Windows/MainWindow.xaml.cs:56: warning: Member CloseWindow() (function) of class BrodUI::Views::Windows::MainWindow is not documented.
+D:/WINDOWS/Documents/GitHub/BrodUI/BrodUI/Views/Windows/MainWindow.xaml.cs:61: warning: parameters of member BrodUI.Views.Windows.MainWindow.OnClosed are not documented
