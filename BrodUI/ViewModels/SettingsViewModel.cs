@@ -199,10 +199,10 @@ namespace BrodUI.ViewModels
         private void InitializeViewModel()
         {
             // Load settings from file
-            SetProperty(ref _curTheme, ConfigManagement.GetThemeFromConfigFile());
-            SetProperty(ref _curLanguage, ConfigManagement.GetLanguageFromConfigFile());
-            SetProperty(ref _curTerminal, ConfigManagement.GetTerminalFromConfigFile());
-            SetProperty(ref _curEmbroiderySize, ConfigManagement.GetEmbroiderySizeFromConfigFile());
+            SetProperty(ref _curTheme, ConfigManagement.GetThemeFromConfigFile(), nameof(CurTheme));
+            SetProperty(ref _curLanguage, ConfigManagement.GetLanguageFromConfigFile(), nameof(CurLanguage));
+            SetProperty(ref _curTerminal, ConfigManagement.GetTerminalFromConfigFile(), nameof(CurTerminal));
+            SetProperty(ref _curEmbroiderySize, ConfigManagement.GetEmbroiderySizeFromConfigFile(), nameof(CurEmbroiderySize));
 
             _isInitialized = true;
         }
