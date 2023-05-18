@@ -93,7 +93,7 @@ namespace BrodUI.ViewModels
         /// Change the language of the application
         /// </summary>
         /// <param name="curLanguage">new language of the application</param>
-        private void ChangeLanguage(string curLanguage)
+        private static void ChangeLanguage(string curLanguage)
         {
             // save the language in the file "settings.cfg" in the second row
             ConfigManagement.SetLanguageToConfigFile(curLanguage);
@@ -128,7 +128,7 @@ namespace BrodUI.ViewModels
         /// Change the terminal mode
         /// </summary>
         /// <param name="curTerminal">new terminal mode</param>
-        private void ChangeTerminal(bool curTerminal)
+        private static void ChangeTerminal(bool curTerminal)
         {
             // save the language in the file "settings.cfg" in the second row
             ConfigManagement.SetTerminalToConfigFile(curTerminal);
@@ -150,8 +150,11 @@ namespace BrodUI.ViewModels
             get => _curEmbroiderySize;
             set
             {
-                ConfigManagement.SetEmbroiderySizeToConfigFile(value);
-                SetProperty(ref _curEmbroiderySize, value);
+                if (value != null)
+                {
+                    ConfigManagement.SetEmbroiderySizeToConfigFile(value);
+                    SetProperty(ref _curEmbroiderySize, value);
+                }
             }
 
         }
@@ -159,21 +162,17 @@ namespace BrodUI.ViewModels
         /// <summary>
         /// Function to restart the application
         /// </summary>
-        private void RestartApp()
+        private static void RestartApp()
         {
-            // Don't restart when the config is loaded
-            if (_isInitialized)
+            // Start BrodUI as a new process
+            ProcessStartInfo startInfo = new(Environment.ProcessPath!)
             {
-                // Start BrodUI as a new process
-                ProcessStartInfo startInfo = new(Environment.ProcessPath!)
-                {
-                    UseShellExecute = true
-                };
-                Process.Start(startInfo);
+                UseShellExecute = true
+            };
+            Process.Start(startInfo);
 
-                // Close the current BrodUI process
-                Application.Current.Shutdown();
-            }
+            // Close the current BrodUI process
+            Application.Current.Shutdown();
         }
 
         /// <summary>
@@ -200,10 +199,10 @@ namespace BrodUI.ViewModels
         private void InitializeViewModel()
         {
             // Load settings from file
-            CurTheme = ConfigManagement.GetThemeFromConfigFile();
-            CurLanguage = ConfigManagement.GetLanguageFromConfigFile();
-            CurTerminal = ConfigManagement.GetTerminalFromConfigFile();
-            CurEmbroiderySize = ConfigManagement.GetEmbroiderySizeFromConfigFile();
+            SetProperty(ref _curTheme, ConfigManagement.GetThemeFromConfigFile());
+            SetProperty(ref _curLanguage, ConfigManagement.GetLanguageFromConfigFile());
+            SetProperty(ref _curTerminal, ConfigManagement.GetTerminalFromConfigFile());
+            SetProperty(ref _curEmbroiderySize, ConfigManagement.GetEmbroiderySizeFromConfigFile());
 
             _isInitialized = true;
         }
@@ -212,7 +211,7 @@ namespace BrodUI.ViewModels
         /// Reset the parameters of the application
         /// </summary>
         [RelayCommand]
-        private void ResetParameters()
+        private static void ResetParameters()
         {
             ConfigManagement.DeleteConfigFile();
             ImageManagement im = new(new Win32OpenFileDialogAdapter());
@@ -224,7 +223,7 @@ namespace BrodUI.ViewModels
         /// Delete the logs of the application
         /// </summary>
         [RelayCommand]
-        private void DeleteLogs()
+        private static void DeleteLogs()
         {
             LogManagement.ClearLog();
             RestartApp();
