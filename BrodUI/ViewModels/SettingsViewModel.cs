@@ -17,7 +17,7 @@ namespace BrodUI.ViewModels
         /// <summary>
         /// bool to check if the viewmodel is initialized
         /// </summary>
-        private bool _isInitialized;
+        private bool _isInitialized = false;
 
         /// <summary>
         /// Possible themes of the application
@@ -93,7 +93,7 @@ namespace BrodUI.ViewModels
         /// Change the language of the application
         /// </summary>
         /// <param name="curLanguage">new language of the application</param>
-        private static void ChangeLanguage(string curLanguage)
+        private void ChangeLanguage(string curLanguage)
         {
             // save the language in the file "settings.cfg" in the second row
             ConfigManagement.SetLanguageToConfigFile(curLanguage);
@@ -134,10 +134,7 @@ namespace BrodUI.ViewModels
             ConfigManagement.SetTerminalToConfigFile(curTerminal);
 
             //restart the BrodUI application
-            if (_initTerminalDone)
-            {
-                RestartApp();
-            }
+            RestartApp();
         }
 
         /// <summary>
@@ -162,17 +159,21 @@ namespace BrodUI.ViewModels
         /// <summary>
         /// Function to restart the application
         /// </summary>
-        private static void RestartApp()
+        private void RestartApp()
         {
-            // Start BrodUI as a new process
-            ProcessStartInfo startInfo = new(Environment.ProcessPath!)
+            // Don't restart when the config is loaded
+            if (_isInitialized)
             {
-                UseShellExecute = true
-            };
-            Process.Start(startInfo);
+                // Start BrodUI as a new process
+                ProcessStartInfo startInfo = new(Environment.ProcessPath!)
+                {
+                    UseShellExecute = true
+                };
+                Process.Start(startInfo);
 
-            // Close the current BrodUI process
-            Application.Current.Shutdown();
+                // Close the current BrodUI process
+                Application.Current.Shutdown();
+            }
         }
 
         /// <summary>
@@ -194,11 +195,6 @@ namespace BrodUI.ViewModels
         }
 
         /// <summary>
-        /// bool to check if the terminal mode is initialized
-        /// </summary>
-        private bool _initTerminalDone = false;
-
-        /// <summary>
         /// Initialize the viewmodel
         /// </summary>
         private void InitializeViewModel()
@@ -208,7 +204,6 @@ namespace BrodUI.ViewModels
             CurLanguage = ConfigManagement.GetLanguageFromConfigFile();
             CurTerminal = ConfigManagement.GetTerminalFromConfigFile();
             CurEmbroiderySize = ConfigManagement.GetEmbroiderySizeFromConfigFile();
-            _initTerminalDone = true;
 
             _isInitialized = true;
         }
@@ -217,7 +212,7 @@ namespace BrodUI.ViewModels
         /// Reset the parameters of the application
         /// </summary>
         [RelayCommand]
-        private static void ResetParameters()
+        private void ResetParameters()
         {
             ConfigManagement.DeleteConfigFile();
             ImageManagement im = new(new Win32OpenFileDialogAdapter());
@@ -229,7 +224,7 @@ namespace BrodUI.ViewModels
         /// Delete the logs of the application
         /// </summary>
         [RelayCommand]
-        private static void DeleteLogs()
+        private void DeleteLogs()
         {
             LogManagement.ClearLog();
             RestartApp();
