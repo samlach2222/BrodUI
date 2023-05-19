@@ -54,7 +54,7 @@ namespace BrodUITests.KMeansTests
         public void AssignDataSetKMeansTest()
         {
             KMeans km = new();
-            MethodInfo? assignDataSet = typeof(KMeans).GetMethod("AssignDataset", BindingFlags.NonPublic | BindingFlags.Instance);
+            MethodInfo? assignDataSet = typeof(KMeans).GetMethod("AssignDataSet", BindingFlags.NonPublic | BindingFlags.Instance);
             Dictionary<int, GenericVector> dict = new();
             GenericVector cen1 = new();
             cen1.Add(0);
@@ -92,7 +92,7 @@ namespace BrodUITests.KMeansTests
             };
             assignDataSet?.Invoke(km, Array.Empty<object>());
             Assert.Equal(0, km.DataSet[0].Cluster);
-            Assert.Equal(1, km.DataSet[1].Cluster); // TODO : Test -> Error here
+            Assert.Equal(1, km.DataSet[1].Cluster);
             Assert.Equal(2, km.DataSet[2].Cluster);
         }
 
@@ -111,16 +111,19 @@ namespace BrodUITests.KMeansTests
             Assert.Equal(val1.Points[0], actual.Points[0]);
             Assert.Equal(val1.Points[1], actual.Points[1]);
             Assert.Equal(val1.Points[2], actual.Points[2]);
-            km.Centroids?.Add(0, actual);
+            km.Centroids = new();
+            km.Centroids.Add(0, val1);
             GenericVector val2 = new();
             val2.Add(0);
             val2.Add(200);
             val2.Add(0);
             km.DataSet.Add(val2);
             bool check = false;
-            actual = (GenericVector)randomVector.Invoke(km, new object[] { })!;
-            check = check || (val2.Points[0] == actual.Points[0] && val2.Points[1] == actual.Points[1] && val2.Points[2] == actual.Points[2]);
-            Assert.True(check); // TODO : Test -> Error here
+            actual = (GenericVector)randomVector!.Invoke(km, new object[] { })!;
+            Assert.Equal(val2.Points[0], actual.Points[0]);
+            Assert.Equal(val2.Points[2], actual.Points[2]);
+            Assert.Equal(val2.Points[1], actual.Points[1]);
+            
         }
 
         [Fact]
