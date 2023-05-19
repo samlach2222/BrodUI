@@ -235,7 +235,7 @@
     <value>Nom</value>
   </data>
   <data name="Export_LengthLabel" xml:space="preserve">
-    <value>Longueur</value>
+    <value>Longueur (cm)</value>
   </data>
   <data name="Export_ExportToPdfButton" xml:space="preserve">
     <value>Exporter en PDF</value>
@@ -341,5 +341,8 @@
   </data>
   <data name="Export_ToolTipConvertButton" xml:space="preserve">
     <value>Convertir le patron en PDF (le nom du document sera le nom du patron)</value>
+  </data>
+  <data name="Terminal_InTime" xml:space="preserve">
+    <value> en </value>
   </data>
 </root>

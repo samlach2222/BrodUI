@@ -274,7 +274,7 @@
     <comment>Label in the list of color (name column)</comment>
   </data>
   <data name="Export_LengthLabel" xml:space="preserve">
-    <value>Length</value>
+    <value>Length (cm)</value>
     <comment>Label in the list of color (length column)</comment>
   </data>
   <data name="Export_ExportToPdfButton" xml:space="preserve">
@@ -416,5 +416,9 @@
   <data name="Export_ToolTipConvertButton" xml:space="preserve">
     <value>Convert the pattern to PDF (the name of the document will be the name of the pattern)</value>
     <comment>ToolTip of Convert button</comment>
+  </data>
+  <data name="Terminal_InTime" xml:space="preserve">
+    <value> in </value>
+    <comment>"In" word displayed in terminal before time</comment>
   </data>
 </root>

@@ -448,7 +448,7 @@ namespace BrodUI.ViewModels
                 ProgressTb = "0%";
                 ProgressConvert = 0;
                 ProgressVisibility = "Hidden";
-                LogManagement.WriteToLog("[" + DateTime.Now + "] " + Assets.Languages.Resource.Terminal_ImageConvertedOk + "- " + sw.ElapsedMilliseconds + "ms");
+                LogManagement.WriteToLog("[" + DateTime.Now + "] " + Assets.Languages.Resource.Terminal_ImageConvertedOk + Assets.Languages.Resource.Terminal_InTime + sw.ElapsedMilliseconds + "ms");
                 INavigation? navigationService = (Application.Current.MainWindow as INavigationWindow)?.GetNavigation(); // Get the navigation service from the window.
                 if (navigationService != null)
                 {

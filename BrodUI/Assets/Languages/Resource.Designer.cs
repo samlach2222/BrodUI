@@ -277,7 +277,7 @@ namespace BrodUI.Assets.Languages {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Length.
+        ///   Recherche une chaîne localisée semblable à Length (cm).
         /// </summary>
         public static string Export_LengthLabel {
             get {
@@ -570,6 +570,15 @@ namespace BrodUI.Assets.Languages {
         public static string Terminal_ImportLogOk {
             get {
                 return ResourceManager.GetString("Terminal_ImportLogOk", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à  in .
+        /// </summary>
+        public static string Terminal_InTime {
+            get {
+                return ResourceManager.GetString("Terminal_InTime", resourceCulture);
             }
         }
         
