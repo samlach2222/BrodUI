@@ -73,7 +73,7 @@ namespace BrodUI.Helpers
         /// </summary>
         /// <param name="d">DMC color</param>
         /// <returns></returns>
-        public int getRed(int d)
+        public int GetRed(int d)
         {
             int r = 0;
             for (int i = 0; i < _nbDmc; i++)
@@ -87,7 +87,7 @@ namespace BrodUI.Helpers
         /// </summary>
         /// <param name="d">DMC color</param>
         /// <returns></returns>
-        public int getGreen(int d)
+        public int GetGreen(int d)
         {
             int g = 0;
             for (int i = 0; i < _nbDmc; i++)
@@ -101,7 +101,7 @@ namespace BrodUI.Helpers
         /// </summary>
         /// <param name="d">DMC color</param>
         /// <returns></returns>
-        public int getBlue(int d)
+        public int GetBlue(int d)
         {
             int b = 0;
             for (int i = 0; i < _nbDmc; i++)

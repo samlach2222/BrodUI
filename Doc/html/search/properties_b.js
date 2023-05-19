@@ -12,5 +12,6 @@ var searchData=
   ['settings_5flinklatestreleaseongithub_9',['Settings_LinkLatestReleaseOnGithub',['../class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#ac7b0c923c3309459ee4378a6c76e71e0',1,'BrodUI::Assets::Languages::Resource']]],
   ['settings_5flinkoriginalicon_10',['Settings_LinkOriginalIcon',['../class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#aa1649715e2ab1d1f5443a9d3720a4b90',1,'BrodUI::Assets::Languages::Resource']]],
   ['settings_5flinkprojectwebsiteongithub_11',['Settings_LinkProjectWebsiteOnGitHub',['../class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#a2197bf39623aa98c33559e114cb48058',1,'BrodUI::Assets::Languages::Resource']]],
-  ['settings_5fversionnumber_12',['Settings_VersionNumber',['../class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#aae3a72f5c8faa0c1eab11c25fceafc56',1,'BrodUI::Assets::Languages::Resource']]]
+  ['settings_5fversionnumber_12',['Settings_VersionNumber',['../class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#aae3a72f5c8faa0c1eab11c25fceafc56',1,'BrodUI::Assets::Languages::Resource']]],
+  ['size_13',['Size',['../class_brod_u_i_1_1_k_means_1_1_generic_vector.html#aed2575df8845c076ab4f60784786f81f',1,'BrodUI::KMeans::GenericVector']]]
 ];

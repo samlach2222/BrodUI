@@ -97,7 +97,7 @@ namespace BrodUI.ViewModels
             // If no converted image found, redirect to the convert page
             if (LoadedImage == null)
             {
-                WPFMessageBox.Show("", Assets.Languages.Resource.Export_NoImageMessage);
+                WpfMessageBox.Show("", Assets.Languages.Resource.Export_NoImageMessage);
                 INavigation? navigationService = (Application.Current.MainWindow as INavigationWindow)?.GetNavigation(); // Get the navigation service from the window.
                 if (navigationService != null)
                 {
@@ -144,7 +144,7 @@ namespace BrodUI.ViewModels
                 }
 
                 // Initialise variables for the colors to DMC conversion
-                List<Wire> TempWireArray = new();
+                List<Wire> tempWireArray = new();
                 Dictionary<Color, SolidColorBrush> colorToDmcBrush = new(colorQuantity.Count); // Used to convert colors at the grid creation
                 dynamic colorToDmc = ConfigManagement.GetColorModelFromConfigFile() switch
                 {
@@ -170,12 +170,12 @@ namespace BrodUI.ViewModels
                             dmc = hslToDmc.GetValDmc(hueInt, saturationInt, lightnessInt);
 
                             // Get color from DMC number
-                            (int hueHsl, int saturationHsl, int lightnessHSL) = (hslToDmc.getHue(dmc), hslToDmc.getSaturation(dmc), hslToDmc.getLightness(dmc));
-                            (int RHslInt, int GHslInt, int BHslInt) = ColorExtensions.FromHslToRgb(hueHsl, saturationHsl, lightnessHSL);
-                            scbColor = new(Color.FromRgb((byte)RHslInt, (byte)GHslInt, (byte)BHslInt));
+                            (int hueHsl, int saturationHsl, int lightnessHsl) = (hslToDmc.GetHue(dmc), hslToDmc.GetSaturation(dmc), hslToDmc.GetLightness(dmc));
+                            (int rHslInt, int gHslInt, int bHslInt) = ColorExtensions.FromHslToRgb(hueHsl, saturationHsl, lightnessHsl);
+                            scbColor = new(Color.FromRgb((byte)rHslInt, (byte)gHslInt, (byte)bHslInt));
 
                             // Construct terminal output (spaces needed before → to have the arrow at the same position everytime)
-                            terminalOutput.Append("H:" + hueInt + " S:" + saturationInt + " L:" + lightnessInt + "     \t→\tDMC:" + dmc + " H:" + hueHsl + " S:" + saturationHsl + " L:" + lightnessHSL);
+                            terminalOutput.Append("H:" + hueInt + " S:" + saturationInt + " L:" + lightnessInt + "     \t→\tDMC:" + dmc + " H:" + hueHsl + " S:" + saturationHsl + " L:" + lightnessHsl);
                             break;
                         default:
                             RgbToDmc rgbToDmc = (RgbToDmc)colorToDmc;
@@ -184,11 +184,11 @@ namespace BrodUI.ViewModels
                             dmc = rgbToDmc.GetValDmc(color.Key.R, color.Key.G, color.Key.B);
 
                             // Get color from DMC number
-                            (byte RRgb, byte GRgb, byte BRgb) = ((byte)rgbToDmc.getRed(dmc), (byte)rgbToDmc.getGreen(dmc), (byte)rgbToDmc.getBlue(dmc));
-                            scbColor = new(Color.FromRgb(RRgb, GRgb, BRgb));
+                            (byte rRgb, byte gRgb, byte bRgb) = ((byte)rgbToDmc.GetRed(dmc), (byte)rgbToDmc.GetGreen(dmc), (byte)rgbToDmc.GetBlue(dmc));
+                            scbColor = new(Color.FromRgb(rRgb, gRgb, bRgb));
 
                             // Construct terminal output (spaces needed before → to have the arrow at the same position everytime)
-                            terminalOutput.Append("R:" + color.Key.R + " G:" + color.Key.G + " B:" + color.Key.B + "     \t→\tDMC:" + dmc + " R:" + RRgb + " G:" + GRgb + " B:" + BRgb);
+                            terminalOutput.Append("R:" + color.Key.R + " G:" + color.Key.G + " B:" + color.Key.B + "     \t→\tDMC:" + dmc + " R:" + rRgb + " G:" + gRgb + " B:" + bRgb);
                             break;
                     }
                     string colorName = dmcToString.GetNameDmc(dmc);
@@ -198,12 +198,12 @@ namespace BrodUI.ViewModels
                     colorToDmcBrush.Add(color.Key, scbColor);
 
                     // Add to temp wires and output the color conversion to the terminal
-                    TempWireArray.Add(new Wire(scbColor, dmc, "DMC", colorName, color.Value));
+                    tempWireArray.Add(new Wire(scbColor, dmc, "DMC", colorName, color.Value));
                     Console.WriteLine(terminalOutput.ToString());
                 }
 
                 // Add the wires to WireArray, by merging the wires with same colors
-                foreach (Wire tempWire in TempWireArray)
+                foreach (Wire tempWire in tempWireArray)
                 {
                     // If the color is already in WireArray, add the quantity to the existing wire
                     foreach (Wire wire in WireArray)

@@ -14,7 +14,7 @@ namespace BrodUITests.HelpersTests
             HslToDmc hslToDmc = new();
             int d = hslToDmc.GetValDmc(45, 40, 98);
             string actual = d.ToString();
-            actual = actual + " " + hslToDmc.getHue(d).ToString() + " " + hslToDmc.getSaturation(d).ToString() + " " + hslToDmc.getLightness(d).ToString();
+            actual = actual + " " + hslToDmc.GetHue(d).ToString() + " " + hslToDmc.GetSaturation(d).ToString() + " " + hslToDmc.GetLightness(d).ToString();
             // Assert
             Assert.Equal(expected, actual);
         }
@@ -37,7 +37,7 @@ namespace BrodUITests.HelpersTests
             const int hue = 0;
             const int dmc1 = 3713;
             HslToDmc hslToDmc = new();
-            int h = hslToDmc.getHue(dmc1);
+            int h = hslToDmc.GetHue(dmc1);
             Assert.Equal(hue, h);
         }
         [Fact]
@@ -46,7 +46,7 @@ namespace BrodUITests.HelpersTests
             const int saturation = 100;
             const int dmc1 = 3713;
             HslToDmc hslToDmc = new();
-            int s = hslToDmc.getSaturation(dmc1);
+            int s = hslToDmc.GetSaturation(dmc1);
             Assert.Equal(saturation, s);
         }
         [Fact]
@@ -55,7 +55,7 @@ namespace BrodUITests.HelpersTests
             const int lightness = 94;
             const int dmc1 = 3713;
             HslToDmc hslToDmc = new();
-            int l = hslToDmc.getLightness(dmc1);
+            int l = hslToDmc.GetLightness(dmc1);
             Assert.Equal(lightness, l);
         }
     }

@@ -4,7 +4,9 @@ using System.Linq;
 
 namespace BrodUI.KMeans
 {
-
+    /// <summary>
+    /// KMeans class
+    /// </summary>
     public class KMeans
     {
         /// <summary>
@@ -167,6 +169,7 @@ namespace BrodUI.KMeans
         /// <summary>
         /// Get a random data vector that is not already use as centroid
         /// </summary>
+        /// <returns>return a random vector</returns>
         private GenericVector RandomVector()
         {
             while (true)
@@ -191,6 +194,7 @@ namespace BrodUI.KMeans
         /// <summary>
         /// The sum of the squared distance of each centroids with all points of its cluster (for result comparison)
         /// </summary>
+        /// <returns>the sum of squaredErrors</returns>
         public double CalculateSumOfSquaredErrors()
         {
             List<IGrouping<int, GenericVector>> orderedClusters = DataSet!.GroupBy(v => v.Cluster).OrderBy(v => v.Key).ToList();

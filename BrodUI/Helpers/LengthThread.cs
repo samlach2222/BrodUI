@@ -29,10 +29,8 @@ namespace BrodUI.Helpers
         /// <summary>
         /// Constructor of the class
         /// </summary>
-        ///Color of the thread of which we are measuring the length
-        /// <param name="color"></param>
-        ///Image we are working on
-        /// <param name="image"></param>
+        /// <param name="color">Color of the thread of which we are measuring the length</param>
+        /// <param name="image">Image we are working on</param>
         public LengthThread(int color, int[,] image)
         {
 
@@ -46,10 +44,9 @@ namespace BrodUI.Helpers
         /// <summary>
         /// Function to calculate the length of the thread which color is defined in the parameters as well as the image we are working on
         /// </summary>
-        ///Color of the thread of which we are measuring the length
-        /// <param name="color"></param>
-        ///Image we are working on
-        /// <param name="image"></param>
+        /// <param name="color">Color of the thread of which we are measuring the length</param>
+        /// <param name="image">Image we are working on</param>
+        /// <returns>Size of the wire</returns>
         public double WireSize(int color, int[,] image)
         {
             // Counter to know the number of consecutive pixels of the same color
@@ -84,10 +81,5 @@ namespace BrodUI.Helpers
             }
             return TotalLength;
         }
-
     }
-
 }
-
-
-

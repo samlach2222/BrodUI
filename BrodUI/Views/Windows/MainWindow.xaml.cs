@@ -38,21 +38,44 @@ namespace BrodUI.Views.Windows
 
         #region INavigationWindow methods
 
+        /// <summary>
+        /// Method to get the frame of the window.
+        /// </summary>
+        /// <returns>the frame</returns>
         public Frame GetFrame()
             => RootFrame;
 
+        /// <summary>
+        /// Method to get the navigation of the window.
+        /// </summary>
+        /// <returns>Navigation of the window</returns>
         public INavigation GetNavigation()
             => RootNavigation;
 
+        /// <summary>
+        /// Method to navigate to a page.
+        /// </summary>
+        /// <param name="pageType">Page you want to navigate</param>
+        /// <returns>true if you well navigated to</returns>
         public bool Navigate(Type pageType)
             => RootNavigation.Navigate(pageType);
 
+        /// <summary>
+        /// Method to set the page service.
+        /// </summary>
+        /// <param name="pageService">pageService you want to set</param>
         public void SetPageService(IPageService pageService)
             => RootNavigation.PageService = pageService;
 
+        /// <summary>
+        /// Method to show the window.
+        /// </summary>
         public void ShowWindow()
             => Show();
 
+        /// <summary>
+        /// Method to close the window.
+        /// </summary>
         public void CloseWindow()
             => Close();
 
@@ -61,6 +84,7 @@ namespace BrodUI.Views.Windows
         /// <summary>
         /// Raises the closed event.
         /// </summary>
+        /// <param name="e">EventArgs</param>
         protected override void OnClosed(EventArgs e)
         {
             base.OnClosed(e);

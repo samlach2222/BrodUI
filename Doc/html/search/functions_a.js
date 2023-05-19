@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['resizeimage_0',['ResizeImage',['../class_brod_u_i_1_1_models_1_1_image_management.html#af076aab5dc4a7b909da94dc7c63c70ac',1,'BrodUI::Models::ImageManagement']]],
-  ['rgbtodmc_1',['RgbToDmc',['../class_brod_u_i_1_1_helpers_1_1_rgb_to_dmc.html#a0691a8f16c95cb3fdb2449a5fa0a1b15',1,'BrodUI::Helpers::RgbToDmc']]],
-  ['run_2',['Run',['../class_brod_u_i_1_1_k_means_1_1_k_means.html#a8f52af91e6d1ee9e7ab91522af8a60db',1,'BrodUI::KMeans::KMeans']]]
+  ['onclosed_0',['OnClosed',['../class_brod_u_i_1_1_views_1_1_windows_1_1_main_window.html#a5190f3399f09c66a6959511ed1477912',1,'BrodUI::Views::Windows::MainWindow']]],
+  ['onnavigatedfrom_1',['OnNavigatedFrom',['../class_brod_u_i_1_1_view_models_1_1_convert_view_model.html#aa7b2f21f2388fb6db9612f88866523f3',1,'BrodUI.ViewModels.ConvertViewModel.OnNavigatedFrom()'],['../class_brod_u_i_1_1_view_models_1_1_export_view_model.html#a6b399994156dec3628e4ab2d355b8d9b',1,'BrodUI.ViewModels.ExportViewModel.OnNavigatedFrom()'],['../class_brod_u_i_1_1_view_models_1_1_settings_view_model.html#a951dcff58c59ab53767046efd91eef44',1,'BrodUI.ViewModels.SettingsViewModel.OnNavigatedFrom()'],['../class_brod_u_i_1_1_view_models_1_1_tutorial_view_model.html#a12fb5ac91577f99044065ad7d4bf56ea',1,'BrodUI.ViewModels.TutorialViewModel.OnNavigatedFrom()']]],
+  ['onnavigatedto_2',['OnNavigatedTo',['../class_brod_u_i_1_1_view_models_1_1_convert_view_model.html#a6680c6d84aecb9fe2c2f4191077e66d9',1,'BrodUI.ViewModels.ConvertViewModel.OnNavigatedTo()'],['../class_brod_u_i_1_1_view_models_1_1_export_view_model.html#a706b43f1434fa954382b398597fc17d1',1,'BrodUI.ViewModels.ExportViewModel.OnNavigatedTo()'],['../class_brod_u_i_1_1_view_models_1_1_settings_view_model.html#a9248493ff3499f9ef4b7d63cb4e83469',1,'BrodUI.ViewModels.SettingsViewModel.OnNavigatedTo()'],['../class_brod_u_i_1_1_view_models_1_1_tutorial_view_model.html#a51a0668d331c24c5fab6cd1d59f5cf15',1,'BrodUI.ViewModels.TutorialViewModel.OnNavigatedTo()']]],
+  ['openpdfindefaultapplication_3',['OpenPdfInDefaultApplication',['../class_brod_u_i_1_1_models_1_1_pdf_management.html#a53d70029c43cbeb2a0de3816fba30853',1,'BrodUI::Models::PdfManagement']]]
 ];

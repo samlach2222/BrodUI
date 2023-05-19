@@ -6,7 +6,8 @@ var searchData=
   ['pagename_5ftutorial_3',['PageName_Tutorial',['../class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#a65d5c36e5e35612e191cdfee6d29dd58',1,'BrodUI::Assets::Languages::Resource']]],
   ['pageservice_4',['PageService',['../class_brod_u_i_1_1_services_1_1_page_service.html',1,'BrodUI.Services.PageService'],['../class_brod_u_i_1_1_services_1_1_page_service.html#a8288337c14a5301666d1aa9affda6370',1,'BrodUI.Services.PageService.PageService()']]],
   ['pdfmanagement_5',['PdfManagement',['../class_brod_u_i_1_1_models_1_1_pdf_management.html',1,'BrodUI.Models.PdfManagement'],['../class_brod_u_i_1_1_models_1_1_pdf_management.html#a22cf02dc9772f36b9bd7ac63ea3a1fc2',1,'BrodUI.Models.PdfManagement.PdfManagement()']]],
-  ['progressconvert_6',['ProgressConvert',['../class_brod_u_i_1_1_view_models_1_1_convert_view_model.html#a4ff959aba1fe7f3426b09814e706c249',1,'BrodUI::ViewModels::ConvertViewModel']]],
-  ['progresstb_7',['ProgressTb',['../class_brod_u_i_1_1_view_models_1_1_convert_view_model.html#acea2d90ac2484cffe5b9b9e24858e127',1,'BrodUI::ViewModels::ConvertViewModel']]],
-  ['progressvisibility_8',['ProgressVisibility',['../class_brod_u_i_1_1_view_models_1_1_convert_view_model.html#a972eaa5ef4f4a216b6153b8fa35db188',1,'BrodUI::ViewModels::ConvertViewModel']]]
+  ['points_6',['Points',['../class_brod_u_i_1_1_k_means_1_1_generic_vector.html#a1f64c5b50e3909c7e60174f89870c251',1,'BrodUI::KMeans::GenericVector']]],
+  ['progressconvert_7',['ProgressConvert',['../class_brod_u_i_1_1_view_models_1_1_convert_view_model.html#a4ff959aba1fe7f3426b09814e706c249',1,'BrodUI::ViewModels::ConvertViewModel']]],
+  ['progresstb_8',['ProgressTb',['../class_brod_u_i_1_1_view_models_1_1_convert_view_model.html#acea2d90ac2484cffe5b9b9e24858e127',1,'BrodUI::ViewModels::ConvertViewModel']]],
+  ['progressvisibility_9',['ProgressVisibility',['../class_brod_u_i_1_1_view_models_1_1_convert_view_model.html#a972eaa5ef4f4a216b6153b8fa35db188',1,'BrodUI::ViewModels::ConvertViewModel']]]
 ];

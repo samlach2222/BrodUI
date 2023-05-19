@@ -48,6 +48,7 @@ namespace BrodUI.Models
         /// <summary>
         /// Constructor that set the default values
         /// </summary>
+        /// <param name="openFileDialog">fileDialog of the image loading popup (windows)</param>
         public ImageManagement(IOpenFileDialog openFileDialog)
         {
             Image = null;
@@ -110,7 +111,7 @@ namespace BrodUI.Models
             }
             else
             {
-                WPFMessageBox.Show("", Assets.Languages.Resource.ImageManagement_InvalidImageFile);
+                WpfMessageBox.Show("", Assets.Languages.Resource.ImageManagement_InvalidImageFile);
             }
         }
 
@@ -169,9 +170,12 @@ namespace BrodUI.Models
         /// <summary>
         /// Resize the image to ImageWidth and ImageHeight and save it
         /// </summary>
+        /// <param name="kMeansColorNumber">number of color of the result image</param>
+        /// <param name="kmeansIterationNumber">number of KMeans iterations</param>
+        /// <param name="bw">Background worker to report percentage of completion</param>
         public void ResizeImage(int kMeansColorNumber, int kmeansIterationNumber, BackgroundWorker? bw = null)
         {
-            // Set taskbar progress to indeterminate (we can't know the progress of the resize)
+            // Set taskBar progress to indeterminate (we can't know the progress of the resize)
             LogManagement.UpdateProgression(TaskBarProgressState.Indeterminate);
 
             BitmapImage? old;

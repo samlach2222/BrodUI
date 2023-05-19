@@ -26,9 +26,9 @@
 </section>
 <section title="HslToDmc" ref="class_brod_u_i_1_1_helpers_1_1_hsl_to_dmc.html">
 <section title="HslToDmc" ref="class_brod_u_i_1_1_helpers_1_1_hsl_to_dmc.html#a9adca742d27e72d081aca7bf1a05aab4"/>
-<section title="getHue" ref="class_brod_u_i_1_1_helpers_1_1_hsl_to_dmc.html#a71c6df7058ab52f354ce8eb89fc2bdf8"/>
-<section title="getLightness" ref="class_brod_u_i_1_1_helpers_1_1_hsl_to_dmc.html#abdc695460013409c3db6b21b620bdfc5"/>
-<section title="getSaturation" ref="class_brod_u_i_1_1_helpers_1_1_hsl_to_dmc.html#a7885e43124c0c3b17f1eaa490c12cc15"/>
+<section title="GetHue" ref="class_brod_u_i_1_1_helpers_1_1_hsl_to_dmc.html#af526be56025a4e8ef96bd07aacf8930a"/>
+<section title="GetLightness" ref="class_brod_u_i_1_1_helpers_1_1_hsl_to_dmc.html#a0a45c148144fcd114d9c0e4c718586e9"/>
+<section title="GetSaturation" ref="class_brod_u_i_1_1_helpers_1_1_hsl_to_dmc.html#a0ee61b10aee4ca47bfde489ab9bcb74c"/>
 <section title="GetValDmc" ref="class_brod_u_i_1_1_helpers_1_1_hsl_to_dmc.html#a6411bc29b6c0563c287f836588793623"/>
 </section>
 <section title="ImageTo2DArrayBrushes" ref="class_brod_u_i_1_1_helpers_1_1_image_to2_d_array_brushes.html">
@@ -41,9 +41,9 @@
 </section>
 <section title="RgbToDmc" ref="class_brod_u_i_1_1_helpers_1_1_rgb_to_dmc.html">
 <section title="RgbToDmc" ref="class_brod_u_i_1_1_helpers_1_1_rgb_to_dmc.html#a0691a8f16c95cb3fdb2449a5fa0a1b15"/>
-<section title="getBlue" ref="class_brod_u_i_1_1_helpers_1_1_rgb_to_dmc.html#ae1bfb7516d442b3d7f2669ffe657babb"/>
-<section title="getGreen" ref="class_brod_u_i_1_1_helpers_1_1_rgb_to_dmc.html#ad0e462c61c9ee03097a3be299ee85a68"/>
-<section title="getRed" ref="class_brod_u_i_1_1_helpers_1_1_rgb_to_dmc.html#acf35563a56a8a514d485dc8ef74a7400"/>
+<section title="GetBlue" ref="class_brod_u_i_1_1_helpers_1_1_rgb_to_dmc.html#a50a7739518137130c46e13eef00bbab3"/>
+<section title="GetGreen" ref="class_brod_u_i_1_1_helpers_1_1_rgb_to_dmc.html#ae6580b4896c27c3429509ae37b8bdf10"/>
+<section title="GetRed" ref="class_brod_u_i_1_1_helpers_1_1_rgb_to_dmc.html#a08e4cc5f639b9345c5b83029cb93e1f2"/>
 <section title="GetValDmc" ref="class_brod_u_i_1_1_helpers_1_1_rgb_to_dmc.html#aac18f77a9b1e7fb778fdc32219e9acb1"/>
 </section>
 <section title="Win32OpenFileDialogAdapter" ref="class_brod_u_i_1_1_helpers_1_1_win32_open_file_dialog_adapter.html">
@@ -56,6 +56,16 @@
 </section>
 <section title="KMeans" ref="namespace_brod_u_i_1_1_k_means.html">
 <section title="GenericVector" ref="class_brod_u_i_1_1_k_means_1_1_generic_vector.html">
+<section title="GenericVector" ref="class_brod_u_i_1_1_k_means_1_1_generic_vector.html#af1c4f19ea8ff981744c4955780869538"/>
+<section title="GenericVector" ref="class_brod_u_i_1_1_k_means_1_1_generic_vector.html#a29951a7d8b2a457d5c015b1b46b59a16"/>
+<section title="Add" ref="class_brod_u_i_1_1_k_means_1_1_generic_vector.html#a18367e54ef3ca913374cdf41cb01fdc0"/>
+<section title="Divide" ref="class_brod_u_i_1_1_k_means_1_1_generic_vector.html#aebe6f1fa7fe3bcce62b29dddc068b9fa"/>
+<section title="Sum" ref="class_brod_u_i_1_1_k_means_1_1_generic_vector.html#aba7571aacd61ad4edf9c669b1db566f0"/>
+<section title="ToString" ref="class_brod_u_i_1_1_k_means_1_1_generic_vector.html#ab7fe7ca49860dc9ddaad53492e2ffe0d"/>
+<section title="VectorLength" ref="class_brod_u_i_1_1_k_means_1_1_generic_vector.html#a87075bd5a1ef6c714a14ef62b3755a72"/>
+<section title="Cluster" ref="class_brod_u_i_1_1_k_means_1_1_generic_vector.html#abc7295a53bd6d2d087eed3c7c9ce2d9b"/>
+<section title="Points" ref="class_brod_u_i_1_1_k_means_1_1_generic_vector.html#a1f64c5b50e3909c7e60174f89870c251"/>
+<section title="Size" ref="class_brod_u_i_1_1_k_means_1_1_generic_vector.html#aed2575df8845c076ab4f60784786f81f"/>
 </section>
 <section title="KMeans" ref="class_brod_u_i_1_1_k_means_1_1_k_means.html">
 <section title="CalculateSumOfSquaredErrors" ref="class_brod_u_i_1_1_k_means_1_1_k_means.html#a74e88c86f45b505ea4934fb042e188e0"/>
@@ -100,6 +110,7 @@
 </section>
 <section title="Services" ref="namespace_brod_u_i_1_1_services.html">
 <section title="ApplicationHostService" ref="class_brod_u_i_1_1_services_1_1_application_host_service.html">
+<section title="ApplicationHostService" ref="class_brod_u_i_1_1_services_1_1_application_host_service.html#af35ed2dfa641d1ab7ba84bcedd306d4c"/>
 <section title="StartAsync" ref="class_brod_u_i_1_1_services_1_1_application_host_service.html#a8769c8d8c7e8ae107af06fed062289c9"/>
 <section title="StopAsync" ref="class_brod_u_i_1_1_services_1_1_application_host_service.html#aed4ef71c9d9dca0261eabe3527eb192d"/>
 </section>
@@ -152,9 +163,11 @@
 <section title="Views" ref="namespace_brod_u_i_1_1_views.html">
 <section title="Pages" ref="namespace_brod_u_i_1_1_views_1_1_pages.html">
 <section title="ConvertPage" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_convert_page.html">
+<section title="ConvertPage" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_convert_page.html#adbdd2e31fa298ba584143ece75219639"/>
 <section title="InitializeComponent" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_convert_page.html#a08efd4b121e9f9be9f1b47e3da6b1c75"/>
 <section title="InitializeComponent" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_convert_page.html#a08efd4b121e9f9be9f1b47e3da6b1c75"/>
 <section title="InitializeComponent" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_convert_page.html#a08efd4b121e9f9be9f1b47e3da6b1c75"/>
+<section title="ViewModel" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_convert_page.html#a4fb645aa338f01c64a0b580810b34c03"/>
 </section>
 <section title="ExportPage" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_export_page.html">
 <section title="ExportPage" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_export_page.html#ae56096b5087f0f20436ac542c5918ec2"/>
@@ -181,10 +194,16 @@
 <section title="Windows" ref="namespace_brod_u_i_1_1_views_1_1_windows.html">
 <section title="MainWindow" ref="class_brod_u_i_1_1_views_1_1_windows_1_1_main_window.html">
 <section title="MainWindow" ref="class_brod_u_i_1_1_views_1_1_windows_1_1_main_window.html#acd07abe06dd58dc43162fc6c0196e6ed"/>
+<section title="CloseWindow" ref="class_brod_u_i_1_1_views_1_1_windows_1_1_main_window.html#a12ef48b999658932fd575896eef7facc"/>
+<section title="GetFrame" ref="class_brod_u_i_1_1_views_1_1_windows_1_1_main_window.html#a255ea116ae9a44b00d16b4079c6d2b16"/>
+<section title="GetNavigation" ref="class_brod_u_i_1_1_views_1_1_windows_1_1_main_window.html#a96954d4e2294a6c10fce4fb838518be2"/>
 <section title="InitializeComponent" ref="class_brod_u_i_1_1_views_1_1_windows_1_1_main_window.html#a011cedc0fbfe200eee43d48c89647719"/>
 <section title="InitializeComponent" ref="class_brod_u_i_1_1_views_1_1_windows_1_1_main_window.html#a011cedc0fbfe200eee43d48c89647719"/>
 <section title="InitializeComponent" ref="class_brod_u_i_1_1_views_1_1_windows_1_1_main_window.html#a011cedc0fbfe200eee43d48c89647719"/>
+<section title="Navigate" ref="class_brod_u_i_1_1_views_1_1_windows_1_1_main_window.html#a16d61633a27eee2bfa938abbd3aa2769"/>
 <section title="OnClosed" ref="class_brod_u_i_1_1_views_1_1_windows_1_1_main_window.html#a5190f3399f09c66a6959511ed1477912"/>
+<section title="SetPageService" ref="class_brod_u_i_1_1_views_1_1_windows_1_1_main_window.html#a907cbc045d0eab1e538f3e68c1db39c4"/>
+<section title="ShowWindow" ref="class_brod_u_i_1_1_views_1_1_windows_1_1_main_window.html#a237986e374a87c10a7ca2630629a7400"/>
 <section title="ViewModel" ref="class_brod_u_i_1_1_views_1_1_windows_1_1_main_window.html#a0fe245076c2261f58aca577ba52f46f5"/>
 </section>
 </section>
@@ -217,9 +236,9 @@
 </section>
 <section title="HslToDmc" ref="class_brod_u_i_1_1_helpers_1_1_hsl_to_dmc.html">
 <section title="HslToDmc" ref="class_brod_u_i_1_1_helpers_1_1_hsl_to_dmc.html#a9adca742d27e72d081aca7bf1a05aab4"/>
-<section title="getHue" ref="class_brod_u_i_1_1_helpers_1_1_hsl_to_dmc.html#a71c6df7058ab52f354ce8eb89fc2bdf8"/>
-<section title="getLightness" ref="class_brod_u_i_1_1_helpers_1_1_hsl_to_dmc.html#abdc695460013409c3db6b21b620bdfc5"/>
-<section title="getSaturation" ref="class_brod_u_i_1_1_helpers_1_1_hsl_to_dmc.html#a7885e43124c0c3b17f1eaa490c12cc15"/>
+<section title="GetHue" ref="class_brod_u_i_1_1_helpers_1_1_hsl_to_dmc.html#af526be56025a4e8ef96bd07aacf8930a"/>
+<section title="GetLightness" ref="class_brod_u_i_1_1_helpers_1_1_hsl_to_dmc.html#a0a45c148144fcd114d9c0e4c718586e9"/>
+<section title="GetSaturation" ref="class_brod_u_i_1_1_helpers_1_1_hsl_to_dmc.html#a0ee61b10aee4ca47bfde489ab9bcb74c"/>
 <section title="GetValDmc" ref="class_brod_u_i_1_1_helpers_1_1_hsl_to_dmc.html#a6411bc29b6c0563c287f836588793623"/>
 </section>
 <section title="ImageTo2DArrayBrushes" ref="class_brod_u_i_1_1_helpers_1_1_image_to2_d_array_brushes.html">
@@ -232,9 +251,9 @@
 </section>
 <section title="RgbToDmc" ref="class_brod_u_i_1_1_helpers_1_1_rgb_to_dmc.html">
 <section title="RgbToDmc" ref="class_brod_u_i_1_1_helpers_1_1_rgb_to_dmc.html#a0691a8f16c95cb3fdb2449a5fa0a1b15"/>
-<section title="getBlue" ref="class_brod_u_i_1_1_helpers_1_1_rgb_to_dmc.html#ae1bfb7516d442b3d7f2669ffe657babb"/>
-<section title="getGreen" ref="class_brod_u_i_1_1_helpers_1_1_rgb_to_dmc.html#ad0e462c61c9ee03097a3be299ee85a68"/>
-<section title="getRed" ref="class_brod_u_i_1_1_helpers_1_1_rgb_to_dmc.html#acf35563a56a8a514d485dc8ef74a7400"/>
+<section title="GetBlue" ref="class_brod_u_i_1_1_helpers_1_1_rgb_to_dmc.html#a50a7739518137130c46e13eef00bbab3"/>
+<section title="GetGreen" ref="class_brod_u_i_1_1_helpers_1_1_rgb_to_dmc.html#ae6580b4896c27c3429509ae37b8bdf10"/>
+<section title="GetRed" ref="class_brod_u_i_1_1_helpers_1_1_rgb_to_dmc.html#a08e4cc5f639b9345c5b83029cb93e1f2"/>
 <section title="GetValDmc" ref="class_brod_u_i_1_1_helpers_1_1_rgb_to_dmc.html#aac18f77a9b1e7fb778fdc32219e9acb1"/>
 </section>
 <section title="Win32OpenFileDialogAdapter" ref="class_brod_u_i_1_1_helpers_1_1_win32_open_file_dialog_adapter.html">
@@ -247,6 +266,16 @@
 </section>
 <section title="KMeans" ref="namespace_brod_u_i_1_1_k_means.html">
 <section title="GenericVector" ref="class_brod_u_i_1_1_k_means_1_1_generic_vector.html">
+<section title="GenericVector" ref="class_brod_u_i_1_1_k_means_1_1_generic_vector.html#af1c4f19ea8ff981744c4955780869538"/>
+<section title="GenericVector" ref="class_brod_u_i_1_1_k_means_1_1_generic_vector.html#a29951a7d8b2a457d5c015b1b46b59a16"/>
+<section title="Add" ref="class_brod_u_i_1_1_k_means_1_1_generic_vector.html#a18367e54ef3ca913374cdf41cb01fdc0"/>
+<section title="Divide" ref="class_brod_u_i_1_1_k_means_1_1_generic_vector.html#aebe6f1fa7fe3bcce62b29dddc068b9fa"/>
+<section title="Sum" ref="class_brod_u_i_1_1_k_means_1_1_generic_vector.html#aba7571aacd61ad4edf9c669b1db566f0"/>
+<section title="ToString" ref="class_brod_u_i_1_1_k_means_1_1_generic_vector.html#ab7fe7ca49860dc9ddaad53492e2ffe0d"/>
+<section title="VectorLength" ref="class_brod_u_i_1_1_k_means_1_1_generic_vector.html#a87075bd5a1ef6c714a14ef62b3755a72"/>
+<section title="Cluster" ref="class_brod_u_i_1_1_k_means_1_1_generic_vector.html#abc7295a53bd6d2d087eed3c7c9ce2d9b"/>
+<section title="Points" ref="class_brod_u_i_1_1_k_means_1_1_generic_vector.html#a1f64c5b50e3909c7e60174f89870c251"/>
+<section title="Size" ref="class_brod_u_i_1_1_k_means_1_1_generic_vector.html#aed2575df8845c076ab4f60784786f81f"/>
 </section>
 <section title="KMeans" ref="class_brod_u_i_1_1_k_means_1_1_k_means.html">
 <section title="CalculateSumOfSquaredErrors" ref="class_brod_u_i_1_1_k_means_1_1_k_means.html#a74e88c86f45b505ea4934fb042e188e0"/>
@@ -291,6 +320,7 @@
 </section>
 <section title="Services" ref="namespace_brod_u_i_1_1_services.html">
 <section title="ApplicationHostService" ref="class_brod_u_i_1_1_services_1_1_application_host_service.html">
+<section title="ApplicationHostService" ref="class_brod_u_i_1_1_services_1_1_application_host_service.html#af35ed2dfa641d1ab7ba84bcedd306d4c"/>
 <section title="StartAsync" ref="class_brod_u_i_1_1_services_1_1_application_host_service.html#a8769c8d8c7e8ae107af06fed062289c9"/>
 <section title="StopAsync" ref="class_brod_u_i_1_1_services_1_1_application_host_service.html#aed4ef71c9d9dca0261eabe3527eb192d"/>
 </section>
@@ -343,9 +373,11 @@
 <section title="Views" ref="namespace_brod_u_i_1_1_views.html">
 <section title="Pages" ref="namespace_brod_u_i_1_1_views_1_1_pages.html">
 <section title="ConvertPage" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_convert_page.html">
+<section title="ConvertPage" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_convert_page.html#adbdd2e31fa298ba584143ece75219639"/>
 <section title="InitializeComponent" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_convert_page.html#a08efd4b121e9f9be9f1b47e3da6b1c75"/>
 <section title="InitializeComponent" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_convert_page.html#a08efd4b121e9f9be9f1b47e3da6b1c75"/>
 <section title="InitializeComponent" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_convert_page.html#a08efd4b121e9f9be9f1b47e3da6b1c75"/>
+<section title="ViewModel" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_convert_page.html#a4fb645aa338f01c64a0b580810b34c03"/>
 </section>
 <section title="ExportPage" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_export_page.html">
 <section title="ExportPage" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_export_page.html#ae56096b5087f0f20436ac542c5918ec2"/>
@@ -372,10 +404,16 @@
 <section title="Windows" ref="namespace_brod_u_i_1_1_views_1_1_windows.html">
 <section title="MainWindow" ref="class_brod_u_i_1_1_views_1_1_windows_1_1_main_window.html">
 <section title="MainWindow" ref="class_brod_u_i_1_1_views_1_1_windows_1_1_main_window.html#acd07abe06dd58dc43162fc6c0196e6ed"/>
+<section title="CloseWindow" ref="class_brod_u_i_1_1_views_1_1_windows_1_1_main_window.html#a12ef48b999658932fd575896eef7facc"/>
+<section title="GetFrame" ref="class_brod_u_i_1_1_views_1_1_windows_1_1_main_window.html#a255ea116ae9a44b00d16b4079c6d2b16"/>
+<section title="GetNavigation" ref="class_brod_u_i_1_1_views_1_1_windows_1_1_main_window.html#a96954d4e2294a6c10fce4fb838518be2"/>
 <section title="InitializeComponent" ref="class_brod_u_i_1_1_views_1_1_windows_1_1_main_window.html#a011cedc0fbfe200eee43d48c89647719"/>
 <section title="InitializeComponent" ref="class_brod_u_i_1_1_views_1_1_windows_1_1_main_window.html#a011cedc0fbfe200eee43d48c89647719"/>
 <section title="InitializeComponent" ref="class_brod_u_i_1_1_views_1_1_windows_1_1_main_window.html#a011cedc0fbfe200eee43d48c89647719"/>
+<section title="Navigate" ref="class_brod_u_i_1_1_views_1_1_windows_1_1_main_window.html#a16d61633a27eee2bfa938abbd3aa2769"/>
 <section title="OnClosed" ref="class_brod_u_i_1_1_views_1_1_windows_1_1_main_window.html#a5190f3399f09c66a6959511ed1477912"/>
+<section title="SetPageService" ref="class_brod_u_i_1_1_views_1_1_windows_1_1_main_window.html#a907cbc045d0eab1e538f3e68c1db39c4"/>
+<section title="ShowWindow" ref="class_brod_u_i_1_1_views_1_1_windows_1_1_main_window.html#a237986e374a87c10a7ca2630629a7400"/>
 <section title="ViewModel" ref="class_brod_u_i_1_1_views_1_1_windows_1_1_main_window.html#a0fe245076c2261f58aca577ba52f46f5"/>
 </section>
 </section>
@@ -478,7 +516,8 @@
 </section>
 <section title="Class Members" ref="functions.html">
 <section title="All" ref="functions.html">
-<section title="c" ref="functions.html"/>
+<section title="a" ref="functions.html"/>
+<section title="c" ref="functions_c.html"/>
 <section title="d" ref="functions_d.html"/>
 <section title="e" ref="functions_e.html"/>
 <section title="f" ref="functions_f.html"/>
@@ -546,8 +585,12 @@
 <keyword name="BrodUI::Views" id="BrodUI::Views_" ref="namespace_brod_u_i_1_1_views.html"/>
 <keyword name="BrodUI::Views::Pages" id="BrodUI::Views::Pages_" ref="namespace_brod_u_i_1_1_views_1_1_pages.html"/>
 <keyword name="BrodUI::Views::Windows" id="BrodUI::Views::Windows_" ref="namespace_brod_u_i_1_1_views_1_1_windows.html"/>
+<keyword name="Add(float point)" id="BrodUI::KMeans::GenericVector::Add_a18367e54ef3ca913374cdf41cb01fdc0" ref="class_brod_u_i_1_1_k_means_1_1_generic_vector.html#a18367e54ef3ca913374cdf41cb01fdc0"/>
+<keyword name="ApplicationHostService(IServiceProvider serviceProvider)" id="BrodUI::Services::ApplicationHostService::ApplicationHostService_af35ed2dfa641d1ab7ba84bcedd306d4c" ref="class_brod_u_i_1_1_services_1_1_application_host_service.html#af35ed2dfa641d1ab7ba84bcedd306d4c"/>
 <keyword name="CalculateSumOfSquaredErrors()" id="BrodUI::KMeans::KMeans::CalculateSumOfSquaredErrors_a74e88c86f45b505ea4934fb042e188e0" ref="class_brod_u_i_1_1_k_means_1_1_k_means.html#a74e88c86f45b505ea4934fb042e188e0"/>
 <keyword name="Centroids" id="BrodUI::KMeans::KMeans::Centroids_a1ffe44ba19639af241c604ecfa01755c" ref="class_brod_u_i_1_1_k_means_1_1_k_means.html#a1ffe44ba19639af241c604ecfa01755c"/>
+<keyword name="CloseWindow()" id="BrodUI::Views::Windows::MainWindow::CloseWindow_a12ef48b999658932fd575896eef7facc" ref="class_brod_u_i_1_1_views_1_1_windows_1_1_main_window.html#a12ef48b999658932fd575896eef7facc"/>
+<keyword name="Cluster" id="BrodUI::KMeans::GenericVector::Cluster_abc7295a53bd6d2d087eed3c7c9ce2d9b" ref="class_brod_u_i_1_1_k_means_1_1_generic_vector.html#abc7295a53bd6d2d087eed3c7c9ce2d9b"/>
 <keyword name="Clusters" id="BrodUI::KMeans::KMeans::Clusters_a5ddfdcaac8ea66556ef30578dd15c3a3" ref="class_brod_u_i_1_1_k_means_1_1_k_means.html#a5ddfdcaac8ea66556ef30578dd15c3a3"/>
 <keyword name="Color" id="BrodUI::Models::Wire::Color_a5829b2f2a4d068d6f93c7987c3f32500" ref="class_brod_u_i_1_1_models_1_1_wire.html#a5829b2f2a4d068d6f93c7987c3f32500"/>
 <keyword name="Convert_LabelButtonConvert" id="BrodUI::Assets::Languages::Resource::Convert_LabelButtonConvert_a16ae7ab9522194b2f912cfbce047d6aa" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#a16ae7ab9522194b2f912cfbce047d6aa"/>
@@ -570,6 +613,7 @@
 <keyword name="Convert_ToolTipNbIterations" id="BrodUI::Assets::Languages::Resource::Convert_ToolTipNbIterations_ad320e90f6295f82d86b6c73432e231fc" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#ad320e90f6295f82d86b6c73432e231fc"/>
 <keyword name="Convert_ToolTipRemoveImage" id="BrodUI::Assets::Languages::Resource::Convert_ToolTipRemoveImage_a1b8a24e39c7539df805719474ba6f9dd" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#a1b8a24e39c7539df805719474ba6f9dd"/>
 <keyword name="ConvertLabelModel" id="BrodUI::Assets::Languages::Resource::ConvertLabelModel_abfdae6c03520a0810af6dde6caaa7b64" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#abfdae6c03520a0810af6dde6caaa7b64"/>
+<keyword name="ConvertPage(ViewModels.ConvertViewModel viewModel)" id="BrodUI::Views::Pages::ConvertPage::ConvertPage_adbdd2e31fa298ba584143ece75219639" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_convert_page.html#adbdd2e31fa298ba584143ece75219639"/>
 <keyword name="ConvertTo2dArray(BitmapSource bitmapSource)" id="BrodUI::Helpers::ImageTo2DArrayBrushes::ConvertTo2dArray_affd0a131f7ca4e93fc2564712198252c" ref="class_brod_u_i_1_1_helpers_1_1_image_to2_d_array_brushes.html#affd0a131f7ca4e93fc2564712198252c"/>
 <keyword name="ConvertToBitmapImage(Brush[,] brushes)" id="BrodUI::Helpers::ImageTo2DArrayBrushes::ConvertToBitmapImage_ae1dec38698693f346426c35855a383b0" ref="class_brod_u_i_1_1_helpers_1_1_image_to2_d_array_brushes.html#ae1dec38698693f346426c35855a383b0"/>
 <keyword name="Cross" id="BrodUI::Helpers::LengthThread::Cross_ad330e4f10cfc591f3776c35f5acd45c9" ref="class_brod_u_i_1_1_helpers_1_1_length_thread.html#ad330e4f10cfc591f3776c35f5acd45c9"/>
@@ -582,7 +626,10 @@
 <keyword name="CurTerminal" id="BrodUI::ViewModels::SettingsViewModel::CurTerminal_aec9a6458f094f4580b925bab06f749f2" ref="class_brod_u_i_1_1_view_models_1_1_settings_view_model.html#aec9a6458f094f4580b925bab06f749f2"/>
 <keyword name="CurTheme" id="BrodUI::ViewModels::SettingsViewModel::CurTheme_abfbd5b6b8408344181f407e4141a316a" ref="class_brod_u_i_1_1_view_models_1_1_settings_view_model.html#abfbd5b6b8408344181f407e4141a316a"/>
 <keyword name="DataSet" id="BrodUI::KMeans::KMeans::DataSet_a275c3b23b1ce8fbdfaf9f81b909614db" ref="class_brod_u_i_1_1_k_means_1_1_k_means.html#a275c3b23b1ce8fbdfaf9f81b909614db"/>
+<keyword name="Distance(GenericVector a, GenericVector b)" id="BrodUI::KMeans::GenericVector::Distance_ac6af68abe02f72a71cff453ec199abd9" ref="class_brod_u_i_1_1_k_means_1_1_generic_vector.html#ac6af68abe02f72a71cff453ec199abd9"/>
+<keyword name="Divide(int divider)" id="BrodUI::KMeans::GenericVector::Divide_aebe6f1fa7fe3bcce62b29dddc068b9fa" ref="class_brod_u_i_1_1_k_means_1_1_generic_vector.html#aebe6f1fa7fe3bcce62b29dddc068b9fa"/>
 <keyword name="DmcToString()" id="BrodUI::Helpers::DmcToString::DmcToString_a72dcdd58ad02e9bbe178d09f3b5b6c9c" ref="class_brod_u_i_1_1_helpers_1_1_dmc_to_string.html#a72dcdd58ad02e9bbe178d09f3b5b6c9c"/>
+<keyword name="DotProduct(GenericVector vectorA, GenericVector vectorB)" id="BrodUI::KMeans::GenericVector::DotProduct_a6a9235a817fcf9f953ad719393782f25" ref="class_brod_u_i_1_1_k_means_1_1_generic_vector.html#a6a9235a817fcf9f953ad719393782f25"/>
 <keyword name="Export_ColorLabel" id="BrodUI::Assets::Languages::Resource::Export_ColorLabel_a6e76f221b14153a91f2729c9820e2adb" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#a6e76f221b14153a91f2729c9820e2adb"/>
 <keyword name="Export_ConvertToCrossStitchEmbroidery" id="BrodUI::Assets::Languages::Resource::Export_ConvertToCrossStitchEmbroidery_aa2ab3cf4fcfa21f36f907fb038c7d4da" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#aa2ab3cf4fcfa21f36f907fb038c7d4da"/>
 <keyword name="Export_ConvertToCrossStitchEmbroideryDone" id="BrodUI::Assets::Languages::Resource::Export_ConvertToCrossStitchEmbroideryDone_af4c8d8c17c2af7fed46f2c0a3a491f27" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#af4c8d8c17c2af7fed46f2c0a3a491f27"/>
@@ -600,15 +647,19 @@
 <keyword name="FileNames" id="BrodUI::Models::ImageManagement::IOpenFileDialog::FileNames_a3545a9fd437828f4a5088809cccf69a5" ref="interface_brod_u_i_1_1_models_1_1_image_management_1_1_i_open_file_dialog.html#a3545a9fd437828f4a5088809cccf69a5"/>
 <keyword name="Filter" id="BrodUI::Helpers::Win32OpenFileDialogAdapter::Filter_a958d52ce36ae33a8cf17009ee594d4a3" ref="class_brod_u_i_1_1_helpers_1_1_win32_open_file_dialog_adapter.html#a958d52ce36ae33a8cf17009ee594d4a3"/>
 <keyword name="Filter" id="BrodUI::Models::ImageManagement::IOpenFileDialog::Filter_ab22807b1ba29b4f7b0cbd7623d6dff9a" ref="interface_brod_u_i_1_1_models_1_1_image_management_1_1_i_open_file_dialog.html#ab22807b1ba29b4f7b0cbd7623d6dff9a"/>
-<keyword name="getBlue(int d)" id="BrodUI::Helpers::RgbToDmc::getBlue_ae1bfb7516d442b3d7f2669ffe657babb" ref="class_brod_u_i_1_1_helpers_1_1_rgb_to_dmc.html#ae1bfb7516d442b3d7f2669ffe657babb"/>
-<keyword name="getGreen(int d)" id="BrodUI::Helpers::RgbToDmc::getGreen_ad0e462c61c9ee03097a3be299ee85a68" ref="class_brod_u_i_1_1_helpers_1_1_rgb_to_dmc.html#ad0e462c61c9ee03097a3be299ee85a68"/>
-<keyword name="getHue(int d)" id="BrodUI::Helpers::HslToDmc::getHue_a71c6df7058ab52f354ce8eb89fc2bdf8" ref="class_brod_u_i_1_1_helpers_1_1_hsl_to_dmc.html#a71c6df7058ab52f354ce8eb89fc2bdf8"/>
-<keyword name="getLightness(int d)" id="BrodUI::Helpers::HslToDmc::getLightness_abdc695460013409c3db6b21b620bdfc5" ref="class_brod_u_i_1_1_helpers_1_1_hsl_to_dmc.html#abdc695460013409c3db6b21b620bdfc5"/>
+<keyword name="GenericVector(int size)" id="BrodUI::KMeans::GenericVector::GenericVector_af1c4f19ea8ff981744c4955780869538" ref="class_brod_u_i_1_1_k_means_1_1_generic_vector.html#af1c4f19ea8ff981744c4955780869538"/>
+<keyword name="GenericVector()" id="BrodUI::KMeans::GenericVector::GenericVector_a29951a7d8b2a457d5c015b1b46b59a16" ref="class_brod_u_i_1_1_k_means_1_1_generic_vector.html#a29951a7d8b2a457d5c015b1b46b59a16"/>
+<keyword name="GetBlue(int d)" id="BrodUI::Helpers::RgbToDmc::GetBlue_a50a7739518137130c46e13eef00bbab3" ref="class_brod_u_i_1_1_helpers_1_1_rgb_to_dmc.html#a50a7739518137130c46e13eef00bbab3"/>
+<keyword name="GetFrame()" id="BrodUI::Views::Windows::MainWindow::GetFrame_a255ea116ae9a44b00d16b4079c6d2b16" ref="class_brod_u_i_1_1_views_1_1_windows_1_1_main_window.html#a255ea116ae9a44b00d16b4079c6d2b16"/>
+<keyword name="GetGreen(int d)" id="BrodUI::Helpers::RgbToDmc::GetGreen_ae6580b4896c27c3429509ae37b8bdf10" ref="class_brod_u_i_1_1_helpers_1_1_rgb_to_dmc.html#ae6580b4896c27c3429509ae37b8bdf10"/>
+<keyword name="GetHue(int d)" id="BrodUI::Helpers::HslToDmc::GetHue_af526be56025a4e8ef96bd07aacf8930a" ref="class_brod_u_i_1_1_helpers_1_1_hsl_to_dmc.html#af526be56025a4e8ef96bd07aacf8930a"/>
+<keyword name="GetLightness(int d)" id="BrodUI::Helpers::HslToDmc::GetLightness_a0a45c148144fcd114d9c0e4c718586e9" ref="class_brod_u_i_1_1_helpers_1_1_hsl_to_dmc.html#a0a45c148144fcd114d9c0e4c718586e9"/>
 <keyword name="GetNameDmc(int dmc)" id="BrodUI::Helpers::DmcToString::GetNameDmc_a33c3e31037ac903f43541bb7dc405f26" ref="class_brod_u_i_1_1_helpers_1_1_dmc_to_string.html#a33c3e31037ac903f43541bb7dc405f26"/>
+<keyword name="GetNavigation()" id="BrodUI::Views::Windows::MainWindow::GetNavigation_a96954d4e2294a6c10fce4fb838518be2" ref="class_brod_u_i_1_1_views_1_1_windows_1_1_main_window.html#a96954d4e2294a6c10fce4fb838518be2"/>
 <keyword name="GetPage(Type pageType)" id="BrodUI::Services::PageService::GetPage_ad4a549ae90ebc32a33123401574ec12f" ref="class_brod_u_i_1_1_services_1_1_page_service.html#ad4a549ae90ebc32a33123401574ec12f"/>
 <keyword name="GetPage&lt; T &gt;()" id="BrodUI::Services::PageService::GetPage&lt; T &gt;_a1cf16a82b85425fc121a5b8f0593f8d7" ref="class_brod_u_i_1_1_services_1_1_page_service.html#a1cf16a82b85425fc121a5b8f0593f8d7"/>
-<keyword name="getRed(int d)" id="BrodUI::Helpers::RgbToDmc::getRed_acf35563a56a8a514d485dc8ef74a7400" ref="class_brod_u_i_1_1_helpers_1_1_rgb_to_dmc.html#acf35563a56a8a514d485dc8ef74a7400"/>
-<keyword name="getSaturation(int d)" id="BrodUI::Helpers::HslToDmc::getSaturation_a7885e43124c0c3b17f1eaa490c12cc15" ref="class_brod_u_i_1_1_helpers_1_1_hsl_to_dmc.html#a7885e43124c0c3b17f1eaa490c12cc15"/>
+<keyword name="GetRed(int d)" id="BrodUI::Helpers::RgbToDmc::GetRed_a08e4cc5f639b9345c5b83029cb93e1f2" ref="class_brod_u_i_1_1_helpers_1_1_rgb_to_dmc.html#a08e4cc5f639b9345c5b83029cb93e1f2"/>
+<keyword name="GetSaturation(int d)" id="BrodUI::Helpers::HslToDmc::GetSaturation_a0ee61b10aee4ca47bfde489ab9bcb74c" ref="class_brod_u_i_1_1_helpers_1_1_hsl_to_dmc.html#a0ee61b10aee4ca47bfde489ab9bcb74c"/>
 <keyword name="GetService&lt; T &gt;()" id="BrodUI::App::GetService&lt; T &gt;_ac46eac545d4504f31704e80e32756153" ref="class_brod_u_i_1_1_app.html#ac46eac545d4504f31704e80e32756153"/>
 <keyword name="GetValDmc(int h, int s, int l)" id="BrodUI::Helpers::HslToDmc::GetValDmc_a6411bc29b6c0563c287f836588793623" ref="class_brod_u_i_1_1_helpers_1_1_hsl_to_dmc.html#a6411bc29b6c0563c287f836588793623"/>
 <keyword name="GetValDmc(int r, int g, int b)" id="BrodUI::Helpers::RgbToDmc::GetValDmc_aac18f77a9b1e7fb778fdc32219e9acb1" ref="class_brod_u_i_1_1_helpers_1_1_rgb_to_dmc.html#aac18f77a9b1e7fb778fdc32219e9acb1"/>
@@ -658,6 +709,8 @@
 <keyword name="MainWindow(ViewModels.MainWindowViewModel viewModel, IPageService pageService, INavigationService navigationService)" id="BrodUI::Views::Windows::MainWindow::MainWindow_acd07abe06dd58dc43162fc6c0196e6ed" ref="class_brod_u_i_1_1_views_1_1_windows_1_1_main_window.html#acd07abe06dd58dc43162fc6c0196e6ed"/>
 <keyword name="MainWindowViewModel(INavigationService navigationService)" id="BrodUI::ViewModels::MainWindowViewModel::MainWindowViewModel_aa10271e7c27007c5617463890de063db" ref="class_brod_u_i_1_1_view_models_1_1_main_window_view_model.html#aa10271e7c27007c5617463890de063db"/>
 <keyword name="Name" id="BrodUI::Models::Wire::Name_a41d38ff223e7867d1022b236344d6e40" ref="class_brod_u_i_1_1_models_1_1_wire.html#a41d38ff223e7867d1022b236344d6e40"/>
+<keyword name="Navigate(Type pageType)" id="BrodUI::Views::Windows::MainWindow::Navigate_a16d61633a27eee2bfa938abbd3aa2769" ref="class_brod_u_i_1_1_views_1_1_windows_1_1_main_window.html#a16d61633a27eee2bfa938abbd3aa2769"/>
+<keyword name="NotEqual(GenericVector a, GenericVector b)" id="BrodUI::KMeans::GenericVector::NotEqual_aca94c92b2e3fce349f9a8113185bf91c" ref="class_brod_u_i_1_1_k_means_1_1_generic_vector.html#aca94c92b2e3fce349f9a8113185bf91c"/>
 <keyword name="Number" id="BrodUI::Models::Wire::Number_a55d7032d966c6075873cfc26c8b6650c" ref="class_brod_u_i_1_1_models_1_1_wire.html#a55d7032d966c6075873cfc26c8b6650c"/>
 <keyword name="OnClosed(EventArgs e)" id="BrodUI::Views::Windows::MainWindow::OnClosed_a5190f3399f09c66a6959511ed1477912" ref="class_brod_u_i_1_1_views_1_1_windows_1_1_main_window.html#a5190f3399f09c66a6959511ed1477912"/>
 <keyword name="OnNavigatedFrom()" id="BrodUI::ViewModels::ConvertViewModel::OnNavigatedFrom_aa7b2f21f2388fb6db9612f88866523f3" ref="class_brod_u_i_1_1_view_models_1_1_convert_view_model.html#aa7b2f21f2388fb6db9612f88866523f3"/>
@@ -675,6 +728,7 @@
 <keyword name="PageName_Tutorial" id="BrodUI::Assets::Languages::Resource::PageName_Tutorial_a65d5c36e5e35612e191cdfee6d29dd58" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#a65d5c36e5e35612e191cdfee6d29dd58"/>
 <keyword name="PageService(IServiceProvider serviceProvider)" id="BrodUI::Services::PageService::PageService_a8288337c14a5301666d1aa9affda6370" ref="class_brod_u_i_1_1_services_1_1_page_service.html#a8288337c14a5301666d1aa9affda6370"/>
 <keyword name="PdfManagement(List&lt; Wire &gt; wiresList)" id="BrodUI::Models::PdfManagement::PdfManagement_a22cf02dc9772f36b9bd7ac63ea3a1fc2" ref="class_brod_u_i_1_1_models_1_1_pdf_management.html#a22cf02dc9772f36b9bd7ac63ea3a1fc2"/>
+<keyword name="Points" id="BrodUI::KMeans::GenericVector::Points_a1f64c5b50e3909c7e60174f89870c251" ref="class_brod_u_i_1_1_k_means_1_1_generic_vector.html#a1f64c5b50e3909c7e60174f89870c251"/>
 <keyword name="ProgressConvert" id="BrodUI::ViewModels::ConvertViewModel::ProgressConvert_a4ff959aba1fe7f3426b09814e706c249" ref="class_brod_u_i_1_1_view_models_1_1_convert_view_model.html#a4ff959aba1fe7f3426b09814e706c249"/>
 <keyword name="ProgressTb" id="BrodUI::ViewModels::ConvertViewModel::ProgressTb_acea2d90ac2484cffe5b9b9e24858e127" ref="class_brod_u_i_1_1_view_models_1_1_convert_view_model.html#acea2d90ac2484cffe5b9b9e24858e127"/>
 <keyword name="ProgressVisibility" id="BrodUI::ViewModels::ConvertViewModel::ProgressVisibility_a972eaa5ef4f4a216b6153b8fa35db188" ref="class_brod_u_i_1_1_view_models_1_1_convert_view_model.html#a972eaa5ef4f4a216b6153b8fa35db188"/>
@@ -687,6 +741,7 @@
 <keyword name="Result" id="BrodUI::Helpers::Win32OpenFileDialogAdapter::Result_ab68611f2a3c753a9f21308d996941539" ref="class_brod_u_i_1_1_helpers_1_1_win32_open_file_dialog_adapter.html#ab68611f2a3c753a9f21308d996941539"/>
 <keyword name="RgbToDmc()" id="BrodUI::Helpers::RgbToDmc::RgbToDmc_a0691a8f16c95cb3fdb2449a5fa0a1b15" ref="class_brod_u_i_1_1_helpers_1_1_rgb_to_dmc.html#a0691a8f16c95cb3fdb2449a5fa0a1b15"/>
 <keyword name="Run()" id="BrodUI::KMeans::KMeans::Run_a8f52af91e6d1ee9e7ab91522af8a60db" ref="class_brod_u_i_1_1_k_means_1_1_k_means.html#a8f52af91e6d1ee9e7ab91522af8a60db"/>
+<keyword name="SetPageService(IPageService pageService)" id="BrodUI::Views::Windows::MainWindow::SetPageService_a907cbc045d0eab1e538f3e68c1db39c4" ref="class_brod_u_i_1_1_views_1_1_windows_1_1_main_window.html#a907cbc045d0eab1e538f3e68c1db39c4"/>
 <keyword name="Settings_LabelAbout" id="BrodUI::Assets::Languages::Resource::Settings_LabelAbout_a27c06e721524aba15fd2597a9e10b38e" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#a27c06e721524aba15fd2597a9e10b38e"/>
 <keyword name="Settings_LabelAbout" id="BrodUI::Assets::Languages::Resource_en::Settings_LabelAbout_aa8d0f2968c71ad59e29e28ae84dca0d5" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource__en.html#aa8d0f2968c71ad59e29e28ae84dca0d5"/>
 <keyword name="Settings_LabelAbout" id="BrodUI::Assets::Languages::Resource_fr::Settings_LabelAbout_af1201edc9454e92e44f60cf162c17872" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource__fr.html#af1201edc9454e92e44f60cf162c17872"/>
@@ -706,9 +761,12 @@
 <keyword name="ShowConsole()" id="BrodUI::App::ShowConsole_ae3969ab6c5ebb942a94c0edb56d07cd1" ref="class_brod_u_i_1_1_app.html#ae3969ab6c5ebb942a94c0edb56d07cd1"/>
 <keyword name="ShowDialog()" id="BrodUI::Helpers::Win32OpenFileDialogAdapter::ShowDialog_adaa11f586cd02b16c07956358fcd530a" ref="class_brod_u_i_1_1_helpers_1_1_win32_open_file_dialog_adapter.html#adaa11f586cd02b16c07956358fcd530a"/>
 <keyword name="ShowDialog()" id="BrodUI::Models::ImageManagement::IOpenFileDialog::ShowDialog_a5c9ccc86643e5009559da383fcf795c7" ref="interface_brod_u_i_1_1_models_1_1_image_management_1_1_i_open_file_dialog.html#a5c9ccc86643e5009559da383fcf795c7"/>
+<keyword name="ShowWindow()" id="BrodUI::Views::Windows::MainWindow::ShowWindow_a237986e374a87c10a7ca2630629a7400" ref="class_brod_u_i_1_1_views_1_1_windows_1_1_main_window.html#a237986e374a87c10a7ca2630629a7400"/>
+<keyword name="Size" id="BrodUI::KMeans::GenericVector::Size_aed2575df8845c076ab4f60784786f81f" ref="class_brod_u_i_1_1_k_means_1_1_generic_vector.html#aed2575df8845c076ab4f60784786f81f"/>
 <keyword name="Sse" id="BrodUI::KMeans::KMeans::Sse_af7d4a6f022eb5b5d13308c8aeb9d475e" ref="class_brod_u_i_1_1_k_means_1_1_k_means.html#af7d4a6f022eb5b5d13308c8aeb9d475e"/>
 <keyword name="StartAsync(CancellationToken cancellationToken)" id="BrodUI::Services::ApplicationHostService::StartAsync_a8769c8d8c7e8ae107af06fed062289c9" ref="class_brod_u_i_1_1_services_1_1_application_host_service.html#a8769c8d8c7e8ae107af06fed062289c9"/>
 <keyword name="StopAsync(CancellationToken cancellationToken)" id="BrodUI::Services::ApplicationHostService::StopAsync_aed4ef71c9d9dca0261eabe3527eb192d" ref="class_brod_u_i_1_1_services_1_1_application_host_service.html#aed4ef71c9d9dca0261eabe3527eb192d"/>
+<keyword name="Sum(GenericVector vectorToSum)" id="BrodUI::KMeans::GenericVector::Sum_aba7571aacd61ad4edf9c669b1db566f0" ref="class_brod_u_i_1_1_k_means_1_1_generic_vector.html#aba7571aacd61ad4edf9c669b1db566f0"/>
 <keyword name="Terminal_ConvertPage" id="BrodUI::Assets::Languages::Resource::Terminal_ConvertPage_a757a4d9665aecc7628f2d146388cf17b" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#a757a4d9665aecc7628f2d146388cf17b"/>
 <keyword name="Terminal_ExportPage" id="BrodUI::Assets::Languages::Resource::Terminal_ExportPage_a199210a8b3dad87d7e91f842b8c665ad" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#a199210a8b3dad87d7e91f842b8c665ad"/>
 <keyword name="Terminal_HeightChanged" id="BrodUI::Assets::Languages::Resource::Terminal_HeightChanged_aea921f7de65f00226cca30e54bb6ad9a" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#aea921f7de65f00226cca30e54bb6ad9a"/>
@@ -725,6 +783,7 @@
 <keyword name="Terminal_To" id="BrodUI::Assets::Languages::Resource::Terminal_To_a8a39bbedc4bccc40f41515b01445a43b" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#a8a39bbedc4bccc40f41515b01445a43b"/>
 <keyword name="Terminal_TutorialPage" id="BrodUI::Assets::Languages::Resource::Terminal_TutorialPage_a411138f731abdd0951c4e8dd5e0bb24b" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#a411138f731abdd0951c4e8dd5e0bb24b"/>
 <keyword name="Terminal_WidthChanged" id="BrodUI::Assets::Languages::Resource::Terminal_WidthChanged_a4d6934560573def52bf0a3cfed5fca0b" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#a4d6934560573def52bf0a3cfed5fca0b"/>
+<keyword name="ToString()" id="BrodUI::KMeans::GenericVector::ToString_ab7fe7ca49860dc9ddaad53492e2ffe0d" ref="class_brod_u_i_1_1_k_means_1_1_generic_vector.html#ab7fe7ca49860dc9ddaad53492e2ffe0d"/>
 <keyword name="TotalLength" id="BrodUI::Helpers::LengthThread::TotalLength_acc73631401738f4b42122713ff0edb06" ref="class_brod_u_i_1_1_helpers_1_1_length_thread.html#acc73631401738f4b42122713ff0edb06"/>
 <keyword name="Tutorial_BeginButtonLabel" id="BrodUI::Assets::Languages::Resource::Tutorial_BeginButtonLabel_a242eb088c285c4d41c4fc6d851fa6623" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#a242eb088c285c4d41c4fc6d851fa6623"/>
 <keyword name="Tutorial_Part1Text" id="BrodUI::Assets::Languages::Resource::Tutorial_Part1Text_a393d90f2a566824f0c2fd9441b2bd32f" ref="class_brod_u_i_1_1_assets_1_1_languages_1_1_resource.html#a393d90f2a566824f0c2fd9441b2bd32f"/>
@@ -740,6 +799,8 @@
 <keyword name="TutorialPage(ViewModels.TutorialViewModel viewModel)" id="BrodUI::Views::Pages::TutorialPage::TutorialPage_a7cef8c0a503b722cb33347f717d04f55" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_tutorial_page.html#a7cef8c0a503b722cb33347f717d04f55"/>
 <keyword name="Type" id="BrodUI::Models::Wire::Type_a7ca7d6d4334a51611b460810bd24b294" ref="class_brod_u_i_1_1_models_1_1_wire.html#a7ca7d6d4334a51611b460810bd24b294"/>
 <keyword name="UnloadImage()" id="BrodUI::Models::ImageManagement::UnloadImage_a5f2d4c403105d4303d4b519754dd63db" ref="class_brod_u_i_1_1_models_1_1_image_management.html#a5f2d4c403105d4303d4b519754dd63db"/>
+<keyword name="VectorLength()" id="BrodUI::KMeans::GenericVector::VectorLength_a87075bd5a1ef6c714a14ef62b3755a72" ref="class_brod_u_i_1_1_k_means_1_1_generic_vector.html#a87075bd5a1ef6c714a14ef62b3755a72"/>
+<keyword name="ViewModel" id="BrodUI::Views::Pages::ConvertPage::ViewModel_a4fb645aa338f01c64a0b580810b34c03" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_convert_page.html#a4fb645aa338f01c64a0b580810b34c03"/>
 <keyword name="ViewModel" id="BrodUI::Views::Pages::ExportPage::ViewModel_aaa2a7c9e153a1ecb9ffb061648bb6ab3" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_export_page.html#aaa2a7c9e153a1ecb9ffb061648bb6ab3"/>
 <keyword name="ViewModel" id="BrodUI::Views::Pages::SettingsPage::ViewModel_a44efbead67f8e357fc46581d339a010f" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_settings_page.html#a44efbead67f8e357fc46581d339a010f"/>
 <keyword name="ViewModel" id="BrodUI::Views::Pages::TutorialPage::ViewModel_a9c9d82f17d5b3fad68df8f03bd12481b" ref="class_brod_u_i_1_1_views_1_1_pages_1_1_tutorial_page.html#a9c9d82f17d5b3fad68df8f03bd12481b"/>
@@ -852,6 +913,7 @@
 <file>folderclosed.png</file>
 <file>folderopen.png</file>
 <file>functions.html</file>
+<file>functions_c.html</file>
 <file>functions_d.html</file>
 <file>functions_e.html</file>
 <file>functions_f.html</file>

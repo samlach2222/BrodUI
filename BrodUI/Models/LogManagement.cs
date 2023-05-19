@@ -18,7 +18,7 @@ namespace BrodUI.Models
         /// <summary>
         /// Last known percentage of the progression
         /// </summary>
-        private static sbyte lastPercentage = -1;
+        private static sbyte _lastPercentage = -1;
 
         /// <summary>
         /// Create the log file if it doesn't exist
@@ -82,13 +82,13 @@ namespace BrodUI.Models
         public static void UpdateProgression(int value, int max)
         {
             int percentage = value * 100 / max;
-            if (percentage < lastPercentage)  // A new progression is happening
+            if (percentage < _lastPercentage)  // A new progression is happening
             {
-                lastPercentage = -1;
+                _lastPercentage = -1;
             }
-            if (percentage > lastPercentage)
+            if (percentage > _lastPercentage)
             {
-                lastPercentage = (sbyte)percentage;
+                _lastPercentage = (sbyte)percentage;
 
                 // Stop taskbar progress if the progression is finished
                 if (percentage == 100)

@@ -130,7 +130,7 @@ namespace BrodUITests.KMeansTests
         public void RandomCentroidsKMeansTest()
         {
             KMeans km = new();
-            MethodInfo GenerateRandomCentroids = typeof(KMeans).GetMethod("GenerateRandomCentroids", BindingFlags.NonPublic | BindingFlags.Instance);
+            MethodInfo generateRandomCentroids = typeof(KMeans).GetMethod("GenerateRandomCentroids", BindingFlags.NonPublic | BindingFlags.Instance);
             GenericVector val1 = new();
             val1.Add(0);
             val1.Add(0);
@@ -142,7 +142,7 @@ namespace BrodUITests.KMeansTests
             km.DataSet = new();
             km.DataSet.Add(val1);
             km.DataSet.Add(val2);
-            Dictionary<int, GenericVector> dict = (Dictionary<int, GenericVector>)GenerateRandomCentroids.Invoke(km, new object[] { 2 });
+            Dictionary<int, GenericVector> dict = (Dictionary<int, GenericVector>)generateRandomCentroids.Invoke(km, new object[] { 2 });
             Assert.Equal(2, dict.Count);
             GenericVector cen1 = dict[0];
             bool verif = cen1.Points[0] == val1.Points[0] && cen1.Points[1] == val1.Points[1] && cen1.Points[2] == val1.Points[2];
@@ -158,7 +158,7 @@ namespace BrodUITests.KMeansTests
         public void CentroidsChangedKMeansTest()
         {
             KMeans km = new();
-            MethodInfo CentroidsChanged = typeof(KMeans).GetMethod("CentroidsChanged", BindingFlags.NonPublic | BindingFlags.Static);
+            MethodInfo centroidsChanged = typeof(KMeans).GetMethod("CentroidsChanged", BindingFlags.NonPublic | BindingFlags.Static);
             Dictionary<int, GenericVector> dict = new();
             GenericVector cen1 = new();
             cen1.Add(0);
@@ -176,7 +176,7 @@ namespace BrodUITests.KMeansTests
             cen3.Add(0);
             dict.Add(2, cen3);
             km.Centroids = dict;
-            bool actual = (bool)CentroidsChanged.Invoke(km, new object[] { dict.Values.ToList(), km.Centroids.Values.ToList() });
+            bool actual = (bool)centroidsChanged.Invoke(km, new object[] { dict.Values.ToList(), km.Centroids.Values.ToList() });
             Assert.False(actual);
             Dictionary<int, GenericVector> dict2 = new();
             GenericVector cen4 = new();
@@ -186,7 +186,7 @@ namespace BrodUITests.KMeansTests
             dict2.Add(0, cen4);
             dict2.Add(1, cen2);
             dict2.Add(2, cen3);
-            actual = (bool)CentroidsChanged.Invoke(km, new object[] { dict2.Values.ToList(), km.Centroids.Values.ToList() });
+            actual = (bool)centroidsChanged.Invoke(km, new object[] { dict2.Values.ToList(), km.Centroids.Values.ToList() });
             Assert.True(actual);
         }
 
@@ -194,8 +194,8 @@ namespace BrodUITests.KMeansTests
         public void RecalculateCentroidsKMeansTest()
         {
             KMeans km = new();
-            MethodInfo RecalculateCentroids = typeof(KMeans).GetMethod("RecalculateCentroids", BindingFlags.NonPublic | BindingFlags.Instance);
-            RecalculateCentroids.Invoke(km, new object[] { });
+            MethodInfo recalculateCentroids = typeof(KMeans).GetMethod("RecalculateCentroids", BindingFlags.NonPublic | BindingFlags.Instance);
+            recalculateCentroids.Invoke(km, new object[] { });
             Assert.Null(km.Centroids);
             Dictionary<int, GenericVector> dict = new();
             GenericVector cen1 = new();
@@ -209,43 +209,43 @@ namespace BrodUITests.KMeansTests
             cen2.Add(0);
             dict.Add(1, cen2);
             km.Centroids = dict;
-            RecalculateCentroids.Invoke(km, new object[] { });
+            recalculateCentroids.Invoke(km, new object[] { });
             Assert.False(GenericVector.NotEqual(cen1, km.Centroids[0]));
             Assert.False(GenericVector.NotEqual(cen2, km.Centroids[1]));
             km.DataSet = new();
-            GenericVector val1_1 = new();
-            val1_1.Add(0);
-            val1_1.Add(0);
-            val1_1.Add(200);
-            val1_1.Cluster = 0;
-            GenericVector val1_2 = new();
-            val1_2.Add(0);
-            val1_2.Add(0);
-            val1_2.Add(100);
-            val1_2.Cluster = 0;
+            GenericVector val11 = new();
+            val11.Add(0);
+            val11.Add(0);
+            val11.Add(200);
+            val11.Cluster = 0;
+            GenericVector val12 = new();
+            val12.Add(0);
+            val12.Add(0);
+            val12.Add(100);
+            val12.Cluster = 0;
             GenericVector exp1 = new();
             exp1.Add(0);
             exp1.Add(0);
             exp1.Add(150);
-            GenericVector val2_1 = new();
-            val2_1.Add(0);
-            val2_1.Add(50);
-            val2_1.Add(0);
-            val2_1.Cluster = 1;
-            GenericVector val2_2 = new();
-            val2_2.Add(0);
-            val2_2.Add(150);
-            val2_2.Add(0);
-            val2_2.Cluster = 1;
+            GenericVector val21 = new();
+            val21.Add(0);
+            val21.Add(50);
+            val21.Add(0);
+            val21.Cluster = 1;
+            GenericVector val22 = new();
+            val22.Add(0);
+            val22.Add(150);
+            val22.Add(0);
+            val22.Cluster = 1;
             GenericVector exp2 = new();
             exp2.Add(0);
             exp2.Add(100);
             exp2.Add(0);
-            km.DataSet.Add(val1_1);
-            km.DataSet.Add(val1_2);
-            km.DataSet.Add(val2_1);
-            km.DataSet.Add(val2_2);
-            RecalculateCentroids.Invoke(km, new object[] { });
+            km.DataSet.Add(val11);
+            km.DataSet.Add(val12);
+            km.DataSet.Add(val21);
+            km.DataSet.Add(val22);
+            recalculateCentroids.Invoke(km, new object[] { });
             cen1 = km.Centroids[0];
             cen2 = km.Centroids[1];
             Assert.False(GenericVector.NotEqual(cen1, exp1));

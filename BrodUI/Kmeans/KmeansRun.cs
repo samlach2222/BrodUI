@@ -7,7 +7,9 @@ using System.Windows.Media;
 
 namespace BrodUI.KMeans
 {
-
+    /// <summary>
+    /// KMeans class to run KMeans
+    /// </summary>
     public static class KMeansRun
     {
         /// <summary>

@@ -17,12 +17,18 @@ namespace BrodUI.Services
         /// <summary>
         /// Creates new instance and attaches the <see cref="IServiceProvider"/>.
         /// </summary>
+        /// <param name="serviceProvider">The ServiceProvider</param>
         public PageService(IServiceProvider serviceProvider)
         {
             _serviceProvider = serviceProvider;
         }
 
-        /// <inheritdoc />
+        /// <summary>
+        /// Method to get a page.
+        /// </summary>
+        /// <typeparam name="T">Page you want</typeparam>
+        /// <returns>the aim page</returns>
+        /// <exception cref="InvalidOperationException">return an exception if the page is not a WPF control.</exception>
         public T? GetPage<T>() where T : class
         {
             if (!typeof(FrameworkElement).IsAssignableFrom(typeof(T)))
@@ -31,7 +37,12 @@ namespace BrodUI.Services
             return (T?)_serviceProvider.GetService(typeof(T));
         }
 
-        /// <inheritdoc />
+        /// <summary>
+        /// Method to get a page.
+        /// </summary>
+        /// <param name="pageType">Page you want to get</param>
+        /// <returns>the aim page</returns>
+        /// <exception cref="InvalidOperationException">return an exception if the page is not a WPF control.</exception>
         public FrameworkElement? GetPage(Type pageType)
         {
             if (!typeof(FrameworkElement).IsAssignableFrom(pageType))

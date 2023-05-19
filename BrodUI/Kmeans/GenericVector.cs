@@ -5,16 +5,25 @@ using System.Linq;
 
 namespace BrodUI.KMeans
 {
-
+    /// <summary>
+    /// Class that creates a GenericVector with a list of floats and a cluster integer.
+    /// </summary>
     public class GenericVector
     {
-        //integer to display the cluster it is in.
+        /// <summary>
+        /// integer to display the cluster it is in.
+        /// </summary>
         public int Cluster;
 
-        //list of floats that's creating the GenericVector
+        /// <summary>
+        /// list of floats that's creating the GenericVector
+        /// </summary>
         public List<float> Points = new();
 
-        //Creates a new GenericVector with the points as long as the size given
+        /// <summary>
+        /// Creates a new GenericVector with the points as long as the size given
+        /// </summary>
+        /// <param name="size"></param>
         public GenericVector(int size)
         {
             for (int i = 0; i < size; i++)
@@ -23,18 +32,33 @@ namespace BrodUI.KMeans
             }
         }
 
+        /// <summary>
+        /// Empty constructor for GenericVector
+        /// </summary>
         public GenericVector()
         {
         }
 
-        //GenericVector METHODS
+        /// <summary>
+        /// Method to add a point to the GenericVector
+        /// </summary>
+        /// <param name="point">Point to add</param>
         public void Add(float point)
         {
             Points.Add(point);
         }
 
+        /// <summary>
+        /// Method to add a list of points to the GenericVector
+        /// </summary>
         public int Size => Points.Count;
 
+        /// <summary>
+        /// Method to add a list of points to the GenericVector
+        /// </summary>
+        /// <param name="vectorToSum">List of point to add</param>
+        /// <returns></returns>
+        /// <exception cref="Exception">return an exception if the size of vectorToSum not equal to instance vector size</exception>
         public GenericVector Sum(GenericVector vectorToSum)
         {
             if (Size != vectorToSum.Size)
@@ -47,18 +71,29 @@ namespace BrodUI.KMeans
             return this;
         }
 
-        //Returns the length of the Vector
+        /// <summary>
+        /// Method to substract a list of points to the GenericVector
+        /// </summary>
+        /// <returns>Returns the length of the Vector</returns>
         public double VectorLength()
         {
             return (float)Math.Sqrt(Points.Sum(item => Math.Pow(item, 2)));
         }
 
-        //Override ToString-Method to show the content of the GenericVector
+        /// <summary>
+        /// Override ToString-Method to show the content of the GenericVector
+        /// </summary>
+        /// <returns>result of toString</returns>
         public override string ToString()
         {
             return string.Join("\t", Points.Select(x => x.ToString(CultureInfo.InvariantCulture)).ToArray());
         }
 
+        /// <summary>
+        /// Method to substract a list of points to the GenericVector
+        /// </summary>
+        /// <param name="divider">divider of the division</param>
+        /// <returns>result of the division</returns>
         public GenericVector Divide(int divider)
         {
             for (int i = 0; i < Size; i++)
@@ -68,6 +103,12 @@ namespace BrodUI.KMeans
             return this;
         }
 
+        /// <summary>
+        /// Method to know if two generic vectors are equals
+        /// </summary>
+        /// <param name="a">first generic vector to compare with the second</param>
+        /// <param name="b">second generic vector to compare with the first</param>
+        /// <returns>if the 2 parameters are equals</returns>
         public static bool NotEqual(GenericVector a, GenericVector b)
         {
             // return true if two points are not equals
@@ -82,6 +123,13 @@ namespace BrodUI.KMeans
             return false;
         }
 
+        /// <summary>
+        /// Method that returns the dot product of two GenericVectors
+        /// </summary>
+        /// <param name="vectorA">first generic vector to to the dot product</param>
+        /// <param name="vectorB">second generic vector to to the dot product</param>
+        /// <returns>the dot product of the 2 parameters</returns>
+        /// <exception cref="Exception">return an exception if GenericVector a size of dotProduct not equal to GenericVector b size</exception>
         public static float DotProduct(GenericVector vectorA, GenericVector vectorB)
         {
             if (vectorA.Size != vectorB.Size)
@@ -91,6 +139,12 @@ namespace BrodUI.KMeans
             return aTimesBPoints.Sum();
         }
 
+        /// <summary>
+        /// Method to calculate the distance between two GenericVectors
+        /// </summary>
+        /// <param name="a">first generic vector</param>
+        /// <param name="b">second generic vector</param>
+        /// <returns>the distance between a and b</returns>
         public static double Distance(GenericVector a, GenericVector b)
         {
             int size = a.Size;
@@ -103,12 +157,6 @@ namespace BrodUI.KMeans
             }
 
             return Math.Sqrt(sum);
-
-            /*
-            List<float> aMinusBPoints = a.Points.Select((t, i) => t - b.Points[i]).ToList();
-            
-            return Math.Sqrt(aMinusBPoints.Sum(item => Math.Pow(item, 2)));
-            */
         }
     }
 }

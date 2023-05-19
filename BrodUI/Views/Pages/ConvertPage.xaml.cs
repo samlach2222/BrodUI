@@ -11,11 +11,18 @@ namespace BrodUI.Views.Pages
     /// </summary>
     public partial class ConvertPage : INavigableView<ViewModels.ConvertViewModel> // TODO : ADD SCROLLBAR TO THE PAGE
     {
+        /// <summary>
+        /// Getter for the view model.
+        /// </summary>
         public ViewModels.ConvertViewModel ViewModel
         {
             get;
         }
 
+        /// <summary>
+        /// Creates new instance of the <see cref="ConvertPage"/>.
+        /// </summary>
+        /// <param name="viewModel">viewModel</param>
         public ConvertPage(ViewModels.ConvertViewModel viewModel)
         {
             ConfigManagement.ApplyLanguage();

@@ -258,12 +258,12 @@ namespace BrodUI.ViewModels
                     else
                     {
                         string badValue = ((int)(value / _ratio)).ToString();
-                        WPFMessageBox.Show("", string.Format(Assets.Languages.Resource.Convert_MinimumWidth_WithValue, badValue) + MinimumWidthHeight);
+                        WpfMessageBox.Show("", string.Format(Assets.Languages.Resource.Convert_MinimumWidth_WithValue, badValue) + MinimumWidthHeight);
                     }
                 }
                 else
                 {
-                    WPFMessageBox.Show("", Assets.Languages.Resource.Convert_MinimumWidth + MinimumWidthHeight);
+                    WpfMessageBox.Show("", Assets.Languages.Resource.Convert_MinimumWidth + MinimumWidthHeight);
 
                 }
             }
@@ -322,13 +322,13 @@ namespace BrodUI.ViewModels
                     else
                     {
                         string badValue = ((int)(value * _ratio)).ToString();
-                        WPFMessageBox.Show("", string.Format(Assets.Languages.Resource.Convert_MinimumHeight_WithValue, badValue) + MinimumWidthHeight);
+                        WpfMessageBox.Show("", string.Format(Assets.Languages.Resource.Convert_MinimumHeight_WithValue, badValue) + MinimumWidthHeight);
                     }
 
                 }
                 else
                 {
-                    WPFMessageBox.Show("", Assets.Languages.Resource.Convert_MinimumHeight + MinimumWidthHeight);
+                    WpfMessageBox.Show("", Assets.Languages.Resource.Convert_MinimumHeight + MinimumWidthHeight);
                 }
             }
         }
