@@ -7,6 +7,7 @@ using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
+using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -203,7 +204,7 @@ namespace BrodUI.ViewModels
 
                 // Convert image to 2D int array of color index
                 int[,] dmcImage = new int[width, height];
-                ImmutableArray<Color> DmcColorArray = colorToDmcColor.Values.ToImmutableArray();
+                ImmutableArray<Color> DmcColorArray = colorToDmcColor.Values.Distinct().ToImmutableArray();
                 for (int i = 0; i < width; i++)
                 {
                     for (int j = 0; j < height; j++)
@@ -215,8 +216,9 @@ namespace BrodUI.ViewModels
                 // Get length for each wire
                 for (int i = 0; i < WireArray.Count; i++)
                 {
-                    // TODO fix bug : Length is sometimes negative
-                    WireArray[i].Length = (long)new LengthThread(i, dmcImage).TotalLength;
+                    // Displaying a little more length than needed is better than opposite, so we round to nearest greater integer
+                    double length = Math.Ceiling(new LengthThread(i, dmcImage).TotalLength);
+                    WireArray[i].Length = (long)length; // TODO fix bug : Length is sometimes negative
                 }
 
                 // GridImage creation part
