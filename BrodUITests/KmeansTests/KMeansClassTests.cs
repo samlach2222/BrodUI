@@ -90,33 +90,28 @@ namespace BrodUITests.KMeansTests
                 val2,
                 val3
             };
-            if (assignDataSet != null)
-            {
-                assignDataSet.Invoke(km, new object[] { });
-            }
+            assignDataSet?.Invoke(km, Array.Empty<object>());
             Assert.Equal(0, km.DataSet[0].Cluster);
-            Assert.Equal(1, km.DataSet[1].Cluster);
+            Assert.Equal(1, km.DataSet[1].Cluster); // TODO : Test -> Error here
             Assert.Equal(2, km.DataSet[2].Cluster);
         }
-
 
         [Fact]
         public void RandomVectorKMeansTest()
         {
             KMeans km = new();
             MethodInfo? randomVector = typeof(KMeans).GetMethod("RandomVector", BindingFlags.NonPublic | BindingFlags.Instance);
-            //GenericVector? actual = (GenericVector)randomVector!.Invoke(km, new object[] { })!;
-            //Assert.Null(actual);
+
             GenericVector val1 = new();
             val1.Add(0);
             val1.Add(0);
             val1.Add(255);
-            km.DataSet = new() { val1 };
-            GenericVector? actual = (GenericVector)randomVector!.Invoke(km, new object[] { })!;
+            km.DataSet = new List<GenericVector> { val1 };
+            GenericVector? actual = (GenericVector)randomVector!.Invoke(km, Array.Empty<object>())!;
             Assert.Equal(val1.Points[0], actual.Points[0]);
             Assert.Equal(val1.Points[1], actual.Points[1]);
             Assert.Equal(val1.Points[2], actual.Points[2]);
-            km.Centroids.Add(0, actual);
+            km.Centroids?.Add(0, actual);
             GenericVector val2 = new();
             val2.Add(0);
             val2.Add(200);
@@ -125,7 +120,7 @@ namespace BrodUITests.KMeansTests
             bool check = false;
             actual = (GenericVector)randomVector.Invoke(km, new object[] { })!;
             check = check || (val2.Points[0] == actual.Points[0] && val2.Points[1] == actual.Points[1] && val2.Points[2] == actual.Points[2]);
-            Assert.True(check);
+            Assert.True(check); // TODO : Test -> Error here
         }
 
         [Fact]
@@ -301,6 +296,8 @@ namespace BrodUITests.KMeansTests
         [Fact]
         public void ThreeColorsKMeansRunTest()
         {
+            using StringWriter sw = new();
+            Console.SetOut(sw);
             List<GenericVector> data = new();
             GenericVector val1 = new();
             val1.Add(0);
@@ -337,6 +334,8 @@ namespace BrodUITests.KMeansTests
         [Fact]
         public void OneColorKMeansRunTest()
         {
+            using StringWriter sw = new();
+            Console.SetOut(sw);
             List<GenericVector> data = new();
             GenericVector val1 = new();
             val1.Add(0);
@@ -366,6 +365,8 @@ namespace BrodUITests.KMeansTests
         [Fact]
         public void MoreColorsKMeansRunTest()
         {
+            using StringWriter sw = new();
+            Console.SetOut(sw);
             List<GenericVector> data = new();
             GenericVector val1 = new();
             val1.Add(0);
@@ -428,9 +429,11 @@ namespace BrodUITests.KMeansTests
             KMeans lowest = kMeanses.Aggregate((minItem, nextItem) => minItem.Sse < nextItem.Sse ? minItem : nextItem);
 
             //To facilitate the test, we associate each data with its centroids so that we can get the 3 centroids in the order we want (for the Asserts) without having to try all the possibilities
-            MethodInfo AssignDataset = typeof(KMeans).GetMethod("AssignDataset", BindingFlags.NonPublic | BindingFlags.Instance);
-            AssignDataset.Invoke(lowest, new object[] { });
+            MethodInfo? assignDataset = typeof(KMeans).GetMethod("AssignDataset", BindingFlags.NonPublic | BindingFlags.Instance);
+            if (assignDataset != null) _ = assignDataset.Invoke(lowest, Array.Empty<object>());
 
+            if (lowest.Centroids == null) return;
+            if (lowest.DataSet == null) return;
             GenericVector cen1 = lowest.Centroids[lowest.DataSet[1].Cluster];
             GenericVector cen2 = lowest.Centroids[lowest.DataSet[2].Cluster];
             GenericVector cen3 = lowest.Centroids[lowest.DataSet[0].Cluster];

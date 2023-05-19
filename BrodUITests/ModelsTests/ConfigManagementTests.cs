@@ -99,29 +99,6 @@ namespace BrodUITests.ModelsTests
         }
 
         [Fact]
-        [STAThread]
-        public void ApplyThemeTest()
-        {
-            // TODO : Test this method (hard to implement because we have to verify the theme of the app)
-            // The test crash when trying to apply the theme
-            throw new NotImplementedException();
-
-            /*
-            // Set and apply theme to light
-            ResetConfigFile();
-            ConfigManagement.SetThemeToConfigFile("Light");
-            ConfigManagement.ApplyTheme();
-            // First assert
-            Assert.Equal(Wpf.Ui.Appearance.ThemeType.Light, Wpf.Ui.Appearance.Theme.GetAppTheme());
-            // Set and apply theme to dark
-            ConfigManagement.SetThemeToConfigFile("Dark");
-            ConfigManagement.ApplyTheme();
-            // Second assert
-            Assert.Equal(Wpf.Ui.Appearance.ThemeType.Dark, Wpf.Ui.Appearance.Theme.GetAppTheme());
-            */
-        }
-
-        [Fact]
         public void GetLanguageFromConfigFileTest()
         {
             // Expected

@@ -19,6 +19,8 @@ namespace BrodUITests.KMeansTests
             image[1, 0] = new SolidColorBrush(Color.FromRgb(0, 255, 0));
             image[0, 1] = new SolidColorBrush(Color.FromRgb(0, 0, 255));
             image[1, 1] = new SolidColorBrush(Color.FromRgb(0, 0, 180));
+            using StringWriter sw = new();
+            Console.SetOut(sw);
             Brush[,] actual = KMeansRun.StartKMeans(image, 3, 30); //We ask a new coloration of the picture with 3 colors using 30 kmeans to calculate the best results
             BrushConverter converter = new();
             for (int i = 0; i < 2; i++)
