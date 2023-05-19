@@ -273,9 +273,9 @@
     <value>Name</value>
     <comment>Label in the list of color (name column)</comment>
   </data>
-  <data name="Export_QuantityLabel" xml:space="preserve">
-    <value>Quantity</value>
-    <comment>Label in the list of color (quantity column)</comment>
+  <data name="Export_LengthLabel" xml:space="preserve">
+    <value>Length</value>
+    <comment>Label in the list of color (length column)</comment>
   </data>
   <data name="Export_ExportToPdfButton" xml:space="preserve">
     <value>Export to PDF</value>
@@ -387,7 +387,6 @@
   </data>
   <data name="Convert_ToolTipRemoveImage" xml:space="preserve">
     <value>Delete the currently loaded image</value>
-    
     <comment>ToolTip of Remove Image button</comment>
   </data>
   <data name="Convert_ToolTipImageWidth" xml:space="preserve">

@@ -234,8 +234,8 @@
   <data name="Export_NameLabel" xml:space="preserve">
     <value>Name</value>
   </data>
-  <data name="Export_QuantityLabel" xml:space="preserve">
-    <value>Quantity</value>
+  <data name="Export_LengthLabel" xml:space="preserve">
+    <value>Length</value>
   </data>
   <data name="Export_ExportToPdfButton" xml:space="preserve">
     <value>Export to PDF</value>

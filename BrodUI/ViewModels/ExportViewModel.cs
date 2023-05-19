@@ -215,7 +215,8 @@ namespace BrodUI.ViewModels
                 // Get length for each wire
                 for (int i = 0; i < WireArray.Count; i++)
                 {
-                    WireArray[i].Quantity = (long)new LengthThread(i, dmcImage).TotalLength;
+                    // TODO fix bug : Length is sometimes negative
+                    WireArray[i].Length = (long)new LengthThread(i, dmcImage).TotalLength;
                 }
 
                 // GridImage creation part

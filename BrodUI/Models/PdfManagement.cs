@@ -333,7 +333,7 @@ namespace BrodUI.Models
             table.SetVerticalAlignment(VerticalAlignment.MIDDLE);
             // Add the header for the 5 columns
             Cell headerColor = new();
-            headerColor.Add(new Paragraph("Color"));
+            headerColor.Add(new Paragraph(Assets.Languages.Resource.Export_ColorLabel));
             headerColor.SetHorizontalAlignment(HorizontalAlignment.CENTER);
             headerColor.SetVerticalAlignment(VerticalAlignment.MIDDLE);
             headerColor.SetTextAlignment(TextAlignment.CENTER);
@@ -341,7 +341,7 @@ namespace BrodUI.Models
             table.AddHeaderCell(headerColor);
 
             Cell headerNumber = new();
-            headerNumber.Add(new Paragraph("Number"));
+            headerNumber.Add(new Paragraph(Assets.Languages.Resource.Export_NumberLabel));
             headerNumber.SetHorizontalAlignment(HorizontalAlignment.CENTER);
             headerNumber.SetVerticalAlignment(VerticalAlignment.MIDDLE);
             headerNumber.SetTextAlignment(TextAlignment.CENTER);
@@ -349,7 +349,7 @@ namespace BrodUI.Models
             table.AddHeaderCell(headerNumber);
 
             Cell headerType = new();
-            headerType.Add(new Paragraph("Type"));
+            headerType.Add(new Paragraph(Assets.Languages.Resource.Export_TypeLabel));
             headerType.SetHorizontalAlignment(HorizontalAlignment.CENTER);
             headerType.SetVerticalAlignment(VerticalAlignment.MIDDLE);
             headerType.SetTextAlignment(TextAlignment.CENTER);
@@ -357,20 +357,20 @@ namespace BrodUI.Models
             table.AddHeaderCell(headerType);
 
             Cell headerName = new();
-            headerName.Add(new Paragraph("Name"));
+            headerName.Add(new Paragraph(Assets.Languages.Resource.Export_NameLabel));
             headerName.SetHorizontalAlignment(HorizontalAlignment.CENTER);
             headerName.SetVerticalAlignment(VerticalAlignment.MIDDLE);
             headerName.SetTextAlignment(TextAlignment.CENTER);
             headerName.SetBackgroundColor(ColorConstants.LIGHT_GRAY);
             table.AddHeaderCell(headerName);
 
-            Cell headerQuantity = new();
-            headerQuantity.Add(new Paragraph("Quantity"));
-            headerQuantity.SetHorizontalAlignment(HorizontalAlignment.CENTER);
-            headerQuantity.SetVerticalAlignment(VerticalAlignment.MIDDLE);
-            headerQuantity.SetTextAlignment(TextAlignment.CENTER);
-            headerQuantity.SetBackgroundColor(ColorConstants.LIGHT_GRAY);
-            table.AddHeaderCell(headerQuantity);
+            Cell headerLength = new();
+            headerLength.Add(new Paragraph(Assets.Languages.Resource.Export_LengthLabel));
+            headerLength.SetHorizontalAlignment(HorizontalAlignment.CENTER);
+            headerLength.SetVerticalAlignment(VerticalAlignment.MIDDLE);
+            headerLength.SetTextAlignment(TextAlignment.CENTER);
+            headerLength.SetBackgroundColor(ColorConstants.LIGHT_GRAY);
+            table.AddHeaderCell(headerLength);
 
             // Add the data for each wire
             foreach (Wire wire in WiresList)
@@ -414,12 +414,12 @@ namespace BrodUI.Models
                 nameCell.SetTextAlignment(TextAlignment.CENTER);
                 table.AddCell(nameCell);
 
-                Cell quantityCell = new();
-                quantityCell.Add(new Paragraph(wire.Quantity.ToString()));
-                quantityCell.SetHorizontalAlignment(HorizontalAlignment.CENTER);
-                quantityCell.SetVerticalAlignment(VerticalAlignment.MIDDLE);
-                quantityCell.SetTextAlignment(TextAlignment.CENTER);
-                table.AddCell(quantityCell);
+                Cell lengthCell = new();
+                lengthCell.Add(new Paragraph(wire.Length.ToString()));
+                lengthCell.SetHorizontalAlignment(HorizontalAlignment.CENTER);
+                lengthCell.SetVerticalAlignment(VerticalAlignment.MIDDLE);
+                lengthCell.SetTextAlignment(TextAlignment.CENTER);
+                table.AddCell(lengthCell);
             }
 
             PdfCanvas tableCanvas = new(Document.GetPage(2));

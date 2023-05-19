@@ -14,7 +14,7 @@ namespace BrodUITests.ModelsTests
             Assert.Equal(255, wire.Number);
             Assert.Equal("DMC", wire.Type);
             Assert.Equal("RED", wire.Name);
-            Assert.Equal(20, wire.Quantity);
+            Assert.Equal(20, wire.Length);
         }
 
         [Fact]
@@ -57,9 +57,9 @@ namespace BrodUITests.ModelsTests
         public void QuantityTest()
         {
             Wire wire = new(new SolidColorBrush(Color.FromRgb(255, 0, 0)), 255, "DMC", "RED", 20);
-            Assert.Equal(20, wire.Quantity);
-            wire.Quantity = 0;
-            Assert.Equal(0, wire.Quantity);
+            Assert.Equal(20, wire.Length);
+            wire.Length = 0;
+            Assert.Equal(0, wire.Length);
         }
     }
 }

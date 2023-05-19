@@ -67,7 +67,7 @@
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="{x:Static p:Resource.Export_QuantityLabel}" Binding="{Binding Quantity}" >
+                <DataGridTextColumn Header="{x:Static p:Resource.Export_LengthLabel}" Binding="{Binding Length}" >
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
                             <Setter Property="HorizontalAlignment" Value="Center" />

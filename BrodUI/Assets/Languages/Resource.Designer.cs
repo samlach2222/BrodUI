@@ -277,6 +277,15 @@ namespace BrodUI.Assets.Languages {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Length.
+        /// </summary>
+        public static string Export_LengthLabel {
+            get {
+                return ResourceManager.GetString("Export_LengthLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Name.
         /// </summary>
         public static string Export_NameLabel {
@@ -300,15 +309,6 @@ namespace BrodUI.Assets.Languages {
         public static string Export_NumberLabel {
             get {
                 return ResourceManager.GetString("Export_NumberLabel", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Quantity.
-        /// </summary>
-        public static string Export_QuantityLabel {
-            get {
-                return ResourceManager.GetString("Export_QuantityLabel", resourceCulture);
             }
         }
         
