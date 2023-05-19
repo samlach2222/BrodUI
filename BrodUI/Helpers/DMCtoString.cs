@@ -58,7 +58,8 @@ namespace BrodUI.Helpers
             string val = "";
             for (int i = 0; i < _nbDmc; i++)
             {
-                if (_dmcString[i, 0] == dmc.ToString())
+                // Some DMC numbers like 05 have leading zeros
+                if (int.Parse(_dmcString[i, 0]) == dmc)
                 {
                     val = _dmcString[i, 1];
                     break; // Exit the for loop
