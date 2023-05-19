@@ -30,7 +30,7 @@ namespace BrodUI.Models
         /// <summary>
         /// Getter and setter of the quantity
         /// </summary>
-        public int Quantity { get; set; }
+        public long Quantity { get; set; }
 
         /// <summary>
         /// Constructor of the class
@@ -40,7 +40,7 @@ namespace BrodUI.Models
         /// <param name="type">Type of the wire</param>
         /// <param name="name">Name of the wire</param>
         /// <param name="quantity">Quantity of the wire</param>
-        public Wire(Brush color, int number, string type, string name, int quantity)
+        public Wire(Brush color, int number, string type, string name, long quantity)
         {
             Color = color;
             Number = number;

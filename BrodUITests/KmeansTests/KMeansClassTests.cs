@@ -123,7 +123,7 @@ namespace BrodUITests.KMeansTests
             Assert.Equal(val2.Points[0], actual.Points[0]);
             Assert.Equal(val2.Points[2], actual.Points[2]);
             Assert.Equal(val2.Points[1], actual.Points[1]);
-            
+
         }
 
         [Fact]
