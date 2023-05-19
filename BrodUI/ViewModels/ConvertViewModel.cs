@@ -434,6 +434,7 @@ namespace BrodUI.ViewModels
 
             worker.ProgressChanged += (sender, args) =>
             {
+                LogManagement.UpdateProgression(args.ProgressPercentage, 100);
                 ProgressConvert = args.ProgressPercentage;
                 ProgressTb = args.ProgressPercentage + "%";
             };

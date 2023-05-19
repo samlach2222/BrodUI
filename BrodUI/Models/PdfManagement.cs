@@ -15,6 +15,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using Wpf.Ui.TaskBar;
 using Canvas = iText.Layout.Canvas;
 using File = System.IO.File;
 using Path = System.IO.Path;
@@ -71,11 +72,16 @@ namespace BrodUI.Models
             Document.AddNewPage();
             Document.AddNewPage();
 
-            // Create pages
+            // Create pages and add loading progression to taskbar
+            LogManagement.UpdateProgression(0, 100);
             CreateFirstPage();
+            LogManagement.UpdateProgression(25, 100);
             CreateSecondPage();
+            LogManagement.UpdateProgression(50, 100);
             CreateThirdPage();
+            LogManagement.UpdateProgression(75, 100);
             InsertFooter();
+            LogManagement.UpdateProgression(TaskBarProgressState.None);
 
             // Close the document
             Document.Close();
