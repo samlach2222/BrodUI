@@ -60,7 +60,7 @@ namespace BrodUI.Helpers
                     {
                         // If the neighboring pixel is of the color
                         if (image[i, j + 1] == color)
-                            length += length;
+                            length += 1;
 
                         // Once we have no more consecutive pixels of the color : total length calculation and length reset to 1
                         else

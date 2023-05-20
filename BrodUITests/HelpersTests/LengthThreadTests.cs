@@ -60,7 +60,7 @@ namespace BrodUITests.HelpersTests
             l = new(1, imageTest);
             actual = l.TotalLength;
             expected = (LengthThread.Knot + (3 * LengthThread.Cross) + LengthThread.Knot);
-            Assert.Equal(expected, actual); // TODO : actual value is wrong, fix bug!
+            Assert.Equal(expected, actual);
         }
     }
 }
