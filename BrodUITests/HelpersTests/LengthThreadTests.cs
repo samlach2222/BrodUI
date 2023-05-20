@@ -12,7 +12,7 @@ namespace BrodUITests.HelpersTests
             LengthThread l = new(3, imageTest);
             double actual = l.TotalLength;
             double expected = 27 + (7 * Math.Sqrt(2));
-            Assert.Equal(actual, expected);
+            Assert.Equal(expected, actual);
         }
 
         [Fact]
@@ -28,15 +28,39 @@ namespace BrodUITests.HelpersTests
             double expected = (LengthThread.Knot + (2 * LengthThread.Cross) + LengthThread.Knot) + (LengthThread.Knot + LengthThread.Cross + LengthThread.Knot);
             // Calculating length vertically : wrong !
             double notExpected = 3 * (LengthThread.Knot + LengthThread.Cross + LengthThread.Knot);
-            Assert.NotEqual(actual, notExpected);
-            Assert.Equal(actual, expected);
+            Assert.NotEqual(notExpected, actual);
+            Assert.Equal(expected, actual);
         }
 
         [Fact]
-        public void WireSizeBigImageTest()
+        public void WireSizeConsecutivePixelsTest()
         {
-            // TODO : define a big imageTest (preferably one we know gives wrong values in the export page)
-            throw new NotImplementedException();
+            // One consecutive pixel
+            int[,] imageTest = {
+                { 1 }
+            };
+            LengthThread l = new(1, imageTest);
+            double actual = l.TotalLength;
+            double expected = (LengthThread.Knot + (1 * LengthThread.Cross) + LengthThread.Knot);
+            Assert.Equal(expected, actual);
+
+            // Two consecutive pixels
+            imageTest = new int[,] {
+                { 1,1 }
+            };
+            l = new(1, imageTest);
+            actual = l.TotalLength;
+            expected = (LengthThread.Knot + (2 * LengthThread.Cross) + LengthThread.Knot);
+            Assert.Equal(expected, actual);
+
+            // Three consecutive pixels
+            imageTest = new int[,] {
+                { 1,1,1 }
+            };
+            l = new(1, imageTest);
+            actual = l.TotalLength;
+            expected = (LengthThread.Knot + (3 * LengthThread.Cross) + LengthThread.Knot);
+            Assert.Equal(expected, actual); // TODO : actual value is wrong, fix bug!
         }
     }
 }
