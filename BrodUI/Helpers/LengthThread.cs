@@ -14,12 +14,12 @@ namespace BrodUI.Helpers
         /// <summary>
         /// Length of yarn needed to make a knot at the beginning and at the end of the yarn use
         /// </summary>
-        private const double Knot = 2;
+        public const double Knot = 2;
 
         /// <summary>
-        /// Length of thread needed too make a cross 
+        /// Length of thread needed to make a cross 
         /// </summary>
-        public double Cross;
+        public static readonly double Cross = (2 * Math.Sqrt(0.5)) + 1;
 
         /// <summary>
         /// Total length of the thread
@@ -33,12 +33,8 @@ namespace BrodUI.Helpers
         /// <param name="image">Image we are working on</param>
         public LengthThread(int color, int[,] image)
         {
-
-            Cross = (2 * Math.Sqrt(0.5)) + 1;
-
             TotalLength = 0;
             TotalLength = WireSize(color, image);
-
         }
 
         /// <summary>
