@@ -209,7 +209,7 @@ namespace BrodUI.ViewModels
                 {
                     for (int column = 0; column < width; column++)
                     {
-                        dmcImage[row, column] = DmcColorArray.IndexOf(colorToDmcColor[((SolidColorBrush)wireTable[row, column]).Color]);
+                        dmcImage[row, column] = DmcColorArray.IndexOf(colorToDmcColor[((SolidColorBrush)wireTable[column, row]).Color]);
                     }
                 }
 
