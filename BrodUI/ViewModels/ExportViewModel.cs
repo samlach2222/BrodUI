@@ -203,13 +203,13 @@ namespace BrodUI.ViewModels
                 }
 
                 // Convert image to 2D int array of color index
-                int[,] dmcImage = new int[width, height];
+                int[,] dmcImage = new int[height, width];
                 ImmutableArray<Color> DmcColorArray = colorToDmcColor.Values.Distinct().ToImmutableArray();
-                for (int i = 0; i < width; i++)
+                for (int row = 0; row < height; row++)
                 {
-                    for (int j = 0; j < height; j++)
+                    for (int column = 0; column < width; column++)
                     {
-                        dmcImage[i, j] = DmcColorArray.IndexOf(colorToDmcColor[((SolidColorBrush)wireTable[i, j]).Color]);
+                        dmcImage[row, column] = DmcColorArray.IndexOf(colorToDmcColor[((SolidColorBrush)wireTable[row, column]).Color]);
                     }
                 }
 
