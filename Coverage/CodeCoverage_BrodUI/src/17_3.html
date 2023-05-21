@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>D:\WINDOWS\Documents\GitHub\BrodUI\BrodUI\Models\ConfigManagement.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using BrodUI.Assets.Languages;
+using System;
+using System.Globalization;
+using System.IO;
+using System.Resources;
+using System.Threading;
+using Wpf.Ui.Appearance;
+
+namespace BrodUI.Models
+{
+    /// &lt;summary&gt;
+    /// Class to manage the config file
+    /// &lt;/summary&gt;
+    public static class ConfigManagement
+    {
+        /// &lt;summary&gt;
+        /// Path to the config file
+        /// &lt;/summary&gt;
+        public static string ConfigPath =&gt; Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), &quot;BrodUI&quot;, &quot;settings.cfg&quot;);
+
+        /// &lt;summary&gt;
+        /// Default values for the config file
+        /// &lt;/summary&gt;
+        public static string[] DefaultSettings =&gt; new string[] {
+            &quot;Theme=System&quot;,
+            &quot;Language=&quot; + GetSystemLanguageOrDefault(),
+#if DEBUG
+            &quot;Terminal=&quot; + true,
+#else
+            &quot;Terminal=&quot; + false,
+#endif
+            &quot;EmbroiderySize=15&quot;,
+            &quot;KMeansClusters=5&quot;,
+            &quot;KMeansIterations=10&quot;,
+            &quot;ColorModel=RGB&quot;
+        };
+
+        /// &lt;summary&gt;
+        /// Create the config file if it doesn&#39;t exist with its default values
+        /// &lt;/summary&gt;
+        public static void CreateConfigFileIfNotExists()
+        {
+            // get AppData Roaming folder in a string
+            string appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            string folderPath = Path.Combine(appData, &quot;BrodUI&quot;);
+            // create the folder &quot;BrodUI&quot; in AppData if it doesn&#39;t exist
+            if (!Directory.Exists(folderPath))
+            {
+                Directory.CreateDirectory(folderPath);
+            }
+
+            // if the file already exists, check if we have the correct number of lines
+            if (File.Exists(ConfigPath) &amp;&amp; File.ReadAllLines(ConfigPath).Length == DefaultSettings.Length) return;
+
+            File.WriteAllLines(ConfigPath, DefaultSettings);
+        }
+
+        /// &lt;summary&gt;
+        /// Get the name of the Windows display language, or English if the language is not supported
+        /// &lt;/summary&gt;
+        /// &lt;returns&gt;Name of the language in its language (ex: Fran&#231;ais, English), or English if not supported&lt;/returns&gt;
+        public static string GetSystemLanguageOrDefault()
+        {
+            CultureInfo windowsLangage = CultureInfo.CurrentUICulture; // Get Windows display language
+            string twoLettersIso = windowsLangage.TwoLetterISOLanguageName.ToLower(); // Convert to two letters ISO (ex: en-US =&gt; en)
+            ResourceManager rm = new(typeof(Resource));
+
+            // For each language in all languages
+            CultureInfo[] cultures = CultureInfo.GetCultures(CultureTypes.AllCultures);
+            foreach (CultureInfo culture in cultures)
+            {
+                // If the language is supported in this app and correspond to the two letters ISO
+                // &quot;Supported&quot; means we have a .resx file for this specific language (if we have fr but not fr-FR, only fr is supported)
+                ResourceSet? rs = rm.GetResourceSet(culture, true, false);
+                if (rs != null &amp;&amp; culture.TwoLetterISOLanguageName == twoLettersIso)
+                {
+                    string nativeName = culture.NativeName;
+
+                    // Some languages use capitalized languages and some don&#39;t, so we force it to be capitalized
+                    return string.Concat(nativeName[0].ToString().ToUpperInvariant(), nativeName.AsSpan(1));
+                }
+            }
+
+            return &quot;English&quot;;
+        }
+
+        /// &lt;summary&gt;
+        /// Delete the config file
+        /// &lt;/summary&gt;
+        public static void DeleteConfigFile()
+        {
+            File.Delete(ConfigPath);
+        }
+
+        /// &lt;summary&gt;
+        /// Set the theme of the app from the config file. There is 3 themes :
+        /// Light
+        /// Dark
+        /// System (Light or Dark depending on the system theme)
+        /// &lt;/summary&gt;
+        public static void ApplyTheme()
+        {
+            string[] settings = File.ReadAllLines(ConfigPath);
+            // Set theme
+            switch (settings[0].Split(&#39;=&#39;)[1])
+            {
+                case &quot;System&quot;:
+                    SystemThemeType theme = Theme.GetSystemTheme();
+                    // Apply it
+                    Theme.Apply(theme == SystemThemeType.Light ? ThemeType.Light : ThemeType.Dark, BackgroundType.None);
+                    break;
+                case &quot;Light&quot;:
+                    Theme.Apply(ThemeType.Light, BackgroundType.None);
+                    break;
+                case &quot;Dark&quot;:
+                    Theme.Apply(ThemeType.Dark, BackgroundType.None);
+                    break;
+            }
+        }
+
+        /// &lt;summary&gt;
+        /// Set the language of the app from the config file. There is 2 languages for the moment :
+        /// French
+        /// English
+        /// &lt;/summary&gt;
+        public static void ApplyLanguage()
+        {
+            string[] settings = File.ReadAllLines(ConfigPath);
+            // Set language
+            switch (settings[1].Split(&#39;=&#39;)[1])
+            {
+                case &quot;English&quot;:
+                    Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo(&quot;en&quot;);
+                    break;
+                case &quot;Fran&#231;ais&quot;:
+                    Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo(&quot;fr&quot;);
+                    break;
+            }
+        }
+
+        /// &lt;summary&gt;
+        /// Get the theme from the config file
+        /// &lt;/summary&gt;
+        /// &lt;returns&gt;string with the name of the theme in the config file&lt;/returns&gt;
+        public static string GetThemeFromConfigFile()
+        {
+            string[] settings = File.ReadAllLines(ConfigPath);
+            return settings[0].Split(&#39;=&#39;)[1];
+        }
+
+        /// &lt;summary&gt;
+        /// Get the language from the config file
+        /// &lt;/summary&gt;
+        /// &lt;returns&gt;string with the name of the language in the config file&lt;/returns&gt;
+        public static string GetLanguageFromConfigFile()
+        {
+            string[] settings = File.ReadAllLines(ConfigPath);
+            return settings[1].Split(&#39;=&#39;)[1];
+        }
+
+        /// &lt;summary&gt;
+        /// Get the terminal from the config file
+        /// &lt;/summary&gt;
+        /// &lt;returns&gt;bool which is true if the terminal is active, or false if not active in the config file&lt;/returns&gt;
+        public static bool GetTerminalFromConfigFile()
+        {
+            string[] settings = File.ReadAllLines(ConfigPath);
+            return Convert.ToBoolean(settings[2].Split(&#39;=&#39;)[1]);
+        }
+
+        /// &lt;summary&gt;
+        /// Get the embroidery point size from the config file
+        /// &lt;/summary&gt;
+        /// &lt;returns&gt;embroidery size&lt;/returns&gt;
+        public static string GetEmbroiderySizeFromConfigFile()
+        {
+            string[] settings = File.ReadAllLines(ConfigPath);
+            return settings[3].Split(&#39;=&#39;)[1];
+        }
+
+        /// &lt;summary&gt;
+        /// Get the number of clusters for KMeans from the config file
+        /// &lt;/summary&gt;
+        /// &lt;returns&gt;number of clusters for KMeans&lt;/returns&gt;
+        public static int GetKMeansClustersFromConfigFile()
+        {
+            string[] settings = File.ReadAllLines(ConfigPath);
+            return Convert.ToInt32(settings[4].Split(&#39;=&#39;)[1]);
+        }
+
+        /// &lt;summary&gt;
+        /// Get the number of iterations for KMeans from the config file
+        /// &lt;/summary&gt;
+        /// &lt;returns&gt;number of iterations for KMeans&lt;/returns&gt;
+        public static int GetKMeansIterationsFromConfigFile()
+        {
+            string[] settings = File.ReadAllLines(ConfigPath);
+            return Convert.ToInt32(settings[5].Split(&#39;=&#39;)[1]);
+        }
+
+        /// &lt;summary&gt;
+        /// Get the color model from the config file
+        /// &lt;/summary&gt;
+        /// &lt;returns&gt;color model (RGB, HSL, etc.) in uppercase&lt;/returns&gt;
+        public static string GetColorModelFromConfigFile()
+        {
+            string[] settings = File.ReadAllLines(ConfigPath);
+            return (settings[6].Split(&#39;=&#39;)[1]).ToUpperInvariant(); // Convert to uppercase
+        }
+
+        /// &lt;summary&gt;
+        /// Set the theme in the config file
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;theme&quot;&gt;theme you want to put in the config file&lt;/param&gt;
+        public static void SetThemeToConfigFile(string theme)
+        {
+            string[] settings = File.ReadAllLines(ConfigPath);
+            settings[0] = $&quot;Theme={theme}&quot;;
+            File.WriteAllLines(ConfigPath, settings);
+        }
+
+        /// &lt;summary&gt;
+        /// Set the language in the config file
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;language&quot;&gt;language you want to put in the config file&lt;/param&gt;
+        public static void SetLanguageToConfigFile(string language)
+        {
+            string[] settings = File.ReadAllLines(ConfigPath);
+            settings[1] = $&quot;Language={language}&quot;;
+            File.WriteAllLines(ConfigPath, settings);
+        }
+
+        /// &lt;summary&gt;
+        /// Set the terminal in the config file
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;terminal&quot;&gt;bool you want to put in the config file (true if terminal is activated)&lt;/param&gt;
+        public static void SetTerminalToConfigFile(bool terminal)
+        {
+            string[] settings = File.ReadAllLines(ConfigPath);
+            settings[2] = $&quot;Terminal={terminal}&quot;;
+            File.WriteAllLines(ConfigPath, settings);
+        }
+
+        /// &lt;summary&gt;
+        /// Set the embroidery size in the config file
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;embroiderySize&quot;&gt;string you want to put in the config file&lt;/param&gt;
+        public static void SetEmbroiderySizeToConfigFile(string embroiderySize)
+        {
+            string[] settings = File.ReadAllLines(ConfigPath);
+            settings[3] = $&quot;EmbroiderySize={embroiderySize}&quot;;
+            File.WriteAllLines(ConfigPath, settings);
+        }
+
+        /// &lt;summary&gt;
+        /// Set the number of clusters for KMeans in the config file
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;kmeansClusters&quot;&gt;number of clusters for KMeans&lt;/param&gt;
+        public static void SetKMeansClustersToConfigFile(int kmeansClusters)
+        {
+            string[] settings = File.ReadAllLines(ConfigPath);
+            settings[4] = $&quot;KMeansClusters={kmeansClusters}&quot;;
+            File.WriteAllLines(ConfigPath, settings);
+        }
+
+        /// &lt;summary&gt;
+        /// Set the number of iterations for KMeans in the config file
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;kmeansIterations&quot;&gt;number of iterations for KMeans&lt;/param&gt;
+        public static void SetKMeansIterationsToConfigFile(int kmeansIterations)
+        {
+            string[] settings = File.ReadAllLines(ConfigPath);
+            settings[5] = $&quot;KMeansIterations={kmeansIterations}&quot;;
+            File.WriteAllLines(ConfigPath, settings);
+        }
+
+        /// &lt;summary&gt;
+        /// Set the color model in the config file
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;colorModel&quot;&gt;color model (RGB, HSL, etc.)&lt;/param&gt;
+        public static void SetColorModelToConfigFile(string colorModel)
+        {
+            colorModel = colorModel.ToUpperInvariant(); // Convert to uppercase
+            string[] settings = File.ReadAllLines(ConfigPath);
+            settings[6] = $&quot;ColorModel={colorModel}&quot;;
+            File.WriteAllLines(ConfigPath, settings);
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[19,44,19,152,1],[24,51,36,10,1],[42,9,42,10,1],[44,13,44,99,1],[45,13,45,65,1],[47,13,47,47,1],[48,13,48,14,0],[49,17,49,55,0],[50,13,50,14,0],[53,13,53,107,1],[53,108,53,115,1],[55,13,55,61,1],[56,9,56,10,1],[63,9,63,10,1],[64,13,64,71,1],[65,13,65,86,1],[66,13,66,56,1],[69,13,69,88,1],[70,13,70,20,1],[70,22,70,41,1],[70,42,70,44,1],[70,45,70,53,1],[71,13,71,14,1],[74,17,74,75,1],[75,17,75,85,1],[76,17,76,18,1],[77,21,77,60,1],[80,21,80,109,1],[82,13,82,14,1],[84,13,84,30,0],[85,9,85,10,1],[91,9,91,10,1],[92,13,92,37,1],[93,9,93,10,1],[102,9,102,10,0],[103,13,103,63,0],[105,13,105,47,0],[108,21,108,68,0],[110,21,110,121,0],[111,21,111,27,0],[113,21,113,71,0],[114,21,114,27,0],[116,21,116,70,0],[117,21,117,27,0],[119,9,119,10,0],[127,9,127,10,1],[128,13,128,63,1],[130,13,130,47,1],[133,21,133,94,1],[134,21,134,27,1],[136,21,136,94,0],[137,21,137,27,0],[139,9,139,10,1],[146,9,146,10,1],[147,13,147,63,1],[148,13,148,46,1],[149,9,149,10,1],[156,9,156,10,1],[157,13,157,63,1],[158,13,158,46,1],[159,9,159,10,1],[166,9,166,10,1],[167,13,167,63,1],[168,13,168,65,1],[169,9,169,10,1],[176,9,176,10,1],[177,13,177,63,1],[178,13,178,46,1],[179,9,179,10,1],[186,9,186,10,0],[187,13,187,63,0],[188,13,188,63,0],[189,9,189,10,0],[196,9,196,10,0],[197,13,197,63,0],[198,13,198,63,0],[199,9,199,10,0],[206,9,206,10,0],[207,13,207,63,0],[208,13,208,67,0],[209,9,209,10,0],[216,9,216,10,1],[217,13,217,63,1],[218,13,218,44,1],[219,13,219,54,1],[220,9,220,10,1],[227,9,227,10,1],[228,13,228,63,1],[229,13,229,50,1],[230,13,230,54,1],[231,9,231,10,1],[238,9,238,10,1],[239,13,239,63,1],[240,13,240,50,1],[241,13,241,54,1],[242,9,242,10,1],[249,9,249,10,1],[250,13,250,63,1],[251,13,251,62,1],[252,13,252,54,1],[253,9,253,10,1],[260,9,260,10,0],[261,13,261,63,0],[262,13,262,62,0],[263,13,263,54,0],[264,9,264,10,0],[271,9,271,10,0],[272,13,272,63,0],[273,13,273,66,0],[274,13,274,54,0],[275,9,275,10,0],[282,9,282,10,0],[283,13,283,56,0],[284,13,284,63,0],[285,13,285,54,0],[286,13,286,54,0],[287,9,287,10,0]]);
+    </script>
+  </body>
+</html>

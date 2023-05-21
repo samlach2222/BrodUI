@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>D:\WINDOWS\Documents\GitHub\BrodUI\BrodUI\Services\PageService.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Windows;
+using Wpf.Ui.Mvvm.Contracts;
+
+namespace BrodUI.Services
+{
+    /// &lt;summary&gt;
+    /// Service that provides pages for navigation.
+    /// &lt;/summary&gt;
+    public class PageService : IPageService
+    {
+        /// &lt;summary&gt;
+        /// Service which provides the instances of pages.
+        /// &lt;/summary&gt;
+        private readonly IServiceProvider _serviceProvider;
+
+        /// &lt;summary&gt;
+        /// Creates new instance and attaches the &lt;see cref=&quot;IServiceProvider&quot;/&gt;.
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;serviceProvider&quot;&gt;The ServiceProvider&lt;/param&gt;
+        public PageService(IServiceProvider serviceProvider)
+        {
+            _serviceProvider = serviceProvider;
+        }
+
+        /// &lt;summary&gt;
+        /// Method to get a page.
+        /// &lt;/summary&gt;
+        /// &lt;typeparam name=&quot;T&quot;&gt;Page you want&lt;/typeparam&gt;
+        /// &lt;returns&gt;the aim page&lt;/returns&gt;
+        /// &lt;exception cref=&quot;InvalidOperationException&quot;&gt;return an exception if the page is not a WPF control.&lt;/exception&gt;
+        public T? GetPage&lt;T&gt;() where T : class
+        {
+            if (!typeof(FrameworkElement).IsAssignableFrom(typeof(T)))
+                throw new InvalidOperationException(&quot;The page should be a WPF control.&quot;);
+
+            return (T?)_serviceProvider.GetService(typeof(T));
+        }
+
+        /// &lt;summary&gt;
+        /// Method to get a page.
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;pageType&quot;&gt;Page you want to get&lt;/param&gt;
+        /// &lt;returns&gt;the aim page&lt;/returns&gt;
+        /// &lt;exception cref=&quot;InvalidOperationException&quot;&gt;return an exception if the page is not a WPF control.&lt;/exception&gt;
+        public FrameworkElement? GetPage(Type pageType)
+        {
+            if (!typeof(FrameworkElement).IsAssignableFrom(pageType))
+                throw new InvalidOperationException(&quot;The page should be a WPF control.&quot;);
+
+            return _serviceProvider.GetService(pageType) as FrameworkElement;
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[21,9,21,61,0],[22,9,22,10,0],[23,13,23,48,0],[24,9,24,10,0],[33,9,33,10,0],[34,13,34,71,0],[35,17,35,90,0],[37,13,37,63,0],[38,9,38,10,0],[47,9,47,10,0],[48,13,48,70,0],[49,17,49,90,0],[51,13,51,78,0],[52,9,52,10,0]]);
+    </script>
+  </body>
+</html>

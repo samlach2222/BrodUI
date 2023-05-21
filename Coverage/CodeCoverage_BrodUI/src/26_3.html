@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>D:\WINDOWS\Documents\GitHub\BrodUI\BrodUI\ViewModels\ExportViewModel.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using BrodUI.Helpers;
+using BrodUI.Models;
+using BrodUI.Services;
+using BrodUI.Views.Pages;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using System;
+using System.Collections.Generic;
+using System.Collections.Immutable;
+using System.Linq;
+using System.Text;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using Wpf.Ui.Common.Interfaces;
+using Wpf.Ui.Controls.Interfaces;
+using Wpf.Ui.Extensions;
+using Wpf.Ui.Mvvm.Contracts;
+
+namespace BrodUI.ViewModels
+{
+    /// &lt;summary&gt;
+    /// ViewModel for the ExportPage
+    /// &lt;/summary&gt;
+    public partial class ExportViewModel : ObservableObject, INavigationAware
+    {
+        /// &lt;summary&gt;
+        /// Image loaded
+        /// &lt;/summary&gt;
+        private BitmapImage? _loadedImage;
+
+        /// &lt;summary&gt;
+        /// List of wires
+        /// &lt;/summary&gt;
+        private List&lt;Wire&gt; _wireArray = new();
+
+        /// &lt;summary&gt;
+        /// Grid of the image
+        /// &lt;/summary&gt;
+        private Grid? _gridImage;
+
+        /// &lt;summary&gt;
+        /// Getter and setter for the Grid of the image
+        /// &lt;/summary&gt;
+        public Grid? GridImage
+        {
+            get =&gt; _gridImage;
+            set
+            {
+                _gridImage = value;
+                OnPropertyChanged();
+            }
+        }
+
+        /// &lt;summary&gt;
+        /// Image management
+        /// &lt;/summary&gt;
+        private ImageManagement? Im { get; set; }
+
+        /// &lt;summary&gt;
+        /// Getter and setter for the loaded image
+        /// &lt;/summary&gt;
+        public BitmapImage? LoadedImage
+        {
+            get =&gt; _loadedImage;
+            set
+            {
+
+                _loadedImage = value;
+                OnPropertyChanged();
+            }
+        }
+
+        /// &lt;summary&gt;
+        /// Getter and setter for the list of wires
+        /// &lt;/summary&gt;
+        public List&lt;Wire&gt; WireArray
+        {
+            get =&gt; _wireArray;
+            set
+            {
+                _wireArray = value;
+                OnPropertyChanged();
+            }
+        }
+
+        /// &lt;summary&gt;
+        /// Function called when the user navigates to the page
+        /// Load the image from the temp folder and convert it to a grid
+        /// &lt;/summary&gt;
+        public void OnNavigatedTo()
+        {
+            LogManagement.WriteToLog(&quot;[&quot; + DateTime.Now + &quot;] &quot; + Assets.Languages.Resource.Terminal_ExportPage);
+            Im ??= new ImageManagement(new Win32OpenFileDialogAdapter());
+            Im.LoadCurrentImage();
+            LoadedImage = Im.Image;
+
+            // If no converted image found, redirect to the convert page
+            if (LoadedImage == null)
+            {
+                WpfMessageBox.Show(&quot;&quot;, Assets.Languages.Resource.Export_NoImageMessage);
+                INavigation? navigationService = (Application.Current.MainWindow as INavigationWindow)?.GetNavigation(); // Get the navigation service from the window.
+                if (navigationService != null)
+                {
+                    _ = navigationService.Navigate(typeof(ConvertPage)); // Navigate to the Convert page.
+                }
+            }
+            else
+            {
+                int width = Im.ImageWidth;
+                int height = Im.ImageHeight;
+                BitmapImage? img = Im.Image;
+                Brush[,] wireTable = ImageTo2DArrayBrushes.ConvertTo2dArray(img!);
+
+                // add Wires to WireArray from wireTable for each color
+
+                // LOADING COUNT
+                int count = 0;
+                int countMax = width * height * 2; // &quot;* 2&quot; to have the first 50% for the color counting and the second 50% for the grid creation
+
+                LogManagement.WriteToLog(&quot;[&quot; + DateTime.Now + &quot;] &quot; + Assets.Languages.Resource.Export_ConvertToCrossStitchEmbroidery);
+
+                // Fill a list of all unique colors in the image
+                List&lt;Color&gt; colors = new();
+                for (int i = 0; i &lt; width; i++)
+                {
+                    for (int j = 0; j &lt; height; j++)
+                    {
+                        count++;
+                        LogManagement.UpdateProgression(count, countMax);
+
+                        // We can&#39;t use wireTable[i, j] directly,
+                        // because brushes with the same color are considered not equals
+                        Color color = ((SolidColorBrush)wireTable[i, j]).Color;
+
+                        if (!colors.Contains(color))
+                        {
+                            colors.Add(color);
+                        }
+                    }
+                }
+
+                // Initialise variables for the colors to DMC conversion
+                Dictionary&lt;Color, Color&gt; colorToDmcColor = new(colors.Count); // Used to convert colors at the grid creation
+                dynamic colorToDmc = ConfigManagement.GetColorModelFromConfigFile() switch
+                {
+                    &quot;HSL&quot; =&gt; new HslToDmc(),
+                    &quot;RGB&quot; or _ =&gt; new RgbToDmc(),
+                };
+                DmcToString dmcToString = new();
+
+                // Convert colors to DMC and add the wires to TempWireArray (to later merge the wires with same colors)
+                foreach (Color color in colors) // TODO : ERROR WHEN COLOR IS &quot;6&quot; (RGB TESTED) 
+                {
+                    StringBuilder terminalOutput = new();
+                    Color dmcColor;
+                    int dmc;
+                    switch (ConfigManagement.GetColorModelFromConfigFile())
+                    {
+                        case &quot;HSL&quot;:
+                            HslToDmc hslToDmc = (HslToDmc)colorToDmc;
+
+                            // Get DMC number
+                            (float hue, float saturation, float lightness) = color.ToHsl();
+                            (int hueInt, int saturationInt, int lightnessInt) = ((int)hue % 360, (int)saturation, (int)lightness);
+                            dmc = hslToDmc.GetValDmc(hueInt, saturationInt, lightnessInt);
+
+                            // Get color from DMC number
+                            (int hueHsl, int saturationHsl, int lightnessHsl) = (hslToDmc.GetHue(dmc), hslToDmc.GetSaturation(dmc), hslToDmc.GetLightness(dmc));
+                            (int rHslInt, int gHslInt, int bHslInt) = ColorExtensions.FromHslToRgb(hueHsl, saturationHsl, lightnessHsl);
+                            dmcColor = Color.FromRgb((byte)rHslInt, (byte)gHslInt, (byte)bHslInt);
+
+                            // Construct terminal output (spaces needed before → to have the arrow at the same position everytime)
+                            terminalOutput.Append(&quot;H:&quot; + hueInt + &quot; S:&quot; + saturationInt + &quot; L:&quot; + lightnessInt + &quot;     \t→\tDMC:&quot; + dmc + &quot; H:&quot; + hueHsl + &quot; S:&quot; + saturationHsl + &quot; L:&quot; + lightnessHsl);
+                            break;
+                        default:
+                            RgbToDmc rgbToDmc = (RgbToDmc)colorToDmc;
+
+                            // Get DMC number
+                            dmc = rgbToDmc.GetValDmc(color.R, color.G, color.B);
+
+                            // Get color from DMC number
+                            (byte rRgb, byte gRgb, byte bRgb) = ((byte)rgbToDmc.GetRed(dmc), (byte)rgbToDmc.GetGreen(dmc), (byte)rgbToDmc.GetBlue(dmc));
+                            dmcColor = Color.FromRgb(rRgb, gRgb, bRgb);
+
+                            // Construct terminal output (spaces needed before → to have the arrow at the same position everytime)
+                            terminalOutput.Append(&quot;R:&quot; + color.R + &quot; G:&quot; + color.G + &quot; B:&quot; + color.B + &quot;     \t→\tDMC:&quot; + dmc + &quot; R:&quot; + rRgb + &quot; G:&quot; + gRgb + &quot; B:&quot; + bRgb);
+                            break;
+                    }
+                    string colorName = dmcToString.GetNameDmc(dmc);
+                    terminalOutput.Append(&quot; Name:&quot; + colorName); // Add name to terminal output
+
+                    // Add to WireArray only if the DMC color wasn&#39;t already obtained from another converted color
+                    if (!colorToDmcColor.ContainsValue(dmcColor))
+                    {
+                        WireArray.Add(new Wire(new SolidColorBrush(dmcColor), dmc, &quot;DMC&quot;, colorName, 0));
+                    }
+
+                    // Output the color conversion to the terminal and add it to the dictionary
+                    colorToDmcColor.Add(color, dmcColor);
+                    Console.WriteLine(terminalOutput.ToString());
+                }
+
+                // Convert image to 2D int array of color index
+                int[,] dmcImage = new int[height, width];
+                ImmutableArray&lt;Color&gt; DmcColorArray = colorToDmcColor.Values.Distinct().ToImmutableArray();
+                for (int row = 0; row &lt; height; row++)
+                {
+                    for (int column = 0; column &lt; width; column++)
+                    {
+                        dmcImage[row, column] = DmcColorArray.IndexOf(colorToDmcColor[((SolidColorBrush)wireTable[column, row]).Color]);
+                    }
+                }
+
+                // Get length for each wire
+                for (int i = 0; i &lt; WireArray.Count; i++)
+                {
+                    // Displaying a little more length than needed is better than opposite, so we round to nearest greater integer
+                    double length = Math.Ceiling(new LengthThread(i, dmcImage).TotalLength);
+                    WireArray[i].Length = (long)length; // TODO fix bug : Length is sometimes negative
+                }
+
+                // GridImage creation part
+                // reset GridImage
+                GridImage!.Children.Clear();
+                GridImage!.RowDefinitions.Clear();
+                GridImage!.ColumnDefinitions.Clear();
+
+                int cellSize = int.Parse(ConfigManagement.GetEmbroiderySizeFromConfigFile());
+
+                // create rows and columns for GridImage
+                for (int i = 0; i &lt; height; i++)
+                {
+                    RowDefinition row = new()
+                    {
+                        Height = new GridLength(cellSize, GridUnitType.Pixel)
+                    };
+                    GridImage!.RowDefinitions.Add(row);
+                }
+
+                for (int i = 0; i &lt; width; i++)
+                {
+                    ColumnDefinition col = new()
+                    {
+                        Width = new GridLength(cellSize, GridUnitType.Pixel)
+                    };
+                    GridImage!.ColumnDefinitions.Add(col);
+                }
+
+                // Add a square for each row/column
+                GridImage.Children.Capacity = width * height;
+                for (int i = 0; i &lt; width; i++)
+                {
+                    for (int j = 0; j &lt; height; j++)
+                    {
+                        count++;
+                        LogManagement.UpdateProgression(count, countMax);
+
+                        double borderLeft = 0.5;
+                        const double borderRight = 0.5;
+                        double borderTop = 0.5;
+                        const double borderBottom = 0.5;
+
+                        if (i % 5 == 0)
+                        {
+                            borderLeft += 1;
+
+                            if (i % 10 == 0)
+                            {
+                                borderLeft += 1;
+                            }
+                        }
+                        if (j % 5 == 0)
+                        {
+                            borderTop += 1;
+
+                            if (j % 10 == 0)
+                            {
+                                borderTop += 1;
+                            }
+                        }
+
+                        Border border = new()
+                        {
+                            BorderBrush = new SolidColorBrush(Colors.Black),
+                            BorderThickness = new Thickness(borderLeft, borderTop, borderRight, borderBottom),
+                            Background = new SolidColorBrush(colorToDmcColor[((SolidColorBrush)wireTable[i, j]).Color])
+                        };
+
+                        Grid.SetRow(border, j);
+                        Grid.SetColumn(border, i);
+                        GridImage.Children.Add(border);
+                    }
+                }
+                LogManagement.WriteToLog(&quot;[&quot; + DateTime.Now + &quot;] &quot; + Assets.Languages.Resource.Export_ConvertToCrossStitchEmbroideryDone);
+            }
+        }
+
+        /// &lt;summary&gt;
+        /// Function called when you go to other page
+        /// &lt;/summary&gt;
+        public void OnNavigatedFrom()
+        {
+            // Clear the page elements
+            GridImage?.Children.Clear();
+            GridImage?.RowDefinitions.Clear();
+            GridImage?.ColumnDefinitions.Clear();
+            LoadedImage = null;
+            WireArray = new List&lt;Wire&gt;();
+        }
+
+        [RelayCommand]
+        private void ExportToPdf() // TODO : LOADING ANIMATION USING PROGRESSRING OR PROGRESBAR (BETTER) AND TASKBARPROGRESS 
+        {
+            _ = new PdfManagement(WireArray);
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[36,9,36,47,0],[48,20,48,30,0],[50,13,50,14,0],[51,17,51,36,0],[52,17,52,37,0],[53,13,53,14,0],[59,39,59,43,0],[59,44,59,48,0],[66,20,66,32,0],[68,13,68,14,0],[70,17,70,38,0],[71,17,71,37,0],[72,13,72,14,0],[80,20,80,30,0],[82,13,82,14,0],[83,17,83,36,0],[84,17,84,37,0],[85,13,85,14,0],[93,9,93,10,0],[94,13,94,113,0],[95,13,95,74,0],[96,13,96,35,0],[97,13,97,36,0],[100,13,100,37,0],[101,13,101,14,0],[102,17,102,89,0],[103,17,103,121,0],[104,17,104,47,0],[105,17,105,18,0],[106,21,106,73,0],[107,17,107,18,0],[108,13,108,14,0],[110,13,110,14,0],[111,17,111,43,0],[112,17,112,45,0],[113,17,113,45,0],[114,17,114,83,0],[119,17,119,31,0],[120,17,120,51,0],[122,17,122,135,0],[125,17,125,44,0],[126,22,126,31,0],[126,33,126,42,0],[126,44,126,47,0],[127,17,127,18,0],[128,26,128,35,0],[128,37,128,47,0],[128,49,128,52,0],[129,21,129,22,0],[130,25,130,33,0],[131,25,131,74,0],[135,25,135,80,0],[137,25,137,53,0],[138,25,138,26,0],[139,29,139,47,0],[140,25,140,26,0],[141,21,141,22,0],[142,17,142,18,0],[145,17,145,78,0],[146,17,148,30,0],[148,30,148,44,0],[148,44,149,35,0],[149,35,149,49,0],[149,49,150,19,0],[151,17,151,49,0],[154,17,154,24,0],[154,26,154,37,0],[154,38,154,40,0],[154,41,154,47,0],[155,17,155,18,0],[156,21,156,58,0],[159,21,159,76,0],[162,29,162,70,0],[165,29,165,92,0],[166,29,166,131,0],[167,29,167,91,0],[170,29,170,161,0],[171,29,171,137,0],[172,29,172,99,0],[175,29,175,202,0],[176,29,176,35,0],[178,29,178,70,0],[181,29,181,81,0],[184,29,184,153,0],[185,29,185,72,0],[188,29,188,173,0],[189,29,189,35,0],[191,21,191,68,0],[192,21,192,65,0],[195,21,195,66,0],[196,21,196,22,0],[197,25,197,106,0],[198,21,198,22,0],[201,21,201,58,0],[202,21,202,66,0],[203,17,203,18,0],[206,17,206,58,0],[207,17,207,108,0],[208,22,208,33,0],[208,35,208,47,0],[208,49,208,54,0],[209,17,209,18,0],[210,26,210,40,0],[210,42,210,56,0],[210,58,210,66,0],[211,21,211,22,0],[212,25,212,137,0],[213,21,213,22,0],[214,17,214,18,0],[217,22,217,31,0],[217,33,217,52,0],[217,54,217,57,0],[218,17,218,18,0],[220,21,220,93,0],[221,21,221,56,0],[222,17,222,18,0],[226,17,226,45,0],[227,17,227,51,0],[228,17,228,54,0],[230,17,230,94,0],[233,22,233,31,0],[233,33,233,43,0],[233,45,233,48,0],[234,17,234,18,0],[235,21,238,23,0],[239,21,239,56,0],[240,17,240,18,0],[242,22,242,31,0],[242,33,242,42,0],[242,44,242,47,0],[243,17,243,18,0],[244,21,247,23,0],[248,21,248,59,0],[249,17,249,18,0],[252,17,252,62,0],[253,22,253,31,0],[253,33,253,42,0],[253,44,253,47,0],[254,17,254,18,0],[255,26,255,35,0],[255,37,255,47,0],[255,49,255,52,0],[256,21,256,22,0],[257,25,257,33,0],[258,25,258,74,0],[260,25,260,49,0],[262,25,262,48,0],[265,25,265,40,0],[266,25,266,26,0],[267,29,267,45,0],[269,29,269,45,0],[270,29,270,30,0],[271,33,271,49,0],[272,29,272,30,0],[273,25,273,26,0],[274,25,274,40,0],[275,25,275,26,0],[276,29,276,44,0],[278,29,278,45,0],[279,29,279,30,0],[280,33,280,48,0],[281,29,281,30,0],[282,25,282,26,0],[284,25,289,27,0],[291,25,291,48,0],[292,25,292,51,0],[293,25,293,56,0],[294,21,294,22,0],[295,17,295,18,0],[296,17,296,139,0],[297,13,297,14,0],[298,9,298,10,0],[304,9,304,10,0],[306,13,306,41,0],[307,13,307,47,0],[308,13,308,50,0],[309,13,309,32,0],[310,13,310,42,0],[311,9,311,10,0],[315,9,315,10,0],[316,13,316,46,0],[317,9,317,10,0]]);
+    </script>
+  </body>
+</html>

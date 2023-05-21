@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>D:\WINDOWS\Documents\GitHub\BrodUI\BrodUI\Models\PdfManagement.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using BrodUI.Helpers;
+using iText.IO.Font.Constants;
+using iText.IO.Image;
+using iText.Kernel.Colors;
+using iText.Kernel.Font;
+using iText.Kernel.Pdf;
+using iText.Kernel.Pdf.Canvas;
+using iText.Layout.Borders;
+using iText.Layout.Element;
+using iText.Layout.Properties;
+using Microsoft.Win32;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using Wpf.Ui.TaskBar;
+using Canvas = iText.Layout.Canvas;
+using File = System.IO.File;
+using Path = System.IO.Path;
+using Rectangle = iText.Kernel.Geom.Rectangle;
+
+namespace BrodUI.Models
+{
+    /// &lt;summary&gt;
+    /// Class to manage the PDF file
+    /// &lt;/summary&gt;
+    public class PdfManagement
+    {
+        /// &lt;summary&gt;
+        /// Path of the PDF file
+        /// &lt;/summary&gt;
+        private string? PdfPath { get; set; }
+
+        /// &lt;summary&gt;
+        /// Document of the PDF file
+        /// &lt;/summary&gt;
+        private PdfDocument? Document { get; set; }
+
+        /// &lt;summary&gt;
+        /// List of wires passed in the constructor
+        /// &lt;/summary&gt;
+        private List&lt;Wire&gt; WiresList { get; set; }
+
+        /// &lt;summary&gt;
+        /// Image to insert in the PDF file
+        /// &lt;/summary&gt;
+        private BitmapImage? Image { get; set; }
+
+        /// &lt;summary&gt;
+        /// Constructor of the class
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;wiresList&quot;&gt;List of wires to display it in the second page&lt;/param&gt;
+        public PdfManagement(List&lt;Wire&gt; wiresList)
+        {
+            WiresList = wiresList;
+            UserChooseWhereToSaveThePdfFile();
+        }
+
+        /// &lt;summary&gt;
+        /// Function to create all pages of the PDF file and add them to the document
+        /// - The first page have the title of the file itself, the date and time, and the image
+        /// - The second page is the list of the wires and the quantity for each
+        /// - The third page is the embroidery pattern
+        /// &lt;/summary&gt;
+        private void CreatePdfDocument()
+        {
+            Document = new PdfDocument(new PdfWriter(PdfPath));
+            // add 3 pages
+            Document.AddNewPage();
+            Document.AddNewPage();
+            Document.AddNewPage();
+
+            // Create pages and add loading progression to taskbar
+            LogManagement.UpdateProgression(0, 100);
+            CreateFirstPage();
+            LogManagement.UpdateProgression(25, 100);
+            CreateSecondPage();
+            LogManagement.UpdateProgression(50, 100);
+            CreateThirdPage();
+            LogManagement.UpdateProgression(75, 100);
+            InsertFooter();
+            LogManagement.UpdateProgression(TaskBarProgressState.None);
+
+            // Close the document
+            Document.Close();
+
+            // Open the PDF file
+            OpenPdfInDefaultApplication();
+        }
+
+        /// &lt;summary&gt;
+        /// Function to insert a footer in each page in the PDF document
+        /// The footer contains the page number and the watermark
+        /// &lt;/summary&gt;
+        private void InsertFooter()
+        {
+            for (int i = 1; i &lt;= 3; i++)
+            {
+                PdfPage page = Document!.GetPage(i);
+                PdfCanvas canvas = new(page);
+                PdfFont font = PdfFontFactory.CreateFont(StandardFonts.HELVETICA);
+                const float fontSize = 8;
+                string text = &quot;Page &quot; + i + &quot; of 3&quot;;
+                float textWidth = font.GetWidth(text, fontSize);
+                float textX = page.GetPageSize().GetWidth() - (textWidth + 30);
+                float textY = page.GetPageSize().GetHeight() - (page.GetPageSize().GetHeight() / 1.03f);
+                canvas.BeginText()
+                    .SetFontAndSize(font, fontSize)
+                    .MoveText(textX, textY)
+                    .ShowText(text)
+                    .EndText();
+                canvas.Release();
+
+                PdfCanvas waterMark = new(page);
+                const string wm = &quot;Created with BrodUI&quot;;
+                const float textXWm = 30;
+                float textYWm = page.GetPageSize().GetHeight() - (page.GetPageSize().GetHeight() / 1.03f);
+                waterMark.BeginText()
+                    .SetFontAndSize(font, fontSize)
+                    .MoveText(textXWm, textYWm)
+                    .ShowText(wm)
+                    .EndText();
+                waterMark.Release();
+            }
+        }
+
+        /// &lt;summary&gt;
+        /// Function to allow the user to choose where to save the PDF file and the name of the file
+        /// &lt;/summary&gt;
+        private void UserChooseWhereToSaveThePdfFile()
+        {
+            // Create a SaveFileDialog
+            SaveFileDialog saveFileDialog = new()
+            {
+                // Set the default file name
+                FileName = &quot;BrodUI_TempName&quot;,
+                // Set the default extension
+                DefaultExt = &quot;.pdf&quot;,
+                // Set the filter
+                Filter = &quot;PDF documents (.pdf)|*.pdf&quot;
+            };
+            // Show the dialog
+            bool? result = saveFileDialog.ShowDialog();
+            // If the user click on &quot;Save&quot;
+            if (result != true) return;
+            // Get the path of the file
+            PdfPath = saveFileDialog.FileName;
+            CreatePdfDocument();
+        }
+
+        /// &lt;summary&gt;
+        /// Function to create the first page of the PDF file
+        /// The first page contain the title of the file itself, the date and time, and the image
+        /// &lt;/summary&gt;
+        private void CreateFirstPage()
+        {
+            // The first page have the title of the file itself, the date and time, and the image
+            // Get the first page
+            PdfPage page = Document!.GetPage(1);
+
+            // ------------------------ //
+            //     TITLE OF THE FILE    //
+            // ------------------------ //
+
+            PdfCanvas titleCanvas = new(page);
+            // Get the title of the PDF file
+            if (PdfPath != null)
+            {
+                string[] temp = PdfPath.Split(&#39;\\&#39;);
+                string title = temp[^1].Split(&#39;.&#39;)[0];
+                // Get the font
+                PdfFont font = PdfFontFactory.CreateFont(StandardFonts.HELVETICA_BOLD);
+                // Get the size of the font
+                float fontSize = 40;
+                // Get the width of the title
+                float titleWidth = font.GetWidth(title, fontSize);
+                // Get the position of the title
+                float titleX = (page.GetPageSize().GetWidth() - titleWidth) / 2;
+                float titleY = page.GetPageSize().GetHeight() - (page.GetPageSize().GetHeight() / 9);
+                // Display the title
+                titleCanvas.BeginText()
+                    .SetFontAndSize(font, fontSize)
+                    .MoveText(titleX, titleY)
+                    .ShowText(title)
+                    .EndText();
+            }
+
+            titleCanvas.Release();
+
+            // ------------------------ //
+            //         DATE TIME        //
+            // ------------------------ //
+
+            PdfCanvas dateTimeCanvas = new(page);
+            // Get the title of the file
+            string dateTime = DateTime.Now.ToString(&quot;dd/MM/yyyy HH:mm&quot;);
+            // Get the font
+            PdfFont fontDateTime = PdfFontFactory.CreateFont(StandardFonts.HELVETICA);
+            // Get the size of the font
+            float fontSizeDateTime = 12f;
+            // Get the width of the title
+            float dateTimeWidth = fontDateTime.GetWidth(dateTime, fontSizeDateTime);
+            // Get the position of the title
+            float dateTimeX = (page.GetPageSize().GetWidth() - dateTimeWidth) / 2;
+            float dateTimeY = page.GetPageSize().GetHeight() - (page.GetPageSize().GetHeight() / 7);
+            // Display the title
+            dateTimeCanvas.BeginText()
+                .SetFontAndSize(fontDateTime, fontSizeDateTime)
+                .MoveText(dateTimeX, dateTimeY)
+                .ShowText(dateTime)
+                .EndText();
+            dateTimeCanvas.Release();
+
+            // ------------------------ //
+            //           IMAGE          //
+            // ------------------------ //
+
+            // Get the canvas of the page
+            PdfCanvas imgCanvas = new(page);
+
+            // Display the image in the center of the page
+            // Get the image from the path
+            string appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            // create the folder &quot;BrodUI&quot; in AppData if it doesn&#39;t exist
+            if (!Directory.Exists(appData + &quot;\\BrodUI&quot;))
+            {
+                Directory.CreateDirectory(appData + &quot;\\BrodUI&quot;);
+            }
+            // path combine with the file name
+            string imgPath = Path.Combine(appData + &quot;\\BrodUI&quot;, &quot;current image.png&quot;);
+            if (File.Exists(imgPath))
+            {
+                // create a temp copy of the image with specified width and height
+                // Get the image from the path
+                Image = new BitmapImage(new Uri(imgPath));
+                // Create a new image with the specified width and height
+                double minWidth = Document.GetDefaultPageSize().GetWidth() / 2;
+                double minHeight = Document.GetDefaultPageSize().GetHeight() / 2;
+                // Get the width and height of the image
+                double width = Image.Width;
+                double height = Image.Height;
+                // Get the ratio of the image
+                double ratio = width / height;
+                // Get the new width and height of the image
+                double newWidth = width;
+                double newHeight = height;
+                // check if the image is vertical or horizontal
+                if (width &gt; height)
+                {
+                    // if the image is horizontal
+                    if (width &lt; minWidth)
+                    {
+                        newWidth = minWidth;
+                        newHeight = newWidth / ratio;
+                    }
+                }
+                else
+                {
+                    // if the image is vertical
+                    if (height &lt; minHeight)
+                    {
+                        newHeight = minHeight;
+                        newWidth = newHeight * ratio;
+                    }
+                }
+                // Create a new image with the new width and height
+                BitmapImage newImg = new();
+                newImg.BeginInit();
+                newImg.UriSource = new Uri(imgPath);
+                newImg.DecodePixelWidth = (int)newWidth;
+                newImg.DecodePixelHeight = (int)newHeight;
+                newImg.EndInit();
+                // Save the new image
+                PngBitmapEncoder encoder = new();
+                encoder.Frames.Add(BitmapFrame.Create(newImg));
+                string tempPath = Path.GetTempPath(); // get temp folder
+                string tempFile = Path.Combine(tempPath, &quot;temp.png&quot;); // create a temp file
+                using FileStream fileStream = new(tempFile, FileMode.Create); // save the image
+                encoder.Save(fileStream);
+                fileStream.Close();
+
+                // Get the image data
+                ImageData imageData = ImageDataFactory.Create(tempFile);
+
+                // Get X and Y coordinates to have the image in the center of the page
+                float x = (Document.GetDefaultPageSize().GetWidth() / 2) - (imageData.GetWidth() / 2);
+                float y = (Document.GetDefaultPageSize().GetHeight() / 2) - (imageData.GetHeight() / 2);
+
+                // Add the image to the canvas
+                imgCanvas.AddImageAt(imageData, x, y, true);
+
+                // Delete the temp file
+                File.Delete(tempFile);
+            }
+            imgCanvas.Release();
+        }
+
+        /// &lt;summary&gt;
+        /// Function to create the second page of the PDF file
+        /// This page contains the list of wires
+        /// &lt;/summary&gt;
+        private void CreateSecondPage()
+        {
+            // Get the second page
+            PdfPage page = Document!.GetPage(2);
+
+            // ------------------------ //
+            //     TITLE OF THE PAGE    //
+            // ------------------------ //
+
+            PdfCanvas titleCanvas = new(page);
+            const string title = &quot;List of wires&quot;;
+            // Get the font
+            PdfFont font = PdfFontFactory.CreateFont(StandardFonts.HELVETICA_BOLD);
+            // Get the size of the font
+            const float fontSize = 30;
+            // Get the width of the title
+            float titleWidth = font.GetWidth(title, fontSize);
+            // Get the position of the title
+            float titleX = (page.GetPageSize().GetWidth() - titleWidth) / 2;
+            float titleY = page.GetPageSize().GetHeight() - (page.GetPageSize().GetHeight() / 7);
+            // Display the title
+            titleCanvas.BeginText()
+                .SetFontAndSize(font, fontSize)
+                .MoveText(titleX, titleY)
+                .ShowText(title)
+                .EndText();
+            titleCanvas.Release();
+
+            // ------------------------ //
+            //       TABLE OF WIRES     //
+            // ------------------------ //
+            // Add  table to the canvas
+            Table table = new(5);
+            table.SetWidth(UnitValue.CreatePercentValue(100));
+            table.SetHorizontalAlignment(HorizontalAlignment.CENTER);
+            table.SetVerticalAlignment(VerticalAlignment.MIDDLE);
+            // Add the header for the 5 columns
+            Cell headerColor = new();
+            headerColor.Add(new Paragraph(Assets.Languages.Resource.Export_ColorLabel));
+            headerColor.SetHorizontalAlignment(HorizontalAlignment.CENTER);
+            headerColor.SetVerticalAlignment(VerticalAlignment.MIDDLE);
+            headerColor.SetTextAlignment(TextAlignment.CENTER);
+            headerColor.SetBackgroundColor(ColorConstants.LIGHT_GRAY);
+            table.AddHeaderCell(headerColor);
+
+            Cell headerNumber = new();
+            headerNumber.Add(new Paragraph(Assets.Languages.Resource.Export_NumberLabel));
+            headerNumber.SetHorizontalAlignment(HorizontalAlignment.CENTER);
+            headerNumber.SetVerticalAlignment(VerticalAlignment.MIDDLE);
+            headerNumber.SetTextAlignment(TextAlignment.CENTER);
+            headerNumber.SetBackgroundColor(ColorConstants.LIGHT_GRAY);
+            table.AddHeaderCell(headerNumber);
+
+            Cell headerType = new();
+            headerType.Add(new Paragraph(Assets.Languages.Resource.Export_TypeLabel));
+            headerType.SetHorizontalAlignment(HorizontalAlignment.CENTER);
+            headerType.SetVerticalAlignment(VerticalAlignment.MIDDLE);
+            headerType.SetTextAlignment(TextAlignment.CENTER);
+            headerType.SetBackgroundColor(ColorConstants.LIGHT_GRAY);
+            table.AddHeaderCell(headerType);
+
+            Cell headerName = new();
+            headerName.Add(new Paragraph(Assets.Languages.Resource.Export_NameLabel));
+            headerName.SetHorizontalAlignment(HorizontalAlignment.CENTER);
+            headerName.SetVerticalAlignment(VerticalAlignment.MIDDLE);
+            headerName.SetTextAlignment(TextAlignment.CENTER);
+            headerName.SetBackgroundColor(ColorConstants.LIGHT_GRAY);
+            table.AddHeaderCell(headerName);
+
+            Cell headerLength = new();
+            headerLength.Add(new Paragraph(Assets.Languages.Resource.Export_LengthLabel));
+            headerLength.SetHorizontalAlignment(HorizontalAlignment.CENTER);
+            headerLength.SetVerticalAlignment(VerticalAlignment.MIDDLE);
+            headerLength.SetTextAlignment(TextAlignment.CENTER);
+            headerLength.SetBackgroundColor(ColorConstants.LIGHT_GRAY);
+            table.AddHeaderCell(headerLength);
+
+            // Add the data for each wire
+            foreach (Wire wire in WiresList)
+            {
+                // Convert Color
+                BrushConverter converter = new();
+                SolidColorBrush brush = (SolidColorBrush)converter.ConvertFromString(wire.Color.ToString())!;
+                iText.Kernel.Colors.Color color = new DeviceRgb(brush.Color.R, brush.Color.G, brush.Color.B);
+
+                Div rectangle = new Div()
+                    .SetHeight(15)
+                    .SetWidth(15)
+                    .SetBackgroundColor(color)
+                    .SetBorder(new SolidBorder(ColorConstants.BLACK, 1));
+
+                Cell colorCell = new();
+                colorCell.Add(rectangle);
+                colorCell.SetHorizontalAlignment(HorizontalAlignment.CENTER);
+                colorCell.SetVerticalAlignment(VerticalAlignment.MIDDLE);
+                colorCell.SetTextAlignment(TextAlignment.CENTER);
+                table.AddCell(colorCell);
+
+                Cell numberCell = new();
+                numberCell.Add(new Paragraph(wire.Number.ToString()));
+                numberCell.SetHorizontalAlignment(HorizontalAlignment.CENTER);
+                numberCell.SetVerticalAlignment(VerticalAlignment.MIDDLE);
+                numberCell.SetTextAlignment(TextAlignment.CENTER);
+                table.AddCell(numberCell);
+
+                Cell typeCell = new();
+                typeCell.Add(new Paragraph(wire.Type));
+                typeCell.SetHorizontalAlignment(HorizontalAlignment.CENTER);
+                typeCell.SetVerticalAlignment(VerticalAlignment.MIDDLE);
+                typeCell.SetTextAlignment(TextAlignment.CENTER);
+                table.AddCell(typeCell);
+
+                Cell nameCell = new();
+                nameCell.Add(new Paragraph(wire.Name));
+                nameCell.SetHorizontalAlignment(HorizontalAlignment.CENTER);
+                nameCell.SetVerticalAlignment(VerticalAlignment.MIDDLE);
+                nameCell.SetTextAlignment(TextAlignment.CENTER);
+                table.AddCell(nameCell);
+
+                Cell lengthCell = new();
+                lengthCell.Add(new Paragraph(wire.Length.ToString()));
+                lengthCell.SetHorizontalAlignment(HorizontalAlignment.CENTER);
+                lengthCell.SetVerticalAlignment(VerticalAlignment.MIDDLE);
+                lengthCell.SetTextAlignment(TextAlignment.CENTER);
+                table.AddCell(lengthCell);
+            }
+
+            PdfCanvas tableCanvas = new(Document.GetPage(2));
+            Rectangle canvasArea = new(20, 40, page.GetPageSize().GetWidth() - 40, page.GetPageSize().GetHeight() * 6 / 8);
+            Canvas canvas = new(tableCanvas, canvasArea);
+            canvas.Add(table);
+            canvas.Close();
+
+            // Add the table to the canvas 
+            tableCanvas.Release();
+        }
+
+        /// &lt;summary&gt;
+        /// Function to create the third page of the PDF
+        /// This page contains the image of the embroidery
+        /// &lt;/summary&gt;
+        private void CreateThirdPage()
+        {
+            // Get the second page
+            PdfPage page = Document!.GetPage(3);
+
+            // ------------------------ //
+            //     TITLE OF THE PAGE    //
+            // ------------------------ //
+            int imgWidth = Image!.PixelWidth;
+            int imgHeight = Image!.PixelHeight;
+
+            Brush[,] wireTable = ImageTo2DArrayBrushes.ConvertTo2dArray(Image!);
+
+            int cellSize = int.Parse(ConfigManagement.GetEmbroiderySizeFromConfigFile());
+
+            Table table = new(imgWidth);
+            table.SetWidth(cellSize * imgWidth);
+            table.SetHeight(cellSize * imgHeight);
+
+            // add each pixel of the wireTable to the table
+            for (int i = 0; i &lt; imgHeight; i++)
+            {
+                for (int j = 0; j &lt; imgWidth; j++)
+                {
+                    // Convert Color
+                    BrushConverter converter = new();
+                    SolidColorBrush brush = (SolidColorBrush)converter.ConvertFromString(wireTable[j, i].ToString())!;
+                    iText.Kernel.Colors.Color color = new DeviceRgb(brush.Color.R, brush.Color.G, brush.Color.B);
+                    Cell cell = new();
+                    cell.SetBackgroundColor(color);
+
+                    // borders
+                    float borderLeft = 0.5f;
+                    const float borderRight = 0.5f;
+                    float borderTop = 0.5f;
+                    const float borderBottom = 0.5f;
+                    if (j &gt; 0)
+                    {
+                        if (j % 5 == 0)
+                        {
+                            borderLeft += 1;
+                        }
+
+                        if (j % 10 == 0)
+                        {
+                            borderLeft += 1;
+                        }
+                    }
+
+                    if (i &gt; 0)
+                    {
+                        if (i % 5 == 0)
+                        {
+                            borderTop += 1;
+                        }
+                        if (i % 10 == 0)
+                        {
+                            borderTop += 1;
+                        }
+                    }
+
+                    // create border
+                    cell.SetBorderLeft(new SolidBorder(ColorConstants.BLACK, borderLeft));
+                    cell.SetBorderRight(new SolidBorder(ColorConstants.BLACK, borderRight));
+                    cell.SetBorderTop(new SolidBorder(ColorConstants.BLACK, borderTop));
+                    cell.SetBorderBottom(new SolidBorder(ColorConstants.BLACK, borderBottom));
+
+                    table.AddCell(cell);
+                }
+            }
+
+            // adjust size of border in the table
+
+
+            PdfCanvas tableCanvas = new(Document.GetPage(3));
+
+            float startPointX = (page.GetPageSize().GetWidth()) / 2 - cellSize * imgWidth / 2f;
+            float startPointY = (page.GetPageSize().GetHeight()) / 2 - cellSize * imgHeight / 2f;
+
+            Rectangle canvasArea = new(startPointX, startPointY, cellSize * imgWidth, cellSize * imgHeight);
+            Canvas canvas = new(tableCanvas, canvasArea);
+            canvas.Add(table);
+            canvas.Close();
+
+            // Add the table to the canvas 
+            tableCanvas.Release();
+        }
+
+        /// &lt;summary&gt;
+        /// Function to open the PDF in the default application
+        /// &lt;/summary&gt;
+        public void OpenPdfInDefaultApplication()
+        {
+            if (PdfPath == null) return;
+            new Process
+            {
+                StartInfo = new ProcessStartInfo(PdfPath!)
+                {
+                    UseShellExecute = true
+                }
+            }.Start();
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[34,35,34,39,0],[34,40,34,44,0],[39,41,39,45,0],[39,46,39,50,0],[44,40,44,44,0],[44,45,44,49,0],[49,38,49,42,0],[49,43,49,47,0],[55,9,55,51,0],[56,9,56,10,0],[57,13,57,35,0],[58,13,58,47,0],[59,9,59,10,0],[68,9,68,10,0],[69,13,69,64,0],[71,13,71,35,0],[72,13,72,35,0],[73,13,73,35,0],[76,13,76,53,0],[77,13,77,31,0],[78,13,78,54,0],[79,13,79,32,0],[80,13,80,54,0],[81,13,81,31,0],[82,13,82,54,0],[83,13,83,28,0],[84,13,84,72,0],[87,13,87,30,0],[90,13,90,43,0],[91,9,91,10,0],[98,9,98,10,0],[99,18,99,27,0],[99,29,99,35,0],[99,37,99,40,0],[100,13,100,14,0],[101,17,101,53,0],[102,17,102,46,0],[103,17,103,83,0],[105,17,105,53,0],[106,17,106,65,0],[107,17,107,80,0],[108,17,108,105,0],[109,17,113,32,0],[114,17,114,34,0],[116,17,116,49,0],[119,17,119,107,0],[120,17,124,32,0],[125,17,125,37,0],[126,13,126,14,0],[127,9,127,10,0],[133,9,133,10,0],[135,13,143,15,0],[145,13,145,56,0],[147,13,147,32,0],[147,33,147,40,0],[149,13,149,47,0],[150,13,150,33,0],[151,9,151,10,0],[158,9,158,10,0],[161,13,161,49,0],[167,13,167,47,0],[169,13,169,33,0],[170,13,170,14,0],[171,17,171,53,0],[172,17,172,55,0],[174,17,174,88,0],[176,17,176,37,0],[178,17,178,67,0],[180,17,180,81,0],[181,17,181,102,0],[183,17,187,32,0],[188,13,188,14,0],[190,13,190,35,0],[196,13,196,50,0],[198,13,198,73,0],[200,13,200,87,0],[202,13,202,42,0],[204,13,204,85,0],[206,13,206,83,0],[207,13,207,101,0],[209,13,213,28,0],[214,13,214,38,0],[221,13,221,45,0],[225,13,225,99,0],[227,13,227,57,0],[228,13,228,14,0],[229,17,229,65,0],[230,13,230,14,0],[232,13,232,86,0],[233,13,233,38,0],[234,13,234,14,0],[237,17,237,59,0],[239,17,239,80,0],[240,17,240,82,0],[242,17,242,44,0],[243,17,243,46,0],[245,17,245,47,0],[247,17,247,41,0],[248,17,248,43,0],[250,17,250,36,0],[251,17,251,18,0],[253,21,253,42,0],[254,21,254,22,0],[255,25,255,45,0],[256,25,256,54,0],[257,21,257,22,0],[258,17,258,18,0],[260,17,260,18,0],[262,21,262,44,0],[263,21,263,22,0],[264,25,264,47,0],[265,25,265,54,0],[266,21,266,22,0],[267,17,267,18,0],[269,17,269,44,0],[270,17,270,36,0],[271,17,271,53,0],[272,17,272,57,0],[273,17,273,59,0],[274,17,274,34,0],[276,17,276,50,0],[277,17,277,64,0],[278,17,278,54,0],[279,17,279,70,0],[280,17,280,78,0],[281,17,281,42,0],[282,17,282,36,0],[285,17,285,73,0],[288,17,288,103,0],[289,17,289,105,0],[292,17,292,61,0],[295,17,295,39,0],[296,13,296,14,0],[297,13,297,33,0],[298,9,298,10,0],[305,9,305,10,0],[307,13,307,49,0],[313,13,313,47,0],[316,13,316,84,0],[320,13,320,63,0],[322,13,322,77,0],[323,13,323,98,0],[325,13,329,28,0],[330,13,330,35,0],[336,13,336,34,0],[337,13,337,63,0],[338,13,338,70,0],[339,13,339,66,0],[341,13,341,38,0],[342,13,342,89,0],[343,13,343,76,0],[344,13,344,72,0],[345,13,345,64,0],[346,13,346,71,0],[347,13,347,46,0],[349,13,349,39,0],[350,13,350,91,0],[351,13,351,77,0],[352,13,352,73,0],[353,13,353,65,0],[354,13,354,72,0],[355,13,355,47,0],[357,13,357,37,0],[358,13,358,87,0],[359,13,359,75,0],[360,13,360,71,0],[361,13,361,63,0],[362,13,362,70,0],[363,13,363,45,0],[365,13,365,37,0],[366,13,366,87,0],[367,13,367,75,0],[368,13,368,71,0],[369,13,369,63,0],[370,13,370,70,0],[371,13,371,45,0],[373,13,373,39,0],[374,13,374,91,0],[375,13,375,77,0],[376,13,376,73,0],[377,13,377,65,0],[378,13,378,72,0],[379,13,379,47,0],[382,13,382,20,0],[382,22,382,31,0],[382,32,382,34,0],[382,35,382,44,0],[383,13,383,14,0],[385,17,385,50,0],[386,17,386,110,0],[387,17,387,110,0],[389,17,393,74,0],[395,17,395,40,0],[396,17,396,42,0],[397,17,397,78,0],[398,17,398,74,0],[399,17,399,66,0],[400,17,400,42,0],[402,17,402,41,0],[403,17,403,71,0],[404,17,404,79,0],[405,17,405,75,0],[406,17,406,67,0],[407,17,407,43,0],[409,17,409,39,0],[410,17,410,56,0],[411,17,411,77,0],[412,17,412,73,0],[413,17,413,65,0],[414,17,414,41,0],[416,17,416,39,0],[417,17,417,56,0],[418,17,418,77,0],[419,17,419,73,0],[420,17,420,65,0],[421,17,421,41,0],[423,17,423,41,0],[424,17,424,71,0],[425,17,425,79,0],[426,17,426,75,0],[427,17,427,67,0],[428,17,428,43,0],[429,13,429,14,0],[431,13,431,62,0],[432,13,432,124,0],[433,13,433,58,0],[434,13,434,31,0],[435,13,435,28,0],[438,13,438,35,0],[439,9,439,10,0],[446,9,446,10,0],[448,13,448,49,0],[453,13,453,46,0],[454,13,454,48,0],[456,13,456,81,0],[458,13,458,90,0],[460,13,460,41,0],[461,13,461,49,0],[462,13,462,51,0],[465,18,465,27,0],[465,29,465,42,0],[465,44,465,47,0],[466,13,466,14,0],[467,22,467,31,0],[467,33,467,45,0],[467,47,467,50,0],[468,17,468,18,0],[470,21,470,54,0],[471,21,471,119,0],[472,21,472,114,0],[473,21,473,39,0],[474,21,474,52,0],[477,21,477,45,0],[479,21,479,44,0],[481,21,481,31,0],[482,21,482,22,0],[483,25,483,40,0],[484,25,484,26,0],[485,29,485,45,0],[486,25,486,26,0],[488,25,488,41,0],[489,25,489,26,0],[490,29,490,45,0],[491,25,491,26,0],[492,21,492,22,0],[494,21,494,31,0],[495,21,495,22,0],[496,25,496,40,0],[497,25,497,26,0],[498,29,498,44,0],[499,25,499,26,0],[500,25,500,41,0],[501,25,501,26,0],[502,29,502,44,0],[503,25,503,26,0],[504,21,504,22,0],[507,21,507,91,0],[508,21,508,93,0],[509,21,509,89,0],[510,21,510,95,0],[512,21,512,41,0],[513,17,513,18,0],[514,13,514,14,0],[519,13,519,62,0],[521,13,521,96,0],[522,13,522,98,0],[524,13,524,109,0],[525,13,525,58,0],[526,13,526,31,0],[527,13,527,28,0],[530,13,530,35,0],[531,9,531,10,0],[537,9,537,10,0],[538,13,538,33,0],[538,34,538,41,0],[539,13,545,23,0],[546,9,546,10,0]]);
+    </script>
+  </body>
+</html>

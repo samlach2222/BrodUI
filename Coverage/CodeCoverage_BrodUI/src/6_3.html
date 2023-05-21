@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>D:\WINDOWS\Documents\GitHub\BrodUI\BrodUI\Helpers\Brush2DtoColorDict.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using BrodUI.KMeans;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Windows.Media;
+
+namespace BrodUI.Helpers
+{
+    /// &lt;summary&gt;
+    /// class to convert 2D Array of Brush to Dictionary containing the colors
+    /// &lt;/summary&gt;
+    public static class Brush2DtoColorDict
+    {
+        /// &lt;summary&gt;
+        /// convert DMC 2D Array of Brush to Dictionary containing the colors
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;image&quot;&gt; 2D array of Brush object containing the color of each pixel of the picture &lt;/param&gt;
+        public static Dictionary&lt;int, GenericVector&gt; BrushToDict(Brush[,] image)
+        {
+            Dictionary&lt;int, GenericVector&gt; dict = new();
+            int x = image.GetLength(0);
+            BrushConverter converter = new();
+            for (int i = 0; i &lt; x; i++)
+            {
+                for (int j = 0; j &lt; image.GetLength(1); j++)
+                {
+                    GenericVector vec = new();
+                    Brush brush = image[i, j];
+                    SolidColorBrush col = (SolidColorBrush)converter.ConvertFromString(brush.ToString())!;
+                    vec.Add(col.Color.R);
+                    vec.Add(col.Color.G);
+                    vec.Add(col.Color.B);
+                    dict.Add(j * x + i, vec);
+                }
+            }
+            return dict;
+        }
+
+        /// &lt;summary&gt;
+        /// convert Dictionary containing the colors to DMC 2D Array of Brush
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;dict&quot;&gt; Dictionnary containing the color of each pixel in the original picture &lt;/param&gt;
+        /// &lt;param name=&quot;centroids&quot;&gt; Dictionnary containing the new color of the pictures &lt;/param&gt;
+        /// &lt;param name=&quot;sizeX&quot;&gt; height of picture &lt;/param&gt;
+        /// &lt;param name=&quot;sizeY&quot;&gt; width of picture &lt;/param&gt;
+        public static Brush[,] DictToBrush2D(Dictionary&lt;int, GenericVector&gt; dict, Dictionary&lt;int, GenericVector&gt; centroids, int sizeX, int sizeY)
+        {
+            Brush[,] res = new Brush[sizeX, sizeY];
+            for (int i = 0; i &lt; sizeX; i++)
+            {
+                for (int j = 0; j &lt; sizeY; j++)
+                {
+                    GenericVector gv = dict[i + j * sizeX];
+                    int centroidId = centroids
+                        .OrderBy(v =&gt; GenericVector.Distance(gv, v.Value))
+                        .Select(v =&gt; v.Key)
+                        .FirstOrDefault();
+                    GenericVector centroid = centroids[centroidId];
+                    res[i, j] = new SolidColorBrush(Color.FromRgb((byte)Math.Round(centroid.Points[0]), (byte)Math.Round(centroid.Points[1]), (byte)Math.Round(centroid.Points[2])));
+                }
+            }
+            return res;
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[19,9,19,10,1],[20,13,20,57,1],[21,13,21,40,1],[22,13,22,46,1],[23,18,23,27,1],[23,29,23,34,1],[23,36,23,39,1],[24,13,24,14,1],[25,22,25,31,1],[25,33,25,55,1],[25,57,25,60,1],[26,17,26,18,1],[27,21,27,47,1],[28,21,28,47,1],[29,21,29,107,1],[30,21,30,42,1],[31,21,31,42,1],[32,21,32,42,1],[33,21,33,46,1],[34,17,34,18,1],[35,13,35,14,1],[36,13,36,25,1],[37,9,37,10,1],[47,9,47,10,1],[48,13,48,52,1],[49,18,49,27,1],[49,29,49,38,1],[49,40,49,43,1],[50,13,50,14,1],[51,22,51,31,1],[51,33,51,42,1],[51,44,51,47,1],[52,17,52,18,1],[53,21,53,60,1],[54,21,55,39,1],[55,39,55,74,1],[55,74,56,38,1],[56,38,56,43,1],[56,43,57,43,1],[58,21,58,68,1],[59,21,59,182,1],[60,17,60,18,1],[61,13,61,14,1],[62,13,62,24,1],[63,9,63,10,1]]);
+    </script>
+  </body>
+</html>

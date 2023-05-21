@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>D:\WINDOWS\Documents\GitHub\BrodUI\BrodUI\Views\Pages\ConvertPage.xaml.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using BrodUI.Models;
+using System.Windows;
+using System.Windows.Controls;
+using Wpf.Ui.Common.Interfaces;
+using TextBox = Wpf.Ui.Controls.TextBox;
+
+namespace BrodUI.Views.Pages
+{
+    /// &lt;summary&gt;
+    /// Interaction logic for DataView.xaml
+    /// &lt;/summary&gt;
+    public partial class ConvertPage : INavigableView&lt;ViewModels.ConvertViewModel&gt; // TODO : ADD SCROLLBAR TO THE PAGE
+    {
+        /// &lt;summary&gt;
+        /// Getter for the view model.
+        /// &lt;/summary&gt;
+        public ViewModels.ConvertViewModel ViewModel
+        {
+            get;
+        }
+
+        /// &lt;summary&gt;
+        /// Creates new instance of the &lt;see cref=&quot;ConvertPage&quot;/&gt;.
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;viewModel&quot;&gt;viewModel&lt;/param&gt;
+        public ConvertPage(ViewModels.ConvertViewModel viewModel)
+        {
+            ConfigManagement.ApplyLanguage();
+
+            ViewModel = viewModel;
+
+            InitializeComponent();
+        }
+
+        /// &lt;summary&gt;
+        /// Method called when the user clicks the Down arrow on the Y Resolution TextBox
+        /// It decrements the Y resolution by 1
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;sender&quot;&gt;TextBox for the Y resolution&lt;/param&gt;
+        /// &lt;param name=&quot;e&quot;&gt;Routed event args&lt;/param&gt;
+        private void YRes_OnDecremented(object sender, RoutedEventArgs e) // TODO : CHANGE VALUES CHECK, TOO MANY UNUSUAL MESSAGEBOX
+        {
+            ViewModel.ImageHeight -= 1;
+        }
+
+        /// &lt;summary&gt;
+        /// Method called when the user clicks the Up arrow on the Y Resolution TextBox
+        /// It increments the Y resolution by 1
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;sender&quot;&gt;TextBox for the Y resolution&lt;/param&gt;
+        /// &lt;param name=&quot;e&quot;&gt;Routed event args&lt;/param&gt;
+        private void YRes_OnIncremented(object sender, RoutedEventArgs e)
+        {
+            ViewModel.ImageHeight += 1;
+        }
+
+        /// &lt;summary&gt;
+        /// Method called when the user clicks the Up arrow on the X Resolution TextBox
+        /// It increments the X resolution by 1
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;sender&quot;&gt;TextBox for the Y resolution&lt;/param&gt;
+        /// &lt;param name=&quot;e&quot;&gt;Routed event args&lt;/param&gt;
+        private void XRes_OnIncremented(object sender, RoutedEventArgs e)
+        {
+            ViewModel.ImageWidth += 1;
+        }
+
+        /// &lt;summary&gt;
+        /// Method called when the user clicks the Down arrow on the X Resolution TextBox
+        /// It will decrease the value of the X resolution by 1
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;sender&quot;&gt;TextBox for the Y resolution&lt;/param&gt;
+        /// &lt;param name=&quot;e&quot;&gt;Routed event args&lt;/param&gt;
+        private void XRes_OnDecremented(object sender, RoutedEventArgs e)
+        {
+            ViewModel.ImageHeight -= 1;
+        }
+
+        /// &lt;summary&gt;
+        /// Method called when the user type anything in the Y Resolution TextBox
+        /// It will update the Y resolution value only if the value is greater than 10
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;sender&quot;&gt;TextBox for the Y resolution&lt;/param&gt;
+        /// &lt;param name=&quot;e&quot;&gt;Routed event args&lt;/param&gt;
+        private void YRes_OnTextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            if (textBox.Text == &quot;&quot;)
+            {
+                textBox.Text = &quot;0&quot;;
+            }
+            else if (textBox.Text.Length &gt; 1 &amp;&amp; int.Parse(textBox.Text) &gt; 10)
+            {
+                ViewModel.ImageHeight = int.Parse(textBox.Text);
+            }
+        }
+
+        /// &lt;summary&gt;
+        /// Method called when the user type anything in the X Resolution TextBox
+        /// It will update the X resolution value only if the value is greater than 10
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;sender&quot;&gt;TextBox for the X resolution&lt;/param&gt;
+        /// &lt;param name=&quot;e&quot;&gt;Routed event args&lt;/param&gt;
+        private void XRes_OnTextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            if (textBox.Text == &quot;&quot;)
+            {
+                textBox.Text = &quot;0&quot;;
+            }
+            else if (textBox.Text.Length &gt; 1 &amp;&amp; int.Parse(textBox.Text) &gt; 10)
+            {
+                ViewModel.ImageWidth = int.Parse(textBox.Text);
+            }
+        }
+
+        // TODO : Support image drop (has to be implemented here because it doesn&#39;t work in ConvertViewModel)
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[19,13,19,17,0],[26,9,26,66,0],[27,9,27,10,0],[28,13,28,46,0],[30,13,30,35,0],[32,13,32,35,0],[33,9,33,10,0],[42,9,42,10,0],[43,13,43,40,0],[44,9,44,10,0],[53,9,53,10,0],[54,13,54,40,0],[55,9,55,10,0],[64,9,64,10,0],[65,13,65,39,0],[66,9,66,10,0],[75,9,75,10,0],[76,13,76,40,0],[77,9,77,10,0],[86,9,86,10,0],[87,13,87,47,0],[88,13,88,36,0],[89,13,89,14,0],[90,17,90,36,0],[91,13,91,14,0],[92,18,92,78,0],[93,13,93,14,0],[94,17,94,65,0],[95,13,95,14,0],[96,9,96,10,0],[105,9,105,10,0],[106,13,106,47,0],[107,13,107,36,0],[108,13,108,14,0],[109,17,109,36,0],[110,13,110,14,0],[111,18,111,78,0],[112,13,112,14,0],[113,17,113,64,0],[114,13,114,14,0],[115,9,115,10,0]]);
+    </script>
+  </body>
+</html>

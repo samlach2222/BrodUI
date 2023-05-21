@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>D:\WINDOWS\Documents\GitHub\BrodUI\BrodUI\Services\ApplicationHostService.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using Microsoft.Extensions.Hosting;
+using System;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Windows;
+using Wpf.Ui.Mvvm.Contracts;
+
+namespace BrodUI.Services
+{
+    /// &lt;summary&gt;
+    /// Managed host of the application.
+    /// &lt;/summary&gt;
+    public class ApplicationHostService : IHostedService
+    {
+        /// &lt;summary&gt;
+        /// Interface to provide pages for navigation.
+        /// &lt;/summary&gt;
+        private readonly IServiceProvider _serviceProvider;
+
+        /// &lt;summary&gt;
+        /// Creates new instance and attaches the &lt;see cref=&quot;IServiceProvider&quot;/&gt;.
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;serviceProvider&quot;&gt;the serviceProvider&lt;/param&gt;
+        public ApplicationHostService(IServiceProvider serviceProvider)
+        {
+            _serviceProvider = serviceProvider;
+        }
+
+        /// &lt;summary&gt;
+        /// Triggered when the application host is ready to start the service.
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;cancellationToken&quot;&gt;Indicates that the start process has been aborted.&lt;/param&gt;
+        /// &lt;returns&gt;return the new task&lt;/returns&gt;
+        public async Task StartAsync(CancellationToken cancellationToken)
+        {
+            await HandleActivationAsync();
+        }
+
+        /// &lt;summary&gt;
+        /// Triggered when the application host is performing a graceful shutdown.
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;cancellationToken&quot;&gt;Indicates that the shutdown process should no longer be graceful.&lt;/param&gt;
+        /// &lt;returns&gt;return the finished task&lt;/returns&gt;
+        public async Task StopAsync(CancellationToken cancellationToken)
+        {
+            await Task.CompletedTask;
+        }
+
+        /// &lt;summary&gt;
+        /// Creates main window during activation.
+        /// &lt;/summary&gt;
+        /// &lt;returns&gt;return the current task&lt;/returns&gt;
+        private async Task HandleActivationAsync()
+        {
+            await Task.CompletedTask;
+
+            if (!Application.Current.Windows.OfType&lt;Views.Windows.MainWindow&gt;().Any())
+            {
+                INavigationWindow navigationWindow = (_serviceProvider.GetService(typeof(INavigationWindow)) as INavigationWindow)!;
+                navigationWindow.ShowWindow();
+
+                navigationWindow.Navigate(typeof(Views.Pages.TutorialPage));
+            }
+
+            await Task.CompletedTask;
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[25,9,25,72,0],[26,9,26,10,0],[27,13,27,48,0],[28,9,28,10,0],[36,9,36,10,0],[37,13,37,43,0],[38,9,38,10,0],[46,9,46,10,0],[47,13,47,38,0],[48,9,48,10,0],[55,9,55,10,0],[56,13,56,38,0],[58,13,58,87,0],[59,13,59,14,0],[60,17,60,133,0],[61,17,61,47,0],[63,17,63,77,0],[64,13,64,14,0],[66,13,66,38,0],[67,9,67,10,0]]);
+    </script>
+  </body>
+</html>

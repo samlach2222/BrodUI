@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>D:\WINDOWS\Documents\GitHub\BrodUI\BrodUI\Kmeans\GenericVector.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+
+namespace BrodUI.KMeans
+{
+    /// &lt;summary&gt;
+    /// Class that creates a GenericVector with a list of floats and a cluster integer.
+    /// &lt;/summary&gt;
+    public class GenericVector
+    {
+        /// &lt;summary&gt;
+        /// integer to display the cluster it is in.
+        /// &lt;/summary&gt;
+        public int Cluster;
+
+        /// &lt;summary&gt;
+        /// list of floats that&#39;s creating the GenericVector
+        /// &lt;/summary&gt;
+        public List&lt;float&gt; Points = new();
+
+        /// &lt;summary&gt;
+        /// Creates a new GenericVector with the points as long as the size given
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;size&quot;&gt;&lt;/param&gt;
+        public GenericVector(int size)
+        {
+            for (int i = 0; i &lt; size; i++)
+            {
+                Points.Add(0);
+            }
+        }
+
+        /// &lt;summary&gt;
+        /// Empty constructor for GenericVector
+        /// &lt;/summary&gt;
+        public GenericVector()
+        {
+        }
+
+        /// &lt;summary&gt;
+        /// Method to add a point to the GenericVector
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;point&quot;&gt;Point to add&lt;/param&gt;
+        public void Add(float point)
+        {
+            Points.Add(point);
+        }
+
+        /// &lt;summary&gt;
+        /// Method to add a list of points to the GenericVector
+        /// &lt;/summary&gt;
+        public int Size =&gt; Points.Count;
+
+        /// &lt;summary&gt;
+        /// Method to add a list of points to the GenericVector
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;vectorToSum&quot;&gt;List of point to add&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        /// &lt;exception cref=&quot;Exception&quot;&gt;return an exception if the size of vectorToSum not equal to instance vector size&lt;/exception&gt;
+        public GenericVector Sum(GenericVector vectorToSum)
+        {
+            if (Size != vectorToSum.Size)
+                throw new Exception(&quot;GenericVector size of vectorToSum not equal to instance vector size&quot;);
+
+            for (int i = 0; i &lt; Size; i++)
+            {
+                Points[i] += vectorToSum.Points[i];
+            }
+            return this;
+        }
+
+        /// &lt;summary&gt;
+        /// Method to substract a list of points to the GenericVector
+        /// &lt;/summary&gt;
+        /// &lt;returns&gt;Returns the length of the Vector&lt;/returns&gt;
+        public double VectorLength()
+        {
+            return (float)Math.Sqrt(Points.Sum(item =&gt; Math.Pow(item, 2)));
+        }
+
+        /// &lt;summary&gt;
+        /// Override ToString-Method to show the content of the GenericVector
+        /// &lt;/summary&gt;
+        /// &lt;returns&gt;result of toString&lt;/returns&gt;
+        public override string ToString()
+        {
+            return string.Join(&quot;\t&quot;, Points.Select(x =&gt; x.ToString(CultureInfo.InvariantCulture)).ToArray());
+        }
+
+        /// &lt;summary&gt;
+        /// Method to substract a list of points to the GenericVector
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;divider&quot;&gt;divider of the division&lt;/param&gt;
+        /// &lt;returns&gt;result of the division&lt;/returns&gt;
+        public GenericVector Divide(int divider)
+        {
+            for (int i = 0; i &lt; Size; i++)
+            {
+                Points[i] /= divider;
+            }
+            return this;
+        }
+
+        /// &lt;summary&gt;
+        /// Method to know if two generic vectors are equals
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;a&quot;&gt;first generic vector to compare with the second&lt;/param&gt;
+        /// &lt;param name=&quot;b&quot;&gt;second generic vector to compare with the first&lt;/param&gt;
+        /// &lt;returns&gt;if the 2 parameters are equals&lt;/returns&gt;
+        public static bool NotEqual(GenericVector a, GenericVector b)
+        {
+            // return true if two points are not equals
+            for (int i = 0; i &lt; a.Size; i++)
+            {
+                // &quot;NaN != NaN&quot; returns true so we check NaN explicitly
+                if (a.Points[i] != b.Points[i] &amp;&amp; !(float.IsNaN(a.Points[i]) &amp;&amp; float.IsNaN(b.Points[i])))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        /// &lt;summary&gt;
+        /// Method that returns the dot product of two GenericVectors
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;vectorA&quot;&gt;first generic vector to to the dot product&lt;/param&gt;
+        /// &lt;param name=&quot;vectorB&quot;&gt;second generic vector to to the dot product&lt;/param&gt;
+        /// &lt;returns&gt;the dot product of the 2 parameters&lt;/returns&gt;
+        /// &lt;exception cref=&quot;Exception&quot;&gt;return an exception if GenericVector a size of dotProduct not equal to GenericVector b size&lt;/exception&gt;
+        public static float DotProduct(GenericVector vectorA, GenericVector vectorB)
+        {
+            if (vectorA.Size != vectorB.Size)
+                throw new Exception(&quot;GenericVector a size of dotProduct not equal to GenericVector b size&quot;);
+            List&lt;float&gt; aTimesBPoints = vectorA.Points.Select((t, i) =&gt; t * vectorB.Points[i]).ToList();
+
+            return aTimesBPoints.Sum();
+        }
+
+        /// &lt;summary&gt;
+        /// Method to calculate the distance between two GenericVectors
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;a&quot;&gt;first generic vector&lt;/param&gt;
+        /// &lt;param name=&quot;b&quot;&gt;second generic vector&lt;/param&gt;
+        /// &lt;returns&gt;the distance between a and b&lt;/returns&gt;
+        public static double Distance(GenericVector a, GenericVector b)
+        {
+            int size = a.Size;
+            double sum = 0;
+            for (int i = 0; i &lt; size; i++)
+            {
+                double aMinusBPoint = a.Points[i] - b.Points[i];
+
+                sum += aMinusBPoint * aMinusBPoint;
+            }
+
+            return Math.Sqrt(sum);
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[21,9,21,43,1],[21,9,21,43,1],[27,9,27,39,1],[28,9,28,10,1],[29,18,29,27,1],[29,29,29,37,1],[29,39,29,42,1],[30,13,30,14,1],[31,17,31,31,1],[32,13,32,14,1],[33,9,33,10,1],[38,9,38,31,1],[39,9,39,10,1],[40,9,40,10,1],[47,9,47,10,1],[48,13,48,31,1],[49,9,49,10,1],[54,28,54,40,1],[63,9,63,10,1],[64,13,64,42,1],[65,17,65,108,1],[67,18,67,27,1],[67,29,67,37,1],[67,39,67,42,1],[68,13,68,14,1],[69,17,69,52,1],[70,13,70,14,1],[71,13,71,25,1],[72,9,72,10,1],[79,9,79,10,1],[80,13,80,56,1],[80,56,80,73,1],[80,73,80,76,1],[81,9,81,10,1],[88,9,88,10,1],[89,13,89,57,1],[89,57,89,97,1],[89,97,89,110,1],[90,9,90,10,1],[98,9,98,10,1],[99,18,99,27,1],[99,29,99,37,1],[99,39,99,42,1],[100,13,100,14,1],[101,17,101,38,1],[102,13,102,14,1],[103,13,103,25,1],[104,9,104,10,1],[113,9,113,10,1],[115,18,115,27,1],[115,29,115,39,1],[115,41,115,44,1],[116,13,116,14,1],[118,17,118,107,1],[119,17,119,18,1],[120,21,120,33,1],[122,13,122,14,1],[123,13,123,26,1],[124,9,124,10,1],[134,9,134,10,1],[135,13,135,46,1],[136,17,136,109,1],[137,13,137,73,1],[137,73,137,94,1],[137,94,137,105,1],[139,13,139,40,1],[140,9,140,10,1],[149,9,149,10,1],[150,13,150,31,1],[151,13,151,28,1],[152,18,152,27,1],[152,29,152,37,1],[152,39,152,42,1],[153,13,153,14,1],[154,17,154,65,1],[156,17,156,52,1],[157,13,157,14,1],[159,13,159,35,1],[160,9,160,10,1]]);
+    </script>
+  </body>
+</html>

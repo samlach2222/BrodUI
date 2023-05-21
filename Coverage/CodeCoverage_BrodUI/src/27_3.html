@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>D:\WINDOWS\Documents\GitHub\BrodUI\BrodUI\ViewModels\MainWindowViewModel.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using BrodUI.Models;
+using CommunityToolkit.Mvvm.ComponentModel;
+using System.Collections.ObjectModel;
+using Wpf.Ui.Common;
+using Wpf.Ui.Controls;
+using Wpf.Ui.Controls.Interfaces;
+using Wpf.Ui.Mvvm.Contracts;
+
+namespace BrodUI.ViewModels
+{
+    /// &lt;summary&gt;
+    /// Class MainWindowViewModel.
+    /// &lt;/summary&gt;
+    public partial class MainWindowViewModel : ObservableObject
+    {
+        /// &lt;summary&gt;
+        /// bool to check if the viewmodel is initialized
+        /// &lt;/summary&gt;
+        private bool _isInitialized = false;
+
+        /// &lt;summary&gt;
+        /// Gets or sets the application title.
+        /// &lt;/summary&gt;
+        [ObservableProperty]
+        private string _applicationTitle = string.Empty;
+
+        /// &lt;summary&gt;
+        /// Gets or sets the navigation items.
+        /// &lt;/summary&gt;
+        [ObservableProperty]
+        private ObservableCollection&lt;INavigationControl&gt; _navigationItems = new();
+
+        /// &lt;summary&gt;
+        /// Gets or sets the navigation footer.
+        /// &lt;/summary&gt;
+        [ObservableProperty]
+        private ObservableCollection&lt;INavigationControl&gt; _navigationFooter = new();
+
+        /// &lt;summary&gt;
+        /// Gets or sets the tray menu items.
+        /// &lt;/summary&gt;
+        [ObservableProperty]
+        private ObservableCollection&lt;MenuItem&gt; _trayMenuItems = new();
+
+        /// &lt;summary&gt;
+        /// Gets or sets the selected navigation item.
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;navigationService&quot;&gt;&lt;/param&gt;
+        public MainWindowViewModel(INavigationService navigationService)
+        {
+            if (!_isInitialized)
+                InitializeViewModel();
+        }
+
+        /// &lt;summary&gt;
+        /// Initializes the view model.
+        /// &lt;/summary&gt;
+        private void InitializeViewModel()
+        {
+            ApplicationTitle = &quot;BrodUI&quot;;
+
+            ConfigManagement.CreateConfigFileIfNotExists();
+            ConfigManagement.ApplyLanguage();
+
+            NavigationItems = new ObservableCollection&lt;INavigationControl&gt;
+            {
+                new NavigationItem()
+                {
+                    Content = Assets.Languages.Resource.PageName_Tutorial,
+                    PageTag = &quot;tutorial&quot;,
+                    Icon = SymbolRegular.QuestionCircle24, // QuestionCircle is the icon, 24 is the size
+                    PageType = typeof(Views.Pages.TutorialPage)
+                },
+                new NavigationItem()
+                {
+                    Content = Assets.Languages.Resource.PageName_Convert,
+                    PageTag = &quot;convert&quot;,
+                    Icon = SymbolRegular.ConvertRange24,
+                    PageType = typeof(Views.Pages.ConvertPage)
+                },
+                new NavigationItem()
+                {
+                    Content = Assets.Languages.Resource.PageName_Export,
+                    PageTag = &quot;export&quot;,
+                    Icon = SymbolRegular.ArrowExportLtr24,
+                    PageType = typeof(Views.Pages.ExportPage)
+                }
+            };
+
+            NavigationFooter = new ObservableCollection&lt;INavigationControl&gt;
+            {
+                new NavigationItem()
+                {
+                    Content = Assets.Languages.Resource.PageName_Settings,
+                    PageTag = &quot;settings&quot;,
+                    Icon = SymbolRegular.Settings24,
+                    PageType = typeof(Views.Pages.SettingsPage)
+                }
+            };
+
+            TrayMenuItems = new ObservableCollection&lt;MenuItem&gt;
+            {
+                new MenuItem
+                {
+                    Header = &quot;Home&quot;,
+                    Tag = &quot;tray_home&quot;
+                }
+            };
+
+            _isInitialized = true;
+        }
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[19,9,19,45,0],[25,9,25,57,0],[31,9,31,83,0],[37,9,37,84,0],[43,9,43,71,0],[49,9,49,73,0],[50,9,50,10,0],[51,13,51,33,0],[52,17,52,39,0],[53,9,53,10,0],[59,9,59,10,0],[60,13,60,41,0],[62,13,62,60,0],[63,13,63,46,0],[65,13,88,15,0],[90,13,99,15,0],[101,13,108,15,0],[110,13,110,35,0],[111,9,111,10,0]]);
+    </script>
+  </body>
+</html>

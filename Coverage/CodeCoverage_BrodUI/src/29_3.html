@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>D:\WINDOWS\Documents\GitHub\BrodUI\BrodUI\ViewModels\TutorialViewModel.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using BrodUI.Models;
+using BrodUI.Views.Pages;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using System;
+using Wpf.Ui.Common.Interfaces;
+using Wpf.Ui.Controls.Interfaces;
+using Wpf.Ui.Mvvm.Contracts;
+using Application = System.Windows.Application;
+
+namespace BrodUI.ViewModels
+{
+    /// &lt;summary&gt;
+    /// Class TutorialViewModel
+    /// &lt;/summary&gt;
+    public partial class TutorialViewModel : ObservableObject, INavigationAware  // TODO : CHANGE COLOR OF LINKS IN THIS PAGE WITH THE THEME COLOR
+    {
+        /// &lt;summary&gt;
+        /// Function called when the page is navigated to.
+        /// &lt;/summary&gt;
+        public void OnNavigatedTo()
+        {
+            LogManagement.WriteToLog(&quot;[&quot; + DateTime.Now + &quot;] &quot; + Assets.Languages.Resource.Terminal_TutorialPage);
+        }
+
+        /// &lt;summary&gt;
+        /// Function called when the page is navigated from.
+        /// &lt;/summary&gt;
+        public void OnNavigatedFrom()
+        {
+
+        }
+
+        /// &lt;summary&gt;
+        /// Go to the Convert page.
+        /// &lt;/summary&gt;
+        [RelayCommand]
+        public static void GoConvertPage()
+        {
+            INavigation? navigationService = (Application.Current.MainWindow as INavigationWindow)?.GetNavigation(); // Get the navigation service from the window.
+            if (navigationService != null)
+            {
+                _ = navigationService.Navigate(typeof(ConvertPage)); // Navigate to the Convert page.
+            }
+        }
+
+    }
+}
+
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[22,9,22,10,0],[23,13,23,115,0],[24,9,24,10,0],[30,9,30,10,0],[32,9,32,10,0],[39,9,39,10,0],[40,13,40,117,0],[41,13,41,43,0],[42,13,42,14,0],[43,17,43,69,0],[44,13,44,14,0],[45,9,45,10,0]]);
+    </script>
+  </body>
+</html>

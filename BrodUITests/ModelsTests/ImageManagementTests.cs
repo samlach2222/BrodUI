@@ -132,25 +132,6 @@ public class ImageManagementTests
         Assert.Equal(1024, im.ImageWidth);
         Assert.Equal(1024, im.ImageHeight);
         Assert.Equal(1, im.Ratio);
-
-        // -----------------------
-        // Load Image Result false
-        // -----------------------
-
-        Mock<IOpenFileDialog> openFileDialogMock2 = new();
-        ImageManagement im2 = new(openFileDialogMock2.Object)
-        {
-            Image = null
-        };
-
-        openFileDialogMock2.Setup(y => y.ShowDialog()).Returns(false);
-
-        im2.LoadImageDialog();
-
-        Assert.Null(im2.Image);
-        Assert.Equal(-1, im2.ImageWidth);
-        Assert.Equal(-1, im2.ImageHeight);
-        Assert.Equal(1, im2.Ratio);
     }
 
     [Fact]

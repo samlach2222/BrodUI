@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>D:\WINDOWS\Documents\GitHub\BrodUI\BrodUI\Kmeans\extensions.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System;
+
+namespace BrodUI.KMeans
+{
+    /// &lt;summary&gt;
+    /// Extension class
+    /// &lt;/summary&gt;
+    public static class Extensions
+    {
+        /// &lt;summary&gt;
+        /// Times loop
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;i&quot;&gt;counter of the loop&lt;/param&gt;
+        /// &lt;param name=&quot;action&quot;&gt;action to do during the loop&lt;/param&gt;
+        public static void Times(this int i, Action action)
+        {
+            for (int j = 0; j &lt; i; j++)
+            {
+                action();
+            }
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[16,9,16,10,1],[17,18,17,27,1],[17,29,17,34,1],[17,36,17,39,1],[18,13,18,14,1],[19,17,19,26,1],[20,13,20,14,1],[21,9,21,10,1]]);
+    </script>
+  </body>
+</html>

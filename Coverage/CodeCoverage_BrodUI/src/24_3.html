@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>D:\WINDOWS\Documents\GitHub\BrodUI\BrodUI\Services\WPFMessageBox.cs</title>
+    <script type="text/javascript" src="../js/dotcover.sourceview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dotcover.report.css" />
+  </head>
+  <body>
+    <pre id="content" class="source-code">
+using System.Windows;
+using Wpf.Ui.Controls;
+
+namespace BrodUI.Services
+{
+    /// &lt;summary&gt;
+    /// Redefinition of the WPF UI message box to have only one button
+    /// &lt;/summary&gt;
+    public static class WpfMessageBox
+    {
+        /// &lt;summary&gt;
+        /// Method to show a message box with only one button
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;title&quot;&gt;title of the message box&lt;/param&gt;
+        /// &lt;param name=&quot;content&quot;&gt;content of the message box&lt;/param&gt;
+        public static void Show(string title, string content)
+        {
+            Wpf.Ui.Controls.MessageBox mb = new()
+            {
+                Title = title,
+                Content = content
+            };
+
+            // add button in footer
+            Button btn = new()
+            {
+                Content = &quot;Ok&quot;,
+                HorizontalAlignment = HorizontalAlignment.Center,
+                HorizontalContentAlignment = HorizontalAlignment.Center
+            };
+            btn.Click += (sender, args) =&gt; { mb.Close(); };
+            mb.Footer = btn;
+            mb.Show();
+        }
+    }
+}
+    </pre>
+    <script type="text/javascript">
+      highlightRanges([[17,9,17,10,0],[18,13,22,15,0],[25,13,30,15,0],[31,13,31,44,0],[31,44,31,45,0],[31,45,31,46,0],[31,46,31,57,0],[31,57,31,58,0],[31,58,31,59,0],[31,59,31,60,0],[32,13,32,29,0],[33,13,33,23,0],[34,9,34,10,0]]);
+    </script>
+  </body>
+</html>
