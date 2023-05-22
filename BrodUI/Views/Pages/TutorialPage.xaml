@@ -41,10 +41,18 @@
                            BasedOn="{StaticResource {x:Type Hyperlink}}">
                         <Setter Property="TextBlock.TextDecorations" Value="Underline" />
                         <Setter Property="FontWeight" Value="Bold"/>
-                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="Foreground">
+                            <Setter.Value>
+                                <SolidColorBrush Color="{DynamicResource SystemAccentColorPrimary}" />
+                            </Setter.Value>
+                        </Setter>
                         <Style.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Foreground" Value="LightGray" />
+                                <Setter Property="Foreground">
+                                    <Setter.Value>
+                                        <SolidColorBrush Color="{DynamicResource SystemAccentColorSecondary}" />
+                                    </Setter.Value>
+                                </Setter>
                                 <Setter Property="FontWeight" Value="Bold"/>
                                 <Setter Property="TextBlock.TextDecorations" Value="Underline" />
                             </Trigger>
@@ -63,10 +71,18 @@
                            BasedOn="{StaticResource {x:Type Hyperlink}}">
                         <Setter Property="TextBlock.TextDecorations" Value="Underline" />
                         <Setter Property="FontWeight" Value="Bold"/>
-                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="Foreground">
+                            <Setter.Value>
+                                <SolidColorBrush Color="{DynamicResource SystemAccentColorPrimary}" />
+                            </Setter.Value>
+                        </Setter>
                         <Style.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Foreground" Value="LightGray" />
+                                <Setter Property="Foreground">
+                                    <Setter.Value>
+                                        <SolidColorBrush Color="{DynamicResource SystemAccentColorSecondary}" />
+                                    </Setter.Value>
+                                </Setter>
                                 <Setter Property="FontWeight" Value="Bold"/>
                                 <Setter Property="TextBlock.TextDecorations" Value="Underline" />
                             </Trigger>
@@ -85,10 +101,18 @@
                            BasedOn="{StaticResource {x:Type Hyperlink}}">
                         <Setter Property="TextBlock.TextDecorations" Value="Underline" />
                         <Setter Property="FontWeight" Value="Bold"/>
-                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="Foreground">
+                            <Setter.Value>
+                                <SolidColorBrush Color="{DynamicResource SystemAccentColorPrimary}" />
+                            </Setter.Value>
+                        </Setter>
                         <Style.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Foreground" Value="LightGray" />
+                                <Setter Property="Foreground">
+                                    <Setter.Value>
+                                        <SolidColorBrush Color="{DynamicResource SystemAccentColorSecondary}" />
+                                    </Setter.Value>
+                                </Setter>
                                 <Setter Property="FontWeight" Value="Bold"/>
                                 <Setter Property="TextBlock.TextDecorations" Value="Underline" />
                             </Trigger>
