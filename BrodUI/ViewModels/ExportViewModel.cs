@@ -93,7 +93,7 @@ namespace BrodUI.ViewModels
         {
             LogManagement.WriteToLog("[" + DateTime.Now + "] " + Assets.Languages.Resource.Terminal_ExportPage);
             Im ??= new ImageManagement(new Win32OpenFileDialogAdapter());
-            Im.LoadCurrentImage();
+            Im.LoadCurrentImageKMeansed();
             LoadedImage = Im.Image;
 
             // If no converted image found, redirect to the convert page
