@@ -221,15 +221,7 @@ namespace BrodUI.Models
             PdfCanvas imgCanvas = new(page);
 
             // Display the image in the center of the page
-            // Get the image from the path
-            string appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-            // create the folder "BrodUI" in AppData if it doesn't exist
-            if (!Directory.Exists(appData + "\\BrodUI"))
-            {
-                Directory.CreateDirectory(appData + "\\BrodUI");
-            }
-            // path combine with the file name
-            string imgPath = Path.Combine(appData + "\\BrodUI", "current image.png");
+            string imgPath = ImageManagement.ImagePathKMeansed;
             if (File.Exists(imgPath))
             {
                 // create a temp copy of the image with specified width and height
