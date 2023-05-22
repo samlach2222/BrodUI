@@ -18,7 +18,13 @@ namespace BrodUI.Services
             Wpf.Ui.Controls.MessageBox mb = new()
             {
                 Title = title,
-                Content = content
+                Content = new System.Windows.Controls.TextBlock()
+                {
+                    Text = content,
+                    TextWrapping = TextWrapping.Wrap
+                },
+                MinWidth = 384,
+                MinHeight = 192
             };
 
             // add button in footer
