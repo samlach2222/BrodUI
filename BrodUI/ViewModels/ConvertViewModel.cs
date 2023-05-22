@@ -26,7 +26,7 @@ namespace BrodUI.ViewModels
         /// List of color models displayed in the UI.
         /// </summary>
         [ObservableProperty]
-        private string[] _colorModels = { "RGB", "HSL" };
+        private string[] _colorModels = ConfigManagement.AllColorModels;
 
         /// <summary>
         /// Ratio of the image

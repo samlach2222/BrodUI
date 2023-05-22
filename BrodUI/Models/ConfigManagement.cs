@@ -2,6 +2,7 @@
 using System;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Resources;
 using System.Threading;
 using Wpf.Ui.Appearance;
@@ -34,6 +35,21 @@ namespace BrodUI.Models
             "KMeansIterations=10",
             "ColorModel=RGB"
         };
+
+        /// <summary>
+        /// Return all possible values for the theme
+        /// </summary>
+        public static string[] AllThemes => new string[] { "System", "Light", "Dark" };
+
+        /// <summary>
+        /// Return all possibles values for language
+        /// </summary>
+        public static string[] AllLanguages => new string[] { "English", "Français" };
+
+        /// <summary>
+        /// Return all possibles values for the color model
+        /// </summary>
+        public static string[] AllColorModels => new string[] { "RGB", "HSL" };
 
         /// <summary>
         /// Create the config file if it doesn't exist with its default values
@@ -115,6 +131,10 @@ namespace BrodUI.Models
                 case "Dark":
                     Theme.Apply(ThemeType.Dark, BackgroundType.None);
                     break;
+                default:
+                    SetThemeToConfigFile(AllThemes[0]);
+                    ApplyTheme();
+                    break;
             }
         }
 
@@ -134,6 +154,10 @@ namespace BrodUI.Models
                     break;
                 case "Français":
                     Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("fr");
+                    break;
+                default:
+                    SetLanguageToConfigFile(GetSystemLanguageOrDefault());
+                    ApplyLanguage();
                     break;
             }
         }
@@ -205,7 +229,17 @@ namespace BrodUI.Models
         public static string GetColorModelFromConfigFile()
         {
             string[] settings = File.ReadAllLines(ConfigPath);
-            return (settings[6].Split('=')[1]).ToUpperInvariant(); // Convert to uppercase
+            string colorModel = (settings[6].Split('=')[1]).ToUpperInvariant(); // Convert to uppercase
+            if (AllColorModels.Contains(colorModel))
+            {
+                return colorModel;
+            }
+            else
+            {
+                string defaultColorModel = AllColorModels[0];
+                SetColorModelToConfigFile(defaultColorModel);
+                return defaultColorModel;
+            }
         }
 
         /// <summary>

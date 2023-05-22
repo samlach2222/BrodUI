@@ -23,7 +23,7 @@ namespace BrodUI.ViewModels
         /// Possible themes of the application
         /// </summary>
         [ObservableProperty]
-        private string[] _themes = { "System", "Light", "Dark" };
+        private string[] _themes = ConfigManagement.AllThemes;
 
         /// <summary>
         /// Current theme of the application
@@ -65,7 +65,7 @@ namespace BrodUI.ViewModels
         /// Possible languages of the application
         /// </summary>
         [ObservableProperty]
-        private string[] _languages = new string[] { "English", "Français" };
+        private string[] _languages = ConfigManagement.AllLanguages;
 
         /// <summary>
         /// Current language of the application
