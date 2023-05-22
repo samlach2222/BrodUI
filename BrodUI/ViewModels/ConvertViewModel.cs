@@ -406,7 +406,6 @@ namespace BrodUI.ViewModels
         private void ConvertImage()
         {
             // TODO : ADD IMG TOO BIG MESSAGE AND EVENT
-            // TODO : DO WIRE THINGS INSIDE WORKER TOO AND GO TO PAGE EXPORT ONLY AFTER
             // Change grid visibility
             GlobalGridVisibility = false;
             ProgressVisibility = "Visible";

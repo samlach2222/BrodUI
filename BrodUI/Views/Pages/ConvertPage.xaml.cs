@@ -38,7 +38,7 @@ namespace BrodUI.Views.Pages
         /// </summary>
         /// <param name="sender">TextBox for the Y resolution</param>
         /// <param name="e">Routed event args</param>
-        private void YRes_OnDecremented(object sender, RoutedEventArgs e) // TODO : CHANGE VALUES CHECK, TOO MANY UNUSUAL MESSAGEBOX
+        private void YRes_OnDecremented(object sender, RoutedEventArgs e)
         {
             ViewModel.ImageHeight -= 1;
         }
@@ -113,7 +113,5 @@ namespace BrodUI.Views.Pages
                 ViewModel.ImageWidth = int.Parse(textBox.Text);
             }
         }
-
-        // TODO : Support image drop (has to be implemented here because it doesn't work in ConvertViewModel)
     }
 }
