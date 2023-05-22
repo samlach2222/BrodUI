@@ -556,7 +556,12 @@ namespace BrodUI.ViewModels
                 _loadedImageNumberColors = int.MaxValue;
             }
 
-            KMeansColorNumber = 10;
+            // Change back to default KMeansColorNumber only if superior to the current max
+            // This allows to load the saved number of colors for K-Means, when possible
+            if (KMeansColorNumber >= _loadedImageNumberColors)
+            {
+                KMeansColorNumber = 5;
+            }
         }
     }
 }
