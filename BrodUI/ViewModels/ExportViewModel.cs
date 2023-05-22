@@ -151,7 +151,7 @@ namespace BrodUI.ViewModels
                 DmcToString dmcToString = new();
 
                 // Convert colors to DMC and add the wires to TempWireArray (to later merge the wires with same colors)
-                foreach (Color color in colors) 
+                foreach (Color color in colors)
                 {
                     StringBuilder terminalOutput = new();
                     Color dmcColor;
