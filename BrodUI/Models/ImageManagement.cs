@@ -105,6 +105,21 @@ namespace BrodUI.Models
                 Image.EndInit();
                 stream.Close();
                 stream.Dispose();
+
+                // We only support images in Bgr32 or Bgra32 format (see Helpers/ImageTo2DArrayBrushes)
+                // Convert to Bgra32 if needed
+                if (Image.Format != PixelFormats.Bgr32 && Image.Format != PixelFormats.Bgra32)
+                {
+                    FormatConvertedBitmap imageBgra = new(Image, PixelFormats.Bgra32, null, 0);
+                    Image = new BitmapImage();
+                    Image.BeginInit();
+                    Image.StreamSource = new MemoryStream();
+                    PngBitmapEncoder encoderRgba = new();
+                    encoderRgba.Frames.Add(BitmapFrame.Create(imageBgra));
+                    encoderRgba.Save(Image.StreamSource);
+                    Image.EndInit();
+                }
+
                 Ratio = (double)Image.PixelWidth / Image.PixelHeight;
                 ImageWidth = Image.PixelWidth;
                 ImageHeight = Image.PixelHeight;
@@ -136,6 +151,20 @@ namespace BrodUI.Models
                 Image.Freeze();
                 stream.Close();
                 stream.Dispose();
+
+                // We only support images in Bgr32 or Bgra32 format (see Helpers/ImageTo2DArrayBrushes)
+                // Convert to Bgra32 if needed
+                if (Image.Format != PixelFormats.Bgr32 && Image.Format != PixelFormats.Bgra32)
+                {
+                    FormatConvertedBitmap imageBgra = new(Image, PixelFormats.Bgra32, null, 0);
+                    Image = new BitmapImage();
+                    Image.BeginInit();
+                    Image.StreamSource = new MemoryStream();
+                    PngBitmapEncoder encoderRgba = new();
+                    encoderRgba.Frames.Add(BitmapFrame.Create(imageBgra));
+                    encoderRgba.Save(Image.StreamSource);
+                    Image.EndInit();
+                }
 
                 Ratio = (double)Image.PixelWidth / Image.PixelHeight;
                 ImageWidth = Image.PixelWidth;
@@ -196,20 +225,6 @@ namespace BrodUI.Models
             Image.DecodePixelWidth = ImageWidth;
             Image.DecodePixelHeight = ImageHeight;
             Image.EndInit();
-
-            // We only support images in Bgr32 or Bgra32 format (see Helpers/ImageTo2DArrayBrushes)
-            // Convert to Bgra32 if needed
-            if (Image.Format != PixelFormats.Bgr32 && Image.Format != PixelFormats.Bgra32)
-            {
-                FormatConvertedBitmap imageBgra = new(Image, PixelFormats.Bgra32, null, 0);
-                Image = new BitmapImage();
-                Image.BeginInit();
-                Image.StreamSource = new MemoryStream();
-                PngBitmapEncoder encoderRgba = new();
-                encoderRgba.Frames.Add(BitmapFrame.Create(imageBgra));
-                encoderRgba.Save(Image.StreamSource);
-                Image.EndInit();
-            }
 
             Brush[,] kMeansArray;
             lock (this)
