@@ -231,7 +231,7 @@ public class ImageManagementTests
         im.ResizeImage(1, 1); // we only tests resizing
 
         // Reload the image
-        im.LoadCurrentImage();
+        im.LoadCurrentImageKMeansed();
         Assert.NotNull(im.Image);
         Assert.Equal(100, im.ImageWidth);
         Assert.Equal(100, im.ImageHeight);
