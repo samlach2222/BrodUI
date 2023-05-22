@@ -311,7 +311,7 @@ namespace BrodUI.ViewModels
         }
 
         [RelayCommand]
-        private void ExportToPdf() // TODO : LOADING ANIMATION USING PROGRESSRING OR PROGRESBAR (BETTER)
+        private void ExportToPdf()
         {
             _ = new PdfManagement(WireArray);
         }
