@@ -5,9 +5,11 @@ using BrodUI.Views.Pages;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Windows;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using Wpf.Ui.Common.Interfaces;
 using Wpf.Ui.Controls.Interfaces;
@@ -18,7 +20,7 @@ namespace BrodUI.ViewModels
     /// <summary>
     /// ViewModel for the ConvertPage
     /// </summary>
-    public partial class ConvertViewModel : ObservableObject, INavigationAware // TODO : (POSSIBLY) COLOR NUMBER CANNOT EXCEED NUMBER OF COLOR IN IMAGE
+    public partial class ConvertViewModel : ObservableObject, INavigationAware
     {
         /// <summary>
         /// List of color models displayed in the UI.
@@ -532,31 +534,29 @@ namespace BrodUI.ViewModels
         /// </summary>
         private void UpdateLoadedImageNumberColors()
         {
-            /*
             if (LoadedImage != null)
             {
-                List<Color> colors = new();
+                HashSet<Color> colors = new();
                 Brush[,] imageBrushes = ImageTo2DArrayBrushes.ConvertTo2dArray(LoadedImage);
                 int pixelWidth = LoadedImage.PixelWidth;
                 int pixelHeight = LoadedImage.PixelHeight;
                 for (int i = 0; i < pixelWidth; i++)
                 {
+                    LogManagement.UpdateProgression(i, pixelWidth);
                     for (int j = 0; j < pixelHeight; j++)
                     {
-                        Color color = ((SolidColorBrush)imageBrushes[i, j]).Color;
-                        if (!colors.Contains(color))
-                        {
-                            colors.Add(color);
-                        }
+                        colors.Add(((SolidColorBrush)imageBrushes[i, j]).Color);
                     }
                 }
+                LogManagement.UpdateProgression(Wpf.Ui.TaskBar.TaskBarProgressState.None);
                 _loadedImageNumberColors = colors.Count;
             }
             else
-            */
             {
                 _loadedImageNumberColors = int.MaxValue;
             }
+
+            KMeansColorNumber = 10;
         }
     }
 }
