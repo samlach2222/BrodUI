@@ -345,4 +345,10 @@
   <data name="Terminal_InTime" xml:space="preserve">
     <value> in </value>
   </data>
+  <data name="Convert_BigEmbroideryWarning" xml:space="preserve">
+    <value>Converting to a big embroidery size can take a lot of time, are you sure you want to continue ?</value>
+  </data>
+  <data name="Terminal_Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
 </root>

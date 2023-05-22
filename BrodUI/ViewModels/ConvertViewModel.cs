@@ -405,7 +405,27 @@ namespace BrodUI.ViewModels
         [RelayCommand]
         private void ConvertImage()
         {
-            // TODO : ADD IMG TOO BIG MESSAGE AND EVENT
+            // Warn the user if the image is too big
+            if (ImageWidth * ImageHeight >= 20000) // More than 20000 stitches
+            {
+                Wpf.Ui.Controls.MessageBox messageBox = new()
+                {
+                    Content = new System.Windows.Controls.TextBlock()
+                    {
+                        Text = Assets.Languages.Resource.Convert_BigEmbroideryWarning,
+                        TextWrapping = TextWrapping.Wrap
+                    },
+                    ButtonLeftName = "Ok",
+                    ButtonRightName = Assets.Languages.Resource.Terminal_Cancel,
+                    // Change DialogResult in TemplateButtonCommand depending on if we press the left or right button
+                };
+                messageBox.ButtonLeftClick += (sender, args) => messageBox.DialogResult = true;
+                messageBox.ButtonRightClick += (sender, args) => messageBox.DialogResult = false;
+                bool? confirm = messageBox.ShowDialog();
+
+                if (confirm != true) return; // Don't convert the image and stay on convert page
+            }
+
             // Change grid visibility
             GlobalGridVisibility = false;
             ProgressVisibility = "Visible";

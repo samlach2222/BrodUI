@@ -421,4 +421,12 @@
     <value> in </value>
     <comment>"In" word displayed in terminal before time</comment>
   </data>
+  <data name="Convert_BigEmbroideryWarning" xml:space="preserve">
+    <value>Converting to a big embroidery size can take a lot of time, are you sure you want to continue ?</value>
+    <comment>Warning shown when width * height is big</comment>
+  </data>
+  <data name="Terminal_Cancel" xml:space="preserve">
+    <value>Cancel</value>
+    <comment>Used for "Cancel" buttons</comment>
+  </data>
 </root>

@@ -61,6 +61,15 @@ namespace BrodUI.Assets.Languages {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Converting to a big embroidery size can take a lot of time, are you sure you want to continue ?.
+        /// </summary>
+        public static string Convert_BigEmbroideryWarning {
+            get {
+                return ResourceManager.GetString("Convert_BigEmbroideryWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Convert Image.
         /// </summary>
         public static string Convert_LabelButtonConvert {
@@ -489,6 +498,15 @@ namespace BrodUI.Assets.Languages {
         public static string Settings_VersionNumber {
             get {
                 return ResourceManager.GetString("Settings_VersionNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Cancel.
+        /// </summary>
+        public static string Terminal_Cancel {
+            get {
+                return ResourceManager.GetString("Terminal_Cancel", resourceCulture);
             }
         }
         

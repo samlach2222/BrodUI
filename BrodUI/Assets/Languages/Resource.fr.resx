@@ -345,4 +345,10 @@
   <data name="Terminal_InTime" xml:space="preserve">
     <value> en </value>
   </data>
+  <data name="Convert_BigEmbroideryWarning" xml:space="preserve">
+    <value>La conversion vers une grande taille de broderie peut prendre beaucoup de temps, êtes-vous sûr de vouloir continuer ?</value>
+  </data>
+  <data name="Terminal_Cancel" xml:space="preserve">
+    <value>Annuler</value>
+  </data>
 </root>
