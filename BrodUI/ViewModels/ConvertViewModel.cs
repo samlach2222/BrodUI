@@ -97,6 +97,11 @@ namespace BrodUI.ViewModels
         private bool _globalGridVisibility = true;
 
         /// <summary>
+        /// Number of different colors in the loaded image
+        /// </summary>
+        private int _loadedImageNumberColors = int.MaxValue;
+
+        /// <summary>
         /// Image management class to manage the image
         /// </summary>
         private ImageManagement? Im { get; set; }
@@ -277,8 +282,17 @@ namespace BrodUI.ViewModels
             get => _kmeansColorNumber;
             set
             {
-                ConfigManagement.SetKMeansClustersToConfigFile(value);
-                SetProperty(ref _kmeansColorNumber, value);
+                // Only allow up to "number of color in the image - 1"
+                if (value < _loadedImageNumberColors)
+                {
+                    ConfigManagement.SetKMeansClustersToConfigFile(value);
+                    SetProperty(ref _kmeansColorNumber, value);
+                }
+                else // value bigger or equal to the number of color in the image
+                {
+                    ConfigManagement.SetKMeansClustersToConfigFile(_loadedImageNumberColors - 1);
+                    SetProperty(ref _kmeansColorNumber, _loadedImageNumberColors - 1);
+                }
             }
         }
 
@@ -368,6 +382,7 @@ namespace BrodUI.ViewModels
             _ratio = Im.Ratio;
             ImageWidth = Im.ImageWidth;
             ImageHeight = Im.ImageHeight;
+            UpdateLoadedImageNumberColors();
         }
 
         /// <summary>
@@ -379,10 +394,11 @@ namespace BrodUI.ViewModels
             // Open file dialog
             Im?.LoadImageDialog();
             LoadedImage = Im?.Image;
-            if (Im == null) return;
+            if (Im == null || LoadedImage == null) return;
             _ratio = Im.Ratio;
             ImageWidth = Im.ImageWidth;
             ImageHeight = Im.ImageHeight;
+            UpdateLoadedImageNumberColors();
         }
 
         /// <summary>
@@ -395,7 +411,7 @@ namespace BrodUI.ViewModels
             _imageWidth = 0;
             _imageHeight = 0;
             Im?.UnloadImage();
-
+            _loadedImageNumberColors = int.MaxValue;
         }
 
 
@@ -509,6 +525,38 @@ namespace BrodUI.ViewModels
         public void OnNavigatedFrom()
         {
 
+        }
+
+        /// <summary>
+        /// Update the _loadedImageNumberColors field using the current LoadedImage
+        /// </summary>
+        private void UpdateLoadedImageNumberColors()
+        {
+            /*
+            if (LoadedImage != null)
+            {
+                List<Color> colors = new();
+                Brush[,] imageBrushes = ImageTo2DArrayBrushes.ConvertTo2dArray(LoadedImage);
+                int pixelWidth = LoadedImage.PixelWidth;
+                int pixelHeight = LoadedImage.PixelHeight;
+                for (int i = 0; i < pixelWidth; i++)
+                {
+                    for (int j = 0; j < pixelHeight; j++)
+                    {
+                        Color color = ((SolidColorBrush)imageBrushes[i, j]).Color;
+                        if (!colors.Contains(color))
+                        {
+                            colors.Add(color);
+                        }
+                    }
+                }
+                _loadedImageNumberColors = colors.Count;
+            }
+            else
+            */
+            {
+                _loadedImageNumberColors = int.MaxValue;
+            }
         }
     }
 }
