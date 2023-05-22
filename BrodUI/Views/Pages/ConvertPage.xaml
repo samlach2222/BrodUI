@@ -17,6 +17,7 @@
     Foreground="{DynamicResource TextFillColorPrimaryBrush}"
     mc:Ignorable="d">
 
+    <ScrollViewer>
     <Grid Margin="0,0,0,10" IsEnabled="{Binding ViewModel.GlobalGridVisibility}" >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
@@ -180,5 +181,5 @@
         </Grid>
 
     </Grid>
-
+    </ScrollViewer>
 </ui:UiPage>

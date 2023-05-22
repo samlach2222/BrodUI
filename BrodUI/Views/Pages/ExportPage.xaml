@@ -16,6 +16,7 @@
     Foreground="{DynamicResource TextFillColorPrimaryBrush}"
     mc:Ignorable="d">
 
+    <ScrollViewer>
     <Grid Margin="0,0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
@@ -91,4 +92,5 @@
                        ToolTip="{x:Static p:Resource.Export_ToolTipConvertButton}"
                        />
     </Grid>
+    </ScrollViewer>
 </ui:UiPage>

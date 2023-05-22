@@ -15,6 +15,7 @@
     Foreground="{DynamicResource TextFillColorPrimaryBrush}"
     mc:Ignorable="d">
 
+    <ScrollViewer>
     <Grid Margin="56,0,56,30" VerticalAlignment="Top">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
@@ -126,4 +127,5 @@
 
         <ui:Button Grid.Column="0" Grid.Row="7" Command="{Binding ViewModel.GoConvertPageCommand, Mode=OneWay}" Content="{x:Static p:Resource.Tutorial_BeginButtonLabel}" HorizontalAlignment="Center" />
     </Grid>
+    </ScrollViewer>
 </ui:UiPage>
