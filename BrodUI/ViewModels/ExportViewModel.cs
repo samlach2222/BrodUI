@@ -151,7 +151,7 @@ namespace BrodUI.ViewModels
                 DmcToString dmcToString = new();
 
                 // Convert colors to DMC and add the wires to TempWireArray (to later merge the wires with same colors)
-                foreach (Color color in colors) // TODO : ERROR WHEN COLOR IS "6" (RGB TESTED) 
+                foreach (Color color in colors) 
                 {
                     StringBuilder terminalOutput = new();
                     Color dmcColor;
@@ -218,7 +218,7 @@ namespace BrodUI.ViewModels
                 {
                     // Displaying a little more length than needed is better than opposite, so we round to nearest greater integer
                     double length = Math.Ceiling(new LengthThread(i, dmcImage).TotalLength);
-                    WireArray[i].Length = (long)length; // TODO fix bug : Length is sometimes negative
+                    WireArray[i].Length = (long)length;
                 }
 
                 // GridImage creation part

@@ -161,7 +161,7 @@ namespace BrodUI.KMeans
                     Centroids[centroidKey] = cluster
                         .Aggregate(new GenericVector(DataSet.First().Size),
                             (current, y) => current.Sum(y))
-                        .Divide(cluster.Count); // TODO (REMOVE TODO IF NOT A BUG) : cluster can sometimes be empty, which causes a division by 0 here
+                        .Divide(cluster.Count);
                 }
             }
         }

@@ -23,7 +23,7 @@ namespace BrodUI.ViewModels
         /// Possible themes of the application
         /// </summary>
         [ObservableProperty]
-        private string[] _themes = { "System", "Light", "Dark" }; // TODO : SET THEME TO RESOURCES TO HAVE FR AND EN LANGUAGE
+        private string[] _themes = { "System", "Light", "Dark" };
 
         /// <summary>
         /// Current theme of the application
