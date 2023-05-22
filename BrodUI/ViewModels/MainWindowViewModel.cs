@@ -40,7 +40,9 @@ namespace BrodUI.ViewModels
         /// Gets or sets the selected navigation item.
         /// </summary>
         /// <param name="navigationService"></param>
+#pragma warning disable IDE0060 // Supprimer le paramètre inutilisé
         public MainWindowViewModel(INavigationService navigationService)
+#pragma warning restore IDE0060 // Supprimer le paramètre inutilisé
         {
             if (!_isInitialized)
                 InitializeViewModel();

@@ -498,29 +498,6 @@ namespace BrodUI.ViewModels
 
         }
 
-        [RelayCommand]
-        private void IncrementWidth()
-        {
-            MessageBox.Show("Increment Width");
-        }
-
-        [RelayCommand]
-        private void DecrementWidth()
-        {
-            MessageBox.Show("Decrement Width");
-        }
-        [RelayCommand]
-        private void IncrementHeight()
-        {
-            MessageBox.Show("Increment Height");
-        }
-
-        [RelayCommand]
-        private void DecrementHeight()
-        {
-            MessageBox.Show("Decrement Height");
-        }
-
         /// <summary>
         /// Function called when user click on the button to go back to the main page
         /// </summary>

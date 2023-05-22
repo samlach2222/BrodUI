@@ -89,7 +89,6 @@ namespace BrodUITests.ModelsTests
             LogManagement.WriteAllLogsInTerminal();
 
             // Assert
-            sw.Flush();
             const string expectedOutput = "test1\r\ntest2\r\n";
             Assert.Equal(expectedOutput, sw.ToString());
 

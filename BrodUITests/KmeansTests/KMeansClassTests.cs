@@ -111,15 +111,16 @@ namespace BrodUITests.KMeansTests
             Assert.Equal(val1.Points[0], actual.Points[0]);
             Assert.Equal(val1.Points[1], actual.Points[1]);
             Assert.Equal(val1.Points[2], actual.Points[2]);
-            km.Centroids = new();
-            km.Centroids.Add(0, val1);
+            km.Centroids = new()
+            {
+                { 0, val1 }
+            };
             GenericVector val2 = new();
             val2.Add(0);
             val2.Add(200);
             val2.Add(0);
             km.DataSet.Add(val2);
-            bool check = false;
-            actual = (GenericVector)randomVector!.Invoke(km, new object[] { })!;
+            actual = (GenericVector)randomVector!.Invoke(km, Array.Empty<object>())!;
             Assert.Equal(val2.Points[0], actual.Points[0]);
             Assert.Equal(val2.Points[2], actual.Points[2]);
             Assert.Equal(val2.Points[1], actual.Points[1]);
@@ -130,7 +131,7 @@ namespace BrodUITests.KMeansTests
         public void RandomCentroidsKMeansTest()
         {
             KMeans km = new();
-            MethodInfo generateRandomCentroids = typeof(KMeans).GetMethod("GenerateRandomCentroids", BindingFlags.NonPublic | BindingFlags.Instance);
+            MethodInfo generateRandomCentroids = typeof(KMeans).GetMethod("GenerateRandomCentroids", BindingFlags.NonPublic | BindingFlags.Instance)!;
             GenericVector val1 = new();
             val1.Add(0);
             val1.Add(0);
@@ -139,10 +140,12 @@ namespace BrodUITests.KMeansTests
             val2.Add(0);
             val2.Add(200);
             val2.Add(0);
-            km.DataSet = new();
-            km.DataSet.Add(val1);
-            km.DataSet.Add(val2);
-            Dictionary<int, GenericVector> dict = (Dictionary<int, GenericVector>)generateRandomCentroids.Invoke(km, new object[] { 2 });
+            km.DataSet = new()
+            {
+                val1,
+                val2
+            };
+            Dictionary<int, GenericVector> dict = (Dictionary<int, GenericVector>)generateRandomCentroids.Invoke(km, new object[] { 2 })!;
             Assert.Equal(2, dict.Count);
             GenericVector cen1 = dict[0];
             bool verif = cen1.Points[0] == val1.Points[0] && cen1.Points[1] == val1.Points[1] && cen1.Points[2] == val1.Points[2];
@@ -158,7 +161,7 @@ namespace BrodUITests.KMeansTests
         public void CentroidsChangedKMeansTest()
         {
             KMeans km = new();
-            MethodInfo centroidsChanged = typeof(KMeans).GetMethod("CentroidsChanged", BindingFlags.NonPublic | BindingFlags.Static);
+            MethodInfo centroidsChanged = typeof(KMeans).GetMethod("CentroidsChanged", BindingFlags.NonPublic | BindingFlags.Static)!;
             Dictionary<int, GenericVector> dict = new();
             GenericVector cen1 = new();
             cen1.Add(0);
@@ -176,7 +179,7 @@ namespace BrodUITests.KMeansTests
             cen3.Add(0);
             dict.Add(2, cen3);
             km.Centroids = dict;
-            bool actual = (bool)centroidsChanged.Invoke(km, new object[] { dict.Values.ToList(), km.Centroids.Values.ToList() });
+            bool actual = (bool)centroidsChanged.Invoke(km, new object[] { dict.Values.ToList(), km.Centroids.Values.ToList() })!;
             Assert.False(actual);
             Dictionary<int, GenericVector> dict2 = new();
             GenericVector cen4 = new();
@@ -186,7 +189,7 @@ namespace BrodUITests.KMeansTests
             dict2.Add(0, cen4);
             dict2.Add(1, cen2);
             dict2.Add(2, cen3);
-            actual = (bool)centroidsChanged.Invoke(km, new object[] { dict2.Values.ToList(), km.Centroids.Values.ToList() });
+            actual = (bool)centroidsChanged.Invoke(km, new object[] { dict2.Values.ToList(), km.Centroids.Values.ToList() })!;
             Assert.True(actual);
         }
 
@@ -194,8 +197,8 @@ namespace BrodUITests.KMeansTests
         public void RecalculateCentroidsKMeansTest()
         {
             KMeans km = new();
-            MethodInfo recalculateCentroids = typeof(KMeans).GetMethod("RecalculateCentroids", BindingFlags.NonPublic | BindingFlags.Instance);
-            recalculateCentroids.Invoke(km, new object[] { });
+            MethodInfo recalculateCentroids = typeof(KMeans).GetMethod("RecalculateCentroids", BindingFlags.NonPublic | BindingFlags.Instance)!;
+            recalculateCentroids.Invoke(km, Array.Empty<object>());
             Assert.Null(km.Centroids);
             Dictionary<int, GenericVector> dict = new();
             GenericVector cen1 = new();
@@ -209,7 +212,7 @@ namespace BrodUITests.KMeansTests
             cen2.Add(0);
             dict.Add(1, cen2);
             km.Centroids = dict;
-            recalculateCentroids.Invoke(km, new object[] { });
+            recalculateCentroids.Invoke(km, Array.Empty<object>());
             Assert.False(GenericVector.NotEqual(cen1, km.Centroids[0]));
             Assert.False(GenericVector.NotEqual(cen2, km.Centroids[1]));
             km.DataSet = new();
@@ -245,7 +248,7 @@ namespace BrodUITests.KMeansTests
             km.DataSet.Add(val12);
             km.DataSet.Add(val21);
             km.DataSet.Add(val22);
-            recalculateCentroids.Invoke(km, new object[] { });
+            recalculateCentroids.Invoke(km, Array.Empty<object>());
             cen1 = km.Centroids[0];
             cen2 = km.Centroids[1];
             Assert.False(GenericVector.NotEqual(cen1, exp1));
@@ -359,7 +362,7 @@ namespace BrodUITests.KMeansTests
             }
             // We keep the lowest SSE
             KMeans lowest = kMeanses.Aggregate((minItem, nextItem) => minItem.Sse < nextItem.Sse ? minItem : nextItem);
-            bool verif = (!GenericVector.NotEqual(val1, lowest.Centroids[0]) && GenericVector.NotEqual(val1, lowest.Centroids[1]) && GenericVector.NotEqual(val1, lowest.Centroids[2]))
+            bool verif = (!GenericVector.NotEqual(val1, lowest.Centroids![0]) && GenericVector.NotEqual(val1, lowest.Centroids[1]) && GenericVector.NotEqual(val1, lowest.Centroids[2]))
             || (!GenericVector.NotEqual(val1, lowest.Centroids[1]) && GenericVector.NotEqual(val1, lowest.Centroids[0]) && GenericVector.NotEqual(val1, lowest.Centroids[2]))
             || (!GenericVector.NotEqual(val1, lowest.Centroids[2]) && GenericVector.NotEqual(val1, lowest.Centroids[1]) && GenericVector.NotEqual(val1, lowest.Centroids[0]));
             Assert.True(verif); //Il n'y qu'un centroids qui vaut la couleur, les autres ont des coordonnées NaN
