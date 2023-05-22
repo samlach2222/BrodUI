@@ -37,12 +37,6 @@ namespace BrodUI.ViewModels
         private ObservableCollection<INavigationControl> _navigationFooter = new();
 
         /// <summary>
-        /// Gets or sets the tray menu items.
-        /// </summary>
-        [ObservableProperty]
-        private ObservableCollection<MenuItem> _trayMenuItems = new();
-
-        /// <summary>
         /// Gets or sets the selected navigation item.
         /// </summary>
         /// <param name="navigationService"></param>
@@ -95,15 +89,6 @@ namespace BrodUI.ViewModels
                     PageTag = "settings",
                     Icon = SymbolRegular.Settings24,
                     PageType = typeof(Views.Pages.SettingsPage)
-                }
-            };
-
-            TrayMenuItems = new ObservableCollection<MenuItem>
-            {
-                new MenuItem
-                {
-                    Header = "Home",
-                    Tag = "tray_home"
                 }
             };
 
