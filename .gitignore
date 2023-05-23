@@ -348,3 +348,9 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+
+# Publish settings
+!BrodUI/Properties/PublishProfiles/FolderProfile.pubxml
+
+# Folder where BrodUI is published
+BrodUI publish/
