@@ -130,7 +130,7 @@
     <comment>Language parameter label</comment>
   </data>
   <data name="Settings_VersionNumber" xml:space="preserve">
-    <value>Version 0.1</value>
+    <value>Version 1.0</value>
     <comment>Version number of BrodUI</comment>
   </data>
   <data name="Settings_LabelGitHubLinks" xml:space="preserve">
